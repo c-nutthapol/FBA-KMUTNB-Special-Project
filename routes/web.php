@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::name('student.')->group(function () {
+    Route::view('/', 'students.home')->name('home');
+    Route::view('/petition', 'students.petition')->name('petition');
 });
