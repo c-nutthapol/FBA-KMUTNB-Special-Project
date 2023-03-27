@@ -17,7 +17,7 @@
 
 <body
     class="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
-    <div class="absolute w-full bg-blue-500 dark:hidden min-h-75"></div>
+    <div class="absolute w-full bg-teal-500 dark:hidden min-h-75"></div>
     <!-- sidenav  -->
     @include('layouts.partials.sidebar')
     <!-- end sidenav -->
@@ -38,8 +38,8 @@
 
     <div fixed-plugin>
         <a fixed-plugin-button
-            class="fixed px-4 py-2 text-xl bg-white shadow-lg cursor-pointer bottom-8 right-8 z-990 rounded-circle text-slate-700">
-            <i class="py-2 pointer-events-none fa fa-cog"> </i>
+            class="fixed px-4 py-3 text-xl bg-white shadow-lg cursor-pointer bottom-8 right-8 z-990 rounded-circle text-slate-700">
+            <i class="bi bi-gear-fill pointer-events-none leading-0"></i>
         </a>
         <!-- -right-90 in loc de 0-->
         <div fixed-plugin-card

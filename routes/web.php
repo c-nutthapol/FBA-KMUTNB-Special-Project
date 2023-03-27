@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::name('student.')->group(function () {
-    Route::view('/', 'students.home')->name('home');
+    Route::view('/', 'students.project.index')->name('project');
     Route::view('/petition', 'students.petition')->name('petition');
 });
