@@ -39,7 +39,7 @@
     <div fixed-plugin>
         <a fixed-plugin-button
             class="fixed px-4 py-3 text-xl bg-white shadow-lg cursor-pointer bottom-8 right-8 z-990 rounded-circle text-slate-700">
-            <i class="bi bi-gear-fill pointer-events-none leading-0"></i>
+            <i class="pointer-events-none bi bi-gear-fill leading-0"></i>
         </a>
         <!-- -right-90 in loc de 0-->
         <div fixed-plugin-card

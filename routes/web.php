@@ -13,11 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    // redirect('/project') สำหรับ Role = Students
+    return redirect('/project');
+});
 
 Route::name('student.')->group(function () {
-    Route::view('/', 'students.project.index')->name('project');
+
+    Route::name('project.')->group(function () {
+
+        Route::prefix('project')->group(function () {
+            Route::view('/', 'students.project.index')->name('home');
+            Route::view('/attachment', 'students.project.attachment')->name('attachment');
+            Route::view('/suggestion', 'students.project.suggestion')->name('suggestion');
+        });
+    });
+
     Route::view('/petition', 'students.petition')->name('petition');
 });
