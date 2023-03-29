@@ -26,6 +26,8 @@ Route::name('student.')->group(function () {
             Route::view('/', 'students.project.index')->name('home');
             Route::view('/attachment', 'students.project.attachment')->name('attachment');
             Route::view('/suggestion', 'students.project.suggestion')->name('suggestion');
+
+            Route::view('/edit', 'students.project.edit')->name('edit');
         });
     });
 

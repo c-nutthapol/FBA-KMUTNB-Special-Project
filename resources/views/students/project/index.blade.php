@@ -27,11 +27,19 @@
                     </h5>
                 </div>
                 <div class="pb-6 sm:p-6">
-                    <a href="#"
-                        class="inline-block px-6 py-3 text-xs font-bold leading-normal text-center text-white uppercase align-middle transition-all ease-in rounded-lg shadow-xs cursor-pointer bg-gradient-to-tl from-teal-500 to-green-500 tracking-tight-rem bg-150 bg-x-25 hover:-translate-y-px active:opacity-85 hover:shadow-md">
+                    {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
+                    <a href="#" class="btn text-xs  text-white  from-teal-500 to-green-500">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-download leading-0"></i>
                             <span class="block">โหลดเอกสาร</span>
+                        </div>
+                    </a>
+                    {{-- กรณีที่อาจารย์อนุมัติให้มีการแก้ไข --}}
+                    <a href="{{ route('student.project.edit') }}"
+                        class="btn text-xs  text-white  from-orange-500 to-yellow-500">
+                        <div class="flex flex-row items-center gap-3">
+                            <i class="bi bi-pencil-square leading-0"></i>
+                            <span class="block">แก้ไข</span>
                         </div>
                     </a>
                 </div>

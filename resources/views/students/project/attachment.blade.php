@@ -39,8 +39,7 @@
                                             class="pl-9 text-sm focus:shadow-primary-outline ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all dark:bg-slate-400/10 dark:border-slate-900 dark:text-slate-200 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
                                             required />
                                     </div>
-                                    <button type="submit"
-                                        class="inline-block px-6 py-3 text-xs font-bold leading-normal text-center text-white uppercase align-middle transition-all ease-in rounded-lg shadow-xs cursor-pointer bg-gradient-to-tl from-teal-500 to-green-500 tracking-tight-rem bg-150 bg-x-25 hover:-translate-y-px active:opacity-85 hover:shadow-md">
+                                    <button type="submit" class="btn text-xs  text-white  from-teal-500 to-green-500">
                                         <div class="flex flex-row items-center gap-3">
                                             <i class="bi bi-upload leading-0"></i>
                                             <span class="block">อัพโหลด</span>
