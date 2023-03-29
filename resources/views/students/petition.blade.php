@@ -19,6 +19,7 @@
                 <div class="flex-auto flex-wrap p-6">
                     <form>
                         <div class="mb-4">
+                            {{-- If there is an error, enter the Error class. = label class='... error', select class="... error"  --}}
                             <label class="text-sm tracking-wide dark:text-white  dark:opacity-80 mb-2">
                                 คำร้อง
                             </label>
@@ -45,12 +46,15 @@
                                     ขอสอบป้องกันโครงงานพิเศษล่าช้า
                                 </option>
                             </select>
+                            {{-- <span class="block text-rose-600 tracking-wide text-sm mt-1 ml-2">กรุณาเลือกคำร้อง</span> --}}
                         </div>
                         <div>
+                            {{-- If there is an error, enter the Error class. = label class='... error', textarea class="... error"  --}}
                             <label class="text-sm tracking-wide dark:text-white  dark:opacity-80 mb-2">
                                 หมายเหตุ
                             </label>
                             <textarea class="input h-auto" placeholder="กรุณากรอกหมายเหตุ" rows="6"></textarea>
+                            {{-- <span class="block text-rose-600 tracking-wide text-sm mt-1 ml-2">กรุณากรอกหมายเหตุ</span> --}}
                         </div>
 
                         <div class="mt-10 text-end">

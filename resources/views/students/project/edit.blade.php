@@ -33,17 +33,20 @@
                     </h5>
                 </div>
                 <div class="flex-auto flex-wrap p-6">
+                    {{-- If there is an error, enter the Error class. = label class='... error', input and select class="... error"  --}}
                     <form>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="text-sm tracking-wide dark:text-white  dark:opacity-80 mb-2">ชื่อโครงงาน
                                     (ภาษาไทย)</label>
                                 <input type="text" class="input" placeholder="กรุณากรอกชื่อโครงงานภาษาไทย" />
+                                {{-- <span class="block text-rose-600 tracking-wide text-sm mt-1 ml-2">กรุณากรอกชื่อโครงงานภาษาไทย</span> --}}
                             </div>
                             <div>
                                 <label class="text-sm tracking-wide dark:text-white  dark:opacity-80 mb-2">ชื่อโครงงาน
                                     (ภาษาอังกฤษ)</label>
                                 <input type="text" class="input" placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ" />
+                                {{-- <span class="block text-rose-600 tracking-wide text-sm mt-1 ml-2">กรุณากรอกชื่อโครงงานภาษาอังกฤษ</span> --}}
                             </div>
                         </div>
 
