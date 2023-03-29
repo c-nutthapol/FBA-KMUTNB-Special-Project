@@ -36,7 +36,8 @@
                         href="{{ route('student.petition') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                            <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'student.petition' ? 'bi-brush-fill' : 'bi-brush' }} relative top-0 text-sm leading-normal text-orange-500"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">เขียนคำร้องทั่วไป</span>
                     </a>
