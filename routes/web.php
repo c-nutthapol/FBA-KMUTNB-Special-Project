@@ -18,6 +18,10 @@ Route::get('/', function () {
     return redirect('/project');
 });
 
+Route::name('auth.')->group(function () {
+    Route::view('/login', 'auth.login')->name('login');
+});
+
 Route::name('student.')->group(function () {
 
     Route::name('project.')->group(function () {
