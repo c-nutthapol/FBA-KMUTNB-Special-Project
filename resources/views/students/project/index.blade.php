@@ -6,9 +6,36 @@
 
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="flex-none w-full max-w-full px-3">
+            <div
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-orange-500 to-yellow-500 border-0 border-transparent border-solid shadow-xl dark:from-orange-800 dark:to-yellow-800 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                <i class="bi bi-exclamation-circle-fill leading-0 text-white text-xl"></i>
+                <span class="inline-block text-white tracking-wider ml-3 font-semibold">
+                    รออนุมัติหัวข้อจากที่ปรึกษา
+                </span>
+            </div>
+            {{-- <div
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-blue-500 to-violet-500 border-0 border-transparent border-solid shadow-xl dark:from-blue-800 dark:to-violet-800 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                <i class="bi bi-check-circle-fill leading-0 text-white text-xl"></i>
+                <span class="inline-block text-white tracking-wider ml-3 font-semibold">
+                    อนุมัติ
+                </span>
+            </div> --}}
+            {{-- <div
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-rose-500 to-pink-500 border-0 border-transparent border-solid shadow-xl dark:from-rose-800 dark:to-pink-800 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                <i class="bi bi-x-circle-fill leading-0 text-white text-xl"></i>
+                <span class="inline-block text-white tracking-wider ml-3 font-semibold">
+                    ไม่อนุมัติ
+                </span>
+            </div> --}}
+        </div>
+    </div>
+
+    <div class="flex flex-wrap mb-6 -mx-3">
+        <div class="flex-none w-full max-w-full px-3">
             @include('components.students.nav-project')
         </div>
     </div>
+
 
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
@@ -44,6 +71,7 @@
                     </a>
                 </div>
             </div>
+
 
             {{-- ผู้จัดทำโครงงาน --}}
             <div
