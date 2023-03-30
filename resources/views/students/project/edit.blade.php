@@ -25,8 +25,8 @@
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div
                     class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <div class="flex items-center h-full p-3.5 rounded-3 bg-yellow-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-pencil-square leading-0 dark:text-yellow-500"></i>
+                    <div class="flex items-center h-full p-3.5 rounded-3 bg-yellow-300 dark:bg-slate-700/40 text-white">
+                        <i class="text-2xl text-white bi bi-pencil-square leading-0 dark:text-yellow-300"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         แก้ไขโครงงาน
@@ -173,7 +173,7 @@
                                     <span class="block">ยกเลิก</span>
                                 </div>
                             </a>
-                            <button type="submit" class="btn text-sm  text-white from-orange-500 to-yellow-500">
+                            <button type="submit" class="btn text-sm  text-white from-orange-400 to-yellow-400">
                                 <div class="flex flex-row items-center gap-3">
                                     <i class="bi bi-pencil-square leading-0 text-base"></i>
                                     <span class="block">แก้ไข</span>

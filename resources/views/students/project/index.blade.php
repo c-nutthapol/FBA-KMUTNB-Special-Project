@@ -7,21 +7,21 @@
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="flex-none w-full max-w-full px-3">
             <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-orange-500 to-yellow-500 border-0 border-transparent border-solid shadow-xl dark:from-orange-800 dark:to-yellow-800 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-orange-300 to-yellow-300 border-0 border-transparent border-solid shadow-xl dark:from-orange-400 dark:to-yellow-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
                 <i class="bi bi-exclamation-circle-fill leading-0 text-white text-xl"></i>
                 <span class="inline-block text-white tracking-wider ml-3 font-semibold">
                     รออนุมัติหัวข้อจากที่ปรึกษา
                 </span>
             </div>
             {{-- <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-blue-500 to-violet-500 border-0 border-transparent border-solid shadow-xl dark:from-blue-800 dark:to-violet-800 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-blue-300 to-violet-300 border-0 border-transparent border-solid shadow-xl dark:from-blue-400 dark:to-violet-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
                 <i class="bi bi-check-circle-fill leading-0 text-white text-xl"></i>
                 <span class="inline-block text-white tracking-wider ml-3 font-semibold">
                     อนุมัติ
                 </span>
             </div> --}}
             {{-- <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-rose-500 to-pink-500 border-0 border-transparent border-solid shadow-xl dark:from-rose-800 dark:to-pink-800 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-rose-300 to-pink-300 border-0 border-transparent border-solid shadow-xl dark:from-rose-400 dark:to-pink-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
                 <i class="bi bi-x-circle-fill leading-0 text-white text-xl"></i>
                 <span class="inline-block text-white tracking-wider ml-3 font-semibold">
                     ไม่อนุมัติ
@@ -45,8 +45,8 @@
                 class="relative flex flex-col items-center justify-start min-w-0 gap-3 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl sm:justify-between sm:flex-row dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div
                     class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <div class="flex items-center h-full p-3.5 rounded-3 bg-teal-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
+                    <div class="flex items-center h-full p-3.5 rounded-3 bg-teal-400 dark:bg-slate-700/40 text-white">
+                        <i class="text-2xl text-white bi bi-folder-fill leading-0 dark:text-teal-400"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         <span class="block font-bold">ทดสอบการพัฒนาระบบใหม่</span>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="pb-6 sm:p-6">
                     {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
-                    <a href="#" class="btn text-xs  text-white  from-teal-500 to-green-500">
+                    <a href="#" class="btn text-xs  text-white  from-teal-400 to-green-400">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-download leading-0"></i>
                             <span class="block">โหลดเอกสาร</span>
@@ -63,7 +63,7 @@
                     </a>
                     {{-- กรณีที่อาจารย์อนุมัติให้มีการแก้ไข --}}
                     <a href="{{ route('student.project.edit') }}"
-                        class="btn text-xs  text-white  from-orange-500 to-yellow-500">
+                        class="btn text-xs  text-white  from-orange-400 to-yellow-400">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-pencil-square leading-0"></i>
                             <span class="block">แก้ไข</span>

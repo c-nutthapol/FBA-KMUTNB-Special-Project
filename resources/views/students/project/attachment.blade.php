@@ -29,17 +29,8 @@
                         <form>
                             <div class="inline-block w-auto">
                                 <div class="flex flex-row gap-3">
-                                    <div
-                                        class="relative flex flex-wrap items-stretch w-full overflow-hidden transition-all rounded-lg ease">
-                                        <span
-                                            class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 dark:text-slate-200 transition-all">
-                                            <i class="bi bi-upload leading-0"></i>
-                                        </span>
-                                        <input type="file"
-                                            class="pl-9 text-sm focus:shadow-primary-outline ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all dark:bg-slate-400/10 dark:border-slate-900 dark:text-slate-200 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
-                                            required />
-                                    </div>
-                                    <button type="submit" class="btn text-xs  text-white  from-teal-500 to-green-500">
+                                    <input class="input h-full p-0" type="file">
+                                    <button type="submit" class="btn text-xs  text-white  from-teal-400 to-green-400">
                                         <div class="flex flex-row items-center gap-3">
                                             <i class="bi bi-upload leading-0"></i>
                                             <span class="block">อัพโหลด</span>
