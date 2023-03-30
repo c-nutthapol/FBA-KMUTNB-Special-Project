@@ -7,21 +7,21 @@
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="flex-none w-full max-w-full px-3">
             <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-orange-300 to-yellow-300 border-0 border-transparent border-solid shadow-xl dark:from-orange-400 dark:to-yellow-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tr  from-orange-300 to-yellow-300 border-0 border-transparent border-solid shadow-xl dark:from-orange-400 dark:to-yellow-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
                 <i class="bi bi-exclamation-circle-fill leading-0 text-white text-xl"></i>
                 <span class="inline-block text-white tracking-wider ml-3 font-semibold">
                     รออนุมัติหัวข้อจากที่ปรึกษา
                 </span>
             </div>
             {{-- <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-blue-300 to-violet-300 border-0 border-transparent border-solid shadow-xl dark:from-blue-400 dark:to-violet-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-blue-500 to-violet-500 border-0 border-transparent border-solid shadow-xl dark:from-blue-400 dark:to-violet-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
                 <i class="bi bi-check-circle-fill leading-0 text-white text-xl"></i>
                 <span class="inline-block text-white tracking-wider ml-3 font-semibold">
                     อนุมัติ
                 </span>
             </div> --}}
             {{-- <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-rose-300 to-pink-300 border-0 border-transparent border-solid shadow-xl dark:from-rose-400 dark:to-pink-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
+                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-rose-500 to-pink-500 border-0 border-transparent border-solid shadow-xl dark:from-rose-400 dark:to-pink-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
                 <i class="bi bi-x-circle-fill leading-0 text-white text-xl"></i>
                 <span class="inline-block text-white tracking-wider ml-3 font-semibold">
                     ไม่อนุมัติ
