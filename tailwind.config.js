@@ -6,6 +6,7 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js",
     ],
     darkMode: "class",
     theme: {
@@ -1383,6 +1384,7 @@ module.exports = {
         "disabled",
     ],
     plugins: [
+        require("flowbite/plugin"),
         plugin(function ({ addComponents, addUtilities }) {
             addUtilities({
                 ".transform3d": {
