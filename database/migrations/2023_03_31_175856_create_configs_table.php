@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_code')->unique()->nullable();
-            $table->string('name')->nullable();
-            $table->string('password')->nullable();
-            $table->bigInteger('role_id', 0, 1)->nullable();
+            $table->integer('edu_term')->nullable();
+            $table->integer('edu_year')->nullable();
+            $table->bigInteger('created_by', 0, 1)->nullable();
+            $table->dateTime('created_at')->nullable();
+
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('SET NULL');
         });
     }
 
@@ -26,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('configs');
         Schema::enableForeignKeyConstraints();
     }
 };
