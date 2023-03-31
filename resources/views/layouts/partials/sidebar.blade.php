@@ -18,7 +18,10 @@
         <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
             <ul class="flex flex-col pl-0 mb-0">
                 {{-- menu student --}}
-                @include('layouts.menus.student')
+                {{-- @include('layouts.menus.student') --}}
+
+                {{-- menu teacher --}}
+                @include('layouts.menus.teacher')
 
                 <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">

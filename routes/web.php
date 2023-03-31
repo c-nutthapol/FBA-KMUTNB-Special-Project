@@ -15,26 +15,42 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // redirect('/project') สำหรับ Role = Students
-    return redirect('/project');
+    // return redirect('/project');
+    // redirect('/project') สำหรับ Role = Teacher
+    return redirect('/teacher/project');
 });
 
 Route::name('auth.')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
 });
 
+// @Role: Students
 Route::name('student.')->group(function () {
 
-    Route::name('project.')->group(function () {
-
-        Route::prefix('project')->group(function () {
-            Route::view('/', 'students.project.index')->name('home');
-            Route::view('/attachment', 'students.project.attachment')->name('attachment');
-            Route::view('/suggestion', 'students.project.suggestion')->name('suggestion');
-            Route::view('/history', 'students.project.history')->name('history');
-
-            Route::view('/edit', 'students.project.edit')->name('edit');
-        });
+    Route::prefix('project')->name('project.')->group(function () {
+        // ข้อมูลทั่วไปหรือภาพรวมโครงงาน
+        Route::view('/', 'students.project.index')->name('home');
+        // แนบเอกสาร
+        Route::view('/attachment', 'students.project.attachment')->name('attachment');
+        // ข้อเสนอแนะ
+        Route::view('/suggestion', 'students.project.suggestion')->name('suggestion');
+        // ประวัติการส่งคำร้อง
+        Route::view('/history', 'students.project.history')->name('history');
+        // แก้ไขโครงงาน
+        Route::view('/edit', 'students.project.edit')->name('edit');
     });
-
+    // เขียนคำร้องทั่วไป
     Route::view('/petition', 'students.petition')->name('petition');
+});
+
+// @Role: Teacher
+Route::name('teacher.')->prefix('teacher')->group(function () {
+    Route::prefix('project')->name('project.')->group(function () {
+        // โครงงานที่รับผิดชอบ
+        Route::view('/', 'teacher.project.index')->name('home');
+        // รายละเอียดโครงงาน
+        Route::view('/details', 'teacher.project.details')->name('details');
+        // เสนอแนะ
+        Route::view('/suggestion', 'teacher.project.suggestion')->name('suggestion');
+    });
 });
