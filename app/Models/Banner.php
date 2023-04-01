@@ -30,6 +30,7 @@ class Banner extends Model
         /* A method that is called when the model is being deleted. */
         static::deleting(function ($model) {
             $model->deleted_by = auth()->check() ? auth()->user()->id : null;
+            $model->save();
         });
     }
 }
