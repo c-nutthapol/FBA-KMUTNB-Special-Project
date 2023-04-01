@@ -3,6 +3,57 @@
 @section('title', 'โครงงานที่รับผิดชอบ')
 
 @section('content')
+    <div class="flex flex-wrap mb-6 -mx-3">
+        <div class="flex-none w-full max-w-full px-3">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="flex flex-col p-4 bg-white rounded-lg dark:bg-slate-850">
+                    <div class="relative flex flex-row">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 p-2 text-base font-bold text-white bg-yellow-400 rounded-full">
+                            4
+                        </span>
+                        <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
+                            รออนุมัติหัวข้อ
+                        </h4>
+                    </div>
+                    <div class="dark:text-white dark:opacity-60">
+                        กรุณาอนุมัติก่อนวันที่ <span>10/04/2566</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col p-4 bg-white rounded-lg dark:bg-slate-850">
+                    <div class="relative flex flex-row">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 p-2 text-base font-bold text-white bg-teal-400 rounded-full">
+                            2
+                        </span>
+                        <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
+                            อนุมัติสอบ
+                        </h4>
+                    </div>
+                    <div class="dark:text-white dark:opacity-60">
+                        กรุณาอนุมัติก่อนวันที่ <span>21/04/2566</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col p-4 bg-white rounded-lg dark:bg-slate-850">
+                    <div class="relative flex flex-row">
+                        <span
+                            class="flex items-center justify-center w-6 h-6 p-2 text-base font-bold text-white rounded-full bg-rose-500">
+                            0
+                        </span>
+                        <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
+                            อนุมัติผลสอบ
+                        </h4>
+                    </div>
+                    <div class="dark:text-white dark:opacity-60">
+                        กรุณาอนุมัติก่อนวันที่ <span>31/04/2566</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
 
@@ -17,6 +68,51 @@
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         โครงงานที่รับผิดชอบ
                     </h5>
+                </div>
+                <div class="flex flex-row items-center justify-between gap-3 px-6">
+                    <div>
+                        <select class="select">
+                            <option value="ปึการศึกษาทั้งหมด" selected>
+                                ปึการศึกษาทั้งหมด
+                            </option>
+                            <option value="2566">
+                                2566
+                            </option>
+                            <option value="2565">
+                                2565
+                            </option>
+                            <option value="2564">
+                                2564
+                            </option>
+                        </select>
+                    </div>
+                    <div class="flex flex-row gap-3">
+                        <div class="flex-1">
+                            <select class="select">
+                                <option value="สถานะทั้งหมด" selected>
+                                    สถานะทั้งหมด
+                                </option>
+                                <option value="รออนุมัติหัวข้อจากที่ปรึกษา">
+                                    รออนุมัติหัวข้อจากที่ปรึกษา
+                                </option>
+                                <option value="อนุมัติ">
+                                    อนุมัติ
+                                </option>
+                                <option value="ไม่อนุมัติ">
+                                    ไม่อนุมัติ
+                                </option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label for="search" class="sr-only">Search</label>
+                            <div class="relative w-full">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
+                                </div>
+                                <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex-auto p-6">
                     <div class="p-0 overflow-x-auto">
@@ -111,6 +207,46 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="flex justify-end mt-4">
+                        <nav aria-label="Page navigation">
+                            <ul class="inline-flex items-center -space-x-px">
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center w-10 h-10 ml-0 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        <span class="sr-only">Previous</span>
+                                        <i class="bi bi-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-current="page"
+                                        class="z-10 flex items-center justify-center w-10 h-10 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                        1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center w-10 h-10 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center w-10 h-10 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        3
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center w-10 h-10 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        <span class="sr-only">Next</span>
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
                     </div>
                 </div>
             </div>
