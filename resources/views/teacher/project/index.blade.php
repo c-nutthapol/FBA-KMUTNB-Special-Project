@@ -197,9 +197,9 @@
                                     <td
                                         class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <a href="{{ route('teacher.project.details') }}"
-                                            class="text-xs text-white btn from-blue-500 to-violet-500">
-                                            <div class="flex flex-row items-center gap-3">
-                                                <i class="bi bi-eye-fill leading-0"></i>
+                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-eye leading-0"></i>
                                                 <span class="block">ดูรายละเอียด</span>
                                             </div>
                                         </a>
