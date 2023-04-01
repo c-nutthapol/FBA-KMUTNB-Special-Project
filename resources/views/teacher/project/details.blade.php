@@ -84,7 +84,7 @@
                         </div>
                     </a>
 
-                    <button class="text-xs text-white btn from-blue-500 to-violet-500" type="button"
+                    <button class="text-xs text-white btn from-slate-600 to-slate-300" type="button"
                         data-drawer-target="drawer-setting" data-drawer-show="drawer-setting" data-drawer-placement="bottom"
                         data-drawer-edge="true" data-drawer-edge-offset="bottom-[60px]" aria-controls="drawer-setting">
                         <div class="flex flex-row items-center gap-3">
