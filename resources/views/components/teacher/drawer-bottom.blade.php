@@ -1,5 +1,5 @@
             <div id="drawer-setting"
-                class="fixed z-40 w-full overflow-y-auto backdrop-blur-none sm:backdrop-blur-sm bg-white sm:bg-white/60 border-t border-gray-200 rounded-t-lg dark:border-gray-700 dark:bg-gray-800 transition-transform bottom-0 left-0 right-0 translate-y-full bottom-[60px]"
+                class="fixed z-40 w-full overflow-y-auto bg-white  border-t border-gray-200 rounded-t-lg dark:border-gray-700 dark:bg-gray-800 transition-transform bottom-0 left-0 right-0 translate-y-full bottom-[60px]"
                 tabindex="-1" aria-labelledby="drawer-setting-label">
                 <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
                     data-drawer-toggle="drawer-setting">
