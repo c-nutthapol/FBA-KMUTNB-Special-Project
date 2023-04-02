@@ -69,5 +69,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::prefix('settings')->name('settings.')->group(function () {
         // กำหนดสิทธิ์ผู้ใช้งาน
         Route::view('/permissions', 'admin.settings.permissions')->name('permissions');
+        // ข้อมูลผู้ใช้งาน
+        Route::view('/users', 'admin.settings.users')->name('users');
     });
 });
