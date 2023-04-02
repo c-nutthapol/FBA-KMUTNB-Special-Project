@@ -12,6 +12,8 @@
                                 class="flex flex-row items-center gap-2 px-0 py-2 text-sm font-semibold text-white transition-all ease-nav-brand">
                                 <img src="https://images.pexels.com/photos/1436962/pexels-photo-1436962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                     alt="avatar" class="object-cover object-center w-6 h-6 rounded">
+                                {{-- กรณีที่ไม่มีรูป --}}
+                                {{-- <i class="bi bi-person-fill"></i> --}}
                                 <span class="hidden sm:inline">สมชาย</span>
                             </a>
 
@@ -22,9 +24,9 @@
                                     <a class="dark:hover:bg-slate-900 ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors"
                                         href="javascript:;">
                                         <div class="flex items-center py-1">
-                                            <div class="my-auto">
-                                                <img src="https://images.pexels.com/photos/1436962/pexels-photo-1436962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                                    class="inline-flex items-center justify-center object-cover object-center mr-4 text-sm text-white h-9 w-9 max-w-none rounded-xl" />
+                                            <div
+                                                class="inline-flex items-center justify-center my-auto mr-4 text-sm text-white transition-all duration-200 ease-nav-brand bg-gradient-to-tl from-blue-500 to-violet-500 h-9 w-9 rounded-xl">
+                                                <i class="text-lg bi bi-person-fill"></i>
                                             </div>
                                             <div>
                                                 <h6
