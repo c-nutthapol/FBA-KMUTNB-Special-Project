@@ -85,6 +85,7 @@
 
 
     @include('layouts.partials.script')
+    @yield('script')
 </body>
 
 </html>

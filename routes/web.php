@@ -24,6 +24,8 @@ Route::name('auth.')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
 });
 
+Route::view('/', 'index')->name('home');
+
 // @Role: Students
 Route::name('student.')->group(function () {
 
@@ -52,7 +54,20 @@ Route::name('teacher.')->prefix('teacher')->group(function () {
         Route::view('/details', 'teacher.project.details')->name('details');
         // เสนอแนะ
         Route::view('/suggestion', 'teacher.project.suggestion')->name('suggestion');
-        // เสนอแนะ
-        Route::view('/petition', 'teacher.petition')->name('petition');
+    });
+    // เสนอแนะ
+    Route::view('/petition', 'teacher.petition')->name('petition');
+});
+
+// @Role: Admin
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::prefix('project')->name('project.')->group(function () {
+        // โครงงานที่รับผิดชอบ
+        Route::view('/', 'admin.project.index')->name('all');
+    });
+
+    Route::prefix('settings')->name('settings.')->group(function () {
+        // กำหนดสิทธิ์ผู้ใช้งาน
+        Route::view('/permissions', 'admin.settings.permissions')->name('permissions');
     });
 });

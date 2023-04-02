@@ -6,4 +6,5 @@
   <script src="{{ asset('assets/js/sidenav-burger.js') }}" async></script>
   <script src="{{ asset('assets/js/dropdown.js') }}" async></script>
   <script src="{{ asset('assets/js/fixed-plugin.js') }}" async></script>
+  <script src="{{ asset('assets/js/plugins/chart.umd.js') }}"></script>
   {{-- <script src="{{ asset('assets/js/argon-dashboard-tailwind.js?v=1.0.1') }}" async></script> --}}
