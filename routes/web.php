@@ -52,5 +52,7 @@ Route::name('teacher.')->prefix('teacher')->group(function () {
         Route::view('/details', 'teacher.project.details')->name('details');
         // เสนอแนะ
         Route::view('/suggestion', 'teacher.project.suggestion')->name('suggestion');
+        // เสนอแนะ
+        Route::view('/petition', 'teacher.petition')->name('petition');
     });
 });
