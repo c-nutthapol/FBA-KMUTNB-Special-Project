@@ -20,11 +20,11 @@
                 <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
                     <div>
                         <select class="select">
-                            <option value="เริ่มใช้งานวันที่ล่าสุด" selected>
-                                เริ่มใช้งานวันที่ล่าสุด
+                            <option value="วันที่เริ่มใช้งานล่าสุด" selected>
+                                วันที่เริ่มใช้งานล่าสุด
                             </option>
-                            <option value="เริ่มใช้งานวันที่เก่าสุด">
-                                เริ่มใช้งานวันที่เก่าสุด
+                            <option value="วันที่เริ่มใช้งานเก่าสุด">
+                                วันที่เริ่มใช้งานเก่าสุด
                             </option>
                         </select>
                     </div>
@@ -82,7 +82,7 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        เริ่มใช้งานวันที่
+                                        วันที่เริ่มใช้งาน
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
