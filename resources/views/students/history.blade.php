@@ -3,12 +3,6 @@
 @section('title', 'ประวัติการส่งคำร้อง')
 
 @section('content')
-    <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
-            @include('components.students.nav-project')
-        </div>
-    </div>
-
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
 
@@ -18,7 +12,7 @@
                 <div
                     class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi  bi-clock-fill leading-0 dark:text-blue-500"></i>
+                        <i class="text-2xl text-white bi bi-clock-fill leading-0 dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         ประวัติการส่งคำร้อง
@@ -79,8 +73,8 @@
                                         </span>
                                     </td>
                                     <td
-                                        class="px-6 py-3 align-middle text-right bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <button type="button" class="btn text-xs  text-white  from-blue-500 to-violet-500"
+                                        class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <button type="button" class="text-xs text-white btn from-blue-500 to-violet-500"
                                             data-modal-target="viewModal" data-modal-toggle="viewModal">
                                             <div class="flex flex-row items-center gap-3">
                                                 <i class="bi bi-eye-fill leading-0"></i>
@@ -106,7 +100,7 @@
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-0 tracking-wide">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
                         รายละเอียด
                     </h3>
                     <button type="button"

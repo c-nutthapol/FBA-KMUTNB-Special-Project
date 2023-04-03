@@ -3,36 +3,97 @@
 @section('title', 'โครงงาน')
 
 @section('content')
-
-    <div class="flex flex-wrap mb-6 -mx-3">
+    <div class="flex flex-wrap mb-8 -mx-3">
         <div class="flex-none w-full max-w-full px-3">
-            <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tr  from-orange-300 to-yellow-300 border-0 border-transparent border-solid shadow-xl dark:from-orange-400 dark:to-yellow-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
-                <i class="bi bi-exclamation-circle-fill leading-0 text-white text-xl"></i>
-                <span class="inline-block text-white tracking-wider ml-3 font-semibold">
-                    รออนุมัติหัวข้อจากที่ปรึกษา
-                </span>
-            </div>
-            {{-- <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-blue-500 to-violet-500 border-0 border-transparent border-solid shadow-xl dark:from-blue-400 dark:to-violet-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
-                <i class="bi bi-check-circle-fill leading-0 text-white text-xl"></i>
-                <span class="inline-block text-white tracking-wider ml-3 font-semibold">
-                    อนุมัติ
-                </span>
-            </div> --}}
-            {{-- <div
-                class="relative flex flex-row items-center justify-start p-4 min-w-0 break-words bg-gradient-to-tl  from-rose-500 to-pink-500 border-0 border-transparent border-solid shadow-xl dark:from-rose-400 dark:to-pink-400 dark:shadow-dark-xl rounded-lg bg-clip-border">
-                <i class="bi bi-x-circle-fill leading-0 text-white text-xl"></i>
-                <span class="inline-block text-white tracking-wider ml-3 font-semibold">
-                    ไม่อนุมัติ
-                </span>
-            </div> --}}
-        </div>
-    </div>
-
-    <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
-            @include('components.students.nav-project')
+            <ol
+                class="flex items-center w-full px-6 py-4 space-x-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 shadow-xl sm:space-x-4 rounded-2xl dark:text-gray-400 sm:text-base dark:bg-slate-850 dark:shadow-dark-xl dark:border-slate-850">
+                <li>
+                    <a href="#" class="flex items-center text-teal-400 dark:text-teal-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-teal-400 border border-teal-400 rounded-full shrink-0 dark:border-teal-400">
+                            1
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                ลงทะเบียนโครงงานพิเศษ
+                            </span>
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            2
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                สอบความก้าวหน้า
+                            </span>
+                            <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                                ปรับแก้ไข
+                            </span>
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            3
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                สอบป้องกัน
+                            </span>
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            4
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                ส่งเล่ม
+                            </span>
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
+                        </div>
+                    </a>
+                </li>
+            </ol>
         </div>
     </div>
 
@@ -55,7 +116,7 @@
                 </div>
                 <div class="pb-6 sm:p-6">
                     {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
-                    <a href="#" class="btn text-xs  text-white  from-teal-400 to-green-400">
+                    <a href="#" class="text-xs text-white btn from-teal-400 to-green-400">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-download leading-0"></i>
                             <span class="block">โหลดเอกสาร</span>
@@ -63,7 +124,7 @@
                     </a>
                     {{-- กรณีที่อาจารย์อนุมัติให้มีการแก้ไข --}}
                     <a href="{{ route('student.project.edit') }}"
-                        class="btn text-xs  text-white  from-orange-400 to-yellow-400">
+                        class="text-xs text-white btn from-orange-400 to-yellow-400">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-pencil-square leading-0"></i>
                             <span class="block">แก้ไข</span>
@@ -146,7 +207,8 @@
                     class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl lg:col-span-2 dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     <div
                         class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
+                        <div
+                            class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
                             <i class="text-2xl text-white bi bi-people-fill leading-0 dark:text-orange-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">
@@ -197,7 +259,8 @@
                     class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     <div
                         class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
+                        <div
+                            class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
                             <i class="text-2xl text-white bi bi-person-workspace leading-0 dark:text-orange-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">

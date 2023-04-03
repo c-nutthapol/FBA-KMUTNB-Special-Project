@@ -3,12 +3,6 @@
 @section('title', 'ข้อเสนอแนะ')
 
 @section('content')
-    <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
-            @include('components.students.nav-project')
-        </div>
-    </div>
-
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
 

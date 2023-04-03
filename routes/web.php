@@ -34,15 +34,17 @@ Route::name('student.')->group(function () {
         Route::view('/', 'students.project.index')->name('home');
         // แนบเอกสาร
         Route::view('/attachment', 'students.project.attachment')->name('attachment');
-        // ข้อเสนอแนะ
-        Route::view('/suggestion', 'students.project.suggestion')->name('suggestion');
-        // ประวัติการส่งคำร้อง
-        Route::view('/history', 'students.project.history')->name('history');
+        // สร้างโครงงาน
+        Route::view('/create', 'students.project.create')->name('create');
         // แก้ไขโครงงาน
         Route::view('/edit', 'students.project.edit')->name('edit');
     });
     // เขียนคำร้องทั่วไป
     Route::view('/petition', 'students.petition')->name('petition');
+    // ข้อเสนอแนะ
+    Route::view('/suggestion', 'students.suggestion')->name('suggestion');
+    // ประวัติการส่งคำร้อง
+    Route::view('/history', 'students.history')->name('history');
 });
 
 // @Role: Teacher
@@ -71,5 +73,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::view('/permissions', 'admin.settings.permissions')->name('permissions');
         // ข้อมูลผู้ใช้งาน
         Route::view('/users', 'admin.settings.users')->name('users');
+        // ข้อเสนอแนะ
+        Route::view('/suggestions', 'admin.settings.suggestions')->name('suggestions');
     });
 });

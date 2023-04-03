@@ -3,33 +3,114 @@
 @section('title', 'แก้ไขโครงงาน')
 
 @section('content')
-    <div class="flex flex-wrap mb-6 -mx-3">
+
+    <div class="flex flex-wrap mb-8 -mx-3">
         <div class="flex-none w-full max-w-full px-3">
-            <div class="inline-block">
-                <a href="{{ route('student.project.home') }}"
-                    class="flex flex-row items-center gap-2 text-base font-semibold text-white dark:opacity-80 dark:hover:opacity-100 fade-opacity">
-                    <i class="text-xl bi bi-arrow-left"></i>
-                    <span class="inline-block">
-                        กลับ
-                    </span>
-                </a>
-            </div>
+            <ol
+                class="flex items-center w-full px-6 py-4 space-x-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 shadow-xl sm:space-x-4 rounded-2xl dark:text-gray-400 sm:text-base dark:bg-slate-850 dark:shadow-dark-xl dark:border-slate-850">
+                <li>
+                    <a href="#" class="flex items-center text-teal-400 dark:text-teal-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-teal-400 border border-teal-400 rounded-full shrink-0 dark:border-teal-400">
+                            1
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                ลงทะเบียนโครงงานพิเศษ
+                            </span>
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            2
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                สอบความก้าวหน้า
+                            </span>
+                            <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                                ปรับแก้ไข
+                            </span>
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            3
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                สอบป้องกัน
+                            </span>
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            4
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                ส่งเล่ม
+                            </span>
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
+                        </div>
+                    </a>
+                </li>
+            </ol>
         </div>
     </div>
 
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
 
-            {{-- แก้ไขโครงงาน --}}
+            {{-- ลงทะเบียนโครงงานพิเศษ --}}
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div
                     class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <div class="flex items-center h-full p-3.5 rounded-3 bg-yellow-300 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-pencil-square leading-0 dark:text-yellow-300"></i>
+                    <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
+                        <i class="text-2xl text-white bi bi-journal-plus leading-0 dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
-                        แก้ไขโครงงาน
+                        ลงทะเบียนโครงงานพิเศษ
                     </h5>
                 </div>
                 <div class="flex-wrap flex-auto p-6">
@@ -181,10 +262,10 @@
                                     <span class="block">ยกเลิก</span>
                                 </div>
                             </a>
-                            <button type="submit" class="text-sm text-white btn from-orange-400 to-yellow-400">
+                            <button type="submit" class="text-sm text-white btn from-blue-500 to-violet-500">
                                 <div class="flex flex-row items-center gap-3">
-                                    <i class="text-base bi bi-pencil-square leading-0"></i>
-                                    <span class="block">แก้ไข</span>
+                                    <i class="text-base bi bi-save-fill leading-0"></i>
+                                    <span class="block">บันทึก</span>
                                 </div>
                                 {{-- loading --}}
                                 {{-- <svg aria-hidden="true" role="status" class="inline w-4 h-4 text-white animate-spin"
