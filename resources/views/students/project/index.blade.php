@@ -18,6 +18,10 @@
                                 ลงทะเบียนโครงงานพิเศษ
                             </span>
                             {{-- <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                ก่อน 10/04/2566
+                            </span> --}}
+                            {{-- <span
                             class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
                             ปรับแก้ไข
                         </span> --}}
@@ -40,6 +44,10 @@
                             <span class="block">
                                 สอบความก้าวหน้า
                             </span>
+                            {{-- <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                ก่อน 10/04/2566
+                            </span> --}}
                             <span
                                 class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
                                 ปรับแก้ไข
@@ -64,6 +72,10 @@
                                 สอบป้องกัน
                             </span>
                             {{-- <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                ก่อน 10/04/2566
+                            </span> --}}
+                            {{-- <span
                             class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
                             ปรับแก้ไข
                         </span> --}}
@@ -86,6 +98,10 @@
                             <span class="block">
                                 ส่งเล่ม
                             </span>
+                            {{-- <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                ก่อน 10/04/2566
+                            </span> --}}
                             {{-- <span
                             class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
                             ปรับแก้ไข
