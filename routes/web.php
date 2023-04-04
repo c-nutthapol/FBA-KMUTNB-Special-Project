@@ -50,8 +50,15 @@ Route::name('student.')->group(function () {
 // @Role: Teacher
 Route::name('teacher.')->prefix('teacher')->group(function () {
     Route::prefix('project')->name('project.')->group(function () {
-        // โครงงานที่รับผิดชอบ
+        // ลงทะเบียนโครงงาน
         Route::view('/', 'teacher.project.index')->name('home');
+        // ยื่นขอสอบความก้าวหน้า
+        Route::view('/progress', 'teacher.project.progress')->name('progress');
+        // ยื่นขอสอบป้องกัน
+        Route::view('/defense_exam', 'teacher.project.defense')->name('defense');
+        // ยื่นส่งเล่ม
+        Route::view('/book', 'teacher.project.book')->name('book');
+
         // รายละเอียดโครงงาน
         Route::view('/details', 'teacher.project.details')->name('details');
         // เสนอแนะ

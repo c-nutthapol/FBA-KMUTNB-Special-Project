@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ลงทะเบียนโครงงานพิเศษ')
+@section('title', 'ยื่นขอสอบความก้าวหน้า')
 
 @section('content')
     <div class="flex flex-wrap mb-6 -mx-3">
@@ -13,7 +13,7 @@
                             4
                         </span>
                         <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
-                            รออนุมัติหัวข้อ
+                            รออนุมัติ
                         </h4>
                     </div>
                     <div class="dark:text-white dark:opacity-60">
@@ -33,10 +33,10 @@
                 <div
                     class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-1-circle-fill leading-0 dark:text-blue-500"></i>
+                        <i class="text-2xl text-white bi bi-2-circle-fill leading-0 dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
-                        ลงทะเบียนโครงงานพิเศษ
+                        ยื่นขอสอบความก้าวหน้า
                     </h5>
                 </div>
                 <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-end sm:flex-row">
@@ -46,8 +46,8 @@
                                 <option value="สถานะทั้งหมด" selected>
                                     สถานะทั้งหมด
                                 </option>
-                                <option value="รออนุมัติหัวข้อจากที่ปรึกษา">
-                                    รออนุมัติหัวข้อจากที่ปรึกษา
+                                <option value="รออนุมัติ">
+                                    รออนุมัติ
                                 </option>
                                 <option value="อนุมัติ">
                                     อนุมัติ
@@ -137,7 +137,7 @@
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
-                                            รออนุมัติหัวข้อจากที่ปรึกษา
+                                            รออนุมัติ
                                         </span>
                                         <span
                                             class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-emerald-500 to-teal-400 align-baseline font-bold uppercase leading-none text-white">

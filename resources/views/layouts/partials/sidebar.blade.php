@@ -27,19 +27,19 @@
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">หนัาหลัก</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="w-full mt-4">
+                {{-- <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
                         โครงงานและคำร้อง
                     </h6>
-                </li> --}}
+                </li>  --}}
 
                 {{-- menu student --}}
-                @include('layouts.menus.student')
+                {{-- @include('layouts.menus.student') --}}
 
                 {{-- menu teacher --}}
-                {{-- @include('layouts.menus.teacher') --}}
+                @include('layouts.menus.teacher')
 
                 {{-- <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">

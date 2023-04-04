@@ -77,6 +77,10 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        กรุณาอนุมัติก่อนวันที่
+                                    </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         สถานะ
                                     </th>
                                     <th
@@ -121,17 +125,26 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" value="" class="sr-only peer">
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                                            </div>
-                                            <span class="ml-3 text-sm font-normal dark:text-slate-400">
-                                                อนุมัติ
-                                            </span>
-                                        </label>
-
+                                        <span
+                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            <i class="bi bi-calendar2-week-fill"></i> 30/04/18
+                                        </span>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <div class="inline-block">
+                                            <select class="select">
+                                                <option value="รออนุมัติ" selected>
+                                                    รออนุมัติ
+                                                </option>
+                                                <option value="ใช้งานปกติ">
+                                                    อนุมัติ
+                                                </option>
+                                                <option value="ไม่อนุมัติ">
+                                                    ไม่อนุมัติ
+                                                </option>
+                                            </select>
+                                        </div>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
