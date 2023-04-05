@@ -278,7 +278,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-pencil-square leading-0"></i> แก้ไขข้อเสนอแนะ
+                        <i class="bi bi-pencil-square leading-0"></i> แก้ไขภาคเรียน
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
