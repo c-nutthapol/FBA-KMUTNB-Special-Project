@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ข้อเสนอแนะ')
+@section('title', 'ภาคเรียน')
 
 @section('content')
     <div class="flex flex-wrap -mx-3">
@@ -11,36 +11,23 @@
                     class="flex flex-col items-start justify-start gap-4 p-6 mb-0 border-b-0 sm:items-center sm:justify-between sm:flex-row border-b-solid rounded-t-2xl border-b-transparent">
                     <div class="flex flex-row items-center space-x-4">
                         <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                            <i class="text-2xl text-white bi bi-chat-dots-fill leading-0 dark:text-blue-500"></i>
+                            <i class="text-2xl text-white bi bi-calendar-week-fill leading-0 dark:text-blue-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">
-                            ข้อเสนอแนะ
+                            ภาคเรียน
                         </h5>
                     </div>
                     <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
                         data-modal-target="createModal" data-modal-toggle="createModal">
                         <div class="flex flex-row items-center justify-center gap-3">
                             <i class="bi bi-plus-lg leading-0"></i>
-                            <span class="block">เพิ่มข้อเสนอแนะ</span>
+                            <span class="block">เพิ่มภาคเรียน</span>
                         </div>
                     </button>
                 </div>
 
                 <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-end sm:flex-row">
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        <div class="flex-1">
-                            <select class="select">
-                                <option value="หมวดหมู่ทั้งหมด" selected>
-                                    หมวดหมู่ทั้งหมด
-                                </option>
-                                <option value="หัวข้อที่ผิดบ่อย">
-                                    หัวข้อที่ผิดบ่อย
-                                </option>
-                                <option value="การจัดรูปแบบการพิมพ์ที่ผิดบ่อย">
-                                    การจัดรูปแบบการพิมพ์ที่ผิดบ่อย
-                                </option>
-                            </select>
-                        </div>
                         <div class="flex-1">
                             <label for="search" class="sr-only">Search</label>
                             <div class="relative w-full">
@@ -61,15 +48,19 @@
                                 <tr>
                                     <th
                                         class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        ลำดับ
-                                    </th>
-                                    <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        ข้อเสนอแนะ
+                                        ภาคเรียน
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        หมวดหมู่
+                                        ปีการศึกษา
+                                    </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        วันที่เริ่มภาคเรียน
+                                    </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        วันที่จบภาคเรียน
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -80,25 +71,31 @@
                             <tbody>
                                 <tr>
                                     <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            1
-                                        </span>
-                                    </td>
-                                    <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="px-6 py-3 text-left align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            ชื่อเรื่อง ประเด็นปัญหา วัตถุประสงค์ ประโยชน์ ประชากรและกลุ่มตัวอย่าง
-                                            ต้องสอดคล้องกัน
+                                            1
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            หัวข้อที่ผิดบ่อย
+                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            2566
+                                        </span>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <span
+                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            <i class="bi bi-calendar2-week-fill"></i> 1/01/2566
+                                        </span>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <span
+                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            <i class="bi bi-calendar2-week-fill"></i> 31/03/2566
                                         </span>
                                     </td>
                                     <td
@@ -179,7 +176,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-plus-lg leading-0"></i> เพิ่มข้อเสนอแนะ
+                        <i class="bi bi-plus-lg leading-0"></i> เพิ่มภาคเรียน
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -198,32 +195,48 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                ข้อเสนอแนะ
+                                ภาคเรียน
                             </label>
-                            <textarea class="input" placeholder="กรุณากรอกข้อเสนอแนะ" rows="2"></textarea>
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข้อเสนอแนะ</span> --}}
+                            <div class="flex flex-row gap-4">
+                                <div class="flex items-center">
+                                    <input id="term-1" type="radio" value="" name="term"
+                                        class="w-4 h-4 input-radio" checked required>
+                                    <label for="term-1"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        1
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="term-2" type="radio" value="" name="term"
+                                        class="w-4 h-4 input-radio" required>
+                                    <label for="term-2"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        2
+                                    </label>
+                                </div>
+                            </div>
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกภาคเรียน</span> --}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                ปีการศึกษา
+                            </label>
+                            <input type="number" class="input" placeholder="กรุณากรอกปีการศึกษา" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกปีการศึกษา</span> --}}
                         </div>
                         <div>
-                            <label class="mb-4 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                หมวดหมู่
+                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                วันที่เริ่มภาคเรียน
                             </label>
-                            <div class="flex items-center mb-4">
-                                <input id="suggestion-1" type="radio" value="" name="suggestion"
-                                    class="w-4 h-4 input-radio" required>
-                                <label for="suggestion-1"
-                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
-                                    หัวข้อที่ผิดบ่อย
-                                </label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="suggestion-2" type="radio" value="" name="suggestion"
-                                    class="w-4 h-4 input-radio" required>
-                                <label for="suggestion-2"
-                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
-                                    การจัดรูปแบบการพิมพ์ที่ผิดบ่อย
-                                </label>
-                            </div>
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกหมวดหมู่</span> --}}
+                            <input type="date" class="input" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกวันที่เริ่มภาคเรียน</span> --}}
+                        </div>
+                        <div>
+                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                วันที่จบภาคเรียน
+                            </label>
+                            <input type="date" class="input" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกวันที่จบภาคเรียน</span> --}}
                         </div>
                     </div>
                 </div>
@@ -284,32 +297,48 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                ข้อเสนอแนะ
+                                ภาคเรียน
                             </label>
-                            <textarea class="input" placeholder="กรุณากรอกข้อเสนอแนะ" rows="2"></textarea>
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข้อเสนอแนะ</span> --}}
+                            <div class="flex flex-row gap-4">
+                                <div class="flex items-center">
+                                    <input id="term-1" type="radio" value="" name="term"
+                                        class="w-4 h-4 input-radio" checked required>
+                                    <label for="term-1"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        1
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="term-2" type="radio" value="" name="term"
+                                        class="w-4 h-4 input-radio" required>
+                                    <label for="term-2"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        2
+                                    </label>
+                                </div>
+                            </div>
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกภาคเรียน</span> --}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                ปีการศึกษา
+                            </label>
+                            <input type="number" class="input" placeholder="กรุณากรอกปีการศึกษา" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกปีการศึกษา</span> --}}
                         </div>
                         <div>
-                            <label class="mb-4 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                หมวดหมู่
+                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                วันที่เริ่มภาคเรียน
                             </label>
-                            <div class="flex items-center mb-4">
-                                <input id="suggestion-1" type="radio" value="" name="suggestion"
-                                    class="w-4 h-4 input-radio" required>
-                                <label for="suggestion-1"
-                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
-                                    หัวข้อที่ผิดบ่อย
-                                </label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="suggestion-2" type="radio" value="" name="suggestion"
-                                    class="w-4 h-4 input-radio" required>
-                                <label for="suggestion-2"
-                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
-                                    การจัดรูปแบบการพิมพ์ที่ผิดบ่อย
-                                </label>
-                            </div>
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกห้อง</span> --}}
+                            <input type="date" class="input" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกวันที่เริ่มภาคเรียน</span> --}}
+                        </div>
+                        <div>
+                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                วันที่จบภาคเรียน
+                            </label>
+                            <input type="date" class="input" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกวันที่จบภาคเรียน</span> --}}
                         </div>
                     </div>
                 </div>
@@ -340,4 +369,6 @@
             </form>
         </div>
     </div>
+@endsection
+@section('script')
 @endsection

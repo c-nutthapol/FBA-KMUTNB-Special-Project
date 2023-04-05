@@ -15,9 +15,10 @@
         <hr
             class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
 
-        <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
+        <div class="items-center block w-auto max-h-screen overflow-auto grow basis-full">
             <ul class="flex flex-col pl-0 mb-0">
-                {{-- <li class="mt-0.5 w-full">
+                {{-- Start menu admin --}}
+                <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
                         href="{{ route('home') }}">
                         <div
@@ -27,13 +28,14 @@
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">หนัาหลัก</span>
                     </a>
-                </li> --}}
+                </li>
+                {{-- End menu admin --}}
 
-                {{-- <li class="w-full mt-4">
+                <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
-                        โครงงานและคำร้อง
+                        โครงงานพิเศษ
                     </h6>
-                </li>  --}}
+                </li>
 
                 {{-- menu student --}}
                 {{-- @include('layouts.menus.student') --}}
@@ -41,7 +43,9 @@
                 {{-- menu teacher --}}
                 @include('layouts.menus.teacher')
 
-                {{-- <li class="w-full mt-4">
+
+                {{-- Start menu admin --}}
+                <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
                         ตั้งค่าข้อมูลผู้ใช้
                     </h6>
@@ -82,6 +86,20 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.term' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.settings.term') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.settings.term' ? 'bi-calendar-week-fill ' : 'bi-calendar-week' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            ภาคเรียน
+                        </span>
+                    </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.suggestions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
                         href="{{ route('admin.settings.suggestions') }}">
                         <div
@@ -93,7 +111,9 @@
                             ข้อเสนอแนะ
                         </span>
                     </a>
-                </li> --}}
+                </li>
+
+                {{-- End menu admin --}}
 
             </ul>
         </div>

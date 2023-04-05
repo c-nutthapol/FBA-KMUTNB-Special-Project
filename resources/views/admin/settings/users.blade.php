@@ -53,6 +53,10 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        สถานะ
+                                    </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         เวลาเข้าใช้งาน
                                     </th>
                                     <th
@@ -72,6 +76,21 @@
                                                 นายชื่อ นามสกุล
                                             </h6>
                                         </div>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <span
+                                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                            นักศึกษา
+                                        </span>
+                                        <span
+                                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                            อาจารย์
+                                        </span>
+                                        <span
+                                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-slate-600 to-gray-400 align-baseline font-bold uppercase leading-none text-white">
+                                            ผู้ดูแลลระบบ
+                                        </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
@@ -172,6 +191,12 @@
                                 5402041520035
                             </span>
                         </div>
+                        <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                            <strong>อีเมล:</strong>
+                            <span class="inline-block ml-1">
+                                email@gmail.com
+                            </span>
+                        </div>
                         <div class="text-base tracking-wide dark:text-slate-400">
                             <strong>ห้อง:</strong>
                             <span class="inline-block ml-1">
@@ -246,6 +271,13 @@
                             </label>
                             <input type="number" class="input" placeholder="กรุณากรอกรหัสประจำตัว" />
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกรหัสประจำตัว</span> --}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                อีเมล
+                            </label>
+                            <input type="email" class="input" placeholder="กรุณากรอกอีเมล" />
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกอีเมล</span> --}}
                         </div>
                         <div>
                             <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">

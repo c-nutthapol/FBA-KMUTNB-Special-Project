@@ -82,5 +82,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::view('/users', 'admin.settings.users')->name('users');
         // ข้อเสนอแนะ
         Route::view('/suggestions', 'admin.settings.suggestions')->name('suggestions');
+        // ภาคเรียน
+        Route::view('/term', 'admin.settings.term')->name('term');
     });
 });

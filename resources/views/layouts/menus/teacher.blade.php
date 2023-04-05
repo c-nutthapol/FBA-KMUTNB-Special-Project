@@ -1,10 +1,3 @@
-                             <li class="w-full mt-4">
-                                 <h6
-                                     class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
-                                     โครงงานที่รับผิดชอบ
-                                 </h6>
-                             </li>
-
                              <li class="mt-0.5 w-full">
                                  <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'teacher.project.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
                                      href="{{ route('teacher.project.home') }}">

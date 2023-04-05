@@ -116,7 +116,7 @@
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            <i class="bi bi-calendar2-week-fill"></i> 23/04/18
+                                            <i class="bi bi-calendar2-week-fill"></i> 23/04/2566
                                         </span>
                                         <span
                                             class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
@@ -127,7 +127,7 @@
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            <i class="bi bi-calendar2-week-fill"></i> 30/04/18
+                                            <i class="bi bi-calendar2-week-fill"></i> 30/04/2566
                                         </span>
                                     </td>
                                     <td
