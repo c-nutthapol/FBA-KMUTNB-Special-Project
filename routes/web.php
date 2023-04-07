@@ -76,13 +76,22 @@ Route::name('admin.')->prefix('admin')->group(function () {
     });
 
     Route::prefix('settings')->name('settings.')->group(function () {
-        // กำหนดสิทธิ์ผู้ใช้งาน
-        Route::view('/permissions', 'admin.settings.permissions')->name('permissions');
         // ข้อมูลผู้ใช้งาน
         Route::view('/users', 'admin.settings.users')->name('users');
+        // กำหนดสิทธิ์ผู้ใช้งาน
+        Route::view('/users/permissions', 'admin.settings.users-permissions')->name('users-permissions');
+
         // ข้อเสนอแนะ
         Route::view('/suggestions', 'admin.settings.suggestions')->name('suggestions');
         // ภาคเรียน
         Route::view('/term', 'admin.settings.term')->name('term');
+        // ขั้นตอนโครงงาน
+        Route::view('/project-steps', 'admin.settings.project-steps')->name('project-steps');
+
+        // กำหนดสิทธิ์
+        Route::prefix('permissions')->name('permissions.')->group(function () {
+            Route::view('/', 'admin.settings.permissions.index')->name('index');
+            Route::view('/form', 'admin.settings.permissions.form')->name('form');
+        });
     });
 });

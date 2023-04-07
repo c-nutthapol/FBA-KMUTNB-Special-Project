@@ -52,20 +52,6 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.permissions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                        href="{{ route('admin.settings.permissions') }}">
-                        <div
-                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                            <i
-                                class="bi {{ Route::currentRouteName() == 'admin.settings.permissions' ? 'bi-person-fill-gear' : 'bi-person-gear' }} relative top-0 text-sm leading-normal text-gray-700"></i>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
-                            กำหนดสิทธิ์ผู้ใช้งาน
-                        </span>
-                    </a>
-                </li>
-
-                <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.users' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
                         href="{{ route('admin.settings.users') }}">
                         <div
@@ -78,6 +64,21 @@
                         </span>
                     </a>
                 </li>
+
+                <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.users-permissions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.settings.users-permissions') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.settings.users-permissions' ? 'bi-person-fill-gear' : 'bi-person-gear' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            กำหนดสิทธิ์ผู้ใช้งาน
+                        </span>
+                    </a>
+                </li>
+
 
                 <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
@@ -100,6 +101,19 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.project-steps' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.settings.project-steps') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i class="relative top-0 text-sm leading-normal text-gray-700 bi bi-list-ol"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            ขั้นตอนโครงงาน
+                        </span>
+                    </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.suggestions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
                         href="{{ route('admin.settings.suggestions') }}">
                         <div
@@ -112,6 +126,21 @@
                         </span>
                     </a>
                 </li>
+
+                <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.permissions.index' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.settings.permissions.index') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.settings.permissions.index' ? 'bi-shield-fill-check ' : 'bi-shield-check' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            กำหนดสิทธิ์
+                        </span>
+                    </a>
+                </li>
+
 
                 {{-- End menu admin --}}
 
