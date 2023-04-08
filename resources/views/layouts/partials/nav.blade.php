@@ -22,7 +22,7 @@
                                 <!-- add show class on dropdown open js -->
                                 <li class="relative mb-2">
                                     <a class="dark:hover:bg-slate-900 ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors"
-                                        href="javascript:;">
+                                        href="{{ route('auth.account') }}">
                                         <div class="flex items-center py-1">
                                             <div
                                                 class="inline-flex items-center justify-center my-auto mr-4 text-sm text-white transition-all duration-200 ease-nav-brand bg-gradient-to-tl from-blue-500 to-violet-500 h-9 w-9 rounded-xl">

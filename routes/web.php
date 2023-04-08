@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::name('auth.')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
+    Route::view('/account', 'auth.account')->name('account');
 });
 
 Route::view('/', 'index')->name('home');
