@@ -64,12 +64,13 @@ Route::name('teacher.')->prefix('teacher')->group(function () {
         // เสนอแนะ
         Route::view('/suggestion', 'teacher.project.suggestion')->name('suggestion');
     });
-    // เสนอแนะ
-    Route::view('/petition', 'teacher.petition')->name('petition');
 });
 
 // @Role: Admin
 Route::name('admin.')->prefix('admin')->group(function () {
+    // อนุมัติคำร้องทั่วไป
+    Route::view('/petition', 'admin.petition')->name('petition');
+
     Route::prefix('project')->name('project.')->group(function () {
         // โครงงานที่รับผิดชอบ
         Route::view('/', 'admin.project.index')->name('all');
@@ -87,11 +88,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::view('/term', 'admin.settings.term')->name('term');
         // ขั้นตอนโครงงาน
         Route::view('/project-steps', 'admin.settings.project-steps')->name('project-steps');
-
-        // กำหนดสิทธิ์
-        Route::prefix('permissions')->name('permissions.')->group(function () {
-            Route::view('/', 'admin.settings.permissions.index')->name('index');
-            Route::view('/form', 'admin.settings.permissions.form')->name('form');
-        });
+        // แบนเนอร์
+        Route::view('/banners', 'admin.settings.banners')->name('banners');
     });
 });

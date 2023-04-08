@@ -17,48 +17,6 @@
         </div>
     </div>
 
-    <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
-            <div
-                class="relative flex flex-col items-center justify-between min-w-0 gap-3 px-6 py-3 break-words bg-white border border-yellow-400 border-solid shadow-xl rounded-xl sm:rounded-full sm:flex-row dark:bg-yellow-600/20 dark:shadow-dark-xl bg-clip-border">
-                <div class="flex flex-row items-center">
-                    <i class="text-xl text-yellow-400 bi bi-exclamation-circle-fill leading-0"></i>
-                    <span class="inline-block ml-3 font-semibold tracking-wider text-yellow-400">
-                        รออนุมัติหัวข้อจากที่ปรึกษา
-                    </span>
-                </div>
-                <div class="flex flex-row gap-2">
-                    <button type="button" class="text-xs text-white btn from-teal-400 to-green-400">
-                        <div class="flex flex-row items-center gap-3">
-                            <i class="bi bi-check-circle-fill leading-0"></i>
-                            <span class="block">อนุมัติ</span>
-                        </div>
-                    </button>
-                    <button type="button" class="text-xs text-white btn from-rose-400 to-red-400">
-                        <div class="flex flex-row items-center gap-3">
-                            <i class="bi bi-x-circle-fill leading-0"></i>
-                            <span class="block">ไม่อนุมัติ</span>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            {{-- <div
-                class="relative flex flex-row items-center justify-start min-w-0 p-4 break-words border-0 border-transparent border-solid rounded-lg shadow-xl bg-gradient-to-tl from-blue-500 to-violet-500 dark:from-blue-400 dark:to-violet-400 dark:shadow-dark-xl bg-clip-border">
-                <i class="text-xl text-white bi bi-check-circle-fill leading-0"></i>
-                <span class="inline-block ml-3 font-semibold tracking-wider text-white">
-                    อนุมัติ
-                </span>
-            </div> --}}
-            {{-- <div
-                class="relative flex flex-row items-center justify-start min-w-0 p-4 break-words border-0 border-transparent border-solid rounded-lg shadow-xl bg-gradient-to-tl from-rose-500 to-pink-500 dark:from-rose-400 dark:to-pink-400 dark:shadow-dark-xl bg-clip-border">
-                <i class="text-xl text-white bi bi-x-circle-fill leading-0"></i>
-                <span class="inline-block ml-3 font-semibold tracking-wider text-white">
-                    ไม่อนุมัติ
-                </span>
-            </div> --}}
-        </div>
-    </div>
-
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
 
@@ -219,8 +177,7 @@
                     class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     <div
                         class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div
-                            class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
+                        <div class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
                             <i class="text-2xl text-white bi bi-person-workspace leading-0 dark:text-orange-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">
