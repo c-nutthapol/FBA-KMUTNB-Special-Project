@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #000;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+}
+
+html.dark * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark *::-webkit-scrollbar {
+    width: 10px;
+}
+
+html.dark *::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 5px;
+}
+
+html.dark *::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 14px;
+}
+
 @layer base {
 }
 

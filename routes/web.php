@@ -71,11 +71,6 @@ Route::name('admin.')->prefix('admin')->group(function () {
     // อนุมัติคำร้องทั่วไป
     Route::view('/petition', 'admin.petition')->name('petition');
 
-    Route::prefix('project')->name('project.')->group(function () {
-        // โครงงานที่รับผิดชอบ
-        Route::view('/', 'admin.project.index')->name('all');
-    });
-
     Route::prefix('settings')->name('settings.')->group(function () {
         // ข้อมูลผู้ใช้งาน
         Route::view('/users', 'admin.settings.users')->name('users');
@@ -90,5 +85,14 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::view('/project-steps', 'admin.settings.project-steps')->name('project-steps');
         // แบนเนอร์
         Route::view('/banners', 'admin.settings.banners')->name('banners');
+    });
+
+    Route::prefix('logs')->name('logs.')->group(function () {
+        // นักศึกษา
+        Route::view('/students', 'admin.logs.students')->name('students');
+        // อาจารย์
+        Route::view('/teachers', 'admin.logs.teachers')->name('teachers');
+        // ผู้ดูแลระบบ
+        Route::view('/administrators', 'admin.logs.administrators')->name('administrators');
     });
 });

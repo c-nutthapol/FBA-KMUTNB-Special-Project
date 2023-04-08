@@ -15,8 +15,8 @@
         <hr
             class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
 
-        <div class="items-center block w-auto max-h-screen overflow-auto grow basis-full">
-            <ul class="flex flex-col pl-0 mb-0">
+        <div class="items-center block w-auto h-auto overflow-hidden grow basis-full">
+            <ul class="flex flex-col pb-6 pl-0 mb-0">
                 {{-- Start menu admin --}}
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
@@ -153,7 +153,7 @@
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i
-                                class="bi {{ Route::currentRouteName() == 'admin.settings.banners' ? 'bi bi-image-fill ' : 'bi bi-image' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                                class="bi {{ Route::currentRouteName() == 'admin.settings.banners' ? 'bi-image-fill ' : 'bi-image' }} relative top-0 text-sm leading-normal text-gray-700"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
                             แบนเนอร์
@@ -161,6 +161,54 @@
                     </a>
                 </li>
 
+                <li class="w-full mt-4">
+                    <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
+                        log
+                    </h6>
+                </li>
+
+
+                <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.logs.students' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.logs.students') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.logs.students' ? 'bi-mortarboard-fill' : 'bi-mortarboard' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            นักศึกษา
+                        </span>
+                    </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.logs.teachers' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.logs.teachers') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.logs.teachers' ? 'bi-person-fill' : 'bi-person' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            อาจารย์
+                        </span>
+                    </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.logs.administrators' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.logs.administrators') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.logs.administrators' ? 'bi-person-badge-fill' : 'bi-person-badge' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                            ผู้ดูแลระบบ
+                        </span>
+                    </a>
+                </li>
                 {{-- End menu admin --}}
 
             </ul>
