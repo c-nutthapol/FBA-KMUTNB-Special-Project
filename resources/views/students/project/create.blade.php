@@ -271,6 +271,25 @@
                             </div>
                         </div>
 
+                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">เอกสารประกอบ</h6>
+                        <div>
+                            <div class="mb-2">
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                    แนบเอกสาร
+                                </label>
+                                <input class="h-full p-0 input" type="file">
+                                {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาแนบเอกสาร</span> --}}
+                            </div>
+                            {{-- โชว์เฉพาะตอนที่มีเอกสาร --}}
+                            <a href="#"
+                                class="inline-block text-sm font-bold leading-normal text-center text-teal-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-teal-600">
+                                <div class="flex flex-row items-center gap-2">
+                                    <i class="bi bi-download leading-0"></i>
+                                    <span class="block">ดาวน์โหลดเอกสาร</span>
+                                </div>
+                            </a>
+                        </div>
+
                         <div class="mt-10 text-end">
                             <a href="{{ route('student.project.home') }}"
                                 class="text-sm text-white btn from-slate-600 to-slate-300">

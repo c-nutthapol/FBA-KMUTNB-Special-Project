@@ -398,7 +398,7 @@
                             แนบเอกสารสอบความก้าวหน้า
                         </label>
                         <input class="h-full p-0 input" type="file">
-                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกภาคเรียน</span> --}}
+                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาแนบเอกสารสอบความก้าวหน้า</span> --}}
                     </div>
                     {{-- โชว์เฉพาะตอนที่มีเอกสาร --}}
                     <a href="#"
