@@ -131,12 +131,13 @@
                     </h5>
                 </div>
                 <div class="pb-6 sm:p-6">
-                    <a href="#" class="text-xs text-white btn from-teal-400 to-green-400">
+                    <button type="button" class="text-xs text-white btn from-teal-400 to-green-400"
+                        data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                         <div class="flex flex-row items-center gap-3">
                             <i class="text-base bi bi-cloud-arrow-up leading-0"></i>
                             <span class="block">แนบเอกสาร</span>
                         </div>
-                    </a>
+                    </button>
                     {{-- กรณีที่อาจารย์อนุมัติให้มีการแก้ไข --}}
                     <a href="{{ route('student.project.edit') }}"
                         class="text-xs text-white btn from-orange-400 to-yellow-400">
@@ -367,12 +368,71 @@
         </div>
     </div>
 
+    <!-- Doc Upload Modal -->
+    <div id="uploadModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+        <div class="relative w-full h-full max-w-xl md:h-auto">
+            <!-- Modal content -->
+            <form class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                        <i class="bi bi-cloud-arrow-up leading-0"></i> แนบเอกสาร
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="viewModal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">ปิด</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-4">
+                    <div>
+                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            แนบเอกสารสอบความก้าวหน้า
+                        </label>
+                        <input class="h-full p-0 input" type="file">
+                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกภาคเรียน</span> --}}
+                    </div>
+                    {{-- โชว์เฉพาะตอนที่มีเอกสาร --}}
+                    <a href="#"
+                        class="inline-block text-sm font-bold leading-normal text-center text-teal-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-teal-600">
+                        <div class="flex flex-row items-center gap-2">
+                            <i class="bi bi-download leading-0"></i>
+                            <span class="block">ดาวน์โหลดเอกสาร</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Modal footer -->
+                <div
+                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="uploadModal" type="button"
+                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                        ยกเลิก
+                    </button>
+                    <button type="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
+                        <div class="flex flex-row items-center gap-3">
+                            <i class="bi bi-save-fill leading-0"></i>
+                            <span class="block">บันทึก</span>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Suggestion Modal View -->
     <div id="viewModal" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full max-w-6xl md:h-auto">
             <!-- Modal content -->
-            <form class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
@@ -455,7 +515,7 @@
                         ปิด
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 @endsection
