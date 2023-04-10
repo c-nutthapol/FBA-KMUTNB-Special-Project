@@ -36,7 +36,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
+                    <a href="{{ route('student.project.home') }}"
+                        class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
                             class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
                             2
