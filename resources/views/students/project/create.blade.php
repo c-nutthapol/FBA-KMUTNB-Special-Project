@@ -291,13 +291,6 @@
                         </div>
 
                         <div class="mt-10 text-end">
-                            <a href="{{ route('student.project.home') }}"
-                                class="text-sm text-white btn from-slate-600 to-slate-300">
-                                <div class="flex flex-row items-center gap-3">
-                                    <i class="text-base bi bi-x-lg leading-0"></i>
-                                    <span class="block">ยกเลิก</span>
-                                </div>
-                            </a>
                             <button type="submit" class="text-sm text-white btn from-blue-500 to-violet-500">
                                 <div class="flex flex-row items-center gap-3">
                                     <i class="text-base bi bi-save-fill leading-0"></i>
