@@ -4,9 +4,31 @@
 
 @section('content')
 
+    <div class="flex flex-wrap mb-10 -mx-3">
+        <div class="flex-none w-full max-w-full px-3">
+            <div class="rounded-lg swiper banners">
+                <div class=" swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="banner" class="object-cover w-full rounded-lg h-[36rem]">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.pexels.com/photos/325807/pexels-photo-325807.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="banner" class="object-cover w-full rounded-lg h-[36rem]">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt="banner" class="object-cover w-full rounded-lg h-[36rem]">
+                    </div>
+                </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="flex-none w-full max-w-full px-3 mb-6">
-            <h2 class="mb-0 text-3xl tracking-wide text-white dark:opacity-90">ปีการศึกษา 2566</h2>
+            <h2 class="mb-0 text-3xl tracking-wide dark:text-white dark:opacity-90">ปีการศึกษา 2566</h2>
         </div>
 
         <div class="flex-none w-full max-w-full px-3">
@@ -73,6 +95,8 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/js/plugins/chart.umd.js') }}"></script>
+    <script src="{{ asset('assets/lib/swiper/swiper-bundle.min.js') }}"></script>
     <script>
         const ctx = document.getElementById('chartLine');
 
@@ -93,6 +117,18 @@
                     }
                 }
             }
+        });
+
+        const swiper = new Swiper(".banners", {
+            speed: 600,
+            spaceBetween: 40,
+            autoplay: {
+                delay: 5000,
+            },
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: true,
+            },
         });
     </script>
 @endsection

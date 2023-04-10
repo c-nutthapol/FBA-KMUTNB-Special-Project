@@ -4,9 +4,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/lib/bootstrap-icons/bootstrap-icons.css') }}">
-        <!-- Nucleo Icons -->
-        <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('assets/lib/swiper/swiper-bundle.min.css') }}">
         <!-- Popper -->
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <!-- Main Styling -->
