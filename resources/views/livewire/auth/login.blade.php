@@ -1,51 +1,51 @@
 <div
     class="relative flex flex-col flex-wrap min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
     <div class="p-6 pb-0 mb-0">
-        <h4 class="font-bold text-3xl dark:text-white/80">ลงชื่อเข้าใช้</h4>
+        <h4 class="text-3xl font-bold dark:text-white/80">ลงชื่อเข้าใช้</h4>
         <p class="mb-0 text-lg dark:text-white/70">ระบบโครงงานพิเศษ</p>
     </div>
     <div class="flex-auto p-6">
         {{-- If there is an error, enter the Error class. = label class='... error', input class="... error"  --}}
         <form role="form" wire:submit.prevent="submit">
             <div class="mb-4">
-                <label for="username" class="text-sm tracking-wide dark:text-white  dark:opacity-80 mb-1">
+                <label for="username" class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                     ชื่อผู้ใช้งาน
                 </label>
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
                     <span
                         class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-3 text-center font-normal text-slate-500 transition-all">
-                        <i class="bi bi-person-fill text-lg"></i>
+                        <i class="text-lg bi bi-person-fill"></i>
                     </span>
-                    <input type="text" class="pl-9 input py-3 text-base" placeholder="กรุณากรอกชื่อผู้ใช้งาน"
-                        id="username" wire:model.defer="username" />
+                    <input type="text" class="input py-3 text-base pl-9 @error('username') error @enderror"
+                        placeholder="กรุณากรอกชื่อผู้ใช้งาน" id="username" wire:model.defer="username" />
                 </div>
                 @error('username')
-                    <span class="block text-rose-600 tracking-wide text-sm mt-1 ml-2">{{ $message }}</span>
+                    <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                 @enderror
 
             </div>
             <div>
-                <label for="password" class="text-sm tracking-wide dark:text-white  dark:opacity-80 mb-1">
+                <label for="password" class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                     รหัสผ่าน
                 </label>
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
                     <span
                         class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-3 text-center font-normal text-slate-500 transition-all">
-                        <i class="bi bi-lock-fill text-lg"></i>
+                        <i class="text-lg bi bi-lock-fill"></i>
                     </span>
-                    <input type="password" class="pl-9 input py-3 text-base" placeholder="กรุณากรอกรหัสผ่าน"
-                        id="password" wire:model.defer="password" />
+                    <input type="password" class="py-3 text-base pl-9 input @error('password') error @enderror"
+                        placeholder="กรุณากรอกรหัสผ่าน" id="password" wire:model.defer="password" />
                 </div>
                 @error('password')
-                    <span class="block text-rose-600 tracking-wide text-sm mt-1 ml-2">{{ $message }}</span>
+                    <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="text-center block mt-8">
+            <div class="block mt-8 text-center">
                 <button type="submit"
-                    class="btn text-base  text-white from-blue-500 to-violet-500 w-100 tracking-widest"
+                    class="text-base tracking-widest text-white btn from-blue-500 to-violet-500 w-100"
                     wire:loading.attr="disabled">
                     {{-- loading --}}
-                    <svg aria-hidden="true" role="status" class="inline w-4 h-4 text-white animate-spin hidden"
+                    <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin"
                         viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"
                         wire:loading.remove.class="hidden">
                         <path
@@ -67,7 +67,7 @@
                 คลิก
             </a>
         </p>
-        <p class="mx-auto leading-normal text-sm dark:text-white/80 tracking-wide">ตารางดำเนินการ
+        <p class="mx-auto text-sm leading-normal tracking-wide dark:text-white/80">ตารางดำเนินการ
             <a href="#"
                 class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">
                 คลิก
