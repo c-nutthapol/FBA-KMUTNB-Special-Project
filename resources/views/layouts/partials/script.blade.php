@@ -8,3 +8,4 @@
   <script src="{{ asset('assets/js/fixed-plugin.js') }}" async></script>
   <script src="{{ asset('assets/js/plugins/chart.umd.js') }}"></script>
   {{-- <script src="{{ asset('assets/js/argon-dashboard-tailwind.js?v=1.0.1') }}" async></script> --}}
+  <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>

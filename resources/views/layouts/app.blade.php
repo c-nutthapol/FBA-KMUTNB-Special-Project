@@ -13,6 +13,7 @@
     <!-- CSS -->
     @include('layouts.partials.css')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body
@@ -83,9 +84,22 @@
         </div>
     </div>
 
-
+    @livewireScripts
     @include('layouts.partials.script')
     @yield('script')
+    <script>
+        Livewire.on('alert', e => {
+            Swal.fire({
+                position: 'bottom-end',
+                icon: e.status,
+                title: e.title,
+                text: e.text,
+                showConfirmButton: false,
+                timer: 1500,
+                toast: true,
+            })
+        });
+    </script>
 </body>
 
 </html>

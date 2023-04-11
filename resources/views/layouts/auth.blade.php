@@ -9,6 +9,7 @@
     <!-- CSS -->
     @include('layouts.partials.css')
     @vite('resources/css/app.css')
+    @livewireStyles
 </head>
 
 <body
@@ -40,6 +41,8 @@
         </div>
     </footer>
 
+    @livewireScripts
+    <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
     <script>
         const root_html = document.querySelector("html");
         const get_dark_mode = localStorage.getItem("dark-mode-fba");
@@ -47,6 +50,17 @@
         if (get_dark_mode) {
             root_html.classList.add("dark");
         }
+        Livewire.on('alert', e => {
+            Swal.fire({
+                position: 'bottom-end',
+                icon: e.status,
+                title: e.title,
+                text: e.text,
+                showConfirmButton: false,
+                timer: 1500,
+                toast: true,
+            })
+        });
     </script>
 </body>
 
