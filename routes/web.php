@@ -23,13 +23,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('auth.')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
+    Route::get('/logout', function () {
+        session()->flush();
+        auth()->logout();
+        return redirect()->route('auth.login');
+    })->name('logout');
 
     Route::middleware('auth')->group(function () {
         Route::view('/account', 'auth.account')->name('account');
     });
 });
 
-Route::middleware('auth', 'role:student,teacher,admin')->group(function () {
+Route::middleware('auth', 'role:admin')->group(function () {
     Route::view('/', 'index')->name('home');
 });
 // @Role: Students

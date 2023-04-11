@@ -25,6 +25,14 @@ class RolesChecker
             if ($user->role->name == $role)
                 return $next($request);
         }
-        return redirect(RouteServiceProvider::HOME);
+        if ($user->role->name == 'student') {
+            return redirect()->route('student.project.home');
+        } elseif ($user->role->name == 'teacher') {
+            return redirect()->route('teacher.project.home');
+        } elseif ($user->role->name == 'admin') {
+            return redirect()->route('home');
+        } else {
+            return redirect()->route('auth.logout');
+        }
     }
 }

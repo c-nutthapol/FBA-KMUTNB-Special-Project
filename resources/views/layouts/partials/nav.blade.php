@@ -4,17 +4,20 @@
                 <h6 class="mb-0 font-bold text-white capitalize">
                     @yield('title')
                 </h6>
-
+                @php
+                    $user = auth()->user();
+                @endphp
                 <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
                     <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
                         <li class="relative flex items-center">
                             <a href="javascript:;" dropdown-trigger aria-expanded="false"
                                 class="flex flex-row items-center gap-2 px-0 py-2 text-sm font-semibold text-white transition-all ease-nav-brand">
-                                <img src="https://images.pexels.com/photos/1436962/pexels-photo-1436962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    alt="avatar" class="object-cover object-center w-6 h-6 rounded">
+                                {{-- <img src="https://images.pexels.com/photos/1436962/pexels-photo-1436962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                    alt="avatar" class="object-cover object-center w-6 h-6 rounded"> --}}
                                 {{-- กรณีที่ไม่มีรูป --}}
-                                {{-- <i class="bi bi-person-fill"></i> --}}
-                                <span class="hidden sm:inline">สมชาย</span>
+
+                                <i class="bi bi-person-fill"></i>
+                                <span class="hidden sm:inline">{{ $user->name }}</span>
                             </a>
 
                             <ul dropdown-menu
@@ -40,7 +43,7 @@
 
                                 <li class="relative">
                                     <a class="dark:hover:bg-slate-900 ease py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 hover:bg-gray-200 hover:text-slate-700"
-                                        href="javascript:;">
+                                        href="{{ route('auth.logout') }}">
                                         <div class="flex items-center py-1">
                                             <div
                                                 class="inline-flex items-center justify-center my-auto mr-4 text-sm text-white transition-all duration-200 ease-nav-brand bg-gradient-to-tl from-rose-600 to-pink-300 h-9 w-9 rounded-xl">
