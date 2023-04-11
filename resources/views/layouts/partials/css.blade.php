@@ -11,3 +11,4 @@
         <link href="{{ asset('assets/css/argon-dashboard-tailwind.css?v=1.0.1') }}" rel="stylesheet" />
         {{-- datepicker css --}}
         {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/datepicker/jquery-ui.min.css') }}" /> --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}">
