@@ -51,7 +51,7 @@ Route::middleware("auth", "role:student")->group(function () {
                 // สร้างโครงงาน
                 Route::get("/create", App\Http\Livewire\Students\Project\Create::class)->name("create");
                 // แก้ไขโครงงาน
-                Route::view("/edit", "students.project.edit")->name("edit");
+                Route::get("/edit", App\Http\Livewire\Students\Project\Edit::class)->name("edit");
             });
         // เขียนคำร้องทั่วไป
         Route::view("/petition", "students.petition")->name("petition");
