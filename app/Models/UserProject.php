@@ -6,25 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Project extends Model
+class UserProject extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+    protected $table = "user_project";
 
-    public function comments()
+    public function user()
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(User::class, "user_id", "id");
     }
-    public function users()
-    {
-        return $this->belongsToMany(User::class, "user_project");
-    }
-    public function user_project()
-    {
-        return $this->hasMany(UserProject::class)->with("user");
-    }
-
     protected static function boot()
     {
         parent::boot();
@@ -42,7 +34,7 @@ class Project extends Model
 
         /* A method that is called when the model is being deleted. */
         static::deleting(function ($model) {
-            $model->deleted_by = auth()->check() ? auth()->user()->id : 1;
+            $model->deleted_by = auth()->check() ? auth()->user()->id : null;
             $model->save();
         });
     }

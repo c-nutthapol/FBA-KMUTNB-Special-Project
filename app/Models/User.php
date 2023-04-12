@@ -17,24 +17,21 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'user_code',
-        'role_id',
-        'password',
-    ];
+    protected $fillable = ["name", "user_code", "role_id", "password"];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-    ];
+    protected $hidden = ["password"];
 
     public function role()
     {
-        return $this->belongsTo(Role::class, 'role_id', 'id');
+        return $this->belongsTo(Role::class, "role_id", "id");
+    }
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, "user_project", "user_id", "project_id", "id", "id");
     }
 }
