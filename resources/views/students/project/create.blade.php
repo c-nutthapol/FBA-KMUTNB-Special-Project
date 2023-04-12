@@ -1,17 +1,13 @@
-@extends('layouts.app')
-
-@section('title', 'แก้ไขโครงงาน')
-
-@section('content')
-
-    <div class="flex flex-wrap mb-8 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
+@section('title', 'ลงทะเบียนโครงงานพิเศษ')
+<div>
+    <div class="-mx-3 mb-8 flex flex-wrap">
+        <div class="w-full max-w-full flex-none px-3">
             <ol
-                class="flex items-center w-full px-6 py-4 space-x-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 shadow-xl sm:space-x-4 rounded-2xl dark:text-gray-400 sm:text-base dark:bg-slate-850 dark:shadow-dark-xl dark:border-slate-850">
+                class="flex w-full items-center space-x-2 rounded-2xl border border-gray-200 bg-white px-6 py-4 text-sm font-medium text-gray-500 shadow-xl dark:border-slate-850 dark:bg-slate-850 dark:text-gray-400 dark:shadow-dark-xl sm:space-x-4 sm:text-base">
                 <li>
                     <a href="#" class="flex items-center text-teal-400 dark:text-teal-400">
                         <span
-                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-teal-400 border border-teal-400 rounded-full shrink-0 dark:border-teal-400">
+                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-teal-400 bg-teal-400 text-base text-white dark:border-teal-400">
                             1
                         </span>
                         <div class="tracking-wide">
@@ -19,7 +15,7 @@
                                 ลงทะเบียนโครงงานพิเศษ
                             </span>
                             <span
-                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-gray-400 to-slate-400 py-1.4 px-2.5 text-center align-baseline text-xxs font-bold uppercase leading-none tracking-wider text-white">
                                 ก่อน 10/04/2566
                             </span>
                             {{-- <span
@@ -27,7 +23,7 @@
                             ปรับแก้ไข
                         </span> --}}
                         </div>
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                        <svg aria-hidden="true" class="ml-2 h-4 w-4 sm:ml-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 5l7 7-7 7M5 5l7 7-7 7">
@@ -39,7 +35,7 @@
                     <a href="{{ route('student.project.home') }}"
                         class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
-                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-400 text-base text-white dark:border-gray-400">
                             2
                         </span>
                         <div class="tracking-wide">
@@ -47,7 +43,7 @@
                                 สอบความก้าวหน้า
                             </span>
                             <span
-                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                                class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-yellow-400 to-orange-400 py-1.4 px-2.5 text-center align-baseline text-xxs font-bold uppercase leading-none tracking-wider text-white">
                                 ปรับแก้ไข
                             </span>
                             {{-- <span
@@ -55,7 +51,7 @@
                                 ก่อน 10/04/2566
                             </span> --}}
                         </div>
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                        <svg aria-hidden="true" class="ml-2 h-4 w-4 sm:ml-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 5l7 7-7 7M5 5l7 7-7 7">
@@ -66,7 +62,7 @@
                 <li>
                     <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
-                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-400 text-base text-white dark:border-gray-400">
                             3
                         </span>
                         <div class="tracking-wide">
@@ -82,7 +78,7 @@
                                 ก่อน 10/04/2566
                             </span> --}}
                         </div>
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                        <svg aria-hidden="true" class="ml-2 h-4 w-4 sm:ml-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 5l7 7-7 7M5 5l7 7-7 7">
@@ -93,7 +89,7 @@
                 <li>
                     <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
-                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-400 text-base text-white dark:border-gray-400">
                             4
                         </span>
                         <div class="tracking-wide">
@@ -115,41 +111,54 @@
         </div>
     </div>
 
-    <div class="flex flex-wrap -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
+    <div class="-mx-3 flex flex-wrap">
+        <div class="w-full max-w-full flex-none px-3">
 
             {{-- ลงทะเบียนโครงงานพิเศษ --}}
             <div
-                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
                 <div
-                    class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-journal-plus leading-0 dark:text-blue-500"></i>
+                    class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
+                    <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                        <i class="bi bi-journal-plus text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         ลงทะเบียนโครงงานพิเศษ
                     </h5>
                 </div>
-                <div class="flex-wrap flex-auto p-6">
+                <div class="flex-auto flex-wrap p-6">
                     {{-- If there is an error, enter the Error class. = label class='... error', input and select class="... error"  --}}
-                    <form>
+                    <form wire:submit.prevent="submit">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อโครงงาน
-                                    (ภาษาไทย)</label>
-                                <input type="text" class="input" placeholder="กรุณากรอกชื่อโครงงานภาษาไทย" />
-                                {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกชื่อโครงงานภาษาไทย</span> --}}
+                                    (ภาษาไทย) <span class="text-rose-600">*</span></label>
+                                <input wire:model.defer="form.name_th" type="text" class="input"
+                                    placeholder="กรุณากรอกชื่อโครงงานภาษาไทย" />
+                                @error('form.name_th')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
+
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อโครงงาน
-                                    (ภาษาอังกฤษ)</label>
-                                <input type="text" class="input" placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ" />
-                                {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกชื่อโครงงานภาษาอังกฤษ</span> --}}
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                    ชื่อโครงงาน (ภาษาอังกฤษ)
+                                    <span class="text-rose-600">*</span>
+                                </label>
+                                <input wire:model.defer="form.name_en" type="text" class="input"
+                                    placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ" />
+                                @error('form.name_en')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">ผู้จัดทำโครงงาน</h6>
-                        <div class="grid grid-cols-1 gap-4 mb-4 sm:grid-cols-2 ">
+                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">
+                            ผู้จัดทำโครงงาน
+                        </h6>
+                        <div class="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     สาขาวิชา
@@ -158,15 +167,11 @@
                                     <option value="" selected disabled>
                                         กรุณาเลือกสาขาวิชา
                                     </option>
-                                    <option value="การบัญชี">
-                                        การบัญชี
-                                    </option>
-                                    <option value="บริหารธุรกิจอุตสาหกรรมและโลจิสติกส์">
-                                        บริหารธุรกิจอุตสาหกรรมและโลจิสติกส์
-                                    </option>
-                                    <option value="คอมพิวเตอร์ธุรกิจ">
-                                        คอมพิวเตอร์ธุรกิจ
-                                    </option>
+                                    @foreach ($data['faculty'] as $faculty)
+                                        <option value="{{ $faculty }}">
+                                            {{ $faculty }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -178,49 +183,48 @@
                                     <option value="" selected disabled>
                                         กรุณาเลือกห้อง
                                     </option>
-                                    <option value="RA">
-                                        RA
-                                    </option>
-                                    <option value="">
-                                        RB
-                                    </option>
+                                    @foreach ($data['room'] as $room)
+                                        <option value="{{ $room }}">
+                                            {{ $room }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                    เลือกสมาชิก
+                                    ชื่อนักศึกษาคนที่ 1
+                                    <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select">
-                                    <option value="" selected disabled>
-                                        กรุณาเลือกสมาชิก
-                                    </option>
-                                    <option value="RA">
-                                        RA
-                                    </option>
-                                    <option value="">
-                                        RB
+                                <select class="select" disabled wire:model="form.student_1">
+                                    <option value="{{ Auth::user()->id }}" selected>
+                                        {{ Auth::user()->name }}
                                     </option>
                                 </select>
+
                             </div>
 
-                            {{-- <div>
+                            <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     ชื่อนักศึกษาคนที่ 2
+                                    <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select">
+                                <select class="select" wire:model="form.student_2">
                                     <option value="" selected disabled>
                                         กรุณาเลือกนักศึกษาคนที่ 2
                                     </option>
-                                    <option value="RA">
-                                        RA
-                                    </option>
-                                    <option value="">
-                                        RB
-                                    </option>
+                                    @foreach ($data['student'] as $student)
+                                        <option value="{{ $student->id }}">
+                                            {{ $student->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
-                            </div> --}}
+                                @error('form.student_2')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
                         <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">อาจารย์ที่ปรึกษาโครงงาน</h6>
@@ -228,29 +232,43 @@
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     ที่ปรึกษาหลัก
+                                    <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select">
+                                <select class="select" wire:model="form.teacher_1">
                                     <option value="" selected disabled>
                                         กรุณาเลือกที่ปรึกษาหลัก
                                     </option>
-                                    <option value="อาจารย์ทดสอบ ระบบ">
-                                        อาจารย์ทดสอบ ระบบ
-                                    </option>
+                                    @foreach ($data['teacher'] as $teacher)
+                                        <option value="{{ $teacher->id }}">
+                                            {{ $teacher->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                @error('form.teacher_1')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     ที่ปรึกษาร่วม
+                                    <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select">
+                                <select class="select" wire:model="form.teacher_2">
                                     <option value="" selected disabled>
                                         กรุณาเลือกที่ปรึกษาร่วม
                                     </option>
-                                    <option value="อาจารย์ทดสอบ ระบบ">
-                                        อาจารย์ทดสอบ ระบบ
-                                    </option>
+                                    @foreach ($data['teacher'] as $teacher)
+                                        <option value="{{ $teacher->id }}">
+                                            {{ $teacher->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                @error('form.teacher_2')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -259,15 +277,23 @@
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     ประธานสอบ
+                                    <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select">
+                                <select class="select" wire:model="form.teacher_3">
                                     <option value="" selected disabled>
                                         กรุณาเลือกประธานสอบ
                                     </option>
-                                    <option value="อาจารย์ทดสอบ ระบบ">
-                                        อาจารย์ทดสอบ ระบบ
-                                    </option>
+                                    @foreach ($data['teacher'] as $teacher)
+                                        <option value="{{ $teacher->id }}">
+                                            {{ $teacher->name }}
+                                        </option>
+                                    @endforeach
+
                                 </select>
+                                @error('form.teacher_3')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -277,12 +303,12 @@
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     แนบเอกสาร
                                 </label>
-                                <input class="h-full p-0 input" type="file">
+                                <input class="input h-full p-0" type="file">
                                 {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาแนบเอกสาร</span> --}}
                             </div>
                             {{-- โชว์เฉพาะตอนที่มีเอกสาร --}}
                             <a href="#"
-                                class="inline-block text-sm font-bold leading-normal text-center text-teal-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-teal-600">
+                                class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-teal-400 transition-all ease-in hover:text-teal-600">
                                 <div class="flex flex-row items-center gap-2">
                                     <i class="bi bi-download leading-0"></i>
                                     <span class="block">ดาวน์โหลดเอกสาร</span>
@@ -291,9 +317,9 @@
                         </div>
 
                         <div class="mt-10 text-end">
-                            <button type="submit" class="text-sm text-white btn from-blue-500 to-violet-500">
+                            <button type="submit" class="btn from-blue-500 to-violet-500 text-sm text-white">
                                 <div class="flex flex-row items-center gap-3">
-                                    <i class="text-base bi bi-save-fill leading-0"></i>
+                                    <i class="bi bi-save-fill text-base leading-0"></i>
                                     <span class="block">บันทึก</span>
                                 </div>
                                 {{-- loading --}}
@@ -314,4 +340,6 @@
 
         </div>
     </div>
-@endsection
+
+</div>
+
