@@ -88,6 +88,7 @@
     @livewireScripts
     @include('layouts.partials.script')
     @yield('script')
+    @stack('script')
     <script>
         Livewire.on('alert', e => {
             Swal.fire({
@@ -104,4 +105,3 @@
 </body>
 
 </html>
-
