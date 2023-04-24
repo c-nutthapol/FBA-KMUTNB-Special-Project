@@ -5,11 +5,10 @@ namespace App\Http\Livewire\Teacher\Project;
 use App\Models\Project;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Traits\PaginationTrait;
 
 class Index extends Component
 {
-    use WithPagination, PaginationTrait;
+    use WithPagination;
 
     protected $paginationTheme = 'default';
 
