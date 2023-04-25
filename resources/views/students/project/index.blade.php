@@ -170,12 +170,12 @@
                                 </div>
                                 <figcaption class="space-y-1 text-center sm:text-left">
                                     <div class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $data['project']->user_project->where('role', 'student')[0]->user->name ?? '' }}
+                                        {{-- {{ $data['project']->user_project->where('role', 'student')[0]->user->name ?? '' }} --}}
                                     </div>
                                     <div
                                         class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                         <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">
-                                            {{ $data['project']->user_project->where('role', 'student')[0]->user->user_code ?? '' }}
+                                            {{-- {{ $data['project']->user_project->where('role', 'student')[0]->user->user_code ?? '' }} --}}
                                         </span>
                                     </div>
                                     {{-- <div
@@ -195,12 +195,12 @@
                                 </div>
                                 <figcaption class="space-y-1 text-center sm:text-left">
                                     <div class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $data['project']->user_project->where('role', 'student')[1]->user->name ?? '' }}
+                                        {{-- {{ $data['project']->user_project->where('role', 'student')[1]->user->name ?? '' }} --}}
                                     </div>
                                     <div
                                         class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                         <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">
-                                            {{ $data['project']->user_project->where('role', 'student')[1]->user->user_code ?? '' }}
+                                            {{-- {{ $data['project']->user_project->where('role', 'student')[1]->user->user_code ?? '' }} --}}
                                         </span>
                                     </div>
                                     {{-- <div
@@ -240,7 +240,7 @@
                                             class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur" />
                                     </div>
                                     <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $data['project']->user_project->where('role', 'teacher1')->first()->user->name ?? '' }}
+                                        {{-- {{ $data['project']->user_project->where('role', 'teacher1')->first()->user->name ?? '' }} --}}
                                     </figcaption>
                                     <span
                                         class="absolute top-0 right-0 rounded-bl-4 bg-teal-500 px-3 py-1 text-sm font-black tracking-wider text-white shadow-primary-outline dark:bg-slate-900/40 dark:text-gray-100 dark:shadow-dark-xl">
@@ -256,7 +256,7 @@
                                             class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur" />
                                     </div>
                                     <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $data['project']->user_project->where('role', 'teacher2')->first()->user->name ?? '' }}
+                                        {{-- {{ $data['project']->user_project->where('role', 'teacher2')->first()->user->name ?? '' }} --}}
                                     </figcaption>
                                     <span
                                         class="absolute top-0 right-0 rounded-bl-4 bg-blue-500 px-3 py-1 text-sm font-black tracking-wider text-white shadow-primary-outline dark:bg-slate-900/40 dark:text-gray-100 dark:shadow-dark-xl">
@@ -292,7 +292,7 @@
                                             class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur" />
                                     </div>
                                     <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $data['project']->user_project->where('role', 'teacher3')->first()->user->name ?? '' }}
+                                        {{-- {{ $data['project']->user_project->where('role', 'teacher3')->first()->user->name ?? '' }} --}}
                                     </figcaption>
                                 </figure>
                             </div>
@@ -335,7 +335,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($data['project']->comments as $comment)
+                                @forelse ($data['project']->comments ?? [] as $comment)
                                     <tr>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
