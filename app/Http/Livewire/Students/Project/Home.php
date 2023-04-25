@@ -16,9 +16,9 @@ class Home extends Component
         })
             ->with("user_project", "comments")
             ->first();
-        // if (!$this->project) {
-        //     return redirect()->route("student.project.create");
-        // }
+        if (!$this->project) {
+            return redirect()->route("student.project.create");
+        }
     }
     public function render()
     {
