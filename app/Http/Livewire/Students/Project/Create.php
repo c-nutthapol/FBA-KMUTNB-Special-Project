@@ -16,9 +16,9 @@ class Create extends Component
         $project = Project::whereHas("users", function ($query) {
             $query->where("user_id", Auth::user()->id);
         })->first();
-        // if ($project) {
-        //     return redirect()->route("student.project.home");
-        // }
+        if ($project) {
+            return redirect()->route("student.project.home");
+        }
         $this->form = collect([
             "name_th" => "",
             "name_en" => "",
