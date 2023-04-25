@@ -34,11 +34,11 @@ class Edit extends Component
         })
             ->with("user_project")
             ->first();
-        if (!$this->project) {
-            return redirect()->route("student.project.create");
-        } elseif ($this->project->editable == 0) {
-            return redirect()->route("student.project.home");
-        }
+        // if (!$this->project) {
+        //     return redirect()->route("student.project.create");
+        // } elseif ($this->project->editable == 0) {
+        //     return redirect()->route("student.project.home");
+        // }
         $this->form = collect([
             "name_th" => $this->project->name_th,
             "name_en" => $this->project->name_en,
