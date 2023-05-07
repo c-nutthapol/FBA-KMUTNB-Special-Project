@@ -32,7 +32,7 @@
                 <div
                     class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-3-circle-fill leading-0 dark:text-blue-500"></i>
+                        <i class="text-2xl text-white bi bi-4-circle-fill leading-0 dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         ยื่นขอสอบป้องกัน
