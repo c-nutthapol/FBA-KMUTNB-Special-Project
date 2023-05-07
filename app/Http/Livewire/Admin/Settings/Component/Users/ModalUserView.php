@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class ModalUserView extends Component
 {
-    protected $listeners = ['getUser'];
+    protected $listeners = ['getUserView'];
 
     public function render()
     {
@@ -16,9 +16,10 @@ class ModalUserView extends Component
 
     public $avatar, $name, $code, $email, $room, $branch;
 
-    public function getUser($id)
+    public function getUserView($id)
     {
         $user = User::find($id);
+
         if ($user) {
             $this->avatar = $user->avatar;
             $this->name = $user->name;

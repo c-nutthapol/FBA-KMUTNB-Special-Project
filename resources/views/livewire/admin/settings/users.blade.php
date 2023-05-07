@@ -113,15 +113,16 @@
                                         <button type="button" data-modal-target="ModalUserView"
                                             data-modal-toggle="ModalUserView"
                                             class="inline-block mr-2 text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700"
-                                            wire:click="$emit('getUser',{{ $user->id }})">
+                                            wire:click="$emit('getUserView',{{ $user->id }})">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-eye leading-0"></i>
                                                 <span class="block">ดูรายละเอียด</span>
                                             </div>
                                         </button>
                                         <button type="button" data-modal-target="ModalUserEdit"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500"
                                             data-modal-toggle="ModalUserEdit"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500">
+                                            wire:click="$emit('getUserEdit',{{ $user->id }})">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-pencil-square leading-0"></i>
                                                 <span class="block">แก้ไข</span>
@@ -144,3 +145,28 @@
         </div>
     </div>
 </div>
+@push('script')
+    <script>
+        Livewire.hook('message.sent', (message, component) => {
+            if (message.updateQueue[0].payload.event === 'getUserView') {
+                $('#loading-view').removeClass('hidden');
+                $('#modal-user-view').addClass('hidden');
+            }
+            if (message.updateQueue[0].payload.event === 'getUserEdit') {
+                $('#loading-edit').removeClass('hidden');
+                $('#modal-user-edit').addClass('hidden');
+            }
+        });
+
+        Livewire.hook('message.processed', (message, component) => {
+            if (message.updateQueue[0].payload.event === 'getUserView') {
+                $('#loading-view').addClass('hidden');
+                $('#modal-user-view').removeClass('hidden');
+            }
+            if (message.updateQueue[0].payload.event === 'getUserEdit') {
+                $('#loading-edit').addClass('hidden');
+                $('#modal-user-edit').removeClass('hidden');
+            }
+        });
+    </script>
+@endpush
