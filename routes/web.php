@@ -35,9 +35,9 @@ Route::name("auth.")->group(function () {
     });
 });
 
-// Route::middleware("auth", "role:admin")->group(function () {
-Route::view("/", "index")->name("home");
-// });
+Route::middleware("auth")->group(function () {
+    Route::view("/", "index")->name("home");
+});
 
 // @Role: Students
 Route::middleware("auth", "role:student")->group(function () {
@@ -73,13 +73,14 @@ Route::middleware("auth", "role:teacher")->group(function () {
                 ->group(function () {
                     // ลงทะเบียนโครงงาน
                     Route::view("/", "teacher.project.index")->name("home");
+                    // ลงทะเบียนเพื่อขอสอบหัวข้อ
+                    Route::view("/topic", "teacher.project.topic")->name("topic");
                     // ยื่นขอสอบความก้าวหน้า
                     Route::view("/progress", "teacher.project.progress")->name("progress");
                     // ยื่นขอสอบป้องกัน
                     Route::view("/defense_exam", "teacher.project.defense")->name("defense");
                     // ยื่นส่งเล่ม
                     Route::view("/book", "teacher.project.book")->name("book");
-
                     // รายละเอียดโครงงาน
                     Route::view("/details", "teacher.project.details")->name("details");
                     // เสนอแนะ
@@ -93,6 +94,25 @@ Route::middleware("auth", "role:admin")->group(function () {
     Route::name("admin.")
         ->prefix("admin")
         ->group(function () {
+            Route::prefix("project")
+                ->name("project.")
+                ->group(function () {
+                    // ลงทะเบียนโครงงาน
+                    Route::view("/", "teacher.project.index")->name("home");
+                    // ลงทะเบียนเพื่อขอสอบหัวข้อ
+                    Route::view("/topic", "teacher.project.topic")->name("topic");
+                    // ยื่นขอสอบความก้าวหน้า
+                    Route::view("/progress", "teacher.project.progress")->name("progress");
+                    // ยื่นขอสอบป้องกัน
+                    Route::view("/defense_exam", "teacher.project.defense")->name("defense");
+                    // ยื่นส่งเล่ม
+                    Route::view("/book", "teacher.project.book")->name("book");
+                    // รายละเอียดโครงงาน
+                    Route::view("/details", "teacher.project.details")->name("details");
+                    // เสนอแนะ
+                    Route::view("/suggestion", "teacher.project.suggestion")->name("suggestion");
+                });
+
             // อนุมัติคำร้องทั่วไป
             Route::view("/petition", "admin.petition")->name("petition");
 
@@ -106,6 +126,8 @@ Route::middleware("auth", "role:admin")->group(function () {
 
                     // ข้อเสนอแนะ
                     Route::view("/suggestions", "admin.settings.suggestions")->name("suggestions");
+                    // อนุมัติคำร้องทั่วไป
+                    Route::view("/petition", "admin.settings.petition")->name("petition");
                     // ภาคเรียน
                     Route::view("/term", "admin.settings.term")->name("term");
                     // ขั้นตอนโครงงาน
