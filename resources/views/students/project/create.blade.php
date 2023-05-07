@@ -1,13 +1,13 @@
 @section('title', 'ลงทะเบียนโครงงานพิเศษ')
 <div>
-    <div class="-mx-3 mb-8 flex flex-wrap">
-        <div class="w-full max-w-full flex-none px-3">
+    <div class="flex flex-wrap mb-8 -mx-3">
+        <div class="flex-none w-full max-w-full px-3">
             <ol
-                class="flex w-full items-center space-x-2 rounded-2xl border border-gray-200 bg-white px-6 py-4 text-sm font-medium text-gray-500 shadow-xl dark:border-slate-850 dark:bg-slate-850 dark:text-gray-400 dark:shadow-dark-xl sm:space-x-4 sm:text-base">
+                class="flex items-center w-full px-6 py-4 space-x-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 shadow-xl rounded-2xl dark:border-slate-850 dark:bg-slate-850 dark:text-gray-400 dark:shadow-dark-xl sm:space-x-4 sm:text-base">
                 <li>
                     <a href="#" class="flex items-center text-teal-400 dark:text-teal-400">
                         <span
-                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-teal-400 bg-teal-400 text-base text-white dark:border-teal-400">
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-teal-400 border border-teal-400 rounded-full shrink-0 dark:border-teal-400">
                             1
                         </span>
                         <div class="tracking-wide">
@@ -23,7 +23,7 @@
                             ปรับแก้ไข
                         </span> --}}
                         </div>
-                        <svg aria-hidden="true" class="ml-2 h-4 w-4 sm:ml-4" fill="none" stroke="currentColor"
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 5l7 7-7 7M5 5l7 7-7 7">
@@ -35,23 +35,51 @@
                     <a href="{{ route('student.project.home') }}"
                         class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
-                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-400 text-base text-white dark:border-gray-400">
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
                             2
                         </span>
                         <div class="tracking-wide">
                             <span class="block">
-                                สอบความก้าวหน้า
-                            </span>
-                            <span
-                                class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-yellow-400 to-orange-400 py-1.4 px-2.5 text-center align-baseline text-xxs font-bold uppercase leading-none tracking-wider text-white">
-                                ปรับแก้ไข
+                                ลงทะเบียนเพื่อขอสอบหัวข้อ
                             </span>
                             {{-- <span
                                 class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
                                 ก่อน 10/04/2566
                             </span> --}}
+                            {{-- <span
+                            class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-yellow-400 to-orange-400 align-baseline font-bold uppercase leading-none text-white">
+                            ปรับแก้ไข
+                        </span> --}}
                         </div>
-                        <svg aria-hidden="true" class="ml-2 h-4 w-4 sm:ml-4" fill="none" stroke="currentColor"
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('student.project.home') }}"
+                        class="flex items-center text-gray-400 dark:text-gray-400">
+                        <span
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            3
+                        </span>
+                        <div class="tracking-wide">
+                            <span class="block">
+                                สอบความก้าวหน้า
+                            </span>
+                            {{-- <span
+                                class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-yellow-400 to-orange-400 py-1.4 px-2.5 text-center align-baseline text-xxs font-bold uppercase leading-none tracking-wider text-white">
+                                ปรับแก้ไข
+                            </span> --}}
+                            {{-- <span
+                                class="py-1.4 px-2.5 text-xxs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-400 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                ก่อน 10/04/2566
+                            </span> --}}
+                        </div>
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 5l7 7-7 7M5 5l7 7-7 7">
@@ -62,8 +90,8 @@
                 <li>
                     <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
-                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-400 text-base text-white dark:border-gray-400">
-                            3
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            4
                         </span>
                         <div class="tracking-wide">
                             <span class="block">
@@ -78,7 +106,7 @@
                                 ก่อน 10/04/2566
                             </span> --}}
                         </div>
-                        <svg aria-hidden="true" class="ml-2 h-4 w-4 sm:ml-4" fill="none" stroke="currentColor"
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 5l7 7-7 7M5 5l7 7-7 7">
@@ -89,8 +117,8 @@
                 <li>
                     <a href="#" class="flex items-center text-gray-400 dark:text-gray-400">
                         <span
-                            class="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-400 text-base text-white dark:border-gray-400">
-                            4
+                            class="flex items-center justify-center w-10 h-10 mr-3 text-base text-white bg-gray-400 border border-gray-400 rounded-full shrink-0 dark:border-gray-400">
+                            5
                         </span>
                         <div class="tracking-wide">
                             <span class="block">
@@ -111,22 +139,22 @@
         </div>
     </div>
 
-    <div class="-mx-3 flex flex-wrap">
-        <div class="w-full max-w-full flex-none px-3">
+    <div class="flex flex-wrap -mx-3">
+        <div class="flex-none w-full max-w-full px-3">
 
             {{-- ลงทะเบียนโครงงานพิเศษ --}}
             <div
-                class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
+                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border dark:bg-slate-850 dark:shadow-dark-xl">
                 <div
-                    class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
+                    class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
-                        <i class="bi bi-journal-plus text-2xl leading-0 text-white dark:text-blue-500"></i>
+                        <i class="text-2xl text-white bi bi-journal-plus leading-0 dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         ลงทะเบียนโครงงานพิเศษ
                     </h5>
                 </div>
-                <div class="flex-auto flex-wrap p-6">
+                <div class="flex-wrap flex-auto p-6">
                     {{-- If there is an error, enter the Error class. = label class='... error', input and select class="... error"  --}}
                     <form wire:submit.prevent="submit">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -137,7 +165,7 @@
                                     placeholder="กรุณากรอกชื่อโครงงานภาษาไทย" />
                                 @error('form.name_th')
                                     <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
 
                             </div>
@@ -150,7 +178,7 @@
                                     placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ" />
                                 @error('form.name_en')
                                     <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -158,7 +186,7 @@
                         <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">
                             ผู้จัดทำโครงงาน
                         </h6>
-                        <div class="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div class="grid grid-cols-1 gap-4 mb-4 sm:grid-cols-2">
                             <div>
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     สาขาวิชา
@@ -222,10 +250,11 @@
                                 </select>
                                 @error('form.student_2')
                                     <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+
 
                         <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">อาจารย์ที่ปรึกษาโครงงาน</h6>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -246,29 +275,60 @@
                                 </select>
                                 @error('form.teacher_1')
                                     <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                    ที่ปรึกษาร่วม
-                                    <span class="text-rose-600">*</span>
-                                </label>
-                                <select class="select" wire:model="form.teacher_2">
-                                    <option value="" selected disabled>
-                                        กรุณาเลือกที่ปรึกษาร่วม
-                                    </option>
-                                    @foreach ($data['teacher'] as $teacher)
-                                        <option value="{{ $teacher->id }}">
-                                            {{ $teacher->name }}
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                        ที่ปรึกษาร่วม/กรรมการสอบ
+                                        <span class="text-rose-600">*</span>
+                                    </label>
+                                    <select class="select" wire:model="form.teacher_2"
+                                        onchange="onTeacherOther(event, this.value)">
+                                        <option value="" selected disabled>
+                                            กรุณาเลือกที่ปรึกษาร่วม/กรรมการสอบ
                                         </option>
-                                    @endforeach
-                                </select>
-                                @error('form.teacher_2')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
-                                @enderror
+                                        @foreach ($data['teacher'] as $teacher)
+                                            <option value="{{ $teacher->id }}">
+                                                {{ $teacher->name }}
+                                            </option>
+                                        @endforeach
+                                        <option value="other">
+                                            ที่ปรึกษาร่วมจากภายนอก
+                                        </option>
+                                    </select>
+                                    @error('form.teacher_2')
+                                        <span
+                                            class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                    <div>
+                                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อ
+                                            <span class="text-rose-600">*</span></label>
+                                        <input type="text" class="input" placeholder="กรุณากรอกชื่อจากภายนอก" />
+                                        {{-- <span
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span> --}}
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">นามสกุล
+                                            <span class="text-rose-600">*</span></label>
+                                        <input type="text" class="input"
+                                            placeholder="กรุณากรอกนามสกุลจากภายนอก" />
+                                        {{-- <span
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span> --}}
+                                    </div>
+                                    <div class="col-span-2">
+                                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                            แนบเอกสาร (หนังสือแต่งตั้ง) <span class="text-rose-600">*</span>
+                                        </label>
+                                        <input class="p-0 input" type="file">
+                                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาแนบเอกสาร</span> --}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -292,7 +352,7 @@
                                 </select>
                                 @error('form.teacher_3')
                                     <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                        class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -303,12 +363,12 @@
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     แนบเอกสาร
                                 </label>
-                                <input class="input h-full p-0" type="file">
+                                <input class="h-full p-0 input" type="file">
                                 {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาแนบเอกสาร</span> --}}
                             </div>
                             {{-- โชว์เฉพาะตอนที่มีเอกสาร --}}
                             <a href="#"
-                                class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-teal-400 transition-all ease-in hover:text-teal-600">
+                                class="inline-block text-sm font-bold leading-normal text-center text-teal-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-teal-600">
                                 <div class="flex flex-row items-center gap-2">
                                     <i class="bi bi-download leading-0"></i>
                                     <span class="block">ดาวน์โหลดเอกสาร</span>
@@ -317,9 +377,9 @@
                         </div>
 
                         <div class="mt-10 text-end">
-                            <button type="submit" class="btn from-blue-500 to-violet-500 text-sm text-white">
+                            <button type="submit" class="text-sm text-white btn from-blue-500 to-violet-500">
                                 <div class="flex flex-row items-center gap-3">
-                                    <i class="bi bi-save-fill text-base leading-0"></i>
+                                    <i class="text-base bi bi-save-fill leading-0"></i>
                                     <span class="block">บันทึก</span>
                                 </div>
                                 {{-- loading --}}
@@ -342,4 +402,3 @@
     </div>
 
 </div>
-

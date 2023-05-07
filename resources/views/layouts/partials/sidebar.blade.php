@@ -18,19 +18,19 @@
         <div class="items-center block w-auto h-auto overflow-hidden grow basis-full">
             <ul class="flex flex-col pb-6 pl-0 mb-0">
                 {{-- Start menu admin --}}
-                @if (auth()->user()->role->name == 'admin')
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('home') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <i
-                                    class="bi {{ Route::currentRouteName() == 'home' ? 'bi-pie-chart-fill' : 'bi-pie-chart' }} relative top-0 text-sm leading-normal text-teal-400"></i>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">หนัาหลัก</span>
-                        </a>
-                    </li>
-                @endif
+                {{-- @if (auth()->user()->role->name == 'admin') --}}
+                <li class="mt-0.5 w-full">
+                    <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('home') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'home' ? 'bi-pie-chart-fill' : 'bi-pie-chart' }} relative top-0 text-sm leading-normal text-teal-400"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">หนัาหลัก</span>
+                    </a>
+                </li>
+                {{-- @endif --}}
 
                 {{-- End menu admin --}}
 

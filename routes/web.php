@@ -35,9 +35,10 @@ Route::name("auth.")->group(function () {
     });
 });
 
-Route::middleware("auth", "role:admin")->group(function () {
-    Route::view("/", "index")->name("home");
-});
+// Route::middleware("auth", "role:admin")->group(function () {
+Route::view("/", "index")->name("home");
+// });
+
 // @Role: Students
 Route::middleware("auth", "role:student")->group(function () {
     Route::name("student.")->group(function () {
