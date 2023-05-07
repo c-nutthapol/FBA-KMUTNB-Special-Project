@@ -85,7 +85,7 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        สถานะ
+                                        สถานะของผู้ดูแลระบบ
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -151,27 +151,26 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <div class="inline-block">
-                                            <select class="w-30 select">
-                                                <option value="รออนุมัติ" selected>
-                                                    รออนุมัติ
-                                                </option>
-                                                <option value="ใช้งานปกติ">
-                                                    อนุมัติ
-                                                </option>
-                                                <option value="ไม่อนุมัติ">
-                                                    ไม่อนุมัติ
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <span
+                                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-500 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                            รออนุมัติ
+                                        </span>
+                                        <span
+                                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                            อนุมัติ
+                                        </span>
+                                        <span
+                                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                            ไม่อนุมัติ
+                                        </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <button type="button" data-modal-target="viewModal" data-modal-toggle="viewModal"
+                                        <button type="button" data-modal-target="noteModal" data-modal-toggle="noteModal"
                                             class="inline-block mr-2 text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
                                             <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-eye leading-0"></i>
-                                                <span class="block">ดูคำร้อง</span>
+                                                <i class="bi bi-brush leading-0"></i>
+                                                <span class="block">จัดการคำร้อง</span>
                                             </div>
                                         </button>
                                         <a href="{{ route('admin.project.details') }}" target="_blank"
@@ -231,8 +230,8 @@
         </div>
     </div>
 
-    <!-- View Modal -->
-    <div id="viewModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+    <!-- Note Modal -->
+    <div id="noteModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full max-w-2xl md:h-auto">
             <!-- Modal content -->
@@ -240,11 +239,11 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-eye leading-0"></i> รายละเอียดคำร้อง
+                        <i class="bi bi-brush leading-0"></i> จัดการคำร้อง
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="viewModal">
+                        data-modal-hide="noteModal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -257,38 +256,54 @@
                 <!-- Modal body -->
                 <div class="p-6">
                     <div class="mb-3">
-                        <span>ผู้อนุมัติคำร้อง : </span>
-                        นายสมชาย เกฟไกฟไก
+                        <label class="mb-4 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            สถานะ
+                        </label>
+                        <div class="flex items-center mb-4">
+                            <input id="status-1" type="radio" value="" name="status"
+                                class="w-4 h-4 input-radio" required>
+                            <label for="status-1"
+                                class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                อนุมัติ
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="status-2" type="radio" value="" name="status"
+                                class="w-4 h-4 input-radio" required>
+                            <label for="status-2"
+                                class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                ไม่อนุมัติ
+                            </label>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <span>สถานะ : </span>
-                        <span
-                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-500 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
-                            รออนุมัติ
-                        </span>
-                        <span
-                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
-                            อนุมัติ
-                        </span>
-                        <span
-                            class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
-                            ไม่อนุมัติ
-                        </span>
+                    <div>
+                        <label for="note"
+                            class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">หมายเหตุ</label>
+                        <textarea class="input" placeholder="กรุณากรอกหมายเหตุ" rows="2"></textarea>
                     </div>
-                    <div class="font-bold">
-                        หมายเหตุ
-                    </div>
-                    <p class="mb-0">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, alias voluptas minus sint expedita
-                        error fugit incidunt facere amet impedit atque ex quos at ipsum eaque cumque ducimus a dolorem?
-                    </p>
                 </div>
                 <!-- Modal footer -->
                 <div
                     class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="viewModal" type="button"
+                    <button data-modal-hide="noteModal" type="button"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                        ปิด
+                        ยกเลิก
+                    </button>
+                    <button type="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
+                        <div class="flex flex-row items-center gap-3">
+                            <i class="bi bi-save-fill leading-0"></i>
+                            <span class="block">บันทึก</span>
+                        </div>
+                        {{-- loading --}}
+                        {{-- <svg aria-hidden="true" role="status" class="inline w-4 h-4 text-white animate-spin"
+                                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                        fill="#E5E7EB" />
+                                    <path
+                                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                        fill="currentColor" />
+                                </svg> --}}
                     </button>
                 </div>
             </form>

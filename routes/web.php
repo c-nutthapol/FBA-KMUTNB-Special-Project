@@ -68,6 +68,9 @@ Route::middleware("auth", "role:teacher")->group(function () {
     Route::name("teacher.")
         ->prefix("teacher")
         ->group(function () {
+            // อนุมัติคำร้องทั่วไป
+            Route::view("/petition", "teacher.petition")->name("petition");
+
             Route::prefix("project")
                 ->name("project.")
                 ->group(function () {
