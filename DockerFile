@@ -1,0 +1,44 @@
+# ใช้ภาพของ PHP 8 และ Composer เป็นฐาน
+FROM php:8.1.19-apache
+
+# ติดตั้งโปรแกรมที่จำเป็นสำหรับ Laravel
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    libpng-dev \
+    unzip \
+    && docker-php-ext-install zip
+
+# เปิดส่วนขยายใน PHP
+RUN docker-php-ext-install \
+    pdo \
+    pdo_mysql \
+    opcache \
+    gd \
+    fileinfo
+
+
+# ติดตั้ง Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# ตั้งค่า Apache
+COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2enmod rewrite
+
+# ตั้งค่าไดเร็กทอรีทำงาน
+WORKDIR /var/www/html
+
+# คัดลอกไฟล์โค้ด Laravel ไปยังคอนเทนเนอร์
+COPY . /var/www/html
+
+# ติดตั้ง dependencies และ generate key
+RUN composer install
+RUN php artisan key:generate
+
+
+# ตั้งค่าสิ่งแวดล้อม
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+ENV APACHE_LOG_DIR=/var/log/apache2
+
+# สั่งให้ Apache เริ่มทำงาน
+CMD ["apache2-foreground"]
