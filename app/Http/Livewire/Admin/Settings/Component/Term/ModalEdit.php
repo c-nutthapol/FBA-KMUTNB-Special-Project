@@ -26,8 +26,8 @@ class ModalEdit extends Component
         if ($record) {
             $this->term = $record->term;
             $this->year = $record->year;
-            $this->start_date = $record->start_date;
-            $this->end_date = $record->end_date;
+            $this->start_date = $record->start_date->toDateString();
+            $this->end_date = $record->end_date->toDateString();
         }
     }
 

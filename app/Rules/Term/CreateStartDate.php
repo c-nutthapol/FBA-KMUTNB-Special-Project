@@ -16,10 +16,12 @@ class CreateStartDate implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $record = EduTerm::orderBy('end_date', 'DESC')->first();
-        $end_date = strtotime($record->end_date);
-        $check_date = strtotime($value);
-        if ($record && $end_date >= $check_date) {
-            $fail('วันที่เริ่มภาคเรียน นี้ไม่สามารถใช้ได้');
+        if ($record) {
+            $end_date = strtotime($record->end_date->toDateString());
+            $check_date = strtotime($value);
+            if ($end_date >= $check_date) {
+                $fail('วันที่เริ่มภาคเรียน นี้ไม่สามารถใช้ได้');
+            }
         }
     }
 }

@@ -31,8 +31,8 @@ class EditStartDate implements ValidationRule
         $results = EduTerm::whereNot('id', $this->id)->get();
 
         foreach ($results as $result) {
-            $start_date = strtotime($result->start_date);
-            $end_date = strtotime($result->end_date);
+            $start_date = strtotime($result->start_date->toDateString());
+            $end_date = strtotime($result->end_date->toDateString());
             $check_date = strtotime($value);
             if ($check_date >= $start_date && $check_date <= $end_date) {
                 $fail('วันที่เริ่มภาคเรียน นี้ไม่สามารถใช้ได้');

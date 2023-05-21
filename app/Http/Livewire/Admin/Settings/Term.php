@@ -16,7 +16,7 @@ class Term extends Component
 
     public function render()
     {
-        $edu_terms = EduTerm::paginate(10);
+        $edu_terms = EduTerm::orderBy('id', 'DESC')->paginate(10);
 
         return view('livewire.admin.settings.term', compact('edu_terms'));
     }

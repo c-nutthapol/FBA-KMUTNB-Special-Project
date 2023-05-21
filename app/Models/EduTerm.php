@@ -14,7 +14,12 @@ class EduTerm extends Model
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
-        'created_at' => 'date',
-        'updated_at' => 'date',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
+
+    public function project_step()
+    {
+        return $this->hasOne(ProjectStepConfig::class,'id');
+    }
 }

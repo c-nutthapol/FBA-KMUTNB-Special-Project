@@ -6,17 +6,18 @@
                 class="flex flex-col items-start justify-start gap-4 p-6 mb-0 border-b-0 sm:items-center sm:justify-between sm:flex-row border-b-solid rounded-t-2xl border-b-transparent">
                 <div class="flex flex-row items-center space-x-4">
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-calendar-week-fill leading-0 dark:text-blue-500"></i>
+                        <i class="text-2xl text-white bi bi-list-ol leading-0 dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
-                        ภาคเรียน
+                        ขั้นตอนโครงงาน
                     </h5>
                 </div>
                 <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
-                    data-modal-target="createModal" data-modal-toggle="createModal" wire:click="$emit('getTermCreate')">
+                    data-modal-target="createModal" data-modal-toggle="createModal"
+                    wire:click="$emit('getProjectStepCreate')">
                     <div class="flex flex-row items-center justify-center gap-3">
                         <i class="bi bi-plus-lg leading-0"></i>
-                        <span class="block">เพิ่มภาคเรียน</span>
+                        <span class="block">เพิ่มขั้นตอนโครงงาน</span>
                     </div>
                 </button>
             </div>
@@ -43,19 +44,15 @@
                             <tr>
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    ภาคเรียน
+                                    ภาคเรียน/ปีการศึกษา
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    ปีการศึกษา
+                                    วันที่เริ่มภาคเรียน - วันที่จบภาคเรียน
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    วันที่เริ่มภาคเรียน
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    วันที่จบภาคเรียน
+                                    ขั้นตอนการทำงาน
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -64,36 +61,58 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($edu_terms as $key => $edu_term)
+                            @forelse ($project_steps as $project_step)
+                                @php
+                                    $phase_title = [
+                                        'phase_1_status' => 'ลงทะเบียนโครงงานพิเศษ',
+                                        'phase_2_status' => 'ลงทะเบียนเพื่อขอสอบหัวข้อ',
+                                        'phase_3_status' => 'ยื่นขอสอบความก้าวหน้า',
+                                        'phase_4_status' => 'ยื่นขอสอบป้องกัน',
+                                        'phase_5_status' => 'ส่งเล่ม',
+                                    ];
+                                    $arr = $project_step->toArray();
+                                    $workflow = [];
+                                    $start_end_date = [];
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if ($arr['phase_' . $i . '_status']) {
+                                            $workflow[] = $phase_title['phase_' . $i . '_status'];
+                                            $start_end_date[] =
+                                                ' <span
+                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            <i class="bi bi-calendar2-week-fill"></i> ' .
+                                                thaidate('j F Y', strtotime($arr['phase_' . $i . '_start_date'])) .
+                                                '</span>
+                                                <span
+                                                    class="inline-block mx-1 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                                    -
+                                                </span>
+                                                <span
+                                                    class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                                    <i class="bi bi-calendar2-week-fill"></i> ' .
+                                                thaidate('j F Y', strtotime($arr['phase_' . $i . '_end_date'])) .
+                                                '</span>';
+                                        }
+                                    }
+
+                                @endphp
                                 <tr>
                                     <td
                                         class="px-6 py-3 text-left align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            {{ $edu_term->term }}
+                                            {{ $project_step->edu_term->term }} / {{ $project_step->edu_term->year }}
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            {{ $edu_term->year }}
-                                        </span>
+                                        {!! implode(', ', $start_end_date) !!}
                                     </td>
+
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            <i class="bi bi-calendar2-week-fill"></i>
-                                            {{ $edu_term->start_date->thaidate() }}
-                                        </span>
-                                    </td>
-                                    <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            <i class="bi bi-calendar2-week-fill"></i>
-                                            {{ $edu_term->end_date->thaidate() }}
+                                            {{ implode(', ', $workflow) }}
                                         </span>
                                     </td>
                                     <td
@@ -101,15 +120,16 @@
                                         <div class="flex flex-row justify-end gap-3">
                                             <button type="button" data-modal-target="editModal"
                                                 data-modal-toggle="editModal"
-                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500"
-                                                wire:click="$emit('getTermEdit',{{ $edu_term->id }})">
+                                                wire:click="$emit('getProjectStepEdit',{{ $project_step->id }})"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-pencil-square leading-0"></i>
                                                     <span class="block">แก้ไข</span>
                                                 </div>
                                             </button>
                                             <button type="button"
-                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
+                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800 delete-button"
+                                                data-key="{{ $project_step->id }}">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-trash3 leading-0"></i>
                                                     <span class="block">ลบ</span>
@@ -120,16 +140,14 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5"> ไม่พบข้อมูล </td>
+                                    <td colspan="4"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
-
                         </tbody>
                     </table>
                 </div>
 
-
-                {{ $edu_terms->links() }}
+                {{ $project_steps->links() }}
             </div>
         </div>
     </div>
@@ -137,25 +155,42 @@
 @push('script')
     <script>
         Livewire.hook('message.sent', (message, component) => {
-            if (message.updateQueue[0].payload.event === 'getTermCreate') {
+            if (message.updateQueue[0].payload.event === 'getProjectStepCreate') {
                 $('#loading-create').removeClass('hidden');
-                $('#modal-term-create').addClass('hidden');
+                $('#modal-project-step-create').addClass('hidden');
             }
-            if (message.updateQueue[0].payload.event === 'getTermEdit') {
+            if (message.updateQueue[0].payload.event === 'getProjectStepEdit') {
                 $('#loading-edit').removeClass('hidden');
-                $('#modal-term-edit').addClass('hidden');
+                $('#modal-project-step-edit').addClass('hidden');
             }
         });
 
         Livewire.hook('message.processed', (message, component) => {
-            if (message.updateQueue[0].payload.event === 'getTermCreate') {
+            if (message.updateQueue[0].payload.event === 'getProjectStepCreate') {
                 $('#loading-create').addClass('hidden');
-                $('#modal-term-create').removeClass('hidden');
+                $('#modal-project-step-create').removeClass('hidden');
             }
-            if (message.updateQueue[0].payload.event === 'getTermEdit') {
+            if (message.updateQueue[0].payload.event === 'getProjectStepEdit') {
                 $('#loading-edit').addClass('hidden');
-                $('#modal-term-edit').removeClass('hidden');
+                $('#modal-project-step-edit').removeClass('hidden');
             }
         });
+
+        $('.delete-button').click(function() {
+            const key = $(this).data('key')
+            Swal.fire({
+                icon: 'info',
+                title: 'ลบข้อมูล',
+                text: 'คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.delete(key);
+                }
+            })
+        })
     </script>
 @endpush
