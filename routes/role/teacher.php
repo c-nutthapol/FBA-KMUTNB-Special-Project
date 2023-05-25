@@ -7,7 +7,7 @@ Route::middleware("auth", "role:teacher")->group(function () {
         ->prefix("teacher")
         ->group(function () {
             // อนุมัติคำร้องทั่วไป
-            Route::view("/petition", "teacher.petition")->name("petition");
+            Route::view("/petition", "teacher.petition.index")->name("petition");
 
             Route::prefix("project")
                 ->name("project.")

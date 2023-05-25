@@ -193,6 +193,5 @@
                 {{ $projects->links() }}
             </div>
         </div>
-
     </div>
 </div>
