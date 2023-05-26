@@ -17,6 +17,7 @@ class RoleSeeder extends Seeder
             'student',
             'teacher',
             'admin',
+            'external'
         ];
         foreach ($data as $item) {
             Role::create(['name' => $item]);
