@@ -23,7 +23,9 @@ class ProjectStepConfig extends Model
         'phase_5_start_date' => 'date',
         'phase_5_end_date' => 'date',
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
+        'start_date' => 'date',
+        'end_date' => 'date'
     ];
 
     public function edu_term()
