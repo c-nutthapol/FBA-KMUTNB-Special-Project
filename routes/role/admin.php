@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
 // @Role: Admin
@@ -48,15 +49,7 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/banners", "admin.settings.banners")->name("banners");
                 });
 
-            Route::prefix("logs")
-                ->name("logs.")
-                ->group(function () {
-                    // นักศึกษา
-                    Route::view("/students", "admin.logs.students")->name("students");
-                    // อาจารย์
-                    Route::view("/teachers", "admin.logs.teachers")->name("teachers");
-                    // ผู้ดูแลระบบ
-                    Route::view("/administrators", "admin.logs.administrators")->name("administrators");
-                });
+
+            Route::get("logs/{role}", App\Http\Livewire\Admin\Logs::class)->name("logs");
         });
 });

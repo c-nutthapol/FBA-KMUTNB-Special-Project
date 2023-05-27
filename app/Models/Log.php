@@ -18,8 +18,15 @@ class Log extends Model
 
     protected $with = ['user'];
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // ดึงข้อมูลเวลา ของ user ที่เป็น Admin
@@ -50,11 +57,11 @@ class Log extends Model
     public static function getAnonymousLog()
     {
         return Log::query()
-        ->whereHas('user', function (Builder $query) {
-            $query->whereIn('role', ['1']);
-        })
-        ->latest('id')
-        ->limit(1000)
-        ->get();
+            ->whereHas('user', function (Builder $query) {
+                $query->whereIn('role', ['1']);
+            })
+            ->latest('id')
+            ->limit(1000)
+            ->get();
     }
 }
