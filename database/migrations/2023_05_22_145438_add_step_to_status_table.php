@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('master_statuses', function (Blueprint $table) {
-            $table->string('step')->comment('ขั้นตอน')->nullable()->after('name');;
+            $table->string('step')->comment('ขั้นตอน')->nullable()->after('id');;
         });
     }
 
