@@ -13,19 +13,15 @@
             </div>
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
                 <div>
-                    <select class="select">
-                        <option value="ปีการศึกษาทั้งหมด" selected>
+                    <select class="select" wire:model='year'>
+                        <option value="" selected>
                             ปีการศึกษาทั้งหมด
                         </option>
-                        <option value="2566">
-                            2566
-                        </option>
-                        <option value="2565">
-                            2565
-                        </option>
-                        <option value="2564">
-                            2564
-                        </option>
+                        @foreach ($term as $item_term)
+                            <option value="{{$item_term->id}}">
+                                {{$item_term->term}} / {{$item_term->year}}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
@@ -51,7 +47,7 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา">
+                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหา">
                         </div>
                     </div>
                 </div>
@@ -110,12 +106,12 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <span class="text-sm dark:text-slate-400">1/2566</span>
+                                        <span class="text-sm dark:text-slate-400">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row justify-center space-x-4">
-                                            <figure class="flex flex-row items-center space-x-2">
+                                            {{-- <figure class="flex flex-row items-center space-x-2">
                                                 <img class="object-cover object-center w-8 h-8 rounded-full"
                                                     src="https://images.pexels.com/photos/325531/pexels-photo-325531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                                     alt="avatar" />
@@ -130,6 +126,13 @@
                                                     alt="avatar" />
                                                 <figcaption class="text-sm dark:text-slate-400">
                                                     {{ $project->user_project->where('role', 'student')[1]->user->name ?? '' }}
+                                                </figcaption>
+                                            </figure> --}}
+                                            <figure class="flex flex-row items-center space-x-2">
+                                                <figcaption class="text-sm dark:text-slate-400">
+                                                @foreach ($project->StudentListForTable as $item_student)
+                                                    {{ $item_student }}<br>
+                                                @endforeach
                                                 </figcaption>
                                             </figure>
                                         </div>
@@ -147,23 +150,26 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="inline-block">
-                                            <select class="select">
-                                                <option value="รออนุมัติหัวข้อ" selected>
-                                                    รออนุมัติหัวข้อ
+                                            <select id="UpdateStatusProject" class="select" data-id="{{$project->id}}">
+                                                <option value="" disabled selected>
+                                                    {{$project->master_status->name}}
                                                 </option>
-                                                <option value="อนุมัติ">
-                                                    อนุมัติ
+                                                @forelse ($project->StatusListForTable as $item)
+                                                <option value="{{$item->id}}">
+                                                    {{$item->name}}
                                                 </option>
-                                                <option value="ไม่อนุมัติ">
-                                                    ไม่อนุมัติ
+                                                @empty
+                                                <option value="" disabled selected>
+                                                    เลือกสถานะ
                                                 </option>
+                                                @endforelse
                                             </select>
                                         </div>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row justify-end gap-3">
-                                            <a href="{{ route('teacher.project.details') }}"
+                                            <a href="{{ route('teacher.project.details',['id' => $item->id]) }}"
                                                 class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-eye leading-0"></i>
@@ -195,3 +201,25 @@
         </div>
     </div>
 </div>
+@push('script')
+<script>
+    $(`#UpdateStatusProject`).on(`change`, function(){
+        const label = $(this).find("option:selected")[0].text;
+        const id = $(this).data("id");
+        const status = $(this).val();
+        Swal.fire({
+            icon: 'question',
+            title: 'คุณต้องการเปลี่ยนสถานะ',
+            text: `${label} ใช่หรือไม่`,
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยัน',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                @this.updateStatusProject(id, status);
+            }
+        })
+    })
+</script>
+@endpush
