@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use Faker\Provider\UserAgent;
 use Livewire\Component;
 
 class Login extends Component
@@ -29,6 +30,19 @@ class Login extends Component
         $validatedData = $this->validate($this->rules, __('validation'), $this->attributes);
         try {
             if (auth()->attempt(['user_code' => $validatedData['username'], 'password' => $validatedData['password']])) {
+                $browser = request()->header('User-Agent');
+                $ipAddress = request()->getClientIp();
+                $log = [
+                    'email' => auth()->user()->email,
+                    'ip' => $ipAddress,
+                    'browser' => $browser,
+                    'type' => auth()->user()->role->name
+                ];
+                if (auth()->user()->log) {
+                    auth()->user()->log->update($log);
+                } else {
+                    auth()->user()->log()->create($log);
+                }
                 return redirect()->route('home');
             }
         } catch (\Exception $e) {

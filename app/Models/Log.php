@@ -12,7 +12,7 @@ class Log extends Model
 
     protected $table = 'logs';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'user_id';
 
     protected $guarded = [];
 

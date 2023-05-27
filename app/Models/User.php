@@ -34,4 +34,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class, "user_project", "user_id", "project_id", "id", "id");
     }
+    public function log()
+    {
+        return $this->hasOne(Log::class, 'user_id');
+    }
 }
