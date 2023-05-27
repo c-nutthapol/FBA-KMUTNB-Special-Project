@@ -17,14 +17,32 @@ trait CheckTermTrait
      * จะคืนค่าข้อความว่าไม่มีกำหนดการและวันที่ปัจจุบันในรูปแบบไทย
      */
 
-    public static function term()
+    public static function term(string $data_format = 'string')
     {
-        $date = date('Y-m-d');
-        $term = EduTerm::where('start_date', '>=', $date)->where('end_date', '<=', $date)->first();
-        if ($term) {
-            return 'ภาคเรียนที่ ' . $term->term . 'ปีการศึกษา ' . $term->year . ' วันที่ ' . thaidate();
-        } else {
-            return 'ยังไม่มีกำหนดการ วันที่ ' . thaidate();
+        $dateCurrent = date('Y-m-d');
+        $term = EduTerm::where('start_date', '>=', $dateCurrent)->where('end_date', '<=', $dateCurrent)->first();
+        if ($data_format == 'string') {
+            if ($term) {
+                return 'ภาคเรียนที่ ' . $term->term . 'ปีการศึกษา ' . $term->year . ' วันที่ ' . thaidate();
+            } else {
+                return 'ยังไม่มีกำหนดการ วันที่ ' . thaidate();
+            }
+        } elseif ($data_format == 'array') {
+            if ($term) {
+                return [
+                    'term' => $term->term,
+                    'year' => $term->year,
+                    'current_date' => $dateCurrent
+                ];
+            }
+        } elseif ($data_format == 'object') {
+            if ($term) {
+                return (object) [
+                    'term' => $term->term,
+                    'year' => $term->year,
+                    'current_date' => $dateCurrent
+                ];
+            }
         }
     }
 
@@ -52,22 +70,16 @@ trait CheckTermTrait
                 if ($get_project_step) {
                     return [
                         'start_date' => $get_project_step->start_date->toDateString(),
-                        'end_date' => $get_project_step->end_date->toDateString()
-                    ];
-                } else {
-                    return [
-                        'error' => 'ไม่พบกำหนดการ'
+                        'end_date' => $get_project_step->end_date->toDateString(),
+                        'current_date' => $dateCurrent,
                     ];
                 }
             } elseif ($data_format == 'object') {
                 if ($get_project_step) {
                     return (object) [
                         'start_date' => $get_project_step->start_date->toDateString(),
-                        'end_date' => $get_project_step->end_date->toDateString()
-                    ];
-                } else {
-                    return (object) [
-                        'error' => 'ไม่พบกำหนดการ'
+                        'end_date' => $get_project_step->end_date->toDateString(),
+                        'current_date' => $dateCurrent,
                     ];
                 }
             } else {
