@@ -50,17 +50,6 @@
         if (get_dark_mode) {
             root_html.classList.add("dark");
         }
-        Livewire.on('alert', e => {
-            Swal.fire({
-                position: 'bottom-end',
-                icon: e.status,
-                title: e.title,
-                text: e.text,
-                showConfirmButton: false,
-                timer: 1500,
-                toast: true,
-            })
-        });
     </script>
 </body>
 

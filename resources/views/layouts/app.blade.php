@@ -89,19 +89,6 @@
     @include('layouts.partials.script')
     @yield('script')
     @stack('script')
-    <script>
-        Livewire.on('alert', e => {
-            Swal.fire({
-                position: 'bottom-end',
-                icon: e.status,
-                title: e.title,
-                text: e.text,
-                showConfirmButton: false,
-                timer: 3000,
-                toast: true,
-            })
-        });
-    </script>
 </body>
 
 </html>
