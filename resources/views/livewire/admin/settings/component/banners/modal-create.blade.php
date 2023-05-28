@@ -1,4 +1,4 @@
-<div id="createModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+<div id="createModal" data-modal-backdrop="dynamic" tabindex="-1" aria-hidden="true"
     class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full"
     wire:ignore.self>
     <div class="relative h-full w-full max-w-2xl md:h-auto">

@@ -97,7 +97,7 @@
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
                                             <i class="bi bi-calendar2-week-fill"></i>
-                                            {{ $banner->created_at->thaidate('j F Y H:m:s') }}
+                                            {{ $banner->created_at->thaidate('j F Y H:i:s') }}
                                         </span>
                                     </td>
                                     <td

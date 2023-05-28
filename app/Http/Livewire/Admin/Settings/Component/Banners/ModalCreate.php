@@ -51,7 +51,7 @@ class ModalCreate extends Component
             Banner::create($Data);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('refreshBanners');
-            $this->emit('close_modal',['element' => 'createModal']);
+            $this->emit('close_modal','createModal');
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }
