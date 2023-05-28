@@ -10,33 +10,20 @@
                             <i class="text-2xl text-white bi bi-chat-dots-fill leading-0 dark:text-blue-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">
-                            ข้อเสนอแนะ
+                            เอกสารดาวน์โหลด
                         </h5>
                     </div>
                     <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
                         data-modal-target="createModal" data-modal-toggle="createModal">
                         <div class="flex flex-row items-center justify-center gap-3">
                             <i class="bi bi-plus-lg leading-0"></i>
-                            <span class="block">เพิ่มข้อเสนอแนะ</span>
+                            <span class="block">เพิ่มเอกสารดาวน์โหลด</span>
                         </div>
                     </button>
                 </div>
 
                 <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-end sm:flex-row">
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        {{-- <div class="flex-1">
-                            <select class="select">
-                                <option value="หมวดหมู่ทั้งหมด" selected>
-                                    หมวดหมู่ทั้งหมด
-                                </option>
-                                <option value="หัวข้อที่ผิดบ่อย">
-                                    หัวข้อที่ผิดบ่อย
-                                </option>
-                                <option value="การจัดรูปแบบการพิมพ์ที่ผิดบ่อย">
-                                    การจัดรูปแบบการพิมพ์ที่ผิดบ่อย
-                                </option>
-                            </select>
-                        </div> --}}
                         <div class="flex-1">
                             <label for="search" class="sr-only">Search</label>
                             <div class="relative w-full">
@@ -61,12 +48,20 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        ข้อเสนอแนะ
+                                        ชื่อไฟล์
                                     </th>
-                                    {{-- <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        หมวดหมู่
-                                    </th> --}}
+                                    <th
+                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        ไฟล์
+                                    </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        วันที่
+                                    </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        ปักหมุด
+                                    </th>
                                     <th
                                         class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         สถานะ
@@ -95,6 +90,38 @@
                                             </span>
                                         </td>
                                         <td
+                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                            <a href="{{ asset('storage') }}/{{ $item->file }}"
+                                                class="inline-block text-sm font-bold leading-normal text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-download leading-0"></i>
+                                                    <span class="block">โหลดเอกสาร</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td
+                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                            <span
+                                                class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                                {{ $item->date ?? '-'  }}
+                                            </span>
+                                        </td>
+                                        <td
+                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                            @if ($item->pin  == 'active')
+                                                <span
+                                                    class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                                    ปักหมุด
+                                                </span>
+                                            @endif
+                                            @if ($item->pin  == 'inactive')
+                                                <span
+                                                    class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                                    ไม่ปักหมุด
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                             @if ($item->status  == 'active')
                                                 <span
@@ -114,7 +141,7 @@
                                             <div class="flex flex-row justify-end gap-3">
                                                 <button type="button" data-modal-target="editModal"
                                                     data-modal-toggle="editModal"
-                                                    wire:click="edit({{ $item->id }},'{{ $item->name }}','{{ $item->status }}')"
+                                                    wire:click="edit({{ $item->id }},'{{ $item->name }}','{{ $item->status }}','{{ $item->pin }}','{{ $item->date }}','{{ $item->file }}')"
                                                     class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-pencil-square leading-0"></i>
@@ -122,7 +149,7 @@
                                                     </div>
                                                 </button>
                                                 <button type="button"
-                                                    wire:click="$emit('delete',{{ $item->id }})"
+                                                wire:click="$emit('delete',{{ $item->id }})"
                                                     class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-trash3 leading-0"></i>
@@ -155,7 +182,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-plus-lg leading-0"></i> เพิ่มข้อเสนอแนะ
+                        <i class="bi bi-plus-lg leading-0"></i> เพิ่มเอกสารดาวน์โหลด
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -174,16 +201,89 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                ข้อเสนอแนะ
+                                ชื่อ
                             </label>
-                            <textarea class="input" wire:model="name" placeholder="กรุณากรอกข้อเสนอแนะ" rows="2"></textarea>
+                            <input type="text" wire:model="name" class="input" placeholder="กรุณากรอกชื่อ" required></input>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข้อเสนอแนะ</span> --}}
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
+                    </div>
+                    <div>
+                        <label class="mb-1 mt-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            วันที่
+                        </label>
+                        <input type="date" class="input" wire:model.defer="date" />
+                        @error('date')
+                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-span-2 mt-2">
+                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            สถานะปักหมุด
+                        </label>
+                        <div class="flex items-center">
+                            <input id="term-1" type="radio" value="active" name="pin"
+                                class="w-4 h-4 input-radio" wire:model.defer="pin">
+                            <label for="term-1"
+                                class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                ปักหมุด
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="term-2" type="radio" value="inactive" name="pin"
+                                class="w-4 h-4 input-radio" wire:model.defer="pin">
+                            <label for="term-2"
+                                class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                ไม่ปักหมุด
+                            </label>
+                        </div>
+                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
+                    </div>
+                </div>
+
+                <div class="inline-block w-auto p-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                อัพโหลด
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="inline-block w-auto pb-6">
+                    <div class="flex flex-row gap-3">
+                        <input class="input h-full p-0"
+                        type="file"
+                        id="docFile"
+                        wire:model="file"
+                        accept = "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                        text/plain, application/pdf, image/*"
+                        >
+                        <div wire:loading wire:target="file">Uploading...</div>
+                        @error('file') <span class="text-danger">{{ $message }}</span> @enderror
+                        {{-- <label class="custom-file-label text-success" for="docFile">
+                            อัพโหลดสำเร็จ
+                        </label> --}}
+
 
                     </div>
+
+                    {{-- <div class="invalid-feedback">กรุณาแทรกไฟล์</div>
+                    @error('file') <span class="text-danger">{{ $message }}</span> @enderror --}}
+                        {{-- @if($file)
+
+                        @else
+                            <label class="custom-file-label" for="docFile">
+                                อัพโหลด ไฟล์เอกสาร
+                            </label>
+                        @endif --}}
+                        {{-- <div wire:loading wire:target="file">Uploading...</div>
+                            <div class="invalid-feedback">กรุณาแทรกไฟล์</div>
+                            @error('file') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div> --}}
+
                 </div>
                 <!-- Modal footer -->
                 <div
@@ -223,7 +323,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-pencil-square leading-0"></i> แก้ไขข้อเสนอแนะ
+                        <i class="bi bi-pencil-square leading-0"></i> แก้ไขเอกสารดาวน์โหลด
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -242,15 +342,99 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                ข้อเสนอแนะ
+                                ชื่อ
                             </label>
-                            <textarea class="input" wire:model="t_name" placeholder="กรุณากรอกข้อเสนอแนะ" rows="2"></textarea>
+                            <input type="text" wire:model="t_name" class="input" placeholder="กรุณากรอกชื่อ" required></input>
                             @error('t_name')
                                 <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข้อเสนอแนะ</span> --}}
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
                         <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                วันที่
+                            </label>
+                            <input type="date" class="input" wire:model.defer="t_date" />
+                            @error('t_date')
+                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            @enderror
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                ปักหมุด
+                            </label>
+                            <div class="flex flex-row gap-4">
+                                <div class="flex items-center">
+                                    <input id="term-1" type="radio" value="active" name="pin"
+                                        class="w-4 h-4 input-radio" wire:model.defer="t_pin">
+                                    <label for="term-1"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        ปักหมุด
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="term-2" type="radio" value="inactive" name="pin"
+                                        class="w-4 h-4 input-radio" wire:model.defer="t_pin">
+                                    <label for="term-2"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        ไม่ปักหมุด
+                                    </label>
+                                </div>
+                            </div>
+                            @error('t_pin')
+                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                สถานะ
+                            </label>
+                            <div class="flex flex-row gap-4">
+                                <div class="flex items-center">
+                                    <input id="term-1" type="radio" value="active" name="status"
+                                        class="w-4 h-4 input-radio" wire:model.defer="t_status">
+                                    <label for="term-1"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        active
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="term-2" type="radio" value="inactive" name="status"
+                                        class="w-4 h-4 input-radio" wire:model.defer="t_status">
+                                    <label for="term-2"
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        inactive
+                                    </label>
+                                </div>
+                            </div>
+                            @error('t_status')
+                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            @enderror
+
+                        </div>
+
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                ไฟล์
+                            </label>
+                            <input class="input h-full p-0"
+                            type="file"
+                            id="docFile"
+                            wire:model="t_file"
+                            accept = "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                            text/plain, application/pdf, image/*"
+                            >
+                            <div wire:loading wire:target="t_file">Uploading...</div>
+                            @error('t_file')
+                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            @enderror
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
+                        </div>
+
+                        {{-- <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                 สถานะ
                             </label>
@@ -276,7 +460,9 @@
                                 <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
 
-                        </div>
+                        </div> --}}
+
+
                     </div>
                 </div>
                 <!-- Modal footer -->

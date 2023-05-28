@@ -122,7 +122,7 @@
                                                     </div>
                                                 </button>
                                                 <button type="button"
-                                                    wire:click="delete({{ $item->id }})"
+                                                wire:click="$emit('delete',{{ $item->id }})"
                                                     class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-trash3 leading-0"></i>
@@ -133,7 +133,9 @@
                                         </td>
                                     </tr>
                                 @empty
-                                -
+                                <tr>
+                                    <td colspan="5"> ไม่พบข้อมูล </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -307,5 +309,30 @@
 </div>
 
 @push('script')
-
+<script>
+    document.addEventListener('livewire:load', function() {
+        @this.on('delete', (id) => {
+            Swal.fire({
+                title: 'คุณต้องการลบข้อมูลนี้หรือไม่?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ใช่',
+                cancelButtonText: 'ไม่',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    @this.call('delete', id)
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    Swal.fire(
+                        'Cancelled',
+                        'Your data is safe :)',
+                        'error'
+                    )
+                }
+            })
+        })
+    })
+</script>
 @endpush

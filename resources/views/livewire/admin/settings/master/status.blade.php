@@ -110,7 +110,9 @@
                                         </td>
                                     </tr>
                                 @empty
-                                -
+                                <tr>
+                                    <td colspan="5"> ไม่พบข้อมูล </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
