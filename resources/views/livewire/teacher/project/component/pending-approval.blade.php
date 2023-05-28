@@ -5,14 +5,14 @@
                 <div class="relative flex flex-row">
                     <span
                         class="flex items-center justify-center w-6 h-6 p-2 text-base font-bold text-white bg-yellow-400 rounded-full">
-                        4
+                        {{$countProject}}
                     </span>
                     <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
                         รออนุมัติ
                     </h4>
                 </div>
                 <div class="dark:text-white dark:opacity-60">
-                    กรุณาอนุมัติก่อนวันที่ <span>10/04/2566</span>
+                    {{$stepText}}
                 </div>
             </div>
         </div>

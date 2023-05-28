@@ -106,7 +106,7 @@
                     <div class="p-0 overflow-x-auto">
                         <div class="flex flex-wrap justify-center gap-6 sm:justify-start">
                             @foreach ($detail->user_project as $item_teacher)
-                                @if (str_contains($item_teacher,"teacher"))
+                                @if (str_contains($item_teacher,"teacher1") || str_contains($item_teacher,"teacher2"))
                                     <figure
                                         class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-52 md:w-60 rounded-4">
                                         <div class="flex items-center mt-4 mb-6">
@@ -118,7 +118,7 @@
                                         </figcaption>
                                         <span
                                             class="absolute top-0 right-0 px-3 py-1 text-sm font-black tracking-wider text-white bg-teal-500 dark:bg-slate-900/40 rounded-bl-4 shadow-primary-outline dark:shadow-dark-xl dark:text-gray-100">
-                                            @if ($item_teacher->role == "teacher1")
+                                            @if ($item_teacher->role == "teacher1" || $item_teacher->role == "teacher2")
                                                 ที่ปรึกษาหลัก
                                             @else
                                                 ที่ปรึกษารอง
@@ -148,7 +148,7 @@
                     <div class="p-0 overflow-x-auto">
                         <div class="flex flex-wrap justify-center gap-6 sm:justify-start">
                             @foreach ($detail->user_project as $item_external)
-                                @if (str_contains($item_teacher,"external"))
+                                @if (str_contains($item_external->role,"teacher3"))
                                     <figure
                                         class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-60 rounded-4">
                                         <div class="flex items-center mt-4 mb-6">

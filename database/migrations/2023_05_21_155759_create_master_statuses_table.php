@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name')->comment('คำอธิบาย');
             $table->foreignId('role_id')->comment('ประเภทบุคลากร');
             $table->string('status')->comment('ประเภทบุคลากร');
+            $table->string('status_filter')->comment('สามารถค้นหาได้');
+            $table->string('status_update')->comment('สามารถอนุมัติจากสถานะนี้ได้');
             // $table->enum('status', ['active', 'inactive'])->default('active')->comment('สถานะ');
             $table->bigInteger('created_by', 0, 1)->nullable();
             $table->bigInteger('updated_by', 0, 1)->nullable();

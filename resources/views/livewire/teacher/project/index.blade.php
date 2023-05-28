@@ -17,7 +17,7 @@
                         <option value="" selected>
                             ปีการศึกษาทั้งหมด
                         </option>
-                        @foreach ($term as $item_term)
+                        @foreach ($termFilter as $item_term)
                             <option value="{{$item_term->id}}">
                                 {{$item_term->term}} / {{$item_term->year}}
                             </option>
@@ -27,18 +27,14 @@
                 <div class="flex flex-col gap-3 sm:flex-row">
                     <div class="flex-1">
                         <select class="select">
-                            <option value="สถานะทั้งหมด" selected>
+                            <option value="" selected>
                                 สถานะทั้งหมด
                             </option>
-                            <option value="รออนุมัติหัวข้อ">
-                                รออนุมัติหัวข้อ
+                            @foreach ($statusFilter as $item_status)
+                            <option value="{{$item_status->id}}">
+                                {{$item_status->status}}
                             </option>
-                            <option value="อนุมัติ">
-                                อนุมัติ
-                            </option>
-                            <option value="ไม่อนุมัติ">
-                                ไม่อนุมัติ
-                            </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="flex-1">
@@ -111,23 +107,6 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row justify-center space-x-4">
-                                            {{-- <figure class="flex flex-row items-center space-x-2">
-                                                <img class="object-cover object-center w-8 h-8 rounded-full"
-                                                    src="https://images.pexels.com/photos/325531/pexels-photo-325531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                                    alt="avatar" />
-                                                <figcaption class="text-sm dark:text-slate-400">
-                                                    {{ $project->user_project->where('role', 'student')[0]->user->name ?? '' }}
-                                                </figcaption>
-                                            </figure>
-
-                                            <figure class="flex flex-row items-center space-x-2">
-                                                <img class="object-cover object-center w-8 h-8 rounded-full"
-                                                    src="https://images.pexels.com/photos/2887767/pexels-photo-2887767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                                    alt="avatar" />
-                                                <figcaption class="text-sm dark:text-slate-400">
-                                                    {{ $project->user_project->where('role', 'student')[1]->user->name ?? '' }}
-                                                </figcaption>
-                                            </figure> --}}
                                             <figure class="flex flex-row items-center space-x-2">
                                                 <figcaption class="text-sm dark:text-slate-400">
                                                 @foreach ($project->StudentListForTable as $item_student)
@@ -152,16 +131,14 @@
                                         <div class="inline-block">
                                             <select id="UpdateStatusProject" class="select" data-id="{{$project->id}}">
                                                 <option value="" disabled selected>
-                                                    {{$project->master_status->name}}
+                                                    {{$project->master_status->status}}
                                                 </option>
-                                                @forelse ($project->StatusListForTable as $item)
+                                                @forelse ($project->SelectOption as $item)
                                                 <option value="{{$item->id}}">
-                                                    {{$item->name}}
+                                                    {{$item->status}}
                                                 </option>
                                                 @empty
-                                                <option value="" disabled selected>
-                                                    เลือกสถานะ
-                                                </option>
+
                                                 @endforelse
                                             </select>
                                         </div>
@@ -220,6 +197,10 @@
                 @this.updateStatusProject(id, status);
             }
         })
+    })
+
+    Livewire.on('refreshComponent', e => {
+        location.reload();
     })
 </script>
 @endpush

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Teacher\Project;
 
 use App\Models\Project;
 use App\Models\EduTerm;
+use App\Models\Master_status;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,30 +18,42 @@ class Index extends Component
 
     public function render()
     {
+        // dd($this->step(1,"string"));
         // search
         $search = $this->search;
         $year = $this->year;
+        $step = 1;
+        $step_teacher = [1, 3];
+        $step_admin = [2, 5];
 
         // role
         $roleName = auth()->user()->role()->first()->name;
 
-        // group step
-        $statusProject = [1, 2, 3, 4, 5];
-
         // filter
-        $term = EduTerm::all();
+        $termFilter = EduTerm::all();
+        $statusFilter = Master_status::where("step", $step)
+        ->where("status_filter","Y")
+        ->where("role_id",auth()->user()->role_id)
+        ->get();
+
+        // Select Option
+        // $statusOption = Master_status::where("step", $step)
+        // ->where("role_id",auth()->user()->role_id)
+        // ->get();
 
         $projects = Project::with("user_project","edu_term","master_status")
-        ->WhereIn("status", $statusProject)
-        ->when($roleName == "teacher", function($when){
+        ->whereHas("master_status", function($sub) use($step){
+            $sub->where("step", $step);
+        })
+        ->when($roleName == "teacher", function($when) use($step_teacher){
             $when->whereHas("user_project", function($sub){
                 $sub->where("user_id", auth()->user()->id)
                 ->where("role","teacher1");
             })
-            ->where("status","1");
+            ->whereIn("status", $step_teacher);
         })
-        ->when($roleName == "admin", function($when){
-            $when->where("status","2");
+        ->when($roleName == "admin", function($when) use($step_admin){
+            $when->whereIn("status",$step_admin);
         })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")
@@ -51,16 +64,22 @@ class Index extends Component
         })
         ->paginate(10);
         // dd($projects);
-        return view('livewire.teacher.project.index', compact('projects','term'));
+        return view('livewire.teacher.project.index', compact('projects','termFilter','statusFilter'));
     }
 
     public function updateStatusProject($id, $status)
     {
         try {
-            $project = Project::find($id);
-            $project->status = $status;
-            $project->save();
-            $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
+            $project = Project::with('master_status')->find($id);
+            if($project->master_status->status_update == "Y"){
+                $project->status = $status;
+                $project->save();
+                $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
+                $this->emit('refreshComponent');
+            }else{
+                $this->emit('alert', ['status' => 'error', 'title' => 'ไม่สามารถอัพเดทสถานะได้']);
+            }
+
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }

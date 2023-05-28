@@ -19,7 +19,7 @@ Route::middleware("auth", "role:student")->group(function () {
         // เขียนคำร้องทั่วไป
         Route::view("/petition", "students.petition")->name("petition");
         // ข้อเสนอแนะ
-        Route::view("/suggestion/{id}", "students.suggestion")->name("suggestion");
+        Route::view("/suggestion/{id?}", "students.suggestion")->name("suggestion");
         // ประวัติการส่งคำร้อง
         Route::view("/history", "students.history")->name("history");
     });

@@ -83,7 +83,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($project->comments->sortByDesc("id") as $item)
+                                @foreach ($comments as $item)
                                 <tr>
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
@@ -94,13 +94,14 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">{{$item->created_at->thaidatetime()}}</span>
+                                            class="text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">{{$item->created_at->thaidate()}} {{ date('H:i น.', strtotime($item->created_at)) }}</span>
                                     </td>
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row items-center justify-end space-x-3">
                                             <button type="button" data-modal-target="editModal"
                                                 data-modal-toggle="editModal"
+                                                wire:click="$emit('getSuggestionModalEdit',{{ $item->id }})"
                                                 class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-pencil-square leading-0"></i>
@@ -108,7 +109,8 @@
                                                 </div>
                                             </button>
                                             <button type="button"
-                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
+                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800 delete-button"
+                                                data-key="{{ $item->id }}">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-trash3 leading-0"></i>
                                                     <span class="block">ลบ</span>
@@ -121,6 +123,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ $comments->links() }}
                 </div>
             </div>
         </div>
@@ -128,31 +131,30 @@
 </div>
 @push('script')
 <script>
-    Livewire.on('closeModal', e => {
-        $('button[data-modal-hide="createdModal"]').trigger('click');
+    Livewire.on('closeModalCreate', e => {
+        $('button[data-modal-hide="editModal"]').trigger('click');
+        location.reload();
     })
-    // Livewire.hook('message.sent', (message, component) => {
-    //     console.log("message.sent");
-    //     if (message.updateQueue[0].payload.event === 'getSuggestionModalCreate') {
-    //         $('#loading-create').removeClass('hidden');
-    //         $('#modal-project-step-create').addClass('hidden');
-    //     }
-    //     if (message.updateQueue[0].payload.event === 'getSuggestionModalEdit') {
-    //         $('#loading-edit').removeClass('hidden');
-    //         $('#modal-project-step-edit').addClass('hidden');
-    //     }
-    // });
 
-    // Livewire.hook('message.processed', (message, component) => {
-    //     console.log("message.processed");
-    //     if (message.updateQueue[0].payload.event === 'getSuggestionModalCreate') {
-    //         $('#loading-create').addClass('hidden');
-    //         $('#modal-project-step-create').removeClass('hidden');
-    //     }
-    //     if (message.updateQueue[0].payload.event === 'getSuggestionModalEdit') {
-    //         $('#loading-edit').addClass('hidden');
-    //         $('#modal-project-step-edit').removeClass('hidden');
-    //     }
-    // });
+    Livewire.on('closeModalEdit', e => {
+        $('button[data-modal-hide="editModal"]').trigger('click');
+    })
+
+    $('.delete-button').click(function() {
+        const key = $(this).data('key')
+        Swal.fire({
+            icon: 'info',
+            title: 'ลบข้อมูล',
+            text: 'คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่',
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยัน',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                @this.delete(key);
+            }
+        })
+    })
 </script>
 @endpush

@@ -1,27 +1,5 @@
-<div class="flex flex-wrap mb-6 -mx-3">
-    <div class="flex-none w-full max-w-full px-3">
-        <div class="grid gap-4 sm:grid-cols-3">
-            <div class="flex flex-col p-4 bg-white rounded-lg dark:bg-slate-850">
-                <div class="relative flex flex-row">
-                    <span
-                        class="flex items-center justify-center w-6 h-6 p-2 text-base font-bold text-white bg-yellow-400 rounded-full">
-                        4
-                    </span>
-                    <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
-                        รออนุมัติ
-                    </h4>
-                </div>
-                <div class="dark:text-white dark:opacity-60">
-                    กรุณาอนุมัติก่อนวันที่ <span>10/04/2566</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="flex flex-wrap -mx-3">
     <div class="flex-none w-full max-w-full px-3">
-
         <div
             class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
             <div
@@ -35,39 +13,28 @@
             </div>
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
                 <div>
-                    <select class="select">
-                        <option value="ปีการศึกษาทั้งหมด" selected>
+                    <select class="select" wire:model='year'>
+                        <option value="" selected>
                             ปีการศึกษาทั้งหมด
                         </option>
-                        <option value="2566">
-                            2566
+                        @foreach ($termFilter as $item_term)
+                        <option value="{{$item_term->id}}">
+                            {{$item_term->term}} / {{$item_term->year}}
                         </option>
-                        <option value="2565">
-                            2565
-                        </option>
-                        <option value="2564">
-                            2564
-                        </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
                     <div class="flex-1">
                         <select class="select">
-                            <option value="สถานะทั้งหมด" selected>
+                            <option value="" selected>
                                 สถานะทั้งหมด
                             </option>
-                            <option value="รออนุมัติ">
-                                รออนุมัติ
+                            @foreach ($statusFilter as $item_status)
+                            <option value="{{$item_status->id}}">
+                                {{$item_status->status}}
                             </option>
-                            <option value="แก้ไขตามข้อเสนอแนะ">
-                                แก้ไขตามข้อเสนอแนะ
-                            </option>
-                            <option value="อนุมัติ">
-                                อนุมัติ
-                            </option>
-                            <option value="ไม่อนุมัติ">
-                                ไม่อนุมัติ
-                            </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="flex-1">
@@ -76,7 +43,7 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา">
+                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหา">
                         </div>
                     </div>
                 </div>
@@ -114,6 +81,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($projects as $project)
                             <tr>
                                 <td
                                     class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
@@ -124,36 +92,27 @@
                                                 class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
                                         </div>
                                         <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
-                                            ทดสอบการพัฒนาระบบใหม่
+                                            {{ $project->name_th }}
                                             <span
-                                                class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
-                                                Development
+                                                class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">
+                                                {{ $project->name_en }}
                                             </span>
                                         </h6>
                                     </div>
                                 </td>
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <span class="text-sm dark:text-slate-400">1/2566</span>
+                                    <span class="text-sm dark:text-slate-400">{{ $project->edu_term->term }}/{{
+                                        $project->edu_term->year }}</span>
                                 </td>
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     <div class="flex flex-row justify-center space-x-4">
                                         <figure class="flex flex-row items-center space-x-2">
-                                            <img class="object-cover object-center w-8 h-8 rounded-full"
-                                                src="https://images.pexels.com/photos/325531/pexels-photo-325531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                                alt="avatar" />
                                             <figcaption class="text-sm dark:text-slate-400">
-                                                ชื่อ
-                                            </figcaption>
-                                        </figure>
-
-                                        <figure class="flex flex-row items-center space-x-2">
-                                            <img class="object-cover object-center w-8 h-8 rounded-full"
-                                                src="https://images.pexels.com/photos/2887767/pexels-photo-2887767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                                alt="avatar" />
-                                            <figcaption class="text-sm dark:text-slate-400">
-                                                ชื่อ
+                                                @foreach ($project->StudentListForTable as $item_student)
+                                                {{ $item_student }}<br>
+                                                @endforeach
                                             </figcaption>
                                         </figure>
                                     </div>
@@ -171,33 +130,31 @@
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     <div class="inline-block">
-                                        <select class="select">
-                                            <option value="รออนุมัติ" selected>
-                                                รออนุมัติ
+                                        <select id="UpdateStatusProject" class="select" data-id="{{$project->id}}">
+                                            <option value="" disabled selected>
+                                                {{$project->master_status->status}}
                                             </option>
-                                            <option value="แก้ไขตามข้อเสนอแนะ">
-                                                แก้ไขตามข้อเสนอแนะ
+                                            @forelse ($project->SelectOption as $item)
+                                            <option value="{{$item->id}}">
+                                                {{$item->status}}
                                             </option>
-                                            <option value="อนุมัติ">
-                                                อนุมัติ
-                                            </option>
-                                            <option value="ไม่อนุมัติ">
-                                                ไม่อนุมัติ
-                                            </option>
+                                            @empty
+
+                                            @endforelse
                                         </select>
                                     </div>
                                 </td>
                                 <td
                                     class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     <div class="flex flex-row justify-end gap-3">
-                                        <a href="{{ route('teacher.project.details') }}"
+                                        <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
                                             class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-eye leading-0"></i>
                                                 <span class="block">ดูรายละเอียด</span>
                                             </div>
                                         </a>
-                                        <a href="{{ route('teacher.project.suggestion') }}"
+                                        <a href="{{ route('teacher.project.suggestion',['id'=> $project->id]) }}"
                                             class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-chat-dots leading-0"></i>
@@ -207,51 +164,44 @@
                                     </div>
                                 </td>
                             </tr>
+                            @empty
+                            <tr>
+                                <td colspan="6"> ไม่พบข้อมูล </td>
+                            </tr>
+                            @endforelse
+
                         </tbody>
                     </table>
                 </div>
 
-                <div class="flex justify-end mt-4">
-                    <nav aria-label="Page navigation">
-                        <ul class="inline-flex items-center -space-x-px">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 ml-0 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <span class="sr-only">Previous</span>
-                                    <i class="bi bi-chevron-left"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" aria-current="page"
-                                    class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
-                                    1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <span class="sr-only">Next</span>
-                                    <i class="bi bi-chevron-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                </div>
+                {{ $projects->links() }}
             </div>
         </div>
-
     </div>
 </div>
+@push('script')
+<script>
+    $(`#UpdateStatusProject`).on(`change`, function(){
+        const label = $(this).find("option:selected")[0].text;
+        const id = $(this).data("id");
+        const status = $(this).val();
+        Swal.fire({
+            icon: 'question',
+            title: 'คุณต้องการเปลี่ยนสถานะ',
+            text: `${label} ใช่หรือไม่`,
+            showCancelButton: true,
+            confirmButtonText: 'ยืนยัน',
+            cancelButtonText: 'ยกเลิก',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                @this.updateStatusProject(id, status);
+            }
+        })
+    })
+
+    Livewire.on('refreshComponent', e => {
+        location.reload();
+    })
+</script>
+@endpush

@@ -43,9 +43,9 @@ class SuggestionModalCreate extends Component
                 'project_id' => $this->projectId,
                 'created_by' => auth()->user()->id,
             ]);
-            $this->emit('refreshSuggestion');
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
-            $this->emit('closeModal');
+            $this->emit('closeModalCreate');
+            $this->emit('refreshSuggestion');
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }

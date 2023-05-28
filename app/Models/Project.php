@@ -63,30 +63,8 @@ class Project extends Model
         return $data;
     }
 
-    protected function getStatusListForTableAttribute()
+    protected function getSelectOptionAttribute()
     {
-        // List Status Project
-        // Step 1
-        // - Teacher 1 2 3
-        // - Admin 4 5
-        // Step 2
-        // - Teacher  6 7 8
-        // - Admin 9 10
-        // - Teacher  11 12 13
-        // - Admin 14
-        // Step 3
-        // - Teacher 15 16 17
-        // - Admin 18 19
-        // - Teacher 20 21 22
-        // - Admin 23
-        // Step 4
-        // - Teacher 24 25 26
-        // - Admin 27 28
-        // - Teacher 29 30 31
-        // - Admin 32
-        // Step 5
-        // - Teacher 33 34 35 36
-        // - Admin 37
         $status = [];
         if($this->status == 1){
             $status = [2, 3];
@@ -96,24 +74,30 @@ class Project extends Model
             $status = [7, 8];
         }else if($this->status == 7){
             $status = [9, 10];
+        }else if($this->status == 9){
+            $status = [11, 12, 13];
         }else if($this->status == 11){
-            $status = [12, 13];
+            $status = [14];
         }else if($this->status == 12){
             $status = [14];
         }else if($this->status == 15){
             $status = [16, 17];
         }else if($this->status == 16){
             $status = [18, 19];
+        }else if($this->status == 18){
+            $status = [20, 21, 22];
         }else if($this->status == 20){
-            $status = [21, 22];
+            $status = [23];
         }else if($this->status == 21){
             $status = [23];
         }else if($this->status == 24){
             $status = [25, 26];
         }else if($this->status == 25){
             $status = [27, 28];
+        }else if($this->status == 27){
+            $status = [29, 30, 31];
         }else if($this->status == 29){
-            $status = [30, 31];
+            $status = [32];
         }else if($this->status == 30){
             $status = [32];
         }else if($this->status == 33){
@@ -121,7 +105,13 @@ class Project extends Model
         }else if($this->status == 34 || $this->status == 35){
             $status = [37];
         }
-        $masterStatus = Master_status::WhereIn("id",$status)->get();
-        return $masterStatus;
+
+        $statusOption = Master_status::whereIn("id",$status)
+        // where("step", $this->master_status->step)
+        // ->where("role_id",auth()->user()->role_id)
+        ->whereIn("id",$status)
+        ->get();
+
+        return $statusOption;
     }
 }
