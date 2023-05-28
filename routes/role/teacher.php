@@ -25,7 +25,7 @@ Route::middleware("auth", "role:teacher")->group(function () {
                     // รายละเอียดโครงงาน
                     Route::view("/details/{id}", "teacher.project.details")->name("details");
                     // เสนอแนะ
-                    Route::view("/suggestion", "teacher.project.suggestion")->name("suggestion");
+                    Route::view("/suggestion/{id}", "teacher.project.suggestion")->name("suggestion");
                 });
         });
 });

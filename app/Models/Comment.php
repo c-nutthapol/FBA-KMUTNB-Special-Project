@@ -13,6 +13,9 @@ class Comment extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'created_at' => 'datetime'
+    ];
 
     protected static function boot()
     {
@@ -23,5 +26,10 @@ class Comment extends Model
             $model->created_by = auth()->check() ? auth()->user()->id : null;
             $model->created_at = $model->freshTimestamp();
         });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, "created_by", "id");
     }
 }

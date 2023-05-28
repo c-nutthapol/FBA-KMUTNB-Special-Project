@@ -24,8 +24,8 @@
                     <i class="text-2xl text-white bi bi-folder-fill leading-0 dark:text-teal-400"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
-                    <span class="block font-bold">ทดสอบการพัฒนาระบบใหม่</span>
-                    <span class="block font-normal text-slate-600 dark:text-white">New Development</span>
+                    <span class="block font-bold">{{ $detail->name_th }}</span>
+                    <span class="block font-normal text-slate-600 dark:text-white">{{ $detail->name_en }}</span>
                 </h5>
             </div>
             <div class="pb-6 sm:p-6">
@@ -37,7 +37,7 @@
                     </div>
                 </a>
 
-                <a href="{{ route('teacher.project.suggestion') }}"
+                <a href="{{ route('teacher.project.suggestion',['id' => $detail->id]) }}"
                     class="text-xs text-white btn from-blue-500 to-violet-500" type="button">
                     <div class="flex flex-row items-center gap-3">
                         <i class="bi bi-chat-dots-fill leading-0"></i>
@@ -46,7 +46,6 @@
                 </a>
             </div>
         </div>
-
 
         {{-- ผู้จัดทำโครงงาน --}}
         <div
@@ -63,53 +62,28 @@
             <div class="flex-auto p-6">
                 <div class="p-0 overflow-x-auto">
                     <div class="flex flex-wrap justify-center gap-6 sm:justify-start">
-                        <figure
-                            class="relative flex flex-col items-center w-auto p-6 space-y-6 break-words sm:flex-row bg-slate-50 dark:bg-slate-900/40 sm:space-y-0 sm:space-x-6 rounded-4">
-                            <div class="flex items-center">
-                                <img src="https://images.pexels.com/photos/325531/pexels-photo-325531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    alt="avatar"
-                                    class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
-                            </div>
-                            <figcaption class="space-y-1 text-center sm:text-left">
-                                <div class="text-lg font-bold tracking-wide dark:text-white">
-                                    สมชาย นามสกุล
-                                </div>
-                                <div
-                                    class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
-                                    <span class="inline-block">รหัสนักศึกษา</span>:<span
-                                        class="inline-block">5402041520035</span>
-                                </div>
-                                <div
-                                    class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
-                                    <span class="inline-block">สาขาวิชา</span>:<span
-                                        class="inline-block">คอมพิวเตอร์ธุรกิจ</span>
-                                </div>
-                            </figcaption>
-                        </figure>
-
-                        <figure
-                            class="relative flex flex-col items-center w-auto p-6 space-y-6 break-words sm:flex-row bg-slate-50 dark:bg-slate-900/40 sm:space-y-0 sm:space-x-6 rounded-4">
-                            <div class="flex items-center">
-                                <img src="https://images.pexels.com/photos/2887767/pexels-photo-2887767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    alt="avatar"
-                                    class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
-                            </div>
-                            <figcaption class="space-y-1 text-center sm:text-left">
-                                <div class="text-lg font-bold tracking-wide dark:text-white">
-                                    สมชาย นามสกุล
-                                </div>
-                                <div
-                                    class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
-                                    <span class="inline-block">รหัสนักศึกษา</span>:<span
-                                        class="inline-block">5402041520035</span>
-                                </div>
-                                <div
-                                    class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
-                                    <span class="inline-block">สาขาวิชา</span>:<span
-                                        class="inline-block">คอมพิวเตอร์ธุรกิจ</span>
-                                </div>
-                            </figcaption>
-                        </figure>
+                        @foreach ($detail->user_project as $item_student)
+                            @if (str_contains($item_student,"student"))
+                                <figure
+                                    class="relative flex flex-col items-center w-auto p-6 space-y-6 break-words sm:flex-row bg-slate-50 dark:bg-slate-900/40 sm:space-y-0 sm:space-x-6 rounded-4">
+                                    <div class="flex items-center">
+                                        <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
+                                            class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
+                                    </div>
+                                    <figcaption class="space-y-1 text-center sm:text-left">
+                                        <div class="text-lg font-bold tracking-wide dark:text-white">
+                                            {{$item_student->user->displayname ?? $item_student->user->name}}
+                                        </div>
+                                        <div class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
+                                            <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">5402041520035</span>
+                                        </div>
+                                        <div class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
+                                            <span class="inline-block">สาขาวิชา</span>:<span class="inline-block">คอมพิวเตอร์ธุรกิจ</span>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -131,37 +105,28 @@
                 <div class="flex-auto p-6">
                     <div class="p-0 overflow-x-auto">
                         <div class="flex flex-wrap justify-center gap-6 sm:justify-start">
-                            <figure
-                                class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-52 md:w-60 rounded-4">
-                                <div class="flex items-center mt-4 mb-6">
-                                    <img src="https://images.pexels.com/photos/371160/pexels-photo-371160.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                        alt="avatar"
-                                        class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
-                                </div>
-                                <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                    สมชาย นามสกุล
-                                </figcaption>
-                                <span
-                                    class="absolute top-0 right-0 px-3 py-1 text-sm font-black tracking-wider text-white bg-teal-500 dark:bg-slate-900/40 rounded-bl-4 shadow-primary-outline dark:shadow-dark-xl dark:text-gray-100">
-                                    ที่ปรึกษาหลัก
-                                </span>
-                            </figure>
-
-                            <figure
-                                class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-52 md:w-60 rounded-4">
-                                <div class="flex items-center mt-4 mb-6">
-                                    <img src="https://images.pexels.com/photos/1574164/pexels-photo-1574164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                        alt="avatar"
-                                        class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
-                                </div>
-                                <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                    สมชาย นามสกุล
-                                </figcaption>
-                                <span
-                                    class="absolute top-0 right-0 px-3 py-1 text-sm font-black tracking-wider text-white bg-blue-500 dark:bg-slate-900/40 rounded-bl-4 shadow-primary-outline dark:shadow-dark-xl dark:text-gray-100">
-                                    ที่ปรึกษารอง
-                                </span>
-                            </figure>
+                            @foreach ($detail->user_project as $item_teacher)
+                                @if (str_contains($item_teacher,"teacher"))
+                                    <figure
+                                        class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-52 md:w-60 rounded-4">
+                                        <div class="flex items-center mt-4 mb-6">
+                                            <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
+                                                class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
+                                        </div>
+                                        <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                            {{$item_teacher->user->displayname ?? $item_teacher->user->name}}
+                                        </figcaption>
+                                        <span
+                                            class="absolute top-0 right-0 px-3 py-1 text-sm font-black tracking-wider text-white bg-teal-500 dark:bg-slate-900/40 rounded-bl-4 shadow-primary-outline dark:shadow-dark-xl dark:text-gray-100">
+                                            @if ($item_teacher->role == "teacher1")
+                                                ที่ปรึกษาหลัก
+                                            @else
+                                                ที่ปรึกษารอง
+                                            @endif
+                                        </span>
+                                    </figure>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -182,17 +147,20 @@
                 <div class="flex-auto p-6">
                     <div class="p-0 overflow-x-auto">
                         <div class="flex flex-wrap justify-center gap-6 sm:justify-start">
-                            <figure
-                                class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-60 rounded-4">
-                                <div class="flex items-center mt-4 mb-6">
-                                    <img src="https://images.pexels.com/photos/1846597/pexels-photo-1846597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                        alt="avatar"
-                                        class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
-                                </div>
-                                <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                    สมชาย นามสกุล
-                                </figcaption>
-                            </figure>
+                            @foreach ($detail->user_project as $item_external)
+                                @if (str_contains($item_teacher,"external"))
+                                    <figure
+                                        class="relative flex flex-col items-center p-6 overflow-hidden break-words bg-white border border-gray-100 dark:border-slate-900 dark:bg-transparent w-60 rounded-4">
+                                        <div class="flex items-center mt-4 mb-6">
+                                            <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
+                                                class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
+                                        </div>
+                                        <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                            {{$item_external->user->displayname ?? $item_external->user->name}}
+                                        </figcaption>
+                                    </figure>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
