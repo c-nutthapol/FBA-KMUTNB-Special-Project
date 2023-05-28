@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Master_new;
+
 class News extends Model
 {
     use HasFactory, SoftDeletes;
@@ -15,6 +18,10 @@ class News extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
     // Auto Insert ข้อมูลคนสร้างและแก้ไข
     protected static function boot()
     {
@@ -34,15 +41,23 @@ class News extends Model
         });
     }
 
-    public function user(){
-        return $this->belongsTo(User::class,'updated_by')->withDefault();
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'updated_by')->withDefault();
     }
 
-    public function scopeActive($query) {
+    public function scopeActive($query)
+    {
         return $query->whereStatus('active');
     }
 
-    public function scopePin($query) {
+    public function scopePin($query)
+    {
         return $query->wherePin('active');
+    }
+
+    public function master_new(): BelongsTo
+    {
+        return $this->belongsTo(Master_new::class, 'masternew_id');
     }
 }

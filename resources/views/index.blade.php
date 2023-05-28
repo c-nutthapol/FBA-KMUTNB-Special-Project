@@ -4,27 +4,7 @@
 
 @section('content')
 
-    <div class="flex flex-wrap mb-10 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
-            <div class="rounded-lg swiper banners">
-                <div class=" swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="banner" class="object-cover w-full rounded-lg h-[36rem]">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.pexels.com/photos/325807/pexels-photo-325807.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="banner" class="object-cover w-full rounded-lg h-[36rem]">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="banner" class="object-cover w-full rounded-lg h-[36rem]">
-                    </div>
-                </div>
-                <div class="swiper-scrollbar"></div>
-            </div>
-        </div>
-    </div>
+    @livewire('component.banners')
 
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="flex-none w-full max-w-full px-3 mb-6">
