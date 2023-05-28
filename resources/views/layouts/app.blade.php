@@ -97,7 +97,7 @@
                 title: e.title,
                 text: e.text,
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 3000,
                 toast: true,
             })
         });
