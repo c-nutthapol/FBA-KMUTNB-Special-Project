@@ -23,11 +23,11 @@
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select class="select">
-                        <option value="วันที่ล่าสุด" selected>
+                    <select class="select" wire:model="order_by">
+                        <option value="DESC" selected>
                             วันที่ล่าสุด
                         </option>
-                        <option value="วันที่เก่าสุด">
+                        <option value="ASC">
                             วันที่เก่าสุด
                         </option>
                     </select>
@@ -39,7 +39,7 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search leading-0 dark:text-gray-400"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา">
+                            <input type="text" id="search" wire:model="search" class="pl-10 input" placeholder="ค้นหา">
                         </div>
                     </div>
                 </div>

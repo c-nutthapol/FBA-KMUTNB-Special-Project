@@ -10,6 +10,12 @@ class News extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['refreshNews' => '$refresh'];
+
+    public $order_by = 'DESC';
+
+    public $search = '';
+
     public function delete($id)
     {
         try {
@@ -25,7 +31,7 @@ class News extends Component
 
     public function render()
     {
-        $news = NewsModel::paginate(10);
+        $news = NewsModel::where('title', 'like', '%' . $this->search . '%')->orderBy('created_at', $this->order_by)->paginate(10);
         return view('livewire.admin.settings.news.news', compact('news'));
     }
 }

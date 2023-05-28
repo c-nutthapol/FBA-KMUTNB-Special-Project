@@ -21,21 +21,21 @@
                             @if ($photo)
                                 <div class="mb-2">
                                     <img src="{{ $photo->temporaryUrl() }}"
-                                        class="mx-auto h-34 w-auto rounded-2 object-cover object-center" alt="Avatar">
+                                        class="mx-auto h-auto w-full rounded-2 object-cover object-center"
+                                        alt="Avatar">
                                 </div>
                             @else
-                                <div class="mb-2">
-                                    @if ($img == null)
-                                        <div
-                                            class="mx-auto mb-2 flex h-34 w-auto items-center justify-center rounded-2 bg-gray-300">
-                                            <i class="bi bi-image-alt text-4xl leading-0"></i>
-                                        </div>
-                                    @else
-                                        <img src="{{ Storage::disk('public')->url($img) }}" alt="banner"
-                                            class="mx-auto h-34 w-auto rounded-2 object-cover object-center">
-                                    @endif
+                                <div
+                                    class="mx-auto mb-2 flex h-34 w-auto items-center justify-center rounded-2 bg-gray-300">
+                                    <i class="bi bi-image-alt text-4xl leading-0"></i>
                                 </div>
                             @endif
+
+                            <input class="input h-full p-0" type="file" wire:model="photo" name="photo">
+
+                            @error('photo')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div>
@@ -134,7 +134,7 @@
             })
             .then(editor => {
                 editor.model.document.on('change:data', () => {
-                    @this.set('content', editor.getData(), true);
+                    @this.set('content', editor.getData(),true);
                 });
             })
             .catch(error => {
