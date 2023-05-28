@@ -17,3 +17,8 @@ Livewire.on('alert', e => {
         toast: true,
     })
 });
+Livewire.on("redirect", url => {
+    setTimeout(function () {
+        window.location = url;
+    }, 1500);
+});
