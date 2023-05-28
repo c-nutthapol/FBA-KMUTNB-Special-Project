@@ -108,8 +108,8 @@
                                                     <span class="block">แก้ไข</span>
                                                 </div>
                                             </button>
-                                            <button type="button"
-                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
+                                            <button type="button" data-key="{{ $edu_term->id }}"
+                                                class="delete-button inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-trash3 leading-0"></i>
                                                     <span class="block">ลบ</span>
@@ -157,5 +157,22 @@
                 $('#modal-term-edit').removeClass('hidden');
             }
         });
+
+        $('.delete-button').click(function() {
+            const key = $(this).data('key')
+            Swal.fire({
+                icon: 'info',
+                title: 'ลบข้อมูล',
+                text: 'คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.delete(key);
+                }
+            })
+        })
     </script>
 @endpush

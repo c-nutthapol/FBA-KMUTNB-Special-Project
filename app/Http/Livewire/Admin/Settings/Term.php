@@ -20,4 +20,20 @@ class Term extends Component
 
         return view('livewire.admin.settings.term', compact('edu_terms'));
     }
+
+    public function delete($id)
+    {
+        try {
+            $record = EduTerm::find($id);
+            $check_date = strtotime(date('Y-m-d'));
+            if (!($check_date >= $record->start_date && $check_date <= $record->end_date)) {
+                $record->delete();
+                $this->emit('alert', ['status' => 'success', 'title' => 'ลบข้อมูลเสร็จสิ้น']);
+            } else {
+                $this->emit('alert', ['status' => 'info', 'title' => 'ไม่สามารถลบข้อมูลได้', 'text' => 'เนื่องจากยังใช้งานอยู่']);
+            }
+        } catch (\Exception $e) {
+            $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
+        }
+    }
 }
