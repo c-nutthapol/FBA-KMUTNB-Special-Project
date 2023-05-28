@@ -187,6 +187,63 @@
                         </a>
                     </li>
 
+                    <li class="mt-0.5 w-full">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.newtype' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                            href="{{ route('admin.settings.newtype') }}">
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                <i
+                                    class="bi {{ Route::currentRouteName() == 'admin.settings.newtype' ? 'bi-newspaper-fill ' : 'bi-newspaper' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                            </div>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                                ประเภทข่าว
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="mt-0.5 w-full">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.department' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                            href="{{ route('admin.settings.department') }}">
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                <i
+                                    class="bi {{ Route::currentRouteName() == 'admin.settings.department' ? 'bi-trophy-fill ' : 'bi-trophy' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                            </div>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                                สาขา
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="mt-0.5 w-full">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.document' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                            href="{{ route('admin.settings.document') }}">
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                <i
+                                    class="bi {{ Route::currentRouteName() == 'admin.settings.document' ? 'bi-book-fill ' : 'bi-book' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                            </div>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                                เอกสารดาวน์โหลด
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li class="mt-0.5 w-full">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.settings.status' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                            href="{{ route('admin.settings.status') }}">
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                <i
+                                    class="bi {{ Route::currentRouteName() == 'admin.settings.status' ? 'bi-tags-fill ' : 'bi-tags' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                            </div>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
+                                สถานะ
+                            </span>
+                        </a>
+                    </li>
+
                     <li class="w-full mt-4">
                         <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
                             log

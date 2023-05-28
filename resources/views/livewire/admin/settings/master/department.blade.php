@@ -10,14 +10,14 @@
                             <i class="text-2xl text-white bi bi-chat-dots-fill leading-0 dark:text-blue-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">
-                            ข้อเสนอแนะ
+                            สาขา
                         </h5>
                     </div>
                     <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
                         data-modal-target="createModal" data-modal-toggle="createModal">
                         <div class="flex flex-row items-center justify-center gap-3">
                             <i class="bi bi-plus-lg leading-0"></i>
-                            <span class="block">เพิ่มข้อเสนอแนะ</span>
+                            <span class="block">เพิ่มสาขา</span>
                         </div>
                     </button>
                 </div>
@@ -61,7 +61,7 @@
                                     </th>
                                     <th
                                         class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                        ข้อเสนอแนะ
+                                        สาขา
                                     </th>
                                     {{-- <th
                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -153,7 +153,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-plus-lg leading-0"></i> เพิ่มข้อเสนอแนะ
+                        <i class="bi bi-plus-lg leading-0"></i> เพิ่มสาขา
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -172,13 +172,13 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                ข้อเสนอแนะ
+                                สาขา
                             </label>
-                            <textarea class="input" wire:model="name" placeholder="กรุณากรอกข้อเสนอแนะ" rows="2"></textarea>
+                            <input type="text" wire:model="name" class="input" placeholder="กรุณากรอกสาขา" required></input>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข้อเสนอแนะ</span> --}}
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกสาขา</span> --}}
                         </div>
 
                     </div>
@@ -221,7 +221,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-                        <i class="bi bi-pencil-square leading-0"></i> แก้ไขข้อเสนอแนะ
+                        <i class="bi bi-pencil-square leading-0"></i> แก้ไขสาขา
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -240,13 +240,13 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                ข้อเสนอแนะ
+                                สาขา
                             </label>
-                            <textarea class="input" wire:model="t_name" placeholder="กรุณากรอกข้อเสนอแนะ" rows="2"></textarea>
+                            <input type="text" wire:model="t_name" class="input" placeholder="กรุณากรอกสาขา" required></input>
                             @error('t_name')
                                 <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข้อเสนอแนะ</span> --}}
+                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกสาขา</span> --}}
                         </div>
                         <div class="col-span-2">
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">

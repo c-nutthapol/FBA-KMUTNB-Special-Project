@@ -47,6 +47,14 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/project-steps", "admin.settings.project-steps")->name("project-steps");
                     // แบนเนอร์
                     Route::view("/banners", "admin.settings.banners")->name("banners");
+                    // ประเภทข่าว
+                    Route::view("/newtype", "admin.settings.newtype")->name("newtype");
+    // สาขา
+                    Route::view("/department", "admin.settings.department")->name("department");
+                    // เอกสารดาวน์โหลด
+                    Route::view("/document", "admin.settings.document")->name("document");
+                    // สถานะโครงการ
+                    Route::view("/status", "admin.settings.status")->name("status");
                 });
 
 

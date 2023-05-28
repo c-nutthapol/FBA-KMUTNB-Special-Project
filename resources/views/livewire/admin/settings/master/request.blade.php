@@ -83,13 +83,13 @@
                                             @if ($item->status  == 'active')
                                                 <span
                                                     class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
-                                                    ปกติ
+                                                    active
                                                 </span>
                                             @endif
                                             @if ($item->status  == 'inactive')
                                                 <span
                                                     class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
-                                                    ระงับการใช้
+                                                    inactive
                                                 </span>
                                             @endif
                                         </td>
