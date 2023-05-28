@@ -49,12 +49,23 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/banners", "admin.settings.banners")->name("banners");
                     // ประเภทข่าว
                     Route::view("/newtype", "admin.settings.newtype")->name("newtype");
-    // สาขา
+                    // สาขา
                     Route::view("/department", "admin.settings.department")->name("department");
                     // เอกสารดาวน์โหลด
                     Route::view("/document", "admin.settings.document")->name("document");
                     // สถานะโครงการ
                     Route::view("/status", "admin.settings.status")->name("status");
+
+                    Route::prefix("news")
+                        ->name("news.")
+                        ->group(function () {
+                            // ข่าวสารหน้าแรก
+                            Route::view("/news", "admin.settings.news.index")->name("home");
+                            // สร้างข่าวสาร
+                            Route::view("/news/create", "admin.settings.news.create")->name("create");
+                            // แก้ไขข่าวสาร
+                            Route::view("/news/edit", "admin.settings.news.edit")->name("edit");
+                        });
                 });
 
 

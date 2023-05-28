@@ -1384,6 +1384,7 @@ module.exports = {
         "disabled",
     ],
     plugins: [
+        require('@tailwindcss/line-clamp'),
         require("flowbite/plugin"),
         plugin(function ({ addComponents, addUtilities }) {
             addUtilities({

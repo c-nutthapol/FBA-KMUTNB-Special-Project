@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 include_once "role/student.php";
 include_once "role/teacher.php";
 include_once "role/admin.php";
@@ -37,4 +38,7 @@ Route::name("auth.")->group(function () {
 
 Route::middleware("auth")->group(function () {
     Route::view("/", "index")->name("home");
+
+    // ดูข่าวสาร
+    Route::view("/news/view", "news.view")->name("news.view");
 });
