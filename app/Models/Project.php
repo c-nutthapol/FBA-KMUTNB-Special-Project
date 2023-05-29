@@ -109,7 +109,7 @@ class Project extends Model
         $statusOption = Master_status::whereIn("id",$status)
         // where("step", $this->master_status->step)
         // ->where("role_id",auth()->user()->role_id)
-        ->whereIn("id",$status)
+        ->whereIn("step",[1, 2, 3, 4, 5])
         ->get();
 
         return $statusOption;

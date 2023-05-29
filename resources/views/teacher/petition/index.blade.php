@@ -5,4 +5,7 @@
 @section('content')
 
     @livewire('teacher.petition.index')
+
+    @livewire('teacher.petition.component.petition-modal-edit')
+
 @endsection
