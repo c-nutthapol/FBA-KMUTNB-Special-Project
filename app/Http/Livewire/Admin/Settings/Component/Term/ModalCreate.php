@@ -48,6 +48,7 @@ class ModalCreate extends Component
             EduTerm::create($validatedData);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('refreshTerm');
+            $this->emit('close_modal','createModal');
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }
