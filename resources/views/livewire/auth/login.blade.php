@@ -13,10 +13,10 @@
                 </label>
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
                     <span
-                        class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-3 text-center font-normal text-slate-500 transition-all">
+                        class="ease absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-3 text-center text-sm font-normal leading-5.6 text-slate-500 transition-all">
                         <i class="text-lg bi bi-person-fill"></i>
                     </span>
-                    <input type="text" class="input py-3 text-base pl-9 @error('username') error @enderror"
+                    <input type="text" class="input @error('username') error @enderror py-3 pl-9 text-base"
                         placeholder="กรุณากรอกชื่อผู้ใช้งาน" id="username" wire:model.defer="username" />
                 </div>
                 @error('username')
@@ -30,19 +30,24 @@
                 </label>
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
                     <span
-                        class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-3 text-center font-normal text-slate-500 transition-all">
+                        class="ease absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-3 text-center text-sm font-normal leading-5.6 text-slate-500 transition-all">
                         <i class="text-lg bi bi-lock-fill"></i>
                     </span>
-                    <input type="password" class="py-3 text-base pl-9 input @error('password') error @enderror"
+                    <input type="password" class="input @error('password') error @enderror py-3 pl-9 text-base"
                         placeholder="กรุณากรอกรหัสผ่าน" id="password" wire:model.defer="password" />
                 </div>
                 @error('password')
                     <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="block mt-8 text-center">
+            <div class="mt-2 text-right">
+                <a href="https://account.kmutnb.ac.th/web/#forget-password-section" class="text-sm tracking-wide underline hover:text-blue-500 dark:text-white">
+                    ลืมรหัสผ่าน?
+                </a>
+            </div>
+            <div class="block mt-6 text-center">
                 <button type="submit"
-                    class="text-base tracking-widest text-white btn from-blue-500 to-violet-500 w-100"
+                    class="text-base tracking-widest text-white btn w-100 from-blue-500 to-violet-500"
                     wire:loading.attr="disabled">
                     {{-- loading --}}
                     <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin"
@@ -59,19 +64,21 @@
                 </button>
             </div>
         </form>
+
     </div>
-    <div class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">
-        <p class="mx-auto mb-2.5 leading-normal text-sm dark:text-white/80 tracking-wide">ดาวน์โหลดเอกสาร
+    <div class="rounded-b-2xl border-t-0 border-solid border-black/12.5 p-6 px-1 pt-0 text-center sm:px-6">
+        <p class="mx-auto mb-2.5 text-sm leading-normal tracking-wide dark:text-white/80">ดาวน์โหลดเอกสาร
             <a href="#"
-                class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">
+                class="font-semibold text-transparent bg-gradient-to-tl from-blue-500 to-violet-500 bg-clip-text">
                 คลิก
             </a>
         </p>
         <p class="mx-auto text-sm leading-normal tracking-wide dark:text-white/80">ตารางดำเนินการ
             <a href="#"
-                class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">
+                class="font-semibold text-transparent bg-gradient-to-tl from-blue-500 to-violet-500 bg-clip-text">
                 คลิก
             </a>
         </p>
     </div>
 </div>
+
