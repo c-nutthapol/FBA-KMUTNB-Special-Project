@@ -46,6 +46,7 @@ Route::middleware("auth")->group(function () {
     })->name("news.view");
 });
 
-Route::middleware("auth")->name('ckeditor.')->prefix('ckeditor')->group(function(){
-    Route::post('image-upload','UploadImageController@index')->name('image-upload');
+Route::middleware("auth")->name('ckeditor.')->prefix('ckeditor')->group(function () {
+    Route::post('image-upload', [App\Http\Controllers\UploadImageController::class, 'index'])->name('image-upload');
 });
+

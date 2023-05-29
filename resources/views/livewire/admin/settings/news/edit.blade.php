@@ -145,11 +145,8 @@
         ClassicEditor
             .create(document.querySelector('#editor'), {
                 language: 'th',
-                simpleUpload: {
-                    uploadUrl: "{{ route('ckeditor.image-upload',['_token'=>csrf_token()]) }}"
-                },
-                easyImage: {
-                    uploadUrl: "{{ route('ckeditor.image-upload',['_token'=>csrf_token()]) }}"
+                ckfinder: {
+                    uploadUrl: "{{ route('ckeditor.image-upload', ['_token' => csrf_token()]) }}",
                 }
             })
             .then(editor => {
