@@ -26,7 +26,7 @@ class Term extends Component
         try {
             $record = EduTerm::find($id);
             $check_date = strtotime(date('Y-m-d'));
-            if (!($check_date >= $record->start_date && $check_date <= $record->end_date)) {
+            if (!($check_date >= $record->start_date->timestamp && $check_date <= $record->end_date->timestamp)) {
                 $record->delete();
                 $this->emit('alert', ['status' => 'success', 'title' => 'ลบข้อมูลเสร็จสิ้น']);
             } else {
