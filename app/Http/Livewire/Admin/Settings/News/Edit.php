@@ -18,12 +18,6 @@ class Edit extends Component
 
     public $cover_img, $photo, $record, $title, $masternew_id, $detail, $status;
 
-    public function render()
-    {
-        $master_news = Master_new::where('status', 'active')->get();
-        return view('livewire.admin.settings.news.edit', compact('master_news'));
-    }
-
     public function mount($new_id)
     {
         $this->resetValidation();
@@ -38,22 +32,53 @@ class Edit extends Component
         }
     }
 
+    protected function rules()
+    {
+        return [
+            'photo' => ['nullable', 'image', 'max:8192'],
+            'status' => ['required', 'in:active,inactive'],
+            'title' => ['required', 'string'],
+            'detail' => ['required', 'string'],
+            'masternew_id' => ['required',],
+        ];
+    }
+
+    protected $attributes = [
+        'photo' => 'รูปภาพ',
+        'status' => 'สถานะ',
+        'title' => 'หัวข่าว',
+        'content' => 'รายละเอียด',
+        'masternew_id' => 'ประเภทของข่าว',
+    ];
+
+    public function render()
+    {
+        $master_news = Master_new::where('status', 'active')->get();
+        return view('livewire.admin.settings.news.edit', compact('master_news'));
+    }
+
+
+    public function changeStatus(){
+        if($this->status == 'active'){
+            $this->status = 'inactive';
+        }else{
+            $this->status = 'active';
+        }
+    }
+
+
     public function submit()
     {
-        if ($this->status == null || !$this->status) {
-            $this->status = "inactive";
-        }
-        // $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
-        $Data = [
-            'cover_img' => $this->photo->store('News', 'public'),
-            'status' => $this->status,
-            'title' => $this->title,
-            'masternew_id' => $this->masternew_id,
-            'detail' => $this->detail,
-        ];
+        $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
         try {
+            if ($this->photo) {
+                $validatedData['cover_img'] =  $this->photo->store('News', 'public');
+                unset($validatedData['photo']);
+            }else{
+                unset($validatedData['photo']);
+            }
             $update = News::find($this->idTable);
-            $update->update($Data);
+            $update->update($validatedData);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             return redirect()->route('admin.settings.news.home');
         } catch (\Exception $e) {
@@ -61,3 +86,5 @@ class Edit extends Component
         }
     }
 }
+
+

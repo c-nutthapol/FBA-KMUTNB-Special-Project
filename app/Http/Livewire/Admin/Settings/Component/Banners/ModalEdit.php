@@ -17,6 +17,20 @@ class ModalEdit extends Component
 
     public $img, $status, $photo;
 
+    protected function rules()
+    {
+        return [
+            'photo' => ['nullable', 'image', 'max:8192'],
+            'status' => ['boolean'],
+        ];
+    }
+
+    protected $attributes = [
+        'photo' => 'ชื่อรูป',
+        'status' => 'สถานะ',
+    ];
+
+
     public function getBannersEdit($id)
     {
         $this->resetValidation();
@@ -30,13 +44,16 @@ class ModalEdit extends Component
 
     public function submit()
     {
-        // $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
-        $Data = [
-            'img' => $this->photo->store('Banners', 'public'),
-        ];
+        $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
         try {
+            if ($this->photo) {
+                $validatedData['img'] =  $this->photo->store('Banners', 'public');
+                unset($validatedData['photo']);
+            } else {
+                unset($validatedData['photo']);
+            }
             $update = Banner::find($this->idTable);
-            $update->update($Data);
+            $update->update($validatedData);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('refreshBanners');
         } catch (\Exception $e) {

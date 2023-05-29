@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 include_once "role/student.php";
 include_once "role/teacher.php";
@@ -40,5 +41,11 @@ Route::middleware("auth")->group(function () {
     Route::view("/", "index")->name("home");
 
     // ดูข่าวสาร
-    Route::view("/news/view", "news.view")->name("news.view");
+    Route::get("/news/view/{id}", function (Request $request) {
+        return view('news.view', ['id' => $request->id]);
+    })->name("news.view");
+});
+
+Route::middleware("auth")->name('ckeditor.')->prefix('ckeditor')->group(function(){
+    Route::post('image-upload','UploadImageController@index')->name('image-upload');
 });

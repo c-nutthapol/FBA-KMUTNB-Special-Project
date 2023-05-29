@@ -39,7 +39,8 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search leading-0 dark:text-gray-400"></i>
                             </div>
-                            <input type="text" id="search" wire:model="search" class="pl-10 input" placeholder="ค้นหา">
+                            <input type="text" id="search" wire:model="search" class="pl-10 input"
+                                placeholder="ค้นหา">
                         </div>
                     </div>
                 </div>
@@ -89,7 +90,7 @@
                                     </td>
                                     <td
                                         class="relative px-6 py-3 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent dark:border-slate-600">
-                                        <a href="{{ route('news.view') }}">
+                                        <a href="{{ route('news.view', $data->id) }}">
                                             <p
                                                 class="inline-block mb-0 text-xs font-semibold leading-tight tracking-wide underline title text-slate-400 hover:cursor-pointer hover:text-blue-500 dark:text-slate-400">
                                                 {{ Str::limit($data->title, 40) }}
@@ -136,8 +137,8 @@
                                                 </div>
                                             </a>
                                             <button type="button"
-                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800 delete-button"
-                                                data-key="{{ $data->id }}">
+                                                wire:click="$emit('delete-button','{{ $data->id }}')"
+                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-trash3 leading-0"></i>
                                                     <span class="block">ลบ</span>
@@ -155,44 +156,6 @@
                     </table>
                 </div>
                 {{ $news->links() }}
-                <div class="flex justify-end mt-4">
-                    <nav aria-label="Page navigation">
-                        <ul class="inline-flex items-center -space-x-px">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 ml-0 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <span class="sr-only">Previous</span>
-                                    <i class="bi bi-chevron-left"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" aria-current="page"
-                                    class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
-                                    1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center w-8 h-8 text-sm leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <span class="sr-only">Next</span>
-                                    <i class="bi bi-chevron-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
     </div>
@@ -200,8 +163,7 @@
 
 @push('script')
     <script>
-        $('.delete-button').click(function() {
-            const key = $(this).data('key')
+        Livewire.on('delete-button', key => {
             Swal.fire({
                 icon: 'info',
                 title: 'ลบข้อมูล',

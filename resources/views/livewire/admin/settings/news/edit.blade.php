@@ -38,27 +38,27 @@
                                 </div>
                             @endif
 
-                            <input class="input h-full p-0" type="file" wire:model="photo">
+                            <input class="input h-full p-0" type="file" wire:model.defer="photo">
                             @error('photo')
-                                <span class="error">{{ $message }}</span>
+                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div>
-                        {{-- If there is an error, enter the Error class. = label class='... error', select class="... error"  --}}
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             ชื่อข่าวสาร
                         </label>
                         <input type="text" class="input" placeholder="กรุณากรอกข่าวสาร" required
-                            wire:model="title" />
-                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกข่าวสาร</span> --}}
+                            wire:model.defer="title" />
+                        @error('title')
+                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
-                        {{-- If there is an error, enter the Error class. = label class='... error', select class="... error"  --}}
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             ประเภทข่าวสาร
                         </label>
-                        <select class="select" wire:model="masternew_id">
+                        <select class="select" wire:model.defer="masternew_id">
                             <option value="">
                                 กรุณาเลือกประเภทข่าวสาร
                             </option>
@@ -72,17 +72,19 @@
                                 </option>
                             @endforelse
                         </select>
-                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกประเภทข่าวสาร</span> --}}
+                        @error('masternew_id')
+                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div wire:ignore>
-                        {{-- If there is an error, enter the Error class. = label class='... error', textarea class="... error"  --}}
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             รายละเอียดข่าวสาร
                         </label>
-                        <textarea class="h-auto input" rows="6" id="editor" wire:model="detail">{{ $detail }}</textarea>
-                        {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกรายละเอียดข่าวสาร</span> --}}
+                        <textarea class="h-auto input" rows="6" id="editor" wire:model.defer="detail">{{ $detail }}</textarea>
+                        @error('detail')
+                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
                     </div>
-
                     <div>
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             สถานะข่าวสาร
@@ -90,7 +92,8 @@
                         <div class="flex flex-row items-center">
                             <span class="mr-3 text-sm tracking-wide dark:text-white dark:opacity-80">ปิดใช้งาน</span>
                             <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="active" class="sr-only peer" wire:model="status">
+                                <input type="checkbox" value="active" class="sr-only peer" wire:change="changeStatus"
+                                    @if ($status == 'active') checked @endif>
                                 <div
                                     class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800">
                                 </div>
@@ -98,6 +101,9 @@
                                     class="ml-3 text-sm tracking-wide dark:text-white dark:opacity-80">เปิดใช้งาน</span>
                             </label>
                         </div>
+                        @error('*')
+                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="mt-10 text-end">
@@ -138,7 +144,13 @@
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'), {
-                language: 'th'
+                language: 'th',
+                simpleUpload: {
+                    uploadUrl: "{{ route('ckeditor.image-upload',['_token'=>csrf_token()]) }}"
+                },
+                easyImage: {
+                    uploadUrl: "{{ route('ckeditor.image-upload',['_token'=>csrf_token()]) }}"
+                }
             })
             .then(editor => {
                 editor.model.document.on('change:data', () => {

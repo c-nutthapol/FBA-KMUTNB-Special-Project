@@ -66,7 +66,7 @@ Route::middleware("auth", "role:admin")->group(function () {
                             Route::view("/create", "admin.settings.news.create")->name("create");
                             // แก้ไขข่าวสาร
                             Route::get("/edit/{id}", function (Request $request) {
-                                return view('admin.settings.news.edit',['id' => $request->id]);
+                                return view('admin.settings.news.edit', ['id' => $request->id]);
                             })->name("edit");
                         });
                 });

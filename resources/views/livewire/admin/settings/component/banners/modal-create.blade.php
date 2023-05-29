@@ -53,7 +53,7 @@
                             <input class="input h-full p-0" type="file" wire:model="photo" name="photo">
 
                             @error('photo')
-                                <span class="error">{{ $message }}</span>
+                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -66,9 +66,8 @@
                     class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                     ยกเลิก
                 </button>
-                <button type="submit" class="btn from-blue-500 to-violet-500 text-sm font-medium text-white"
-                    wire:target="submit" wire:loading.attr="disabled">
-                    <div class="flex flex-row items-center gap-3">
+                <button type="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
+                    <div class="flex flex-row items-center gap-3" wire:loading.class="hidden" wire:target="submit">
                         <i class="bi bi-save-fill leading-0"></i>
                         <span class="block">บันทึก</span>
                     </div>

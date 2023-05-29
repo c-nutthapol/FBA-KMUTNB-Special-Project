@@ -17,9 +17,21 @@ class Create extends Component
     protected function rules()
     {
         return [
-            'img' => ['image|max:1024'],
+            'photo' => ['required', 'image', 'max:8192'],
+            'status' => ['required', 'string'],
+            'title' => ['required', 'string'],
+            'content' => ['required', 'string'],
+            'masternew_id' => ['required', 'string'],
         ];
     }
+
+    protected $attributes = [
+        'photo' => 'ชื่อรูป',
+        'status' => 'สถานะ',
+        'title' => 'หัวข่าว',
+        'content' => 'รายละเอียด',
+        'masternew_id' => 'ประเภทของข่าว',
+    ];
 
     public function render()
     {
@@ -29,18 +41,20 @@ class Create extends Component
 
     public function submit()
     {
-        if ($this->status == null || !$this->status) {
-            $this->status = "inactive";
-        }
-        $Data = [
-            'cover_img' => $this->photo->store('News', 'public'),
-            'title' => $this->title,
-            'masternew_id' => $this->masternew_id,
-            'status' => $this->status,
-            'detail' => $this->content,
-        ];
+        $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
         try {
-            News::create($Data);
+            if ($this->status == null || !$this->status) {
+                $this->status = "inactive";
+            }
+            if ($this->photo) {
+                $validatedData['cover_img'] =  $this->photo->store('News', 'public');
+                unset($validatedData['photo']);
+            }
+            if ($this->content) {
+                $validatedData['detail'] =  $this->content;
+                unset($validatedData['content']);
+            }
+            News::create($validatedData);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('refreshBanners');
             return redirect()->route('admin.settings.news.home');

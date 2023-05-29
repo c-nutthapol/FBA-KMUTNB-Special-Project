@@ -23,35 +23,33 @@ class ModalCreate extends Component
         $this->resetValidation();
     }
 
-    public $photo, $status, $created_by, $updated_by, $deleted_by;
+    public $photo, $status = 1, $created_by, $updated_by, $deleted_by;
 
     protected function rules()
     {
         return [
-            'img' => ['image|max:1024'],
+            'photo' => ['required', 'image', 'max:8192'],
+            'status' => ['required', 'boolean'],
         ];
     }
 
     protected $attributes = [
-        'img' => 'ชื่อรูป',
+        'photo' => 'ชื่อรูป',
         'status' => 'สถานะ',
-        'created_by' => 'คนที่สร้าง',
-        'updated_by' => 'คนที่อัพเดท',
-        'deleted_by' => 'คนที่ลบ',
     ];
 
     public function submit()
     {
-
-        $Data = [
-            'img' => $this->photo->store('Banners', 'public'),
-            'status' => 1,
-        ];
+        $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
         try {
-            Banner::create($Data);
+            if ($this->photo) {
+                $validatedData['img'] =  $this->photo->store('Banners', 'public');
+                unset($validatedData['photo']);
+            }
+            Banner::create($validatedData);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('refreshBanners');
-            $this->emit('close_modal','createModal');
+            $this->emit('close_modal', 'createModal');
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }

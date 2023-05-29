@@ -113,8 +113,8 @@
                                                 </div>
                                             </button>
                                             <button type="button"
-                                                class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-rose-500 transition-all ease-in hover:text-rose-800 delete-button"
-                                                data-key="{{ $banner->id }}">
+                                                wire:click="$emit('delete-button','{{ $banner->id }}')"
+                                                class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-trash3 leading-0"></i>
                                                     <span class="block">ลบ</span>
@@ -139,8 +139,7 @@
 
 @push('script')
     <script>
-        $('.delete-button').click(function() {
-            const key = $(this).data('key')
+        Livewire.on('delete-button', key => {
             Swal.fire({
                 icon: 'info',
                 title: 'ลบข้อมูล',
