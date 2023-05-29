@@ -18,6 +18,8 @@ return new class extends Migration
                 ->constrained("master_requests")
                 ->cascadeOnDelete();
             $table->text('description')->nullable();
+            $table->text('teacher_remark')->nullable();
+            $table->text('admin_remark')->nullable();
             $table->foreignId("status")
                 ->nullable()
                 ->constrained("master_statuses")

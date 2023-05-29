@@ -3,7 +3,10 @@
 @section('title', 'อนุมัติคำร้องทั่วไป')
 
 @section('content')
-    <div class="flex flex-wrap -mx-3">
+    @livewire('teacher.petition.index')
+
+    @livewire('teacher.petition.component.petition-modal-edit')
+    {{-- <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
@@ -293,5 +296,5 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 @endsection
