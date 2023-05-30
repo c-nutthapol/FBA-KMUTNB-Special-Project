@@ -69,11 +69,8 @@
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row items-center gap-2">
-                                            <img src="{{ $log->user->avatar }}"
-                                                class="object-cover object-center w-10 h-10 rounded-full"
-                                                alt="Avatar">
                                             <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
-                                                {{ $log->user->name }}
+                                                {{ $log->user->fullname_th }}
                                             </h6>
                                         </div>
                                     </td>
