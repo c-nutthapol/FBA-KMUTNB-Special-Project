@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ["name", "user_code", "role_id", "password", "avatar"];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -25,6 +25,22 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = ["password"];
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getFullnameThAttribute()
+    {
+        return $this->displayname;
+    }
+
+    public function getFullnameEnAttribute()
+    {
+        return $this->firstname_en . ' ' . $this->lastname_en;
+    }
+
 
     public function role()
     {

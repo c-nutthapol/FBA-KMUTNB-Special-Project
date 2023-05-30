@@ -1,5 +1,6 @@
 <div id="ModalUserEdit" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full" wire:ignore.self>
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full"
+    wire:ignore.self>
     <div class="relative w-full h-full max-w-2xl md:h-auto">
         <!-- Modal content -->
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
@@ -34,31 +35,16 @@
             </div>
             <div id="modal-user-edit" class="p-6">
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2 text-center">
-                        <div class="inline-block">
-                            {{-- มีรูป --}}
-                            {{-- <div class="mb-2">
-                            <img src="https://images.pexels.com/photos/1436962/pexels-photo-1436962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                class="object-cover object-center mx-auto rounded-2 w-28 h-28" alt="Avatar">
-                        </div> --}}
-                            {{-- ไม่มีรูป --}}
-                            <div class="flex items-center justify-center mx-auto mb-2 bg-gray-300 w-28 h-28 rounded-2">
-                                <i class="bi bi-image-alt leading-0"></i>
-                            </div>
-                            <input class="h-full p-0 input" type="file">
-                            {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาอัพโหลดรูปภาพ</span> --}}
-                        </div>
-                    </div>
                     <div class="col-span-2">
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                            รหัสประจำตัว
+                            ชื่อผู้ใช้
                         </label>
-                        <input type="number" class="input" placeholder="กรุณากรอกรหัสประจำตัว" />
+                        <input type="text" class="input" placeholder="กรุณากรอกรหัสประจำตัว" w />
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกรหัสประจำตัว</span> --}}
                     </div>
                     <div class="col-span-2">
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                            อีเมล
+                            เลขประจำตัวประชาชน
                         </label>
                         <input type="email" class="input" placeholder="กรุณากรอกอีเมล" />
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกอีเมล</span> --}}
@@ -148,4 +134,3 @@
         </form>
     </div>
 </div>
-

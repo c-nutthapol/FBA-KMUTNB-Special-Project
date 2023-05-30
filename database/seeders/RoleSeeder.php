@@ -14,13 +14,25 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'student',
-            'teacher',
-            'admin',
-            'external'
+            [
+                'guard' => 'student',
+                'name' => 'นักเรียน',
+            ],
+            [
+                'guard' => 'teacher',
+                'name' => 'อาจารย์',
+            ],
+            [
+                'guard' => 'admin',
+                'name' => 'ผู้ดูแลระบบ',
+            ],
+            [
+                'guard' => 'external',
+                'name' => 'ที่ปรึกษาภายนอก',
+            ]
         ];
         foreach ($data as $item) {
-            Role::create(['name' => $item]);
+            Role::create($item);
         }
     }
 }

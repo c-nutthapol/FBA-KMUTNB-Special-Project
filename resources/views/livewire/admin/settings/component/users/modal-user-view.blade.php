@@ -19,18 +19,17 @@
             </div>
 
             <div id="modal-user-view" class="p-6 space-y-6">
-                <div class="flex flex-col items-center gap-3">
-                    <img src="{{ !is_null($avatar) && Storage::disk('public')->exists($avatar) ? Strorage::disk('public')->url($avatar) : asset('assets/img/no_image.jpg') }}"
-                        class="object-cover object-center rounded-2 w-28 h-28" alt="Avatar">
-                    <h6 class="mb-0 text-lg leading-normal dark:text-slate-400">
-                        {{ $name }}
-                    </h6>
-                </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
-                        <strong>รหัสประจำตัว:</strong>
+                        <strong>ชื่อผู้ใช้:</strong>
                         <span class="inline-block ml-1">
-                            {{ $code }}
+                            {{ $username }}
+                        </span>
+                    </div>
+                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                        <strong>เลขประจำตัวประชาชน:</strong>
+                        <span class="inline-block ml-1">
+                            {{ $pid }}
                         </span>
                     </div>
                     <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
@@ -39,6 +38,25 @@
                             {{ $email }}
                         </span>
                     </div>
+                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                        <strong>ชื่อ :</strong>
+                        <span class="inline-block ml-1">
+                            {{ $displayname }}
+                        </span>
+                    </div>
+                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                        <strong>ชื่อ (ภาษาอังกฤษ) :</strong>
+                        <span class="inline-block ml-1">
+                            {{ $firstname_en }}
+                        </span>
+                    </div>
+                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                        <strong>นามสกุล (ภาษาอังกฤษ) :</strong>
+                        <span class="inline-block ml-1">
+                            {{ $lastname_en }}
+                        </span>
+                    </div>
+
                     <div class="text-base tracking-wide dark:text-slate-400">
                         <strong>ห้อง:</strong>
                         <span class="inline-block ml-1">
@@ -48,7 +66,7 @@
                     <div class="text-base tracking-wide dark:text-slate-400">
                         <strong>สาขาวิชา:</strong>
                         <span class="inline-block ml-1">
-                            {{ $branch }}
+                            {{ $department }}
                         </span>
                     </div>
                 </div>

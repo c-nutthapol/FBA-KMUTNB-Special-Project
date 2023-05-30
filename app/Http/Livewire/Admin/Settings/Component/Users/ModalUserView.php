@@ -14,19 +14,21 @@ class ModalUserView extends Component
         return view('livewire.admin.settings.component.users.modal-user-view');
     }
 
-    public $avatar, $name, $code, $email, $room, $branch;
+    public $username, $displayname, $firstname_en, $lastname_en, $pid, $email, $room, $department;
 
     public function getUserView($id)
     {
         $user = User::find($id);
 
         if ($user) {
-            $this->avatar = $user->avatar;
-            $this->name = $user->name;
-            $this->code = $user->user_code;
+            $this->username = $user->username;
+            $this->displayname = $user->displayname;
+            $this->pid = $user->pid;
             $this->email = $user->email;
+            $this->firstname_en = $user->firstname_en;
+            $this->lastname_en = $user->lastname_en;
             $this->room = $user->room;
-            $this->branch = $user->branch;
+            $this->department = $user->department;
         }
     }
 }

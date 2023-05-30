@@ -5,27 +5,47 @@
             <div
                 class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                    <i class="text-2xl text-white bi bi-people-fill leading-0 dark:text-blue-500"></i>
+                    <i class="text-2xl text-white bi bi-person-fill-gear leading-0 dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
-                    ข้อมูลผู้ใช้งาน
+                    กำหนดสิทธิ์ผู้ใช้งาน
                 </h5>
             </div>
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
                 <div>
-                    <select wire:model="role" class="select">
-                        <option value="">
-                            สิทธิ์ผู้ใช้งานทั้งหมด
-                        </option>
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->id }}">
-                                {{ $role->name }}
-                            </option>
-                        @endforeach
-                    </select>
+
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
+                    <div class="flex-1">
+                        <select class="select" wire:model="role">
+                            <option value="">
+                                สิทธิ์ผู้ใช้งานทั้งหมด
+                            </option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">
+                                    {{ $role->name }}
+                                </option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div class="flex-1">
+                        <select class="select" wire:model="status">
+                            <option value="">
+                                สถานะทั้งหมด
+                            </option>
+                            <option value="active">
+                                ใช้งานปกติ
+                            </option>
+                            <option value="inactive">
+                                ระงับการใช้งาน
+                            </option>
+                            <option value="wait">
+                                รอดำเนินการ
+                            </option>
+                        </select>
+                    </div>
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
@@ -51,11 +71,15 @@
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    บทบาท
+                                    วันที่เริ่มใช้งาน
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    เวลาเข้าใช้งาน
+                                    สิทธิ์ผู้ใช้งาน
+                                </th>
+                                <th
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    สถานะ
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -76,30 +100,11 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        @php
-                                            $class = [
-                                                'student' => 'class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white"',
-                                                'teacher' => 'class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white"',
-                                                'admin' => 'class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-slate-600 to-gray-400 align-baseline font-bold uppercase leading-none text-white"',
-                                                'external' => 'class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white"',
-                                            ];
-                                        @endphp
-                                        <span {!! $class[$user->role->guard] !!}>
-                                            {{ $user->role->name }}
-                                        </span>
-                                    </td>
-                                    <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         @if ($user->log)
                                             <span
                                                 class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
                                                 <i class="bi bi-calendar2-week-fill"></i>
-                                                {{ $user->log->updated_at->thaidate() }}
-                                            </span>
-                                            <span
-                                                class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                                <i class="bi bi-clock-fill"></i>
-                                                {{ $user->log->updated_at->thaidate('H:i:s') }}
+                                                {{ $user->log->created_at->thaidate() }}
                                             </span>
                                         @else
                                             <span
@@ -107,39 +112,59 @@
                                                 ไม่พบข้อมูล
                                             </span>
                                         @endif
-
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <div class="inline-block">
+                                            <select class="select"
+                                                onchange="@this.changeRole({{ $user->id }},$(this).val())">
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->id }}"
+                                                        @if ($role->id == $user->role_id) selected @endif>
+                                                        {{ $role->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <div class="inline-block">
+                                            <select class="select"
+                                                onchange="@this.changeStatus({{ $user->id }},$(this).val())">
+                                                <option value="active"
+                                                    @if ($user->status == 'active') selected @endif>
+                                                    ใช้งานปกติ
+                                                </option>
+                                                <option value="inactive"
+                                                    @if ($user->status == 'inactive') selected @endif>
+                                                    ระงับการใช้งาน
+                                                </option>
+                                                <option value="wait"
+                                                    @if ($user->status == 'wait') selected @endif>
+                                                    รอดำเนินการ
+                                                </option>
+                                            </select>
+                                        </div>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <button type="button" data-modal-target="ModalUserView"
                                             data-modal-toggle="ModalUserView"
-                                            class="inline-block mr-2 text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700"
                                             onclick="@this.emit('getUserView',{{ $user->id }})">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-eye leading-0"></i>
                                                 <span class="block">ดูรายละเอียด</span>
                                             </div>
                                         </button>
-                                        @if (false)
-                                            <button type="button" data-modal-target="ModalUserEdit"
-                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500"
-                                                data-modal-toggle="ModalUserEdit"
-                                                wire:click="$emit('getUserEdit',{{ $user->id }})">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-pencil-square leading-0"></i>
-                                                    <span class="block">แก้ไข</span>
-                                                </div>
-                                            </button>
-                                        @endif
-
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4"> ไม่พบข้อมูล </td>
+                                    <td colspan="5"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
-
                         </tbody>
                     </table>
                 </div>

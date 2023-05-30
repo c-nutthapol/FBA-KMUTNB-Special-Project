@@ -18,11 +18,12 @@ class Logs extends Component
         $logs = Log::where('type', $this->type)
             ->when($this->search, function ($query) {
                 $query->whereHas('user', function ($query) {
-                    $query->where('name', 'like', '%' . $this->search . '%');
-                    $query->orWhere('user_code', 'like', '%' . $this->search . '%');
+                    $query->where('displayname', 'like', '%' . $this->search . '%');
+                    $query->orWhere('username', 'like', '%' . $this->search . '%');
                     $query->orWhere('pid', 'like', '%' . $this->search . '%');
                     $query->orWhere('firstname_en', 'like', '%' . $this->search . '%');
                     $query->orWhere('lastname_en', 'like', '%' . $this->search . '%');
+                    $query->orWhere('email', 'like', '%' . $this->search . '%');
                     $query->orWhere(DB::raw('concat(firstname_en," ",lastname_en)'), 'like', '%' . $this->search . '%');
                 });
             })

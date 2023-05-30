@@ -9,5 +9,5 @@
     @livewire('admin.settings.component.users.modal-user-view')
 
     <!-- Edit Modal -->
-    @livewire('admin.settings.component.users.modal-user-edit')
+    {{-- @livewire('admin.settings.component.users.modal-user-edit') --}}
 @endsection

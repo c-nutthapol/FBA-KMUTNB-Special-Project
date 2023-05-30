@@ -22,14 +22,14 @@ class RolesChecker
 
         foreach ($roles as $role) {
             /* Checking if the user has the role that is passed in. */
-            if ($user->role->name == $role)
+            if ($user->role->guard == $role)
                 return $next($request);
         }
-        if ($user->role->name == 'student') {
+        if ($user->role->guard == 'student') {
             return redirect()->route('student.project.home');
-        } elseif ($user->role->name == 'teacher') {
+        } elseif ($user->role->guard == 'teacher') {
             return redirect()->route('teacher.project.home');
-        } elseif ($user->role->name == 'admin') {
+        } elseif ($user->role->guard == 'admin') {
             return redirect()->route('home');
         } else {
             return redirect()->route('auth.logout');

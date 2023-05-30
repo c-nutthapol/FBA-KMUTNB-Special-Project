@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Faker\Provider\UserAgent;
+use App\Models\User;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class Login extends Component
@@ -12,38 +13,100 @@ class Login extends Component
         return view('livewire.auth.login');
     }
 
-    public $username, $password;
+    public $username = 'yuttachais', $password = 'stamp1992';
 
     protected  $rules = [
-        'username' => 'required|numeric|digits:12',
+        'username' => 'required|string|max:14',
         'password' => 'required|min:8',
     ];
 
     protected $attributes = [
-        'username' => 'รหัสนักศึกษา',
+        'username' => 'ชื่อผู้ใช้',
         'password' => 'รหัสผ่าน',
     ];
+
+    private function getUserICIT($username, $password)
+    {
+        $token = '5UaTyf96aWgeAeha912oqF-9vtMc_LiZ';
+        $response = Http::withToken($token)->asForm()->post('https://api.account.kmutnb.ac.th/api/account-api/user-authen', [
+            'username' => $username,
+            'password' => $password,
+            'scopes' => 'personel,student,templecturer',
+            'personel_info' => 1
+        ]);
+
+        if ($response->ok()) {
+            $user_info = $response['userInfo'];
+            $api_status_code = $response['api_status_code'];
+            $account_type = $user_info['account_type'];
+            if ($account_type == 'personel' || $account_type == 'templecturer') {
+                $role_id = 2;
+            } else {
+                $role_id = 1;
+            }
+
+            switch ($api_status_code) {
+                case '202':
+                    $user = User::where('username', $user_info)->first();
+                    $is_first_time = false;
+                    if (!$user) {
+                        $user = new User;
+                        $is_first_time = true;
+                    }
+                    $user->username = $user_info['username'];
+                    $user->password = $password;
+                    $user->displayname = $user_info['displayname'];
+                    $user->firstname_en = $user_info['firstname_en'];
+                    $user->lastname_en = $user_info['lastname_en'];
+                    $user->pid = $user_info['pid'];
+                    $user->email = $user_info['email'];
+                    if ($is_first_time) {
+                        $user->role_id = $role_id;
+                        $user->status = 'active';
+                    }
+
+                    $user->save();
+
+                    return $user;
+                    break;
+                case '405':
+                    $this->emit('alert', ['status' => 'info', 'title' => 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!']);
+                    break;
+                default:
+                    return false;
+                    break;
+            }
+        }
+    }
 
 
     public function submit()
     {
         $validatedData = $this->validate($this->rules, __('validation'), $this->attributes);
+        $user = $this->getUserICIT($validatedData['username'], $validatedData['password']);
         try {
-            if (auth()->attempt(['user_code' => $validatedData['username'], 'password' => $validatedData['password']])) {
+            if (in_array($user->status, ['active'])) {
+                auth()->login($user);
+            }
+
+            if (auth()->check()) {
                 $browser = request()->header('User-Agent');
                 $ipAddress = request()->getClientIp();
                 $log = [
                     'email' => auth()->user()->email,
                     'ip' => $ipAddress,
                     'browser' => $browser,
-                    'type' => auth()->user()->role->name
+                    'type' => auth()->user()->role->guard
                 ];
                 if (auth()->user()->log) {
                     auth()->user()->log->update($log);
                 } else {
                     auth()->user()->log()->create($log);
                 }
-                return redirect()->route('home');
+                $this->emit('alert', ['status' => 'success', 'title' => 'เข้าสู่ระบบเสร็จสิ้น']);
+                $this->emit('redirect', route('home'));
+            } else {
+                $this->emit('alert', ['status' => 'error', 'title' => 'เข้าสู่ระบบไม่สำเร็จ']);
             }
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);

@@ -19,8 +19,8 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'user_code' => fake()->unique()->numerify('############'),
+            'displayname' => fake()->name(),
+            'username' => fake()->unique()->numerify('s#############'),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'role_id' => Role::InRandomOrder()->first()->id
         ];

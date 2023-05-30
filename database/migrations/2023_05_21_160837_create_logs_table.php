@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('email')->nullable()->comment('อีเมล');
             $table->string('ip')->nullable()->comment('ip คนเข้าชม');
             $table->string('browser')->nullable()->comment('เว็บบราว์เซอร์');
-            $table->enum('type', ['student', 'teacher', 'admin'])->comment('ประเภทของ log');
+            $table->enum('type', ['student', 'teacher', 'admin', 'external'])->comment('ประเภทของ log');
             $table->timestamps();
         });
     }

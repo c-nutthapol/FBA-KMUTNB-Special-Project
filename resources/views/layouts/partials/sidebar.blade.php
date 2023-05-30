@@ -41,18 +41,18 @@
                 </li>
 
                 {{-- menu student --}}
-                @if (auth()->user()->role->name == 'student')
+                @if (auth()->user()->role->guard == 'student')
                     @include('layouts.menus.student')
                 @endif
 
 
                 {{-- menu teacher --}}
-                @if (auth()->user()->role->name == 'teacher')
+                @if (auth()->user()->role->guard == 'teacher')
                     @include('layouts.menus.teacher')
                 @endif
 
                 {{-- Start menu admin --}}
-                @if (auth()->user()->role->name == 'admin')
+                @if (auth()->user()->role->guard == 'admin')
                     @include('layouts.menus.admin')
                 @endif
                 {{-- End menu admin --}}

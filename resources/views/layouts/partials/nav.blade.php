@@ -17,7 +17,7 @@
                                 {{-- กรณีที่ไม่มีรูป --}}
 
                                 <i class="bi bi-person-fill"></i>
-                                <span class="hidden sm:inline">{{ $user->name }}</span>
+                                <span class="hidden sm:inline">{{ $user->fullname_th }}</span>
                             </a>
 
                             <ul dropdown-menu
