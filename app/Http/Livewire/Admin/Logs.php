@@ -27,7 +27,7 @@ class Logs extends Component
                     $query->orWhere(DB::raw('concat(firstname_en," ",lastname_en)'), 'like', '%' . $this->search . '%');
                 });
             })
-            ->orderBy('created_at', $this->order_by)->paginate(10);
+            ->orderBy('updated_at', $this->order_by)->paginate(10);
         return view('livewire.admin.logs', compact('logs'));
     }
 
