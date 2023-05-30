@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="relative max-w-full tracking-wide">
-                        {!!$detail!!}
+                        {!! $detail !!}
                     </div>
 
                 </div>

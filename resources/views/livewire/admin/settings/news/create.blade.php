@@ -132,7 +132,10 @@
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'), {
-                language: 'th'
+                language: 'th',
+                ckfinder: {
+                    uploadUrl: "{{ route('ckeditor.image-upload', ['_token' => csrf_token()]) }}",
+                }
             })
             .then(editor => {
                 editor.model.document.on('change:data', () => {

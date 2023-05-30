@@ -15,6 +15,7 @@ class View extends Component
     {
         $this->resetValidation();
         $this->idTable = $new_id;
+        News::find($new_id)->increment('view');
         $record = News::find($new_id);
         if ($record) {
             $this->cover_img = $record->cover_img;
