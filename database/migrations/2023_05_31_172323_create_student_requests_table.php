@@ -17,6 +17,10 @@ return new class extends Migration
                 ->comment("id ของ master_request")
                 ->constrained("master_requests")
                 ->cascadeOnDelete();
+            $table->foreignId("project_id")
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->text('description')->nullable();
             $table->text('teacher_remark')->nullable();
             $table->text('admin_remark')->nullable();

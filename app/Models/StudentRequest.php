@@ -12,8 +12,6 @@ class StudentRequest extends Model
 
     protected $guarded = [];
 
-    protected $listeners = ['refreshSuggestion' => '$refresh'];
-
     protected static function boot()
     {
         parent::boot();
@@ -41,6 +39,11 @@ class StudentRequest extends Model
         return $this->belongsTo(Master_status::class, "status", "id");
     }
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class, "project_id", "id");
+    }
+
     protected function getStatusRequestForTableAttribute()
     {
         $text = "";
@@ -48,7 +51,7 @@ class StudentRequest extends Model
         if($this->status == 38){
             $color = "slate";
             $text = "รออนุมัติ";
-        }else if($this->status == 39){
+        }else if($this->status == 41){
             $color = "slate";
             $text = "รออนุมัติ";
         }else if($this->status == 42){
@@ -66,6 +69,7 @@ class StudentRequest extends Model
     {
         $data = "";
         $query = Master_request::where("id",$this->title)->first();
+        // dd($query);
         if($query){
             $data = $query->name;
         }

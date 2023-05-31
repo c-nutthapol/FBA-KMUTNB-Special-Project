@@ -16,6 +16,10 @@ class Project extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
     public function users()
     {
         return $this->belongsToMany(User::class, "user_project");
@@ -58,7 +62,7 @@ class Project extends Model
     {
         $data = [];
         foreach($this->user_project as $item){
-            if(str_contains($item->role, "student")) $data[] = $item->user->name;
+            if(str_contains($item->role, "student")) $data[] = $item->user->displayname;
         }
         return $data;
     }

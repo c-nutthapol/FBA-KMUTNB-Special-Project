@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Teacher\Petition\Component;
 use Livewire\Component;
 use App\Models\StudentRequest;
 use App\Models\Master_status;
+use Mail;
+use App\Mail\RequestMail;
 
 class PetitionModalEdit extends Component
 {
@@ -20,9 +22,9 @@ class PetitionModalEdit extends Component
         $this->petitionId = $id;
         $studentRequest = StudentRequest::find($this->petitionId);
         $this->status = $studentRequest->status;
-        if(auth()->user()->role()->first()->name == "teacher"){
+        if(auth()->user()->role_id == 2){
             $this->note = $studentRequest->teacher_remark;
-        }else if(auth()->user()->role()->first()->name == "admin"){
+        }else if(auth()->user()->role_id == 3){
             $this->note = $studentRequest->admin_remark;
         }
         // if($studentRequest->status == 39){
@@ -45,15 +47,24 @@ class PetitionModalEdit extends Component
         // dd(auth()->user()->role()->first()->name);
         try {
             $StudentRequest = StudentRequest::with('master_status')->find($this->petitionId);
-
+            // dd($StudentRequest->master_status);
             if($StudentRequest->master_status->status_update == "Y"){
                 $StudentRequest->status = $this->status;
-                if(auth()->user()->role()->first()->name == "teacher"){
+                if(auth()->user()->role_id == 2){
                     $StudentRequest->teacher_remark = $this->note;
-                }else if(auth()->user()->role()->first()->name == "admin"){
+                }else if(auth()->user()->role_id == 3){
                     $StudentRequest->admin_remark = $this->note;
                 }
+
                 $StudentRequest->save();
+                $StudentRequest->refresh();
+
+                foreach($StudentRequest->project->user_project as $item){
+                    if($item->user->role_id != 4 && $item->user->email){
+                        Mail::to($item->user->email)->send(new RequestMail($StudentRequest, $item->user));
+                    }
+                }
+
                 $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
                 $this->emit('refreshComponent');
             }else{

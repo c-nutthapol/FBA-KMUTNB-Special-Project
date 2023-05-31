@@ -74,13 +74,13 @@
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     กรุณาอนุมัติก่อนวันที่
                                 </th>
-                                @if (auth()->user()->role()->first()->name == "teacher")
+                                @if (auth()->user()->role_id == 2)
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     สถานะของที่ปรึกษา
                                 </th>
                                 @endif
-                                @if (auth()->user()->role()->first()->name == "admin")
+                                @if (auth()->user()->role_id == 3)
                                 <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     สถานะของผู้ดูแลระบบ
@@ -104,10 +104,10 @@
                                                 class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
                                         </div>
                                         <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
-                                            ทดสอบการพัฒนาระบบใหม่ // รอ field
+                                            {{$item->project->name_th}}
                                             <span
                                                 class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
-                                                Development
+                                                {{$item->project->name_en}}
                                             </span>
                                         </h6>
                                     </div>
@@ -134,7 +134,7 @@
                                         <i class="bi bi-calendar2-week-fill"></i> 30/04/2566
                                     </span>
                                 </td>
-                                @if (auth()->user()->role()->first()->name == "teacher")
+                                @if (auth()->user()->role_id == 2)
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     {!!$item->StatusRequestForTable!!}
@@ -152,7 +152,7 @@
                                     </span> --}}
                                 </td>
                                 @endif
-                                @if (auth()->user()->role()->first()->name == "admin")
+                                @if (auth()->user()->role_id == 3)
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     {!!$item->StatusRequestForTable!!}

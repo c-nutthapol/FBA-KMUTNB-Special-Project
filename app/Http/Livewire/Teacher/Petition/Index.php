@@ -14,13 +14,13 @@ class Index extends Component
 
     public function render()
     {
-        $roleName = auth()->user()->role()->first()->name;
+        $roleId = auth()->user()->role_id;
 
         $studentRequest = StudentRequest::with('master_status')
-        ->when($roleName == "teacher", function($when){
+        ->when($roleId == 2, function($when){
             $when->whereIn("status", [38, 40]);
         })
-        ->when($roleName == "admin", function($when){
+        ->when($roleId == 3, function($when){
             $when->whereIn("status", [39, 41, 43]);
         })
         ->paginate(10);

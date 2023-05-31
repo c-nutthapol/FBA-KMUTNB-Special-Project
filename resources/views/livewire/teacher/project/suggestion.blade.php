@@ -31,7 +31,7 @@
                 </div>
                 <div class="pb-6 sm:p-6">
                     {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
-                    <a href="#" class="text-xs text-white btn from-teal-400 to-green-400">
+                    <a href="/{{$project->files->sortByDesc('created_at')->first()->path}}" download class="text-xs text-white btn from-teal-400 to-green-400">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-download leading-0"></i>
                             <span class="block">โหลดเอกสาร</span>
@@ -88,7 +88,7 @@
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
-                                            {{$item->user->name}}
+                                            {{$item->user->displayname}}
                                         </h6>
                                     </td>
                                     <td

@@ -7,6 +7,8 @@ use App\Models\EduTerm;
 use App\Models\Master_status;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Mail;
+use App\Mail\ProjectMail;
 
 class Defense extends Component
 {
@@ -27,13 +29,13 @@ class Defense extends Component
         $step_admin = [25, 28, 29, 30];
 
         // role
-        $roleName = auth()->user()->role()->first()->name;
+        $roleId = auth()->user()->role_id;
 
         // filter
         $termFilter = EduTerm::all();
         $statusFilter = Master_status::where("step", $step)
         ->where("status_filter","Y")
-        ->where("role_id",auth()->user()->role_id)
+        ->where("role_id",$roleId)
         ->get();
 
         // Select Option
@@ -45,7 +47,7 @@ class Defense extends Component
         ->whereHas("master_status", function($sub) use($step){
             $sub->where("step", $step);
         })
-        ->when($roleName == "teacher", function($when) use($step_teacher){
+        ->when($roleId == 2, function($when) use($step_teacher){
             // dd($step_teacher);
             $when->whereHas("user_project", function($sub){
                 $sub->where("user_id", auth()->user()->id)
@@ -53,7 +55,7 @@ class Defense extends Component
             })
             ->whereIn("status", $step_teacher);
         })
-        ->when($roleName == "admin", function($when) use($step_admin){
+        ->when($roleId == 3, function($when) use($step_admin){
             $when->whereIn("status", $step_admin);
         })
         ->when($search, function($when) use($search){
@@ -71,10 +73,18 @@ class Defense extends Component
     public function updateStatusProject($id, $status)
     {
         try {
-            $project = Project::with('master_status')->find($id);
+            $project = Project::with('master_status','user_project')->find($id);
             if($project->master_status->status_update == "Y"){
                 $project->status = $status;
                 $project->save();
+                $project->refresh();
+
+                foreach($project->user_project as $item){
+                    if($item->user->role_id != 4 && $item->user->email){
+                        Mail::to($item->user->email)->send(new ProjectMail($project, $item->user));
+                    }
+                }
+
                 $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
                 $this->emit('refreshComponent');
             }else{
