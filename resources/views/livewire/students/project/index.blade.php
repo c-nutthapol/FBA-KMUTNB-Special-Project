@@ -49,12 +49,20 @@
                             </div>
                         </button>
                         {{-- ไม่ผ่านทำซ้ำ --}}
-                    @elseif(in_array($data->project->status, [36, 22, 31, 13, 17, 19, 26, 28, 10, 8]))
+                    @elseif(in_array($data->project->status, [36, 22, 31, 13, 17, 19, 26, 28]))
                         <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
                             data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                             <div class="flex flex-row items-center gap-3">
                                 <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
                                 <span class="block">แนบเอกสาร</span>
+                            </div>
+                        </button>
+                    @elseif(in_array($data->project->status, [3, 5, 8, 10]))
+                        <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
+                            onclick="confirmDelete()">
+                            <div class="flex flex-row items-center gap-3">
+                                <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
+                                <span class="block">ลบโครงงานแล้ว แล้วเริ่มต้นใหม่</span>
                             </div>
                         </button>
                     @endif
@@ -283,4 +291,24 @@
     </div>
 
 </div>
+
+@push('script')
+    <script>
+        function confirmDelete() {
+            Swal.fire({
+                icon: 'question',
+                title: 'คุณต้องการลบโครงงาน',
+                text: `ใช่หรือไม่`,
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.deleteProject();
+                }
+            })
+        }
+    </script>
+@endpush
 

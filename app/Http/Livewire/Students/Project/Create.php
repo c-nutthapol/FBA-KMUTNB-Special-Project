@@ -86,10 +86,10 @@ class Create extends Component
         $this->term = $this->getTerm();
 
         $data = new stdClass();
-        $data->department = Master_department::active();
+        $data->department = Master_department::where("status", "active")->get();
         $data->project = $this->project = $this->getProject();
         $data->step = $this->checkStep($data->project);
-        $data->error = $this->checkError($this->term, $data->project, false);
+        $data->error = $this->checkError($this->term, $data->project, true);
         if ($data->error) {
             return view("livewire.students.project.components.error", compact("data"));
         } else {

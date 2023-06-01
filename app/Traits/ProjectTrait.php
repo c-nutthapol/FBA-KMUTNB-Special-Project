@@ -88,7 +88,7 @@ trait ProjectTrait
     /**
      * Check Error.
      */
-    public static function checkError(EduTerm $term, Project $project, $isCreate = true)
+    public static function checkError(EduTerm $term, Project $project, $isCreate = false)
     {
         $result = new stdClass();
         $step = self::checkStep(self::getProject());
@@ -99,7 +99,11 @@ trait ProjectTrait
             $result->name = "เลยระยะเวลาที่กำหนด";
             $result->redirect = route("student.petition");
             $result->btn = "สร้างคำร้อง";
-        } elseif (!$project->id && $isCreate) {
+        } elseif ($project->id && $isCreate == true) {
+            $result->name = "ท่านมีโครงงานอยู่แล้ว";
+            $result->redirect = route("student.project.home");
+            $result->btn = "หน้าหลัก";
+        } elseif (!$project->id) {
             $result->name = "ท่านยังไม่มีโครงงาน กรุณาสร้างโครงงานก่อน";
             $result->redirect = route("student.project.create");
             $result->btn = "สร้างโครงงาน";

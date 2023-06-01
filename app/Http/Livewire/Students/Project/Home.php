@@ -39,6 +39,10 @@ class Home extends Component
             return view("livewire.students.project.index", compact("data"));
         }
     }
+    public function deleteProject()
+    {
+        DB::delete("DELETE FROM projects WHERE id = " . "'" . $this->getProject()->id . "'");
+    }
 
     public function submit()
     {
