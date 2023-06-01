@@ -34,10 +34,10 @@ class Login extends Component
             'scopes' => 'personel,student,templecturer',
             'personel_info' => 1
         ]);
-
-        if ($response->ok()) {
+        $api_status_code = $response['api_status_code'];
+        if ($api_status_code == 202) {
             $user_info = $response['userInfo'];
-            $api_status_code = $response['api_status_code'];
+
             $account_type = $user_info['account_type'];
             if ($account_type == 'personel' || $account_type == 'templecturer') {
                 $role_id = 2;
@@ -45,37 +45,27 @@ class Login extends Component
                 $role_id = 1;
             }
 
-            switch ($api_status_code) {
-                case '202':
-                    $user = User::where('username', $user_info)->first();
-                    $is_first_time = false;
-                    if (!$user) {
-                        $user = new User;
-                        $is_first_time = true;
-                    }
-                    $user->username = $user_info['username'];
-                    $user->password = $password;
-                    $user->displayname = $user_info['displayname'];
-                    $user->firstname_en = $user_info['firstname_en'];
-                    $user->lastname_en = $user_info['lastname_en'];
-                    $user->pid = $user_info['pid'];
-                    $user->email = $user_info['email'];
-                    if ($is_first_time) {
-                        $user->role_id = $role_id;
-                        $user->status = 'active';
-                    }
-
-                    $user->save();
-
-                    return $user;
-                    break;
-                case '405':
-                    $this->emit('alert', ['status' => 'info', 'title' => 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!']);
-                    break;
-                default:
-                    return false;
-                    break;
+            $user = User::where('username', $user_info)->first();
+            $is_first_time = false;
+            if (!$user) {
+                $user = new User;
+                $is_first_time = true;
             }
+            $user->username = $user_info['username'];
+            $user->password = $password;
+            $user->displayname = $user_info['displayname'];
+            $user->firstname_en = $user_info['firstname_en'];
+            $user->lastname_en = $user_info['lastname_en'];
+            $user->pid = $user_info['pid'];
+            $user->email = $user_info['email'];
+            if ($is_first_time) {
+                $user->role_id = $role_id;
+                $user->status = 'active';
+            }
+
+            $user->save();
+        } elseif ($api_status_code == 202) {
+            $this->emit('alert', ['status' => 'info', 'title' => 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!']);
         }
     }
 
