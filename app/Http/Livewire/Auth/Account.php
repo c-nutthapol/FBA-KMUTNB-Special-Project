@@ -37,7 +37,7 @@ class Account extends Component
     ];
 
 
-    public function submit()
+    private function submit() //ถ้าต้องการใช้ให้เป็น public
     {
         $validatedData = $this->validate($this->rules, __('validation'), $this->attributes);
 
