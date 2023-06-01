@@ -28,7 +28,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        $this->attributes["password"] = bcrypt($value);
     }
 
     public function getFullnameThAttribute()
@@ -38,9 +38,8 @@ class User extends Authenticatable
 
     public function getFullnameEnAttribute()
     {
-        return $this->firstname_en . ' ' . $this->lastname_en;
+        return $this->firstname_en . " " . $this->lastname_en;
     }
-
 
     public function role()
     {
@@ -52,6 +51,10 @@ class User extends Authenticatable
     }
     public function log()
     {
-        return $this->hasOne(Log::class, 'user_id');
+        return $this->hasOne(Log::class, "user_id");
+    }
+    public function masterDepartment()
+    {
+        return $this->belongsTo(Master_department::class, "department", "id");
     }
 }

@@ -2,95 +2,206 @@
 
 namespace App\Http\Livewire\Students\Project;
 
-use App\Models\Config;
+use App\Models\EduTerm;
+use App\Models\File;
+use App\Models\Master_department;
 use App\Models\Project;
 use App\Models\User;
+use App\Traits\CheckTermTrait;
+use App\Traits\ProjectTrait;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use stdClass;
 
 class Create extends Component
 {
+    use WithFileUploads, ProjectTrait;
+    //varible
     public $form;
-    public function mount()
-    {
-        $project = Project::whereHas("users", function ($query) {
-            $query->where("user_id", Auth::user()->id);
-        })->first();
-        if ($project) {
-            return redirect()->route("student.project.home");
-        }
-        $this->form = collect([
-            "name_th" => "",
-            "name_en" => "",
-            "student_1" => "",
-            "student_2" => "",
-            "teacher_1" => "",
-            "teacher_2" => "",
-            "teacher_3" => "",
-        ]);
-    }
-    public function render()
-    {
-        $data = collect();
+    public $project;
+    public $term;
+    //file
+    public $file_teacher;
+    public $file_project;
 
-        $data->put("user", User::all());
-        $data->put(
-            "faculty",
-            collect([
-                "1" => "การบัญชี",
-                "2" => "บริหารธุรกิจอุตสาหกรรมและโลจิสติกส์",
-                "3" => "คอมพิวเตอร์ธุรกิจ",
-            ])
-        );
-        $data->put(
-            "room",
-            collect([
-                "1" => "ห้อง 1",
-                "2" => "ห้อง 2",
-                "3" => "ห้อง 3",
-            ])
-        );
-        $data->put("student", User::where("role_id", 1)->get());
-        $data->put("teacher", User::where("role_id", 2)->get());
-        return view("students.project.create", compact("data"));
-    }
+    //validation
     protected $rules = [
         "form.name_th" => "required",
         "form.name_en" => "required",
-        "form.student_2" => "required",
+        "form.student_1.room" => "required",
+        "form.student_1.department" => "required",
         "form.teacher_1" => "required",
         "form.teacher_2" => "required",
         "form.teacher_3" => "required",
+        "file_project" => "required|mimes:doc,dot,pdf",
     ];
+
     protected $messages = [
         "form.name_th.required" => "กรุณากรอกชื่อโครงงานภาษาไทย",
         "form.name_en.required" => "กรุณากรอกชื่อโครงงานภาษาอังกฤษ",
-        "form.student_2.required" => "กรุณาเลือกนักศึกษาคนที่ 2",
+        "form.student_1.room" => "กรุณากรอกห้อง",
+        "form.student_1.department" => "กรุณาเลือกสาขาวิชา",
         "form.teacher_1.required" => "กรุณาเลือกอาจารย์ที่ปรึกษาหลัก",
         "form.teacher_2.required" => "กรุณาเลือกอาจารย์ที่ปรึกษาร่วม",
         "form.teacher_3.required" => "กรุณาเลือกประธานสอบ",
+        "file_project.required" => "กรุณาเลือกไฟล์เอกสาร",
+        "file_project.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
     ];
 
+    public function mount()
+    {
+        $this->form = collect([
+            "name_th" => "",
+            "name_en" => "",
+            "student_1" => collect([
+                "id" => Auth::user()->id,
+                "department" => "",
+                "room" => "",
+            ]),
+            "student_2" => collect([
+                "id" => "",
+                "department" => "",
+                "room" => "",
+            ]),
+            "teacher_1" => "",
+            "teacher_2" => "",
+            "teacher_3" => "",
+            "external" => collect([
+                "fname" => "",
+                "lname" => "",
+                "file" => "",
+            ]),
+            "file" => collect([
+                "path" => "",
+                "url" => "",
+            ]),
+        ]);
+    }
+
+    public function render()
+    {
+        $this->term = $this->getTerm();
+
+        $data = new stdClass();
+        $data->department = Master_department::active();
+        $data->project = $this->project = $this->getProject();
+        $data->step = $this->checkStep($data->project);
+        $data->error = $this->checkError($this->term, $data->project, false);
+        if ($data->error) {
+            return view("livewire.students.project.components.error", compact("data"));
+        } else {
+            return view("livewire.students.project.create", compact("data"));
+        }
+    }
     public function submit()
     {
         $this->validate();
-        $this->form->put("student_1", auth()->user()->id);
-
+        if ($this->form->get("teacher_2") === "external") {
+            $this->validate(
+                [
+                    "form.external.fname" => "required",
+                    "form.external.lname" => "required",
+                    "file_teacher" => "required|mimes:doc,dot,pdf",
+                ],
+                [
+                    "form.external.fname.required" => "กรุณากรอกชื่อ",
+                    "form.external.lname.required" => "กรุณากรอกนามสกุล",
+                    "file_teacher.required" => "กรุณาเลือกไฟล์เอกสาร",
+                    "file_teacher.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
+                ]
+            );
+        }
+        if ($this->form->get("student_2")["id"] != "") {
+            $this->validate(
+                [
+                    "form.student_2.room" => "required",
+                    "form.student_2.department" => "required",
+                ],
+                [
+                    "form.student_2.room.required" => "กรุณากรอกห้อง",
+                    "form.student_2.department.required" => "กรุณาเลือกสาขาวิชา",
+                ]
+            );
+        }
+        //begin Transaction
         try {
+            //store image
+            $this->file_project->storeAs("files");
+            $pname = $this->file_project->getFilename();
+            $this->file_project->storeAs("files", $pname);
+
+            //start Transaction
+            DB::beginTransaction();
             $project = Project::create([
                 "name_th" => $this->form->get("name_th"),
                 "name_en" => $this->form->get("name_en"),
-                "edu_term_id" => Config::where("key", "edu_term_id")->first()->value,
-                "status" => "waiting",
+                "status" => 1,
+                "edu_term_id" => $this->term->id,
             ]);
-            $project->users()->attach($this->form->get("student_1"), ["role" => "student"]);
-            $project->users()->attach($this->form->get("student_2"), ["role" => "student"]);
+            File::create([
+                "title" => "step 1",
+                "project_id" => $project->id,
+                "is_link" => 0,
+                "path" => "files/" . $pname,
+            ]);
+            User::where("id", $this->form->get("student_1")["id"])->update([
+                "room" => $this->form->get("student_1")["room"],
+                "department" => $this->form->get("student_1")["department"],
+            ]);
+
+            //add users to project
+            $project->users()->attach($this->form->get("student_1")["id"], ["role" => "student1"]);
             $project->users()->attach($this->form->get("teacher_1"), ["role" => "teacher1"]);
-            $project->users()->attach($this->form->get("teacher_2"), ["role" => "teacher2"]);
             $project->users()->attach($this->form->get("teacher_3"), ["role" => "teacher3"]);
+            //check null
+            if ($this->form->get("student_2")["id"]) {
+                $project->users()->attach($this->form->get("student_2")["id"], ["role" => "student2"]);
+                User::where("id", $this->form->get("student_2")["id"])->update([
+                    "room" => $this->form->get("student_2")["room"],
+                    "department" => $this->form->get("student_2")["department"],
+                ]);
+            }
+            //if external
+            if ($this->form->get("teacher_2") == "external") {
+                $user = User::updateorCreate([
+                    "displayname" =>
+                        $this->form->get("external")["fname"] . " " . $this->form->get("external")["lname"],
+                    "role_id" => 4,
+                ]);
+                $project->users()->attach($user->id, ["role" => "teacher2"]);
+                //store file
+                $this->file_teacher->storeAs("files");
+                $tname = $this->file_teacher->getFilename();
+                $this->file_teacher->storeAs("files", $tname);
+                File::create([
+                    "title" => "teacher",
+                    "project_id" => $project->id,
+                    "is_link" => 0,
+                    "path" => "files/" . $tname,
+                ]);
+            } else {
+                $project->users()->attach($this->form->get("teacher_2"), ["role" => "teacher2"]);
+            }
+
+            DB::commit();
+            $this->cleanupOldUploads();
+            $this->file_project->delete();
+            $this->file_teacher?->delete();
+            $this->emit("alert", ["status" => "success", "title" => "บันทึกสำเร็จ"]);
             return redirect()->route("student.project.home");
         } catch (\Exception $e) {
-            dd($e);
+            DB::rollBack();
+            if (Storage::get("files/" . $pname)) {
+                Storage::delete("files/" . $pname);
+            }
+            if (Storage::get("files/" . isset($tname) ? $tname : "")) {
+                Storage::delete("files/" . isset($tname) ? $tname : "");
+            }
+            $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
         }
+        //end Transaction
     }
 }

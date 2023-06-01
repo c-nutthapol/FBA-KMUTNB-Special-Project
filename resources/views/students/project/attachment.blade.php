@@ -3,34 +3,34 @@
 @section('title', 'แนบเอกสารประกอบโครงงาน')
 
 @section('content')
-    <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
+    <div class="-mx-3 mb-6 flex flex-wrap">
+        <div class="w-full max-w-full flex-none px-3">
             @include('components.students.nav-project')
         </div>
     </div>
 
-    <div class="flex flex-wrap -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
+    <div class="-mx-3 flex flex-wrap">
+        <div class="w-full max-w-full flex-none px-3">
 
             {{-- แนบเอกสาร --}}
             <div
-                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
                 <div
-                    class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                        <i class="text-2xl text-white bi bi-file-earmark-arrow-up-fill leading-0 dark:text-blue-500"></i>
+                    class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
+                    <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                        <i class="bi bi-file-earmark-arrow-up-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         แนบเอกสาร
                     </h5>
                 </div>
                 <div class="flex-auto p-6">
-                    <div class="p-0 overflow-x-auto">
+                    <div class="overflow-x-auto p-0">
                         <form>
                             <div class="inline-block w-auto pb-6">
                                 <div class="flex flex-row gap-3">
                                     <input class="input h-full p-0" type="file">
-                                    <button type="submit" class="btn text-xs  text-white  from-teal-400 to-green-400">
+                                    <button type="submit" class="btn from-teal-400 to-green-400 text-xs text-white">
                                         <div class="flex flex-row items-center gap-3">
                                             <i class="bi bi-upload leading-0"></i>
                                             <span class="block">อัพโหลด</span>
@@ -57,3 +57,4 @@
         </div>
     </div>
 @endsection
+

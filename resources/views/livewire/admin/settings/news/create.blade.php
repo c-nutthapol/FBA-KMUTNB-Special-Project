@@ -1,12 +1,12 @@
-<div class="flex flex-wrap -mx-3">
-    <div class="flex-none w-full max-w-full px-3">
+<div class="-mx-3 flex flex-wrap">
+    <div class="w-full max-w-full flex-none px-3">
         <div
-            class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border dark:bg-slate-850 dark:shadow-dark-xl">
+            class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
             <div
-                class="flex flex-col items-start justify-start gap-4 p-6 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent sm:flex-row sm:items-center sm:justify-between">
+                class="border-b-solid mb-0 flex flex-col items-start justify-start gap-4 rounded-t-2xl border-b-0 border-b-transparent p-6 sm:flex-row sm:items-center sm:justify-between">
                 <div class="flex flex-row items-center space-x-4">
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
-                        <i class="text-2xl text-white bi bi-plus-lg leading-0 dark:text-blue-500"></i>
+                        <i class="bi bi-plus-lg text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
                         เพิ่มข่าวสาร
@@ -14,10 +14,10 @@
                 </div>
             </div>
 
-            <div class="flex-wrap flex-auto p-6">
+            <div class="flex-auto flex-wrap p-6">
                 <form class="flex flex-col gap-4" wire:submit.prevent="submit">
                     <div class="text-center">
-                        <div class="block mx-auto max-w-100">
+                        <div class="mx-auto block max-w-100">
                             @if ($photo)
                                 <div class="mb-2">
                                     <img src="{{ $photo->temporaryUrl() }}"
@@ -34,22 +34,24 @@
                             <input class="input h-full p-0" type="file" wire:model.defer="photo">
 
                             @error('photo')
-                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div>
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             ชื่อข่าวสาร
+                            <span class="text-rose-600">*</span>
                         </label>
                         <input type="text" class="input" placeholder="กรุณากรอกข่าวสาร" wire:model.defer="title" />
                         @error('title')
-                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>
                     <div>
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             ประเภทข่าวสาร
+                            <span class="text-rose-600">*</span>
                         </label>
                         <select class="select" wire:model.defer="masternew_id">
                             <option value="">
@@ -66,16 +68,17 @@
                             @endforelse
                         </select>
                         @error('masternew_id')
-                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>
                     <div wire:ignore>
                         <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                             รายละเอียดข่าวสาร
+                            <span class="text-rose-600">*</span>
                         </label>
-                        <textarea class="h-auto input" rows="6" id="editor" wire:model.defer="content"></textarea>
+                        <textarea class="input h-auto" rows="6" id="editor" wire:model.defer="content"></textarea>
                         @error('content')
-                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -85,8 +88,8 @@
                         </label>
                         <div class="flex flex-row items-center">
                             <span class="mr-3 text-sm tracking-wide dark:text-white dark:opacity-80">Inactive</span>
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="active" class="sr-only peer" wire:model.defer="status">
+                            <label class="relative inline-flex cursor-pointer items-center">
+                                <input type="checkbox" value="active" class="peer sr-only" wire:model.defer="status">
                                 <div
                                     class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800">
                                 </div>
@@ -100,7 +103,7 @@
                             class="mr-1 inline-block rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                             ยกเลิก
                         </a>
-                        <button type="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
+                        <button type="submit" class="btn from-blue-500 to-violet-500 text-sm font-medium text-white">
                             <div class="flex flex-row items-center gap-3" wire:loading.class="hidden"
                                 wire:target="submit">
                                 <i class="bi bi-save-fill leading-0"></i>
@@ -147,3 +150,4 @@
             });
     </script>
 @endpush
+
