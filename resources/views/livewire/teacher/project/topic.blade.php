@@ -119,7 +119,7 @@
                                 </td>
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <a href="/{{$project->files->sortByDesc('created_at')->first()->path}}" download
+                                    <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path}}" download
                                         class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
                                         <div class="flex flex-row items-center gap-2">
                                             <i class="bi bi-download leading-0"></i>
@@ -146,22 +146,41 @@
                                 </td>
                                 <td
                                     class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <div class="flex flex-row justify-end gap-3">
-                                        <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                            <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-eye leading-0"></i>
-                                                <span class="block">ดูรายละเอียด</span>
-                                            </div>
-                                        </a>
-                                        <a href="{{ route('teacher.project.suggestion',['id'=> $project->id]) }}"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
-                                            <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-chat-dots leading-0"></i>
-                                                <span class="block">เสนอแนะ</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    @if (auth()->user()->role_id == 2)
+                                        <div class="flex flex-row justify-end gap-3">
+                                            <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-eye leading-0"></i>
+                                                    <span class="block">ดูรายละเอียด</span>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('teacher.project.suggestion',['id'=> $project->id]) }}"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-chat-dots leading-0"></i>
+                                                    <span class="block">เสนอแนะ</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @elseif(auth()->user()->role_id == 3)
+                                        <div class="flex flex-row justify-end gap-3">
+                                            <a href="{{ route('admin.project.details',['id' => $project->id]) }}"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-eye leading-0"></i>
+                                                    <span class="block">ดูรายละเอียด</span>
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('admin.project.suggestion',['id'=> $project->id]) }}"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-chat-dots leading-0"></i>
+                                                    <span class="block">เสนอแนะ</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                             @empty

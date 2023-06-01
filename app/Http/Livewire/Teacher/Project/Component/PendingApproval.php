@@ -14,27 +14,45 @@ class PendingApproval extends Component
     public function render()
     {
         $stepPage = Route::current()->uri;
-        $stepNumber;
+        $stepTeacher = [];
+        $stepAdmin = [];
         $stepText = "";
 
         if(str_contains($stepPage, "topic")){
             $stepText = $this->step(2,"string");
-            $stepNumber = 6;
+            $stepTeacher = [6, 9];
+            $stepAdmin = [7, 11, 12];
         }else if(str_contains($stepPage, "progress")){
             $stepText = $this->step(3,"string");
-            $stepNumber = 15;
+            $stepTeacher = [15, 18];
+            $stepAdmin = [16, 20, 21];
         }else if(str_contains($stepPage, "defense_exam")){
             $stepText = $this->step(4,"string");
-            $stepNumber = 24;
+            $stepTeacher = [24, 27];
+            $stepAdmin = [25, 29, 30];
         }else if(str_contains($stepPage, "book")){
             $stepText = $this->step(5,"string");
-            $stepNumber = 33;
+            // $step_teacher = [33, 36];
+            $stepTeacher = [33];
+            $stepAdmin = [34, 35];
         }else{
             $stepText = $this->step(1,"string");
-            $stepNumber = 1;
+            $stepTeacher = [1];
+            $stepAdmin = [2];
         }
 
-        $countProject = Project::where("status",$stepNumber)->count();
+        $countProject = Project::with('user_project')
+        ->when(auth()->user()->role_id == 2, function($when) use($stepTeacher){
+            $when->whereHas("user_project", function($sub){
+                $sub->where("user_id", auth()->user()->id)
+                ->where("role","teacher1");
+            })
+            ->whereIn("status", $stepTeacher);
+        })
+        ->when(auth()->user()->role_id == 3, function($when) use($stepAdmin){
+            $when->whereIn("status", $stepAdmin);
+        })
+        ->count();
         return view('livewire.teacher.project.component.pending-approval', compact('stepText','countProject'));
     }
 }

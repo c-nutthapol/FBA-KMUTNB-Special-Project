@@ -41,20 +41,30 @@
             </div>
             <div class="pb-6 sm:p-6">
                 {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
-                <a href="/{{$detail->files->sortByDesc('created_at')->first()->path}}" download class="text-xs text-white btn from-teal-400 to-green-400">
+                <a href="/storage/{{$detail->files->sortByDesc('created_at')->first()->path}}" download class="text-xs text-white btn from-teal-400 to-green-400">
                     <div class="flex flex-row items-center gap-3">
                         <i class="bi bi-download leading-0"></i>
                         <span class="block">โหลดเอกสาร</span>
                     </div>
                 </a>
+                @if (auth()->user()->role_id == 2)
+                    <a href="{{ route('teacher.project.suggestion',['id' => $detail->id]) }}"
+                        class="text-xs text-white btn from-blue-500 to-violet-500" type="button">
+                        <div class="flex flex-row items-center gap-3">
+                            <i class="bi bi-chat-dots-fill leading-0"></i>
+                            <span class="block">เสนอแนะ</span>
+                        </div>
+                    </a>
+                @elseif(auth()->user()->role_id == 3)
+                    <a href="{{ route('admin.project.suggestion',['id' => $detail->id]) }}"
+                        class="text-xs text-white btn from-blue-500 to-violet-500" type="button">
+                        <div class="flex flex-row items-center gap-3">
+                            <i class="bi bi-chat-dots-fill leading-0"></i>
+                            <span class="block">เสนอแนะ</span>
+                        </div>
+                    </a>
+                @endif
 
-                <a href="{{ route('teacher.project.suggestion',['id' => $detail->id]) }}"
-                    class="text-xs text-white btn from-blue-500 to-violet-500" type="button">
-                    <div class="flex flex-row items-center gap-3">
-                        <i class="bi bi-chat-dots-fill leading-0"></i>
-                        <span class="block">เสนอแนะ</span>
-                    </div>
-                </a>
             </div>
         </div>
 

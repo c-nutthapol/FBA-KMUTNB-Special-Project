@@ -52,25 +52,26 @@ class StudentRequest extends Model
     {
         $text = "";
         $color = "";
-        if ($this->status == 38) {
+        if($this->status == 38){
             $color = "slate";
             $text = "รออนุมัติ";
-        } elseif ($this->status == 41) {
-            $color = "slate";
-            $text = "รออนุมัติ";
-        } elseif ($this->status == 42) {
+        }else if($this->status == 39){
             $color = "violet";
             $text = "อนุมัติ";
-        } elseif ($this->status == 40 || $this->status == 43) {
+        }else if($this->status == 40){
+            $color = "rose";
+            $text = "ไม่อนุมัติ";
+        }else if($this->status == 41){
+            $color = "slate";
+            $text = "รออนุมัติ";
+        }else if($this->status == 42){
+            $color = "violet";
+            $text = "อนุมัติ";
+        }else if($this->status == 43){
             $color = "rose";
             $text = "ไม่อนุมัติ";
         }
-        $fullText =
-            '<span class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-' .
-            $color .
-            '-400 align-baseline font-bold uppercase leading-none text-white">' .
-            $text .
-            "</span>";
+        $fullText = '<span class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-'.$color.'-400 align-baseline font-bold uppercase leading-none text-white">'.$text.'</span>';
         return $fullText;
     }
 

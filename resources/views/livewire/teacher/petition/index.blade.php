@@ -180,13 +180,23 @@
                                             <span class="block">จัดการคำร้อง</span>
                                         </div>
                                     </button>
-                                    <a href="{{ route('admin.project.details') }}" target="_blank"
-                                        class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                        <div class="flex flex-row items-center gap-2">
-                                            <i class="bi bi-eye leading-0"></i>
-                                            <span class="block">ดูโครงงาน</span>
-                                        </div>
-                                    </a>
+                                    @if (auth()->user()->role_id == 2)
+                                        <a href="{{ route('teacher.project.details',['id' => $item->project]) }}" target="_blank"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-eye leading-0"></i>
+                                                <span class="block">ดูโครงงาน</span>
+                                            </div>
+                                        </a>
+                                    @elseif(auth()->user()->role_id == 3)
+                                        <a href="{{ route('admin.project.details',['id' => $item->project]) }}" target="_blank"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-eye leading-0"></i>
+                                                <span class="block">ดูโครงงาน</span>
+                                            </div>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
