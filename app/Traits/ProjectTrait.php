@@ -103,7 +103,7 @@ trait ProjectTrait
             $result->name = "ท่านมีโครงงานอยู่แล้ว";
             $result->redirect = route("student.project.home");
             $result->btn = "หน้าหลัก";
-        } elseif (!$project->id) {
+        } elseif (!$project->id && $isCreate == false) {
             $result->name = "ท่านยังไม่มีโครงงาน กรุณาสร้างโครงงานก่อน";
             $result->redirect = route("student.project.create");
             $result->btn = "สร้างโครงงาน";
