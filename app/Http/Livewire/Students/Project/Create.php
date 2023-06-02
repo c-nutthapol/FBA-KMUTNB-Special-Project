@@ -197,8 +197,10 @@ class Create extends Component
             if (Storage::get("files/" . $pname)) {
                 Storage::delete("files/" . $pname);
             }
-            if (Storage::get("files/" . isset($tname) ? $tname : "")) {
-                Storage::delete("files/" . isset($tname) ? $tname : "");
+            if ($this->form->get("teacher_2") == "external") {
+                if (Storage::get("files/" . $tname)) {
+                    Storage::delete("files/" . $tname);
+                }
             }
             $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
         }
