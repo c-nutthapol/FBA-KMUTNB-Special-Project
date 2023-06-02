@@ -129,10 +129,12 @@ class Create extends Component
         //begin Transaction
         try {
             //store image
-            $this->file_project->storeAs("files");
-            $pname = $this->file_project->getFilename();
-            $this->file_project->storeAs("files", $pname);
+            $upload_locate = "/file/project/";
+            $pname = $this->file_project?->getFilename();
+            $tname = $this->file_teacher?->getFilename();
 
+            $this->file_project?->storeAs($upload_locate, $pname, "public");
+            $this->file_teacher?->storeAs($upload_locate, $tname, "public");
             //start Transaction
             DB::beginTransaction();
             $project = Project::create([
@@ -145,7 +147,7 @@ class Create extends Component
                 "title" => "step 1",
                 "project_id" => $project->id,
                 "is_link" => 0,
-                "path" => "files/" . $pname,
+                "path" => "/file/project/" . $pname,
             ]);
             User::where("id", $this->form->get("student_1")["id"])->update([
                 "room" => $this->form->get("student_1")["room"],
@@ -173,35 +175,24 @@ class Create extends Component
                 ]);
                 $project->users()->attach($user->id, ["role" => "teacher2"]);
                 //store file
-                $this->file_teacher->storeAs("files");
-                $tname = $this->file_teacher->getFilename();
-                $this->file_teacher->storeAs("files", $tname);
+
                 File::create([
                     "title" => "teacher",
                     "project_id" => $project->id,
                     "is_link" => 0,
-                    "path" => "files/" . $tname,
+                    "path" => "/file/project/" . $tname,
                 ]);
             } else {
                 $project->users()->attach($this->form->get("teacher_2"), ["role" => "teacher2"]);
             }
-
             DB::commit();
             $this->cleanupOldUploads();
-            $this->file_project->delete();
+            $this->file_project?->delete();
             $this->file_teacher?->delete();
             $this->emit("alert", ["status" => "success", "title" => "บันทึกสำเร็จ"]);
             return redirect()->route("student.project.home");
         } catch (\Exception $e) {
             DB::rollBack();
-            if (Storage::get("files/" . $pname)) {
-                Storage::delete("files/" . $pname);
-            }
-            if ($this->form->get("teacher_2") == "external") {
-                if (Storage::get("files/" . $tname)) {
-                    Storage::delete("files/" . $tname);
-                }
-            }
             $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
         }
         //end Transaction
