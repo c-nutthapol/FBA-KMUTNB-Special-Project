@@ -32,9 +32,8 @@ class Dashboard extends Component
 
         $chart_data = Project::get();
         $departments = Master_department::get();
-        $edu_terms = EduTerm::with('term')->get();
-        $edu_years = $edu_terms->groupBy(function ($item) {
-            return $item->term->year;
+        $edu_years = EduTerm::select('id', 'year', 'term')->get()->groupBy(function ($item) {
+            return $item->year;
         });
 
         return view('livewire.component.dashboard', compact('chart_data', 'departments',  'edu_years'));
