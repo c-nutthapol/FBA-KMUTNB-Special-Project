@@ -9,16 +9,20 @@
             <div class="flex flex-row flex-1 gap-4">
                 <div class="flex-initial">
                     <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="year">
-                        เลือกปีการศึกษา
+                        เลือกปีการศึกษา/ภาคเรียน
                     </label>
                     <select id="year" class="select" wire:model="year">
                         <option value="all" selected>
-                            ปีการศึกษาทั้งหมด
+                            ปีการศึกษา/ภาคเรียนทั้งหมด
                         </option>
-                        @foreach ($edu_years as $edu_year)
-                            <option value="{{ $edu_year->year }}">
-                                {{ $edu_year->year }}
-                            </option>
+                        @foreach ($edu_years as $year => $terms)
+                            <optgroup label="ปีการศึกษา {{ $year }}">
+                                @foreach ($terms as $term)
+                                    <option value="{{ $term->id }}">
+                                        ภาคเรียน {{ $term->term }}
+                                    </option>
+                                @endforeach
+                            </optgroup>
                         @endforeach
                     </select>
                 </div>
