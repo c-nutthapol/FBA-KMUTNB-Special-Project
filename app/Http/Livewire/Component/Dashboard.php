@@ -6,13 +6,14 @@ use App\Models\EduTerm;
 use App\Models\Master_department;
 use App\Models\Master_status;
 use App\Models\Project;
+use App\Models\User;
 use Livewire\Component;
 
 class Dashboard extends Component
 
 
 {
-    public $year, $term, $department, $chartData, $watting, $approved, $approved_pass;
+    public $year, $term, $department, $chartData, $watting, $approved, $approved_pass, $value;
 
     public function mount()
     {
@@ -29,8 +30,17 @@ class Dashboard extends Component
 
     public function render()
     {
+        $chart_data = Project::when($this->year, function ($query) {
+            $query->where('edu_term_id', $this->year);
+        })
+            ->when($this->department, function ($query) {
+                $query->whereHas('departments', function ($subQuery) {
+                    $subQuery->where('department', $this->department);
+                });
+            })
+            ->get();
 
-        $chart_data = Project::get();
+
         $departments = Master_department::get();
         $edu_years = EduTerm::select('id', 'year', 'term')->get()->groupBy(function ($item) {
             return $item->year;

@@ -36,6 +36,10 @@ class Project extends Model
     {
         return $this->belongsTo(Master_status::class, "status", "id");
     }
+    public function departments()
+    {
+        return $this->hasOne(User::class, "id", "created_by");
+    }
     protected static function boot()
     {
         parent::boot();
@@ -61,8 +65,8 @@ class Project extends Model
     protected function getStudentListForTableAttribute()
     {
         $data = [];
-        foreach($this->user_project as $item){
-            if(str_contains($item->role, "student")) $data[] = $item->user->displayname;
+        foreach ($this->user_project as $item) {
+            if (str_contains($item->role, "student")) $data[] = $item->user->displayname;
         }
         return $data;
     }
@@ -70,51 +74,51 @@ class Project extends Model
     protected function getSelectOptionAttribute()
     {
         $status = [];
-        if($this->status == 1){
+        if ($this->status == 1) {
             $status = [2, 3];
-        }else if($this->status == 2){
+        } else if ($this->status == 2) {
             $status = [4, 5];
-        }else if($this->status == 6){
+        } else if ($this->status == 6) {
             $status = [7, 8];
-        }else if($this->status == 7){
+        } else if ($this->status == 7) {
             $status = [9, 10];
-        }else if($this->status == 9){
+        } else if ($this->status == 9) {
             $status = [11, 12, 13];
-        }else if($this->status == 11){
+        } else if ($this->status == 11) {
             $status = [14];
-        }else if($this->status == 12){
+        } else if ($this->status == 12) {
             $status = [14];
-        }else if($this->status == 15){
+        } else if ($this->status == 15) {
             $status = [16, 17];
-        }else if($this->status == 16){
+        } else if ($this->status == 16) {
             $status = [18, 19];
-        }else if($this->status == 18){
+        } else if ($this->status == 18) {
             $status = [20, 21, 22];
-        }else if($this->status == 20){
+        } else if ($this->status == 20) {
             $status = [23];
-        }else if($this->status == 21){
+        } else if ($this->status == 21) {
             $status = [23];
-        }else if($this->status == 24){
+        } else if ($this->status == 24) {
             $status = [25, 26];
-        }else if($this->status == 25){
+        } else if ($this->status == 25) {
             $status = [27, 28];
-        }else if($this->status == 27){
+        } else if ($this->status == 27) {
             $status = [29, 30, 31];
-        }else if($this->status == 29){
+        } else if ($this->status == 29) {
             $status = [32];
-        }else if($this->status == 30){
+        } else if ($this->status == 30) {
             $status = [32];
-        }else if($this->status == 33){
+        } else if ($this->status == 33) {
             $status = [34, 35, 36];
-        }else if($this->status == 34 || $this->status == 35){
+        } else if ($this->status == 34 || $this->status == 35) {
             $status = [37];
         }
 
-        $statusOption = Master_status::whereIn("id",$status)
-        // where("step", $this->master_status->step)
-        // ->where("role_id",auth()->user()->role_id)
-        ->whereIn("step",[1, 2, 3, 4, 5])
-        ->get();
+        $statusOption = Master_status::whereIn("id", $status)
+            // where("step", $this->master_status->step)
+            // ->where("role_id",auth()->user()->role_id)
+            ->whereIn("step", [1, 2, 3, 4, 5])
+            ->get();
 
         return $statusOption;
     }

@@ -31,7 +31,7 @@
                     <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="major">
                         เลือกสาขาวิชา
                     </label>
-                    <select id="departments" class="select">
+                    <select id="departments" class="select" wire:model="department">
                         <option value="all" selected>
                             สาขาวิชาทั้งหมด
                         </option>
@@ -44,10 +44,6 @@
                 </div>
             </div>
             <div>
-                <button type="reset"
-                    class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
-                    รีเซ็ต
-                </button>
                 <button type="submit" class="text-sm font-medium text-white btn from-green-500 to-emerald-500"
                     wire:target="submit" wire:loading.attr="disabled">
                     <div class="flex flex-row items-center gap-3" wire:target="submit" wire:loading.class="hidden">
