@@ -3,15 +3,22 @@
 namespace App\Exports;
 
 use App\Models\Project;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class ProjectExport implements FromCollection
+class ProjectExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    protected $data;
+
+    public function __construct($data = [])
     {
-        return Project::all();
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+        $projects = $this->data;
+
+        return view("exports.project-export", compact("projects"));
     }
 }
