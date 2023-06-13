@@ -12,7 +12,7 @@
                         เลือกปีการศึกษา/ภาคเรียน
                     </label>
                     <select id="year" class="select" wire:model="year">
-                        <option value="all" selected>
+                        <option value="" selected>
                             ปีการศึกษา/ภาคเรียนทั้งหมด
                         </option>
                         @foreach ($edu_years as $year => $terms)
@@ -32,7 +32,7 @@
                         เลือกสาขาวิชา
                     </label>
                     <select id="departments" class="select" wire:model="department">
-                        <option value="all" selected>
+                        <option value="" selected>
                             สาขาวิชาทั้งหมด
                         </option>
                         @foreach ($departments as $department)
@@ -44,15 +44,19 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="text-sm font-medium text-white btn from-green-500 to-emerald-500"
-                    wire:target="submit" wire:loading.attr="disabled">
-                    <div class="flex flex-row items-center gap-3" wire:target="submit" wire:loading.class="hidden">
+                <button type="reset" wire:click="resetFilters"
+                    class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
+                    รีเซ็ต
+                </button>
+                <button type="button" class="text-sm font-medium text-white btn from-green-500 to-emerald-500"
+                    wire:target="export" wire:loading.attr="disabled" wire:click="export">
+                    <div class="flex flex-row items-center gap-3" wire:target="export" wire:loading.class="hidden">
                         <i class="bi bi-download leading-0"></i>
                         <span class="block">Export</span>
                     </div>
                     {{-- loading --}}
                     <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin"
-                        wire:target="submit" wire:loading.class.remove="hidden" viewBox="0 0 100 101" fill="none"
+                        wire:target="export" wire:loading.class.remove="hidden" viewBox="0 0 100 101" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
@@ -72,7 +76,7 @@
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
                         class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white bg-blue-500 h-14 w-14 rounded-2 leading-0">
-                        {{ $chart_data->count() }}
+                        {{ $Data->count() }}
                     </span>
                     <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
                         โครงงาน
@@ -84,7 +88,7 @@
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
                         class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white bg-yellow-400 h-14 w-14 rounded-2 leading-0">
-                        {{ $chart_data->whereIn('status', $watting)->count() }}
+                        {{ $Data->whereIn('status', $watting)->count() }}
                     </span>
                     <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
                         รออนุมัติหัวข้อ
@@ -96,7 +100,7 @@
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
                         class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white bg-teal-400 h-14 w-14 rounded-2 leading-0">
-                        {{ $chart_data->whereIn('status', $approved)->count() }}
+                        {{ $Data->whereIn('status', $approved)->count() }}
                     </span>
                     <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
                         อนุมัติสอบ
@@ -108,7 +112,7 @@
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
                         class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white h-14 w-14 rounded-2 bg-rose-500 leading-0">
-                        {{ $chart_data->whereIn('status', $approved_pass)->count() }}
+                        {{ $Data->whereIn('status', $approved_pass)->count() }}
                     </span>
                     <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
                         อนุมัติผลสอบ
@@ -127,76 +131,164 @@
     </div>
 </div>
 
-@section('script')
-    <script>
-        const ctx = document.getElementById('barchart');
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['จำนวนโครงงาน'],
-                datasets: [{
-                        label: 'โครงงาน',
-                        data: [
-                            {{ $chart_data->count() }},
-                        ],
-                        borderWidth: 1,
-                        backgroundColor: [
-                            'rgba(94, 114, 228, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgb(94, 114, 228)',
+@push('script')
+    {{-- <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('chartDataUpdated', function(chartData) {
+                const ctx = document.getElementById('barchart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['จำนวนโครงงาน'],
+                        datasets: [{
+                                label: 'โครงงาน',
+                                data: [
+                                    chartData.chart_all,
+                                ],
+                                borderWidth: 1,
+                                backgroundColor: [
+                                    'rgba(94, 114, 228, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgb(94, 114, 228)',
+                                ],
+                            },
+                            {
+                                label: 'รออนุมัติหัวข้อ',
+                                data: [
+                                    chartData.chart_watting,
+                                ],
+                                borderWidth: 1,
+                                backgroundColor: [
+                                    'rgba(227, 160, 8, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgb(227, 160, 8)',
+                                ],
+                            },
+                            {
+                                label: 'อนุมัติสอบ',
+                                data: [
+                                    chartData.chart_approved,
+                                ],
+                                borderWidth: 1,
+                                backgroundColor: [
+                                    'rgba(22, 189, 202, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgb(22, 189, 202)',
+                                ],
+                            },
+                            {
+                                label: 'อนุมัติผลสอบ',
+                                data: [
+                                    chartData.chart_approved_pass,
+                                ],
+                                borderWidth: 1,
+                                backgroundColor: [
+                                    'rgba(244, 63, 94, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgb(244, 63, 94)',
+                                ],
+                            },
                         ],
                     },
-                    {
-                        label: 'รออนุมัติหัวข้อ',
-                        data: [
-                            {{ $chart_data->whereIn('status', $watting)->count() }},
-                        ],
-                        borderWidth: 1,
-                        backgroundColor: [
-                            'rgba(227, 160, 8, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgb(227, 160, 8)',
-                        ],
-                    },
-                    {
-                        label: 'อนุมัติสอบ',
-                        data: [
-                            {{ $chart_data->whereIn('status', $approved)->count() }},
-                        ],
-                        borderWidth: 1,
-                        backgroundColor: [
-                            'rgba(22 ,189 ,202, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgb(22 ,189 ,202)',
-                        ],
-                    },
-                    {
-                        label: 'อนุมัติผลสอบ',
-                        data: [
-                            {{ $chart_data->whereIn('status', $approved_pass)->count() }},
-
-                        ],
-                        borderWidth: 1,
-                        backgroundColor: [
-                            'rgba(244 ,63 ,94, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgb(244 ,63 ,94)',
-                        ],
-                    },
-                ],
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
-                }
-            }
+                });
+            });
+        });
+    </script> --}}
+    <script>
+        document.addEventListener('livewire:load', function() {
+            const ctx = document.getElementById('barchart');
+
+            // Initialize the chart with initial data
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['จำนวนโครงงาน'],
+                    datasets: [{
+                            label: 'โครงงาน',
+                            data: [
+                                {{ $Data->count() }},
+                            ],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(94, 114, 228, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgb(94, 114, 228)',
+                            ],
+                        },
+                        {
+                            label: 'รออนุมัติหัวข้อ',
+                            data: [
+                                {{ $Data->whereIn('status', $watting)->count() }},
+                            ],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(227, 160, 8, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgb(227, 160, 8)',
+                            ],
+                        },
+                        {
+                            label: 'อนุมัติสอบ',
+                            data: [
+                                {{ $Data->whereIn('status', $approved)->count() }},
+                            ],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(22 ,189 ,202, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgb(22 ,189 ,202)',
+                            ],
+                        },
+                        {
+                            label: 'อนุมัติผลสอบ',
+                            data: [
+                                {{ $Data->whereIn('status', $approved_pass)->count() }},
+                            ],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(244 ,63 ,94, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgb(244 ,63 ,94)',
+                            ],
+                        }
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            // Event listener for chart data update
+            Livewire.on('chartDataUpdated', chartData => {
+                // Update the chart data
+                chart.data.datasets[0].data = [chartData.chart_all];
+                chart.data.datasets[1].data = [chartData.chart_watting];
+                chart.data.datasets[2].data = [chartData.chart_approved];
+                chart.data.datasets[3].data = [chartData.chart_approved_pass];
+
+                // Update the chart
+                chart.update();
+            });
         });
     </script>
-@endsection
+@endpush
