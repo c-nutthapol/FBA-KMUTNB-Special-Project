@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Students;
 use App\Models\Master_request;
 use App\Models\StudentRequest;
 use App\Traits\ProjectTrait;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use stdClass;
@@ -12,9 +13,9 @@ use stdClass;
 class Petition extends Component
 {
     use ProjectTrait;
+
     //varible
     public $form;
-    public $project;
 
     //validation
     protected $rules = [
@@ -41,9 +42,9 @@ class Petition extends Component
         $data->petition = Master_request::query()
             ->where("status", "active")
             ->get();
-        $data->project = $this->project = $this->getProject();
         return view("livewire.students.petition", compact("data"));
     }
+
     public function submit()
     {
         $this->validate();
@@ -56,13 +57,13 @@ class Petition extends Component
                 "project_id" => $this->project->id,
                 "title" => $this->form["title"],
                 "description" => $this->form["desc"],
-                "status" => 38,
+                "status" => 22,
             ]);
 
             DB::commit();
             $this->emit("alert", ["status" => "success", "title" => "บันทึกข้อมูลสำเร็จ"]);
             return redirect()->route("student.history");
-        } catch (\Exception) {
+        } catch (Exception) {
             DB::rollBack();
             $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ"]);
         }
