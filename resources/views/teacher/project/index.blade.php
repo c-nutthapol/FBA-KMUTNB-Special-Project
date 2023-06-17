@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ลงทะเบียนโครงงานพิเศษ')
+@section('title', 'สอบหัวข้อ')
 
 @section('content')
     @livewire('teacher.project.component.pending-approval')

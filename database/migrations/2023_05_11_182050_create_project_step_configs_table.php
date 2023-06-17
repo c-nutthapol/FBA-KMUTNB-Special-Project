@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -25,9 +24,6 @@ return new class extends Migration
             $table->date('phase_4_start_date')->nullable();
             $table->date('phase_4_end_date')->nullable();
             $table->boolean('phase_4_status')->default(0);
-            $table->date('phase_5_start_date')->nullable();
-            $table->date('phase_5_end_date')->nullable();
-            $table->boolean('phase_5_status')->default(0);
             $table->timestamps();
 
             $table
