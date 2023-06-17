@@ -19,7 +19,7 @@ class StatusSeeder extends Seeder
             [
                 'role_id' => '1',
                 'step' => '1',
-                'name' => 'ขอสอบหัวข้อ',
+                'name' => 'สอบหัวข้อ',
                 'status' => 'รออนุมัติขอสอบหัวข้อ',
                 'status_filter' => 'Y',
                 'status_update' => 'Y',
