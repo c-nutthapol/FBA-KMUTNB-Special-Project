@@ -42,6 +42,13 @@ class RequestSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'name' => 'ขอสอบหัวข้อโครงงานพิเศษล่าช้า',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_by' => 1,
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'ขอสอบก้าวหน้าโครงงานพิเศษล่าช้า',
                 'created_by' => 1,
                 'created_at' => now(),
@@ -50,6 +57,13 @@ class RequestSeeder extends Seeder
             ],
             [
                 'name' => 'ขอสอบป้องกันโครงงานพิเศษล่าช้า',
+                'created_by' => 1,
+                'created_at' => now(),
+                'updated_by' => 1,
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'ขอส่งเล่มโครงงานพิเศษล่าช้า',
                 'created_by' => 1,
                 'created_at' => now(),
                 'updated_by' => 1,
