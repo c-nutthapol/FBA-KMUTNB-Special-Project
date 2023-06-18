@@ -18,8 +18,12 @@ Route::middleware("auth", "role:teacher")->group(function () {
                     Route::view("/topic", "teacher.project.topic")->name("topic");
                     // ยื่นขอสอบความก้าวหน้า
                     Route::view("/progress", "teacher.project.progress")->name("progress");
+                    // ผล
+                    Route::view("/progressresult", "teacher.project.progressresult")->name("progressresult");
                     // ยื่นขอสอบป้องกัน
                     Route::view("/defense_exam", "teacher.project.defense")->name("defense");
+                    // ผล
+                    Route::view("/defenseresult", "teacher.project.defenseresult")->name("defenseresult");
                     // ยื่นส่งเล่ม
                     Route::view("/book", "teacher.project.book")->name("book");
                     // รายละเอียดโครงงาน

@@ -4,7 +4,7 @@
         <div class="w-full max-w-full flex-none px-3">
             <div class="inline-block">
                 <a href="{{ route('student.project.home') }}"
-                    class="fade-opacity flex flex-row items-center gap-2 text-base font-semibold text-white dark:opacity-80 dark:hover:opacity-100">
+                   class="fade-opacity flex flex-row items-center gap-2 text-base font-semibold text-white dark:opacity-80 dark:hover:opacity-100">
                     <i class="bi bi-arrow-left text-xl"></i>
                     <span class="inline-block">
                         กลับ
@@ -17,7 +17,7 @@
     <div class="-mx-3 flex flex-wrap">
         <div class="w-full max-w-full flex-none px-3">
 
-            {{-- ลงทะเบียนโครงงานพิเศษ --}}
+            {{-- สอบหัวข้อ --}}
             <div
                 class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
                 <div
@@ -26,7 +26,7 @@
                         <i class="bi bi-journal-plus text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
-                        ลงทะเบียนโครงงานพิเศษ
+                        สอบหัวข้อ
                     </h5>
                 </div>
                 <div class="flex-auto flex-wrap p-6">
@@ -37,10 +37,10 @@
                                 <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อโครงงาน
                                     (ภาษาไทย) <span class="text-rose-600">*</span></label>
                                 <input wire:model.defer="form.name_th" type="text" class="input"
-                                    placeholder="กรุณากรอกชื่อโครงงานภาษาไทย" />
+                                       placeholder="กรุณากรอกชื่อโครงงานภาษาไทย"/>
                                 @error('form.name_th')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
 
                             </div>
@@ -50,10 +50,10 @@
                                     <span class="text-rose-600">*</span>
                                 </label>
                                 <input wire:model.defer="form.name_en" type="text" class="input"
-                                    placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ" />
+                                       placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ"/>
                                 @error('form.name_en')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -124,8 +124,8 @@
                                     @endforeach
                                 </select>
                                 @error('form.student_2')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -148,8 +148,8 @@
                                     @endforeach
                                 </select>
                                 @error('form.teacher_1')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
 
@@ -169,8 +169,8 @@
                                     @endforeach
                                 </select>
                                 @error('form.teacher_2')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -194,8 +194,8 @@
 
                                 </select>
                                 @error('form.teacher_3')
-                                    <span
-                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                             </div>
                             {{-- โชว์เฉพาะตอนที่มีเอกสาร --}}
                             <a href="#"
-                                class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-teal-400 transition-all ease-in hover:text-teal-600">
+                               class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-teal-400 transition-all ease-in hover:text-teal-600">
                                 <div class="flex flex-row items-center gap-2">
                                     <i class="bi bi-download leading-0"></i>
                                     <span class="block">ดาวน์โหลดเอกสาร</span>

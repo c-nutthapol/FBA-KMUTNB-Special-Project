@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 use Mail;
 use App\Mail\ProjectMail;
 
-class Topic extends Component
+class Defenseresult extends Component
 {
     use WithPagination;
 
@@ -24,9 +24,9 @@ class Topic extends Component
         // search
         $search = $this->search;
         $year = $this->year;
-        $step = 1;
-        $step_teacher = [2, 5, 6];
-        $step_admin = [4,5,6];
+        $step = 3;
+        $step_teacher = [14, 18];
+        $step_admin = [16, 17, 18];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -66,9 +66,8 @@ class Topic extends Component
             $when->where("edu_term_id",$year);
         })
         ->paginate(10);
-        // ->get();
         // dd($projects);
-        return view('livewire.teacher.project.topic', compact('projects','termFilter','statusFilter'));
+        return view('livewire.teacher.project.defenseresult', compact('projects','termFilter','statusFilter'));
     }
 
     public function updateStatusProject($id, $status)

@@ -1,64 +1,92 @@
-                    <li class="mt-0.5 w-full">
-                        <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('admin.project.home') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <i
-                                    class="bi  {{ Route::currentRouteName() == 'admin.project.home' ? 'bi-1-circle-fill' : 'bi-1-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">ลงทะเบียนโครงงาน</span>
-                        </a>
-                    </li>
+                <li class="mt-0.5 w-full">
+                    <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.project.home') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi  {{ Route::currentRouteName() == 'admin.project.home' ? 'bi-1-circle-fill' : 'bi-1-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                        </div>
+                        <span
+                            class="ml-1 duration-300 opacity-100 pointer-events-none ease">ลงทะเบียนสอบหัวข้อ</span>
+                    </a>
+                </li>
 
-                    <li class="mt-0.5 w-full">
-                        <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.topic' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('admin.project.topic') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <i
-                                    class="bi  {{ Route::currentRouteName() == 'admin.project.topic' ? 'bi-2-circle-fill' : 'bi-2-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
-                            </div>
-                            <span
-                                class="ml-1 duration-300 opacity-100 pointer-events-none ease">ลงทะเบียนเพื่อขอสอบหัวข้อ</span>
-                        </a>
-                    </li>
+                <li class="mt-0.5 w-full">
+                <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.topic' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                    href="{{ route('admin.project.topic') }}">
+                    <div
+                        class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i
+                            class="bi  {{ Route::currentRouteName() == 'admin.project.topic' ? 'bi-2-circle-fill' : 'bi-2-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                    </div>
+                    <span
+                        class="ml-1 duration-300 opacity-100 pointer-events-none ease">ผลการสอบหัวข้อ</span>
+                </a>
+                </li>
 
-                    <li class="mt-0.5 w-full">
-                        <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.progress' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('admin.project.progress') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <i
-                                    class="bi  {{ Route::currentRouteName() == 'admin.project.progress' ? 'bi-3-circle-fill' : 'bi-3-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
-                            </div>
-                            <span
-                                class="ml-1 duration-300 opacity-100 pointer-events-none ease">ยื่นขอสอบความก้าวหน้า</span>
-                        </a>
-                    </li>
+                <li class="mt-0.5 w-full">
+                    <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.progress' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.project.progress') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi  {{ Route::currentRouteName() == 'admin.project.progress' ? 'bi-3-circle-fill' : 'bi-3-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                        </div>
+                        <span
+                            class="ml-1 duration-300 opacity-100 pointer-events-none ease">ลงทะเบียนสอบความก้าวหน้า</span>
+                    </a>
+                </li>
 
-                    <li class="mt-0.5 w-full">
-                        <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.defense' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('admin.project.defense') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <i
-                                    class="bi  {{ Route::currentRouteName() == 'admin.project.defense' ? 'bi-4-circle-fill' : 'bi-4-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">ยื่นขอสอบป้องกัน</span>
-                        </a>
-                    </li>
+                <li class="mt-0.5 w-full">
+                <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.progressresult' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                    href="{{ route('admin.project.progressresult') }}">
+                    <div
+                        class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i
+                            class="bi  {{ Route::currentRouteName() == 'admin.project.progressresult' ? 'bi-4-circle-fill' : 'bi-4-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                    </div>
+                    <span
+                        class="ml-1 duration-300 opacity-100 pointer-events-none ease">ผลการสอบความก้าวหน้า</span>
+                </a>
+                </li>
 
-                    <li class="mt-0.5 w-full">
-                        <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.book' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('admin.project.book') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <i
-                                    class="bi  {{ Route::currentRouteName() == 'admin.project.book' ? 'bi-5-circle-fill' : 'bi-5-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">ส่งเล่ม</span>
-                        </a>
-                    </li>
+                <li class="mt-0.5 w-full">
+                    <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.defense' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.project.defense') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi  {{ Route::currentRouteName() == 'admin.project.defense' ? 'bi-5-circle-fill' : 'bi-5-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                        </div>
+                        <span
+                            class="ml-1 duration-300 opacity-100 pointer-events-none ease">ลงทะเบียนสอบป้องกัน</span>
+                    </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
+                <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.defenseresult' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                    href="{{ route('admin.project.defenseresult') }}">
+                    <div
+                        class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i
+                            class="bi  {{ Route::currentRouteName() == 'admin.project.defenseresult' ? 'bi-6-circle-fill' : 'bi-6-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                    </div>
+                    <span
+                        class="ml-1 duration-300 opacity-100 pointer-events-none ease">ผลการสอบป้องกัน</span>
+                </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
+                    <a class="py-2.7  dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.project.book' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                        href="{{ route('admin.project.book') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi  {{ Route::currentRouteName() == 'admin.project.book' ? 'bi-7-circle-fill' : 'bi-7-circle' }}  relative top-0 text-sm text-blue-500 leading-0"></i>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">ส่งเล่ม</span>
+                    </a>
+                </li>
 
 
                     <li class="w-full mt-4">
@@ -287,12 +315,12 @@
                     </li>
 
                     <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.logs.teachers' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
-                            href="{{ route('admin.logs', 'teachers') }}">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors tracking-wide {{ Route::currentRouteName() == 'admin.logs.admins' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }}"
+                            href="{{ route('admin.logs', 'admins') }}">
                             <div
                                 class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                 <i
-                                    class="bi {{ Route::currentRouteName() == 'admin.logs.teachers' ? 'bi-person-fill' : 'bi-person' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                                    class="bi {{ Route::currentRouteName() == 'admin.logs.admins' ? 'bi-person-fill' : 'bi-person' }} relative top-0 text-sm leading-normal text-gray-700"></i>
                             </div>
                             <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">
                                 อาจารย์

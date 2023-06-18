@@ -12,7 +12,7 @@
                         </span>
                         <div class="tracking-wide">
                             <span class="block">
-                                ลงทะเบียนโครงงานพิเศษ
+                                สอบหัวข้อ
                             </span>
 
                         </div>

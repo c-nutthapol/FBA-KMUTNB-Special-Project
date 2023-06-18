@@ -5,10 +5,10 @@
             <div
                 class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                    <i class="text-2xl text-white bi bi-2-circle-fill leading-0 dark:text-blue-500"></i>
+                    <i class="text-2xl text-white bi bi-6-circle-fill leading-0 dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
-                    ลงทะเบียนเพื่อขอสอบหัวข้อ
+                    ผลการสอบป้องกัน
                 </h5>
             </div>
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
@@ -157,39 +157,39 @@
                                 <td
                                     class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     @if (auth()->user()->role_id == 2)
-                                        <div class="flex flex-row justify-end gap-3">
-                                            <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
-                                                class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-eye leading-0"></i>
-                                                    <span class="block">ดูรายละเอียด</span>
-                                                </div>
-                                            </a>
-                                            <a href="{{ route('teacher.project.suggestion',['id'=> $project->id]) }}"
-                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-chat-dots leading-0"></i>
-                                                    <span class="block">เสนอแนะ</span>
-                                                </div>
-                                            </a>
-                                        </div>
+                                    <div class="flex flex-row justify-end gap-3">
+                                        <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-eye leading-0"></i>
+                                                <span class="block">ดูรายละเอียด</span>
+                                            </div>
+                                        </a>
+                                        <a href="{{ route('teacher.project.suggestion',['id'=> $project->id]) }}"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-chat-dots leading-0"></i>
+                                                <span class="block">เสนอแนะ</span>
+                                            </div>
+                                        </a>
+                                    </div>
                                     @elseif(auth()->user()->role_id == 3)
-                                        <div class="flex flex-row justify-end gap-3">
-                                            <a href="{{ route('admin.project.details',['id' => $project->id]) }}"
-                                                class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-eye leading-0"></i>
-                                                    <span class="block">ดูรายละเอียด</span>
-                                                </div>
-                                            </a>
-                                            <a href="{{ route('admin.project.suggestion',['id'=> $project->id]) }}"
-                                                class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-chat-dots leading-0"></i>
-                                                    <span class="block">เสนอแนะ</span>
-                                                </div>
-                                            </a>
-                                        </div>
+                                    <div class="flex flex-row justify-end gap-3">
+                                        <a href="{{ route('admin.project.details',['id' => $project->id]) }}"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-eye leading-0"></i>
+                                                <span class="block">ดูรายละเอียด</span>
+                                            </div>
+                                        </a>
+                                        <a href="{{ route('admin.project.suggestion',['id'=> $project->id]) }}"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-chat-dots leading-0"></i>
+                                                <span class="block">เสนอแนะ</span>
+                                            </div>
+                                        </a>
+                                    </div>
                                     @endif
                                 </td>
                             </tr>

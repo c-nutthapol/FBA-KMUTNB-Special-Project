@@ -24,9 +24,9 @@ class Defense extends Component
         // search
         $search = $this->search;
         $year = $this->year;
-        $step = 4;
-        $step_teacher = [24, 26, 27, 31];
-        $step_admin = [25, 28, 29, 30];
+        $step = 3;
+        $step_teacher = [13, 15];
+        $step_admin = [13, 14, 15];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -80,7 +80,7 @@ class Defense extends Component
                 $project->refresh();
 
                 foreach($project->user_project as $item){
-                    if($item->user->role_id != 4 && $item->user->email){
+                    if($item->user->role_id == 1 && $item->user->email){
                         Mail::to($item->user->email)->send(new ProjectMail($project, $item->user));
                     }
                 }

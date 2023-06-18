@@ -13,8 +13,8 @@
                     </h5>
                 </div>
                 <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
-                    data-modal-target="createModal" data-modal-toggle="createModal"
-                    wire:click="$emit('getProjectStepCreate')">
+                        data-modal-target="createModal" data-modal-toggle="createModal"
+                        wire:click="$emit('getProjectStepCreate')">
                     <div class="flex flex-row items-center justify-center gap-3">
                         <i class="bi bi-plus-lg leading-0"></i>
                         <span class="block">เพิ่มขั้นตอนโครงงาน</span>
@@ -41,108 +41,107 @@
                     <table
                         class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
                         <thead class="align-bottom">
-                            <tr>
-                                <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    ภาคเรียน/ปีการศึกษา
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    วันที่เริ่มภาคเรียน - วันที่จบภาคเรียน
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    ขั้นตอนการทำงาน
-                                </th>
-                                <th
-                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    รายละเอียด
-                                </th>
-                            </tr>
+                        <tr>
+                            <th
+                                class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                ภาคเรียน/ปีการศึกษา
+                            </th>
+                            <th
+                                class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                วันที่เริ่มภาคเรียน - วันที่จบภาคเรียน
+                            </th>
+                            <th
+                                class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                ขั้นตอนการทำงาน
+                            </th>
+                            <th
+                                class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                รายละเอียด
+                            </th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @forelse ($project_steps as $project_step)
-                                @php
-                                    $phase_title = [
-                                        'phase_1_status' => 'ลงทะเบียนโครงงานพิเศษ',
-                                        'phase_2_status' => 'ลงทะเบียนเพื่อขอสอบหัวข้อ',
-                                        'phase_3_status' => 'ยื่นขอสอบความก้าวหน้า',
-                                        'phase_4_status' => 'ยื่นขอสอบป้องกัน',
-                                        'phase_5_status' => 'ส่งเล่ม',
-                                    ];
-                                    $arr = $project_step->toArray();
-                                    $workflow = [];
-                                    $start_end_date = [];
-                                    for ($i = 1; $i <= 5; $i++) {
-                                        if ($arr['phase_' . $i . '_status']) {
-                                            $workflow[] = $phase_title['phase_' . $i . '_status'];
-                                            $start_end_date[] =
-                                                ' <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            <i class="bi bi-calendar2-week-fill"></i> ' .
-                                                thaidate('j F Y', strtotime($arr['phase_' . $i . '_start_date'])) .
-                                                '</span>
-                                                <span
-                                                    class="inline-block mx-1 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                                    -
-                                                </span>
-                                                <span
-                                                    class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                                    <i class="bi bi-calendar2-week-fill"></i> ' .
-                                                thaidate('j F Y', strtotime($arr['phase_' . $i . '_end_date'])) .
-                                                '</span>';
-                                        }
+                        @forelse ($project_steps as $project_step)
+                            @php
+                                $phase_title = [
+                                    'phase_1_status' => 'สอบหัวข้อ',
+                                    'phase_2_status' => 'ยื่นขอสอบความก้าวหน้า',
+                                    'phase_3_status' => 'ยื่นขอสอบป้องกัน',
+                                    'phase_4_status' => 'ส่งเล่ม',
+                                ];
+                                $arr = $project_step->toArray();
+                                $workflow = [];
+                                $start_end_date = [];
+                                for ($i = 1; $i <= 4; $i++) {
+                                    if ($arr['phase_' . $i . '_status']) {
+                                        $workflow[] = $phase_title['phase_' . $i . '_status'];
+                                        $start_end_date[] =
+                                            ' <span
+                                        class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                        <i class="bi bi-calendar2-week-fill"></i> ' .
+                                            thaidate('j F Y', strtotime($arr['phase_' . $i . '_start_date'])) .
+                                            '</span>
+                                            <span
+                                                class="inline-block mx-1 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                                -
+                                            </span>
+                                            <span
+                                                class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                                <i class="bi bi-calendar2-week-fill"></i> ' .
+                                            thaidate('j F Y', strtotime($arr['phase_' . $i . '_end_date'])) .
+                                            '</span>';
                                     }
+                                }
 
-                                @endphp
-                                <tr>
-                                    <td
-                                        class="px-6 py-3 text-left align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                            @endphp
+                            <tr>
+                                <td
+                                    class="px-6 py-3 text-left align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
                                             {{ $project_step->edu_term->term }} / {{ $project_step->edu_term->year }}
                                         </span>
-                                    </td>
-                                    <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        {!! implode(', ', $start_end_date) !!}
-                                    </td>
+                                </td>
+                                <td
+                                    class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                    {!! implode(', ', $start_end_date) !!}
+                                </td>
 
-                                    <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                <td
+                                    class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
                                             {{ implode(', ', $workflow) }}
                                         </span>
-                                    </td>
-                                    <td
-                                        class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <div class="flex flex-row justify-end gap-3">
-                                            <button type="button" data-modal-target="editModal"
+                                </td>
+                                <td
+                                    class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                    <div class="flex flex-row justify-end gap-3">
+                                        <button type="button" data-modal-target="editModal"
                                                 data-modal-toggle="editModal"
                                                 wire:click="$emit('getProjectStepEdit',{{ $project_step->id }})"
                                                 class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-pencil-square leading-0"></i>
-                                                    <span class="block">แก้ไข</span>
-                                                </div>
-                                            </button>
-                                            <button type="button"
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-pencil-square leading-0"></i>
+                                                <span class="block">แก้ไข</span>
+                                            </div>
+                                        </button>
+                                        <button type="button"
                                                 class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800"
                                                 wire:click="$emit('delete-button','{{ $project_step->id }}')">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-trash3 leading-0"></i>
-                                                    <span class="block">ลบ</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4"> ไม่พบข้อมูล </td>
-                                </tr>
-                            @endforelse
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-trash3 leading-0"></i>
+                                                <span class="block">ลบ</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4"> ไม่พบข้อมูล</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -187,7 +186,8 @@
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    @this.delete(key);
+                    @this.
+                    delete(key);
                 }
             })
         })

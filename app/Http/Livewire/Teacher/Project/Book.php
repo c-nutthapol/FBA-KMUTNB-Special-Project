@@ -24,9 +24,9 @@ class Book extends Component
         // search
         $search = $this->search;
         $year = $this->year;
-        $step = 5;
-        $step_teacher = [33, 36];
-        $step_admin = [34, 35];
+        $step = 4;
+        $step_teacher = [19, 20, 21];
+        $step_admin = [19, 20, 21];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -66,6 +66,7 @@ class Book extends Component
             $when->where("edu_term_id",$year);
         })
         ->paginate(10);
+        // ->get();
         // dd($projects);
         return view('livewire.teacher.project.book', compact('projects','termFilter','statusFilter'));
     }
@@ -80,7 +81,7 @@ class Book extends Component
                 $project->refresh();
 
                 foreach($project->user_project as $item){
-                    if($item->user->role_id != 4 && $item->user->email){
+                    if($item->user->role_id == 1 && $item->user->email){
                         Mail::to($item->user->email)->send(new ProjectMail($project, $item->user));
                     }
                 }

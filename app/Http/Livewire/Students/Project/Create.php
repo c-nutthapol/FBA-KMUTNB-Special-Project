@@ -7,28 +7,33 @@ use App\Models\File;
 use App\Models\Master_department;
 use App\Models\Project;
 use App\Models\User;
-use App\Traits\CheckTermTrait;
 use App\Traits\ProjectTrait;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\Redirector;
 use Livewire\WithFileUploads;
 use stdClass;
 
 class Create extends Component
 {
     use WithFileUploads, ProjectTrait;
+
     //varible
     public $form;
-    public $project;
-    public $term;
+    public Project $project;
+    public EduTerm $term;
     //file
     public $file_teacher;
     public $file_project;
 
     //validation
-    protected $rules = [
+    protected array $rules = [
         "form.name_th" => "required",
         "form.name_en" => "required",
         "form.student_1.room" => "required",
@@ -39,7 +44,7 @@ class Create extends Component
         "file_project" => "required|mimes:doc,dot,pdf",
     ];
 
-    protected $messages = [
+    protected array $messages = [
         "form.name_th.required" => "กรุณากรอกชื่อโครงงานภาษาไทย",
         "form.name_en.required" => "กรุณากรอกชื่อโครงงานภาษาอังกฤษ",
         "form.student_1.room" => "กรุณากรอกห้อง",
@@ -51,7 +56,7 @@ class Create extends Component
         "file_project.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
     ];
 
-    public function mount()
+    public function mount(): void
     {
         $this->form = collect([
             "name_th" => "",
@@ -81,22 +86,21 @@ class Create extends Component
         ]);
     }
 
-    public function render()
+    public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
-        $this->term = $this->getTerm();
-
         $data = new stdClass();
-        $data->department = Master_department::where("status", "active")->get();
-        $data->project = $this->project = $this->getProject();
-        $data->step = $this->checkStep($data->project);
-        $data->error = $this->checkError($this->term, $data->project, true);
+        $data->department = Master_department::where("status", '=', "active")->get();
+        $data->error = $this->checkError($data->project, true);
         if ($data->error) {
-            return view("livewire.students.project.components.error", compact("data"));
+            $render = "livewire.students.project.components.error";
         } else {
-            return view("livewire.students.project.create", compact("data"));
+            $render = "livewire.students.project.create";
         }
+
+        return view($render, compact("data"));
     }
-    public function submit()
+
+    public function submit(): Redirector|RedirectResponse
     {
         $this->validate();
         if ($this->form->get("teacher_2") === "external") {
@@ -104,13 +108,11 @@ class Create extends Component
                 [
                     "form.external.fname" => "required",
                     "form.external.lname" => "required",
-                    "file_teacher" => "required|mimes:doc,dot,pdf",
                 ],
                 [
                     "form.external.fname.required" => "กรุณากรอกชื่อ",
                     "form.external.lname.required" => "กรุณากรอกนามสกุล",
-                    "file_teacher.required" => "กรุณาเลือกไฟล์เอกสาร",
-                    "file_teacher.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
+                    "file_teacher.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,pdf)",
                 ]
             );
         }
@@ -175,7 +177,6 @@ class Create extends Component
                 ]);
                 $project->users()->attach($user->id, ["role" => "teacher2"]);
                 //store file
-
                 File::create([
                     "title" => "teacher",
                     "project_id" => $project->id,
@@ -190,11 +191,12 @@ class Create extends Component
             $this->file_project?->delete();
             $this->file_teacher?->delete();
             $this->emit("alert", ["status" => "success", "title" => "บันทึกสำเร็จ"]);
-            return redirect()->route("student.project.home");
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
         }
         //end Transaction
+        return redirect()->route("student.project.home");
+
     }
 }

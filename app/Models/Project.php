@@ -78,26 +78,33 @@ class Project extends Model
             $status = [2, 3];
         } else if ($this->status == 2) {
             $status = [4, 5];
+        } else if ($this->status == 3) {
+            $status = [2];
         } else if ($this->status == 6) {
             $status = [7, 8];
         } else if ($this->status == 7) {
-            $status = [9, 10];
-        } else if ($this->status == 9) {
-            $status = [11, 12, 13];
+            $status = [8, 9];
+        } else if ($this->status == 8) {
+            $status = [10, 11, 12];
+        }else if ($this->status == 9) {
+            $status = [8];
         } else if ($this->status == 11) {
             $status = [14];
         } else if ($this->status == 12) {
+            $status = [10, 11];
+        } else if ($this->status == 13) {
+            $status = [14, 15];
+        } else if ($this->status == 14) {
+            $status = [16, 17, 18];
+        }
+        else if ($this->status == 15) {
             $status = [14];
-        } else if ($this->status == 15) {
-            $status = [16, 17];
-        } else if ($this->status == 16) {
-            $status = [18, 19];
         } else if ($this->status == 18) {
-            $status = [20, 21, 22];
-        } else if ($this->status == 20) {
-            $status = [23];
+            $status = [16, 17];
+        } else if ($this->status == 19) {
+            $status = [20,21];
         } else if ($this->status == 21) {
-            $status = [23];
+            $status = [20];
         } else if ($this->status == 24) {
             $status = [25, 26];
         } else if ($this->status == 25) {

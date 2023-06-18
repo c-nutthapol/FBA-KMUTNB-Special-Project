@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'สอบหัวข้อ')
+@section('title', 'ยื่นขอสอบป้องกัน')
 
 @section('content')
     @livewire('teacher.project.component.pending-approval')
 
-    @livewire('teacher.project.index')
+    @livewire('teacher.project.defenseresult')
 @endsection

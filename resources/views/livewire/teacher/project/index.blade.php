@@ -8,7 +8,7 @@
                     <i class="text-2xl text-white bi bi-1-circle-fill leading-0 dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
-                    ลงทะเบียนโครงงานพิเศษ
+                    ลงทะเบียนสอบหัวข้อ
                 </h5>
             </div>
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                    <div class="flex-1">
+                    {{-- <div class="flex-1">
                         <select class="select">
                             <option value="" selected>
                                 สถานะทั้งหมด
@@ -36,14 +36,14 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหา">
+                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหาชื่อโครงการ">
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path}}" download
+                                        <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
                                             class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-download leading-0"></i>
@@ -133,13 +133,26 @@
                                                 <option value="" disabled selected>
                                                     {{$project->master_status->status}}
                                                 </option>
-                                                @forelse ($project->SelectOption as $item)
-                                                <option value="{{$item->id}}">
-                                                    {{$item->status}}
-                                                </option>
-                                                @empty
 
-                                                @endforelse
+                                                @if (Auth::user()->role_id === 2)
+                                                    @forelse ($project->SelectOption as $item)
+                                                    <option value="{{$item->id}}">
+                                                        {{$item->status}}
+                                                    </option>
+                                                    @empty
+
+                                                    @endforelse
+                                                @else
+                                                    @forelse ($project->SelectOption as $item)
+                                                    <option value="{{$item->id}}" disabled>
+                                                        {{$item->status}}
+                                                    </option>
+                                                    @empty
+
+                                                    @endforelse
+                                                @endif
+
+
                                             </select>
                                         </div>
                                     </td>

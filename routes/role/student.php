@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\StudentController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 // @Role: Students
@@ -13,20 +12,22 @@ Route::middleware("auth", "role:student")->group(function () {
                 Route::get("/get_student", [StudentController::class, "getStudent"]);
                 Route::get("/get_teacher", [StudentController::class, "getTeacher"]);
                 // ข้อมูลทั่วไปหรือภาพรวมโครงงาน
-                Route::get("/", App\Http\Livewire\Students\Project\Home::class)->name("home");
+                Route::view("/", "students.project.index")->name("home");
                 // แนบเอกสาร
                 // Route::view("/attachment", "students.project.attachment")->name("attachment");
                 // สร้างโครงงาน
-                Route::get("/create", App\Http\Livewire\Students\Project\Create::class)->name("create");
+                Route::view("/create", "students.project.create")->name("create");
                 // แก้ไขโครงงาน
-                Route::get("/edit", App\Http\Livewire\Students\Project\Edit::class)->name("edit");
+                // Route::get("/edit", App\Http\Livewire\Students\Project\Edit::class)->name("edit");
             });
 
         // เขียนคำร้องทั่วไป
-        Route::get("/petition", App\Http\Livewire\Students\Petition::class)->name("petition");
+        Route::view("/petition", "students.petition")->name("petition");
+        // ประวัติการแนบไฟล์
+        Route::view("/file", "students.file")->name("file");
         // ข้อเสนอแนะ
-        Route::get("/suggestion", App\Http\Livewire\Students\Suggestion::class)->name("suggestion");
+        Route::view("/suggestion", "students.suggestion")->name("suggestion");
         // ประวัติการส่งคำร้อง
-        Route::get("/history", App\Http\Livewire\Students\History::class)->name("history");
+        Route::view("/history", "students.history")->name("history");
     });
 });
