@@ -18,13 +18,13 @@ class Index extends Component
 
         $studentRequest = StudentRequest::with('master_status')
         ->when($roleId == 2, function($when){
-            $when->whereIn("status", [38, 40]);
+            $when->whereIn("status", [22, 24]);
         })
         ->when($roleId == 3, function($when){
-            $when->whereIn("status", [39, 41, 43]);
+            $when->whereIn("status", [23, 25, 26,27]);
         })
         ->paginate(10);
-
+        // ->get();
         // dd($studentRequest);
         return view('livewire.teacher.petition.index',['studentRequest' => $studentRequest]);
     }
