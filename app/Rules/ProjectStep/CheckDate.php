@@ -20,12 +20,10 @@ class CheckDate implements ValidationRule
         'phase_2_start_date' => 'วันที่เริ่ม ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_start_date' => 'วันที่เริ่ม ยื่นขอสอบความก้าวหน้า',
         'phase_4_start_date' => 'วันที่เริ่ม ยื่นขอสอบป้องกัน',
-        'phase_5_start_date' => 'วันที่เริ่ม ส่งเล่ม',
         'phase_1_end_date' => 'วันที่สิ้นสุด สอบหัวข้อ',
         'phase_2_end_date' => 'วันที่สิ้นสุด ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_end_date' => 'วันที่สิ้นสุด ยื่นขอสอบความก้าวหน้า',
         'phase_4_end_date' => 'วันที่สิ้นสุด ยื่นขอสอบป้องกัน',
-        'phase_5_end_date' => 'วันที่สิ้นสุด ส่งเล่ม',
     ];
 
     public function __construct($id)

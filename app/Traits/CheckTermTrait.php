@@ -54,7 +54,7 @@ trait CheckTermTrait
     public static function step(int $step = 1, string $data_format = "string")
     {
         $dateCurrent = date("Y-m-d");
-        if ($step >= 1 && $step <= 5) {
+        if ($step >= 1 && $step <= 4) {
             $get_project_step = ProjectStepConfig::select(
                 "phase_" . $step . "_start_date as start_date",
                 "phase_" . $step . "_end_date as end_date"

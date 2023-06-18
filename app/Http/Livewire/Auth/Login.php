@@ -53,7 +53,7 @@ class Login extends Component
             $account_type = $user_info["account_type"];
             if ($account_type == "personel" || $account_type == "templecturer") {
                 $personel_info = $response["personnelInfo"] ?? false;
-                if ($personel_info && $personel_info['personnel_type_id'] == 1) {
+                if ($personel_info && $personel_info['personnel_type_id'] == 2) {
                     $role_id = 3;
                 } else {
                     $role_id = 2;
