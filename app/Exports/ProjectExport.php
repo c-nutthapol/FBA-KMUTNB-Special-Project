@@ -3,12 +3,19 @@
 namespace App\Exports;
 
 use App\Models\Project;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Excel;
 
-class ProjectExport implements FromView
+class ProjectExport implements FromView, Responsable
 {
+    use Exportable;
+
     protected $data;
+
+    private $writerType = Excel::CSV;
 
     private $headers = [
         'Content-Type' => "text/csv; charset=UTF-8",
