@@ -41,7 +41,7 @@
             </div>
             <div class="pb-6 sm:p-6">
                 {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
-                <a href="/storage/{{$detail->files->sortByDesc('created_at')->first()->path}}" download class="text-xs text-white btn from-teal-400 to-green-400">
+                <a href="/storage/{{$detail->files->sortByDesc('created_at')->first()->path ?? ''}}" download class="text-xs text-white btn from-teal-400 to-green-400">
                     <div class="flex flex-row items-center gap-3">
                         <i class="bi bi-download leading-0"></i>
                         <span class="block">โหลดเอกสาร</span>

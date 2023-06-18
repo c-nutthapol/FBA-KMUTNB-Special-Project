@@ -119,7 +119,7 @@
                                 </td>
                                 <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path}}" download
+                                    <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path}} ?? ''" download
                                         class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
                                         <div class="flex flex-row items-center gap-2">
                                             <i class="bi bi-download leading-0"></i>
@@ -134,13 +134,23 @@
                                             <option value="" disabled selected>
                                                 {{$project->master_status->status}}
                                             </option>
-                                            @forelse ($project->SelectOption as $item)
-                                            <option value="{{$item->id}}">
-                                                {{$item->status}}
-                                            </option>
-                                            @empty
+                                            @if (Auth::user()->role_id === 2)
+                                                @forelse ($project->SelectOption as $item)
+                                                <option value="{{$item->id}}">
+                                                    {{$item->status}}
+                                                </option>
+                                                @empty
 
-                                            @endforelse
+                                                @endforelse
+                                            @else
+                                                @forelse ($project->SelectOption as $item)
+                                                <option value="{{$item->id}}" disabled>
+                                                    {{$item->status}}
+                                                </option>
+                                                @empty
+
+                                                @endforelse
+                                            @endif
                                         </select>
                                     </div>
                                 </td>

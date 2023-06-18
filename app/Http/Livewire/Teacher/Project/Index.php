@@ -26,7 +26,7 @@ class Index extends Component
         $year = $this->year;
         $step = 1;
         $step_teacher = [1,3];
-        // $step_admin = [2];
+        $step_admin = [1,2,3];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -54,6 +54,9 @@ class Index extends Component
                 ->where("role","teacher1");
             })
             ->whereIn("status", $step_teacher);
+        })
+        ->when($roleId == 3, function($when) use($step_admin){
+            $when->whereIn("status", $step_admin);
         })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")

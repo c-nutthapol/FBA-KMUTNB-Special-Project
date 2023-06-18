@@ -26,7 +26,7 @@ class Defense extends Component
         $year = $this->year;
         $step = 3;
         $step_teacher = [13, 15];
-        // $step_admin = [25, 28, 29, 30];
+        $step_admin = [13, 14, 15];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -55,9 +55,9 @@ class Defense extends Component
             })
             ->whereIn("status", $step_teacher);
         })
-        // ->when($roleId == 3, function($when) use($step_admin){
-        //     $when->whereIn("status", $step_admin);
-        // })
+        ->when($roleId == 3, function($when) use($step_admin){
+            $when->whereIn("status", $step_admin);
+        })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")
             ->orWhere("name_en","LIKE","%".$search."%");

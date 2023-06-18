@@ -26,7 +26,7 @@ class Topic extends Component
         $year = $this->year;
         $step = 1;
         $step_teacher = [2, 5, 6];
-        // $step_admin = [7, 10, 11, 12];
+        $step_admin = [4,5,6];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -54,6 +54,9 @@ class Topic extends Component
                 ->where("role","teacher1");
             })
             ->whereIn("status", $step_teacher);
+        })
+        ->when($roleId == 3, function($when) use($step_admin){
+            $when->whereIn("status", $step_admin);
         })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")
