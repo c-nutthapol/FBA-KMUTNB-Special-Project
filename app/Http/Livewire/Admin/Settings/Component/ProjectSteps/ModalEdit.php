@@ -16,7 +16,6 @@ class ModalEdit extends Component
     public $phase_2_start_date, $phase_2_end_date, $phase_2_status = false;
     public $phase_3_start_date, $phase_3_end_date, $phase_3_status = false;
     public $phase_4_start_date, $phase_4_end_date, $phase_4_status = false;
-    public $phase_5_start_date, $phase_5_end_date, $phase_5_status = false;
     protected $listeners = ['getProjectStepEdit'];
     protected $attributes = [
         'edu_term_id' => 'ภาคเรียน/ปีการศึกษา',
@@ -24,17 +23,14 @@ class ModalEdit extends Component
         'phase_2_start_date' => 'วันที่เริ่ม ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_start_date' => 'วันที่เริ่ม ยื่นขอสอบความก้าวหน้า',
         'phase_4_start_date' => 'วันที่เริ่ม ยื่นขอสอบป้องกัน',
-        'phase_5_start_date' => 'วันที่เริ่ม ส่งเล่ม',
         'phase_1_end_date' => 'วันที่สิ้นสุด สอบหัวข้อ',
         'phase_2_end_date' => 'วันที่สิ้นสุด ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_end_date' => 'วันที่สิ้นสุด ยื่นขอสอบความก้าวหน้า',
         'phase_4_end_date' => 'วันที่สิ้นสุด ยื่นขอสอบป้องกัน',
-        'phase_5_end_date' => 'วันที่สิ้นสุด ส่งเล่ม',
         'phase_1_status' => 'สถานะ สอบหัวข้อ',
         'phase_2_status' => 'สถานะ ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_status' => 'สถานะ ยื่นขอสอบความก้าวหน้า',
         'phase_4_status' => 'สถานะ ยื่นขอสอบป้องกัน',
-        'phase_5_status' => 'สถานะ ส่งเล่ม',
     ];
 
     public function render()
@@ -54,17 +50,14 @@ class ModalEdit extends Component
             $this->phase_2_start_date = $record->phase_2_start_date ? $record->phase_2_start_date->toDateString() : null;
             $this->phase_3_start_date = $record->phase_3_start_date ? $record->phase_3_start_date->toDateString() : null;
             $this->phase_4_start_date = $record->phase_4_start_date ? $record->phase_4_start_date->toDateString() : null;
-            $this->phase_5_start_date = $record->phase_5_start_date ? $record->phase_5_start_date->toDateString() : null;
             $this->phase_1_end_date = $record->phase_1_end_date ? $record->phase_1_end_date->toDateString() : null;
             $this->phase_2_end_date = $record->phase_2_end_date ? $record->phase_2_end_date->toDateString() : null;
             $this->phase_3_end_date = $record->phase_3_end_date ? $record->phase_3_end_date->toDateString() : null;
             $this->phase_4_end_date = $record->phase_4_end_date ? $record->phase_4_end_date->toDateString() : null;
-            $this->phase_5_end_date = $record->phase_5_end_date ? $record->phase_5_end_date->toDateString() : null;
             $this->phase_1_status = $record->phase_1_status;
             $this->phase_2_status = $record->phase_2_status;
             $this->phase_3_status = $record->phase_3_status;
             $this->phase_4_status = $record->phase_4_status;
-            $this->phase_5_status = $record->phase_5_status;
         }
     }
 

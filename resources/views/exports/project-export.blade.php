@@ -3,7 +3,6 @@
         <tr>
             <th>ชื่อโครงงาน (ภาษาไทย)</th>
             <th>ชื่อโครงงาน (ภาษาอังกฤษ)</th>
-            <th>สถานะโครงงาน</th>
             <th>ชื่อนักศึกษาคนที่ 1</th>
             <th>สาขาวิชา</th>
             <th>ห้อง</th>
@@ -13,6 +12,7 @@
             <th>ที่ปรึกษาหลัก</th>
             <th>ที่ปรึกษาร่วม/กรรมการสอบ</th>
             <th>ประธานสอบ</th>
+            <th>สถานะโครงงาน</th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +20,6 @@
             <tr>
                 <td>{{ $project->name_th }}</td>
                 <td>{{ $project->name_en }}</td>
-                <td>{{ $project->master_status->status ?? '' }}</td>
-
                 @php
                     $student1 = $project->user_project->where('role', 'student1')->first();
                     $student2 = $project->user_project->where('role', 'student1')->first();
@@ -39,6 +37,7 @@
                 <td>{{ $teacher1->user->displayname ?? '' }}</td>
                 <td>{{ $teacher2->user->displayname ?? '' }}</td>
                 <td>{{ $teacher3->user->displayname ?? '' }}</td>
+                <td>{{ $project->master_status->status ?? '' }}</td>
 
             </tr>
         @endforeach

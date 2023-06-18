@@ -33,7 +33,6 @@ class ProjectSteps extends Component
                 $phase_2_start_date = strtotime($record->phase_2_start_date);
                 $phase_3_start_date = strtotime($record->phase_3_start_date);
                 $phase_4_start_date = strtotime($record->phase_4_start_date);
-                $phase_5_start_date = strtotime($record->phase_5_start_date);
                 $phase_1_end_date = strtotime($record->phase_1_end_date);
                 $phase_2_end_date = strtotime($record->phase_2_end_date);
                 $phase_3_end_date = strtotime($record->phase_3_end_date);
