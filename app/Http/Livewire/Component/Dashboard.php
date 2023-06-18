@@ -18,6 +18,7 @@ class Dashboard extends Component
         $watting,
         $approved,
         $approved_pass,
+        $success,
         $value,
         $chart_data,
         $dataProjects = [];
@@ -30,13 +31,16 @@ class Dashboard extends Component
 
     public function mount()
     {
-        $this->watting = Master_status::where("status", "like", "%รออนุมัติ%")
+        $this->watting = Master_status::where("step", '1')
             ->pluck("id")
             ->toArray();
-        $this->approved = Master_status::where("status", "like", "อนุมัติขอ%")
+        $this->approved = Master_status::where("step", '2')
             ->pluck("id")
             ->toArray();
-        $this->approved_pass = Master_status::where("status", "like", "อนุมัติผล%")
+        $this->approved_pass = Master_status::where("step", '3')
+            ->pluck("id")
+            ->toArray();
+        $this->success = Master_status::where("step", '4')
             ->pluck("id")
             ->toArray();
     }
@@ -61,12 +65,14 @@ class Dashboard extends Component
         $chart_watting = $Data->whereIn("status", $this->watting)->count();
         $chart_approved = $Data->whereIn("status", $this->approved)->count();
         $chart_approved_pass = $Data->whereIn("status", $this->approved_pass)->count();
+        $chart_success = $Data->whereIn("status", $this->success)->count();
 
         $chartData = [
             "chart_all" => $chart_all,
             "chart_watting" => $chart_watting,
             "chart_approved" => $chart_approved,
             "chart_approved_pass" => $chart_approved_pass,
+            "chart_success" => $chart_success,
         ];
 
         $this->emit("chartDataUpdated", $chartData);

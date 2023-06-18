@@ -10,6 +10,10 @@ class ProjectExport implements FromView
 {
     protected $data;
 
+    private $headers = [
+        'Content-Type' => "text/csv; charset=UTF-8",
+    ];
+
     public function __construct($data = [])
     {
         $this->data = $data;

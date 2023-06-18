@@ -71,27 +71,26 @@
     </div>
 
     <div class="flex-none w-full max-w-full px-3">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850 ">
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white bg-blue-500 h-14 w-14 rounded-2 leading-0">
+                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-blue-500 h-14 w-14 rounded-2 leading-0">
                         {{ $Data->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
                         โครงงาน
                     </h4>
                 </div>
             </div>
-
             <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white bg-yellow-400 h-14 w-14 rounded-2 leading-0">
+                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-rose-500 h-14 w-14 rounded-2 leading-0">
                         {{ $Data->whereIn('status', $watting)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
-                        รออนุมัติหัวข้อ
+                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                        สอบหัวข้อ
                     </h4>
                 </div>
             </div>
@@ -99,11 +98,11 @@
             <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white bg-teal-400 h-14 w-14 rounded-2 leading-0">
+                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-yellow-400 h-14 w-14 rounded-2 leading-0">
                         {{ $Data->whereIn('status', $approved)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
-                        อนุมัติสอบ
+                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                        สอบก้าวหน้า
                     </h4>
                 </div>
             </div>
@@ -111,11 +110,23 @@
             <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
                 <div class="relative flex flex-row items-center justify-between h-full">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-2xl font-bold text-white h-14 w-14 rounded-2 bg-rose-500 leading-0">
+                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-teal-400 h-14 w-14 rounded-2 leading-0">
                         {{ $Data->whereIn('status', $approved_pass)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-2xl tracking-wide dark:text-white dark:opacity-90">
-                        อนุมัติผลสอบ
+                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                        สอบป้องกัน
+                    </h4>
+                </div>
+            </div>
+
+            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
+                <div class="relative flex flex-row items-center justify-between h-full">
+                    <span
+                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white h-14 w-14 rounded-2 bg-emerald-500 leading-0">
+                        {{ $Data->whereIn('status', $success)->count() }}
+                    </span>
+                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                        ส่งเลม
                     </h4>
                 </div>
             </div>
@@ -133,79 +144,6 @@
 
 
 @push('script')
-    {{-- <script>
-        document.addEventListener('livewire:load', function() {
-            Livewire.on('chartDataUpdated', function(chartData) {
-                const ctx = document.getElementById('barchart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['จำนวนโครงงาน'],
-                        datasets: [{
-                                label: 'โครงงาน',
-                                data: [
-                                    chartData.chart_all,
-                                ],
-                                borderWidth: 1,
-                                backgroundColor: [
-                                    'rgba(94, 114, 228, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgb(94, 114, 228)',
-                                ],
-                            },
-                            {
-                                label: 'รออนุมัติหัวข้อ',
-                                data: [
-                                    chartData.chart_watting,
-                                ],
-                                borderWidth: 1,
-                                backgroundColor: [
-                                    'rgba(227, 160, 8, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgb(227, 160, 8)',
-                                ],
-                            },
-                            {
-                                label: 'อนุมัติสอบ',
-                                data: [
-                                    chartData.chart_approved,
-                                ],
-                                borderWidth: 1,
-                                backgroundColor: [
-                                    'rgba(22, 189, 202, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgb(22, 189, 202)',
-                                ],
-                            },
-                            {
-                                label: 'อนุมัติผลสอบ',
-                                data: [
-                                    chartData.chart_approved_pass,
-                                ],
-                                borderWidth: 1,
-                                backgroundColor: [
-                                    'rgba(244, 63, 94, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgb(244, 63, 94)',
-                                ],
-                            },
-                        ],
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            });
-        });
-    </script> --}}
     <script>
         document.addEventListener('livewire:load', function() {
             const ctx = document.getElementById('barchart');
@@ -229,9 +167,22 @@
                             ],
                         },
                         {
-                            label: 'รออนุมัติหัวข้อ',
+                            label: 'สอบหัวข้อ',
                             data: [
                                 {{ $Data->whereIn('status', $watting)->count() }},
+                            ],
+                            borderWidth: 1,
+                            backgroundColor: [
+                                'rgba(244 ,63 ,94, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgb(244 ,63 ,94)',
+                            ],
+                        },
+                        {
+                            label: 'สอบก้าวหน้า',
+                            data: [
+                                {{ $Data->whereIn('status', $approved)->count() }},
                             ],
                             borderWidth: 1,
                             backgroundColor: [
@@ -242,9 +193,9 @@
                             ],
                         },
                         {
-                            label: 'อนุมัติสอบ',
+                            label: 'สอบป้องกัน',
                             data: [
-                                {{ $Data->whereIn('status', $approved)->count() }},
+                                {{ $Data->whereIn('status', $approved_pass)->count() }},
                             ],
                             borderWidth: 1,
                             backgroundColor: [
@@ -255,16 +206,16 @@
                             ],
                         },
                         {
-                            label: 'อนุมัติผลสอบ',
+                            label: 'ส่งเลม',
                             data: [
-                                {{ $Data->whereIn('status', $approved_pass)->count() }},
+                                {{ $Data->whereIn('status', $success)->count() }},
                             ],
                             borderWidth: 1,
                             backgroundColor: [
-                                'rgba(244 ,63 ,94, 0.2)',
+                                'rgba(45, 206, 137, 0.2)',
                             ],
                             borderColor: [
-                                'rgb(244 ,63 ,94)',
+                                'rgb(45, 206, 137)',
                             ],
                         }
                     ],
@@ -280,13 +231,14 @@
 
             // Event listener for chart data update
             Livewire.on('chartDataUpdated', chartData => {
-                // Update the chart data
+                // Update chart data
                 chart.data.datasets[0].data = [chartData.chart_all];
                 chart.data.datasets[1].data = [chartData.chart_watting];
                 chart.data.datasets[2].data = [chartData.chart_approved];
                 chart.data.datasets[3].data = [chartData.chart_approved_pass];
+                chart.data.datasets[4].data = [chartData.chart_success];
 
-                // Update the chart
+                // Update chart
                 chart.update();
             });
         });
