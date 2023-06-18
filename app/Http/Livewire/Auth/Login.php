@@ -26,6 +26,16 @@ class Login extends Component
         "password" => "รหัสผ่าน",
     ];
 
+    /**
+     * The function retrieves user information from an API using a provided username and password, and saves the
+     * information to a database if it is valid.
+     *
+     * @param username The username of the user trying to authenticate.
+     * @param password The password parameter is a string that represents the user's password. It is used in the function
+     * to authenticate the user's credentials when making a request to an API endpoint.
+     *
+     * @return a User object.
+     */
     private function getUserICIT($username, $password)
     {
         $token = "5UaTyf96aWgeAeha912oqF-9vtMc_LiZ";
@@ -35,15 +45,19 @@ class Login extends Component
                 "username" => $username,
                 "password" => $password,
                 "scopes" => "personel,student,templecturer,alumni",
-                "personel_info" => 1,
+                "personnel_info" => true,
             ]);
         $api_status_code = $response["api_status_code"];
         if ($api_status_code == 202) {
             $user_info = $response["userInfo"];
-
             $account_type = $user_info["account_type"];
             if ($account_type == "personel" || $account_type == "templecturer") {
-                $role_id = 2;
+                $personel_info = $response["personnelInfo"] ?? false;
+                if ($personel_info && $personel_info['personnel_type_id'] == 1) {
+                    $role_id = 3;
+                } else {
+                    $role_id = 2;
+                }
             } else {
                 $role_id = 1;
             }
@@ -54,6 +68,7 @@ class Login extends Component
                 $user = new User();
                 $is_first_time = true;
             }
+
             $user->username = $user_info["username"];
             $user->password = $password;
             $user->displayname = $user_info["displayname"];
@@ -71,37 +86,51 @@ class Login extends Component
         } elseif ($api_status_code == 405) {
             $this->emit("alert", ["status" => "info", "title" => "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!"]);
         }
+        return false;
     }
 
+    /**
+     * This function logs the user's email, IP address, browser, and role type when they log in.
+     */
+    private function LoginRecordsAction()
+    {
+        $browser = request()->header("User-Agent");
+        $ipAddress = request()->getClientIp();
+        $log = [
+            "email" => auth()->user()->email,
+            "ip" => $ipAddress,
+            "browser" => $browser,
+            "type" => auth()->user()->role->guard,
+        ];
+        if (auth()->user()->log) {
+            auth()
+                ->user()
+                ->log->update($log);
+        } else {
+            auth()
+                ->user()
+                ->log()
+                ->create($log);
+        }
+    }
+
+    /**
+     * The function attempts to log in a user with validated credentials and displays an alert message based on the success
+     * or failure of the login attempt.
+     */
     public function submit()
     {
         $validatedData = $this->validate($this->rules, __("validation"), $this->attributes);
-        $user = $this->getUserICIT($validatedData["username"], $validatedData["password"]);
-
         try {
-            if (in_array($user->status, ["active"])) {
+
+            $user = $this->getUserICIT($validatedData["username"], $validatedData["password"]);
+
+            if ($user && in_array($user->status, ["active"])) {
                 auth()->login($user);
             }
 
             if (auth()->check()) {
-                $browser = request()->header("User-Agent");
-                $ipAddress = request()->getClientIp();
-                $log = [
-                    "email" => auth()->user()->email,
-                    "ip" => $ipAddress,
-                    "browser" => $browser,
-                    "type" => auth()->user()->role->guard,
-                ];
-                if (auth()->user()->log) {
-                    auth()
-                        ->user()
-                        ->log->update($log);
-                } else {
-                    auth()
-                        ->user()
-                        ->log()
-                        ->create($log);
-                }
+                $this->LoginRecordsAction();
                 $this->emit("alert", ["status" => "success", "title" => "เข้าสู่ระบบเสร็จสิ้น"]);
                 $this->emit("redirect", route("home"));
             } else {
