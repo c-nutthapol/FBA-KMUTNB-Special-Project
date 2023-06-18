@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Students\Project;
 
-use App\Models\EduTerm;
 use App\Models\File;
 use App\Models\Master_department;
 use App\Models\Project;
@@ -26,8 +25,6 @@ class Create extends Component
 
     //varible
     public $form;
-    public Project $project;
-    public EduTerm $term;
     //file
     public $file_teacher;
     public $file_project;
@@ -39,7 +36,6 @@ class Create extends Component
         "form.student_1.room" => "required",
         "form.student_1.department" => "required",
         "form.teacher_1" => "required",
-        "form.teacher_2" => "required",
         "form.teacher_3" => "required",
         "file_project" => "required|mimes:doc,dot,pdf",
     ];
@@ -50,7 +46,6 @@ class Create extends Component
         "form.student_1.room" => "กรุณากรอกห้อง",
         "form.student_1.department" => "กรุณาเลือกสาขาวิชา",
         "form.teacher_1.required" => "กรุณาเลือกอาจารย์ที่ปรึกษาหลัก",
-        "form.teacher_2.required" => "กรุณาเลือกอาจารย์ที่ปรึกษาร่วม",
         "form.teacher_3.required" => "กรุณาเลือกประธานสอบ",
         "file_project.required" => "กรุณาเลือกไฟล์เอกสาร",
         "file_project.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
@@ -90,8 +85,8 @@ class Create extends Component
     {
         $data = new stdClass();
         $data->department = Master_department::where("status", '=', "active")->get();
-        $data->error = $this->checkError($data->project, true);
-        if ($data->error) {
+        $data->error = $this->checkError(true);
+        if ($data->error->name) {
             $render = "livewire.students.project.components.error";
         } else {
             $render = "livewire.students.project.create";
@@ -183,7 +178,7 @@ class Create extends Component
                     "is_link" => 0,
                     "path" => "/file/project/" . $tname,
                 ]);
-            } else {
+            } else if ($this->form->get("teacher_2")) {
                 $project->users()->attach($this->form->get("teacher_2"), ["role" => "teacher2"]);
             }
             DB::commit();

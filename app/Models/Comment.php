@@ -9,10 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
     public $timestamps = false;
-
+    protected $guarded = [];
     protected $casts = [
         'created_at' => 'datetime'
     ];
@@ -31,5 +29,10 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo(User::class, "created_by", "id");
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, "project_id", "id");
     }
 }

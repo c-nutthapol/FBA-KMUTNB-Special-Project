@@ -1,5 +1,6 @@
 @section('title', 'โครงงาน')
 <div>
+
     <div class="-mx-3 flex flex-wrap">
         <div class="w-full max-w-full flex-none px-3">
             <div
@@ -10,34 +11,34 @@
                         <i class="bi bi-folder-fill text-2xl leading-0 text-white dark:text-teal-400"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
-                        <span class="block font-bold">{{ $this->project->name_th ?? '' }}</span>
+                        <span class="block font-bold">{{ $data->project->name_th ?? '' }}</span>
                         <span
-                            class="block font-normal text-slate-600 dark:text-white">{{ $this->project->name_en ?? '' }}</span>
+                            class="block font-normal text-slate-600 dark:text-white">{{ $data->project->name_en ?? '' }}</span>
                     </h5>
                 </div>
                 <div class="pb-6 sm:p-6">
                     <span class="block text-center text-xl font-bold">สถานะ</span>
                     {{-- รออนุมัติ --}}
-                    @if (in_array($this->project->status, [1,7,13,19]))
+                    @if (in_array($data->project->status, [1,7,13,19]))
                         <span
-                            class="block text-xl font-bold text-orange-400">{{ $this->project->master_status->status }}</span>
+                            class="block text-xl font-bold text-orange-400">{{ $data->project->master_status->status }}</span>
                         {{-- ไม่อนุมัติ --}}
-                    @elseif(in_array($this->project->status, [3,6,9,12,15,18,21]))
+                    @elseif(in_array($data->project->status, [3,6,9,12,15,18,21]))
                         <span
-                            class="block text-xl font-bold text-red-500">{{ $this->project->master_status->status }}</span>
+                            class="block text-xl font-bold text-red-500">{{ $data->project->master_status->status }}</span>
                         {{-- อนุมัติ --}}
-                    @elseif(in_array($this->project->status, [2,8,14]))
+                    @elseif(in_array($data->project->status, [2,8,14]))
                         <span
-                            class="block text-xl font-bold text-green-500">{{ $this->project->master_status->status }}</span>
+                            class="block text-xl font-bold text-green-500">{{ $data->project->master_status->status }}</span>
                         {{-- ผ่าน --}}
-                    @elseif(in_array($this->project->status, [4,5,10,11,16,17,20]))
+                    @elseif(in_array($data->project->status, [4,5,10,11,16,17,20]))
                         <span
-                            class="block text-xl font-bold text-green-500">{{ $this->project->master_status->status }}</span>
+                            class="block text-xl font-bold text-green-500">{{ $data->project->master_status->status }}</span>
                     @endif
                 </div>
                 <div class="pb-6 sm:p-6">
                     {{-- ผ่านไป step ต่อไป ยกเว้น step 5 --}}
-                    @if (in_array($this->project->status, [2,4,5,10,11,16,17,]))
+                    @if (in_array($data->project->status, [2,4,5,8,10,11,16,17,14]))
                         <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
                                 data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                             <div class="flex flex-row items-center gap-3">
@@ -46,7 +47,7 @@
                             </div>
                         </button>
                         {{-- ไม่ผ่านทำซ้ำ --}}
-                    @elseif(in_array($this->project->status, [9,12,15,18,21]))
+                    @elseif(in_array($data->project->status, [9,12,15,18,21]))
                         <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
                                 data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                             <div class="flex flex-row items-center gap-3">
@@ -54,7 +55,7 @@
                                 <span class="block">แนบเอกสาร</span>
                             </div>
                         </button>
-                    @elseif(in_array($this->project->status, [3,6]))
+                    @elseif(in_array($data->project->status, [3,6]))
                         <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
                                 onclick="confirmDelete()">
                             <div class="flex flex-row items-center gap-3">
@@ -89,32 +90,32 @@
                                 </div>
                                 <figcaption class="space-y-1 text-center sm:text-left">
                                     <div class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $this->project->user_project->where('role', 'student1')->first()->user->displayname ?? '' }}
+                                        {{ $data->project->user_project->where('role', 'student1')->first()->user->displayname ?? '' }}
                                     </div>
                                     <div
                                         class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                         <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">
-                                            {{ $this->project->user_project->where('role', 'student1')->first()->user->username ?? '' }}
+                                            {{ $data->project->user_project->where('role', 'student1')->first()->user->username ?? '' }}
                                         </span>
                                     </div>
                                     <div
                                         class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                         <span class="inline-block">สาขาวิชา</span>:<span class="inline-block">
-                                            {{ $this->project->user_project->where('role', 'student1')->first()->user->masterDepartment->name ?? '' }}</span>
+                                            {{ $data->project->user_project->where('role', 'student1')->first()->user->masterDepartment->name ?? '' }}</span>
                                     </div>
                                     <div
                                         class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                         <span class="inline-block">ห้อง</span>:<span class="inline-block">
-                                            {{ $this->project->user_project->where('role', 'student1')->first()->user->room ?? '' }}</span>
+                                            {{ $data->project->user_project->where('role', 'student1')->first()->user->room ?? '' }}</span>
                                     </div>
                                     <div
                                         class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                         <span class="inline-block">อีเมล</span>:<span class="inline-block">
-                                            {{ $this->project->user_project->where('role', 'student1')->first()->user->email ?? '' }}</span>
+                                            {{ $data->project->user_project->where('role', 'student1')->first()->user->email ?? '' }}</span>
                                     </div>
                                 </figcaption>
                             </figure>
-                            @if ($this->project->user_project->where('role', 'student2')->first())
+                            @if ($data->project->user_project->where('role', 'student2')->first())
                                 <figure
                                     class="relative flex w-auto flex-col items-center space-y-6 break-words rounded-4 bg-slate-50 p-6 dark:bg-slate-900/40 sm:flex-row sm:space-y-0 sm:space-x-6">
                                     <div class="flex items-center">
@@ -123,28 +124,28 @@
                                     </div>
                                     <figcaption class="space-y-1 text-center sm:text-left">
                                         <div class="text-lg font-bold tracking-wide dark:text-white">
-                                            {{ $this->project->user_project->where('role', 'student2')->first()->user->displayname ?? '' }}
+                                            {{ $data->project->user_project->where('role', 'student2')->first()->user->displayname ?? '' }}
                                         </div>
                                         <div
                                             class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                             <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">
-                                                {{ $this->project->user_project->where('role', 'student2')->first()->user->username ?? '' }}
+                                                {{ $data->project->user_project->where('role', 'student2')->first()->user->username ?? '' }}
                                             </span>
                                         </div>
                                         <div
                                             class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                             <span class="inline-block">สาขาวิชา</span>:<span class="inline-block">
-                                                {{ $this->project->user_project->where('role', 'student2')->first()->user->masterDepartment->name ?? '' }}</span>
+                                                {{ $data->project->user_project->where('role', 'student2')->first()->user->masterDepartment->name ?? '' }}</span>
                                         </div>
                                         <div
                                             class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                             <span class="inline-block">ห้อง</span>:<span class="inline-block">
-                                            {{ $this->project->user_project->where('role', 'student2')->first()->user->room ?? '' }}</span>
+                                            {{ $data->project->user_project->where('role', 'student2')->first()->user->room ?? '' }}</span>
                                         </div>
                                         <div
                                             class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
                                             <span class="inline-block">อีเมล</span>:<span class="inline-block">
-                                            {{ $this->project->user_project->where('role', 'student2')->first()->user->email ?? '' }}</span>
+                                            {{ $data->project->user_project->where('role', 'student2')->first()->user->email ?? '' }}</span>
                                         </div>
                                     </figcaption>
                                 </figure>
@@ -179,28 +180,29 @@
                                              class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                     </div>
                                     <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $this->project->user_project->where('role', 'teacher1')->first()->user->displayname ?? '' }}
+                                        {{ $data->project->user_project->where('role', 'teacher1')->first()->user->displayname ?? '' }}
                                     </figcaption>
                                     <span
                                         class="absolute top-0 right-0 rounded-bl-4 bg-teal-500 px-3 py-1 text-sm font-black tracking-wider text-white shadow-primary-outline dark:bg-slate-900/40 dark:text-gray-100 dark:shadow-dark-xl">
                                         ที่ปรึกษาหลัก
                                     </span>
                                 </figure>
-
-                                <figure
-                                    class="relative flex w-52 flex-col items-center overflow-hidden break-words rounded-4 border border-gray-100 bg-white p-6 dark:border-slate-900 dark:bg-transparent md:w-60">
-                                    <div class="mt-4 mb-6 flex items-center">
-                                        <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
-                                             class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
-                                    </div>
-                                    <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $this->project->user_project->where('role', 'teacher2')->first()->user->displayname ?? '' }}
-                                    </figcaption>
-                                    <span
-                                        class="absolute top-0 right-0 rounded-bl-4 bg-blue-500 px-3 py-1 text-sm font-black tracking-wider text-white shadow-primary-outline dark:bg-slate-900/40 dark:text-gray-100 dark:shadow-dark-xl">
+                                @if($data->project->user_project->where('role', 'teacher2')->first())
+                                    <figure
+                                        class="relative flex w-52 flex-col items-center overflow-hidden break-words rounded-4 border border-gray-100 bg-white p-6 dark:border-slate-900 dark:bg-transparent md:w-60">
+                                        <div class="mt-4 mb-6 flex items-center">
+                                            <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
+                                                 class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
+                                        </div>
+                                        <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                            {{ $data->project->user_project->where('role', 'teacher2')->first()->user->displayname ?? '' }}
+                                        </figcaption>
+                                        <span
+                                            class="absolute top-0 right-0 rounded-bl-4 bg-blue-500 px-3 py-1 text-sm font-black tracking-wider text-white shadow-primary-outline dark:bg-slate-900/40 dark:text-gray-100 dark:shadow-dark-xl">
                                         ที่ปรึกษารอง
                                     </span>
-                                </figure>
+                                    </figure>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -229,7 +231,7 @@
                                              class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                     </div>
                                     <figcaption class="text-lg font-bold tracking-wide dark:text-white">
-                                        {{ $this->project->user_project->where('role', 'teacher3')->first()->user->displayname ?? '' }}
+                                        {{ $data->project->user_project->where('role', 'teacher3')->first()->user->displayname ?? '' }}
                                     </figcaption>
                                 </figure>
                             </div>

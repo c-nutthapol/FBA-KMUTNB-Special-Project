@@ -3,11 +3,15 @@
 namespace App\Http\Livewire\Students\Project;
 
 use App\Models\File;
-use App\Models\Project;
 use App\Traits\ProjectTrait;
 use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\Redirector;
 use Livewire\WithFileUploads;
 use stdClass;
 
@@ -25,25 +29,27 @@ class Home extends Component
         "file.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
     ];
 
-    public function render()
+    public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $data = new stdClass();
+        $data->project = $this->project;
         $data->error = $this->checkError();
-        if ($data->error) {
+        if ($data->error->name) {
             return view("livewire.students.project.components.error", compact("data"));
         } else {
-            return view("livewire.students.project.index");
+            return view("livewire.students.project.index", compact("data"));
 
         }
 
     }
 
-    public function deleteProject()
+    public function deleteProject(): RedirectResponse|Redirector
     {
-        DB::delete("DELETE FROM projects WHERE id = " . "'" . $this->getProject()->id . "'");
+        DB::delete("DELETE FROM projects WHERE id = " . "'" . $this->project->id . "'");
+        return redirect(route("student.project.home"));
     }
 
-    public function submit()
+    public function submit(): void
     {
         $this->validate();
         //begin Transaction
@@ -56,9 +62,8 @@ class Home extends Component
 
             //start Transaction
             DB::beginTransaction();
-            Project::where("id", $this->project->id)->update([
-                "status" => $this->nextStatus(),
-            ]);
+            $this->project->status = $this->nextStatus();
+            $this->project->save();
 
             File::create([
                 "title" => "step " . $this->step,

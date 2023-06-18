@@ -3,46 +3,57 @@
 namespace App\Traits;
 
 use App\Models\EduTerm;
+use App\Models\Master_status;
 use App\Models\Project;
-use App\Models\ProjectStepConfig;
+use App\Models\StudentRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use stdClass;
 
 trait ProjectTrait
 {
-    public function checkError($isCreate = false): stdClass|null
+    public function checkError($isCreate = false): stdClass
     {
         $result = new stdClass();
-        $step = $this->step;
-        if (!$this->term->id) {
+        $result->name = null;
+        $result->redirect = null;
+        $result->btn = null;
+        if (!$this->term) {
             $result->name = "ยังไม่มีการประกาศการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
-        } elseif (!$this->checkDate()) {
-            $result->name = "เลยระยะเวลาที่กำหนด";
-            $result->redirect = route("student.petition");
-            $result->btn = "สร้างคำร้อง";
-        } elseif ($this->project->id && $isCreate) {
+        } elseif (!$this->checkDate) {
+
+            $request = StudentRequest::query()
+                ->where("project_id", "=", $this->project->id)
+                ->where("status", 26)
+                ->where("updated_at", "<=", Carbon::now()->addDays(3))
+                ->first();
+
+            if (!$request?->title == $this->project->master_status->step) {
+                $result->name = "เลยระยะเวลาที่กำหนด";
+                $result->redirect = route("student.petition");
+                $result->btn = "สร้างคำร้อง";
+            }
+
+        } elseif ($this->project?->id && $isCreate) {
             $result->name = "ท่านมีโครงงานอยู่แล้ว";
             $result->redirect = route("student.project.home");
             $result->btn = "หน้าหลัก";
-        } elseif (!$this->project->id && !$isCreate) {
+        } elseif (!$this->project?->id && !$isCreate) {
             $result->name = "ท่านยังไม่มีโครงงาน กรุณาสร้างโครงงานก่อน";
             $result->redirect = route("student.project.create");
             $result->btn = "สร้างโครงงาน";
-        } else {
-            $result = null;
         }
         return $result;
     }
 
-    public function checkDate(): bool
+    public function getCheckDateProperty(): bool
     {
         return (bool)$this->term
             ->project_step()
             ->where("phase_" . $this->step . "_start_date", "<=", Carbon::now())
             ->where("phase_" . $this->step . "_end_date", ">=", Carbon::now())
             ->first();
-
     }
 
     /**
@@ -50,35 +61,24 @@ trait ProjectTrait
      */
     public function nextStatus(): int
     {
-        $status = $this->project->master_status->id;
-        //ทำซ้ำหากไม่ผ่าน
-        if ($status == 9 || $status == 12) {
-            $result = 7;
-        } elseif ($status == 15 || $status == 18) {
-            $result = 13;
-        } elseif ($status == 21) {
-            $result = 19;
-        } //next step
-        elseif ($status == 4 || $status == 5) {
-            $result = 7;
-        } elseif ($status == 10 | $status == 11) {
-            $result = 13;
-        } elseif ($status == 16 | $status == 17) {
-            $result = 19;
+        $result = 0;
+        $status = $this->project->master_status;
+        if (Str::startsWith($status->status, "ผ่าน")) {
+            $result = Master_status::query()
+                ->where("role_id", "=", 1)
+                ->where("step", "=", $status->step + 1)
+                ->first()
+                ->id;
+        } else if (Str::startsWith($status->status, "ไม่")) {
+            $result = Master_status::query()
+                ->where("status", "like", "%รอ%")
+                ->where("step", "=", $status->step)
+                ->first()
+                ->id;
         } else {
-            $result = $status;
+            $result = $status->id;
         }
         return $result;
-    }
-
-    public function getTermStepProperty(): ProjectStepConfig
-    {
-        $term = $this->step;
-        return ProjectStepConfig::query()
-            ->where("phase_" . $this->step . "_start_date", "<=", Carbon::now())
-            ->where("phase_" . $this->step . "_end_date", ">=", Carbon::now())
-            ->where("phase_" . $term . "_status", "=", 1)
-            ->first();
     }
 
     /**
@@ -86,20 +86,11 @@ trait ProjectTrait
      */
     public function getStepProperty(): int
     {
-        $project = $this->project;
-        $step = 1;
-        $step = $this->step ?? $step;
-        if (
-            $project->master_status->role_id == 3 &&
-            str_contains($project->master_status->status, "อนุมัติ") &&
-            $project->master_status->step == 1 || $project->master_status->role_id == 3 &&
-            str_contains($project->master_status->status, "อนุมัติผล") &&
-            $project->master_status->step != 5
-        ) {
+        if (!$this->term) return 0;
+        $step = $this->project->master_status->step ?? 1;
+        if (Str::startsWith($this->project?->master_status->status, "ผ่าน") && $step < 4) {
             $step++;
         }
-
-
         return $step;
     }
 
@@ -121,6 +112,8 @@ trait ProjectTrait
     public function getTermProperty(): EduTerm|null
     {
         return EduTerm::query()
+            ->whereHas("project_step")
+            ->with("project_step")
             ->where("start_date", "<=", Carbon::now())
             ->where("end_date", ">=", Carbon::now())
             ->first();

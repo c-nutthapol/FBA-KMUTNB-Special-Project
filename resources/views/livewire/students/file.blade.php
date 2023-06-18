@@ -9,7 +9,7 @@
                         <i class="bi bi-clock-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
                     <h5 class="mb-0 tracking-wide dark:text-white">
-                        ประวัติการส่งคำร้อง
+                        ประวัติการแนบไฟล์
                     </h5>
                 </div>
                 <div class="flex-auto p-6">

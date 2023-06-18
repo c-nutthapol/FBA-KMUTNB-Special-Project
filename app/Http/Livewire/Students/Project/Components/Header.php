@@ -22,13 +22,11 @@ class Header extends Component
             "3" => "สอบป้องกัน",
             "4" => "ส่งเล่ม",
         ]);
-        $data->project = $this->project;
-        $term = $this->TermStep;
         $data->step_date = collect([
-            "1" => "ก่อน " . dateThai($term->phase_1_end_date ?? ''),
-            "2" => "ก่อน " . dateThai($term->phase_3_end_date ?? ''),
-            "3" => "ก่อน " . dateThai($term->phase_4_end_date ?? ''),
-            "4" => "ก่อน " . dateThai($term->phase_5_end_date ?? ''),
+            "1" => "ก่อน " . dateThai($this->term->project_step->phase_1_end_date ?? ''),
+            "2" => "ก่อน " . dateThai($this->term->project_step->phase_3_end_date ?? ''),
+            "3" => "ก่อน " . dateThai($this->term->project_step->phase_4_end_date ?? ''),
+            "4" => "ก่อน " . dateThai($this->term->project_step->phase_5_end_date ?? ''),
         ]);
         return view("livewire.students.project.components.header", compact("data"));
     }
