@@ -25,8 +25,8 @@ class Index extends Component
         $search = $this->search;
         $year = $this->year;
         $step = 1;
-        $step_teacher = [1, 3];
-        $step_admin = [2, 5];
+        $step_teacher = [1,3];
+        // $step_admin = [2];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -35,9 +35,10 @@ class Index extends Component
         $termFilter = EduTerm::all();
         $statusFilter = Master_status::where("step", $step)
         ->where("status_filter","Y")
-        ->where("role_id", $roleId)
+        ->whereIn('role_id', array(1, 2))
         ->get();
 
+        // dd($statusFilter);
         // Select Option
         // $statusOption = Master_status::where("step", $step)
         // ->where("role_id",auth()->user()->role_id)
@@ -53,9 +54,6 @@ class Index extends Component
                 ->where("role","teacher1");
             })
             ->whereIn("status", $step_teacher);
-        })
-        ->when($roleId == 3, function($when) use($step_admin){
-            $when->whereIn("status",$step_admin);
         })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")
@@ -79,7 +77,7 @@ class Index extends Component
                 $project->refresh();
 
                 foreach($project->user_project as $item){
-                    if($item->user->role_id != 4 && $item->user->email){
+                    if($item->user->role_id == 1 && $item->user->email){
                         Mail::to($item->user->email)->send(new ProjectMail($project, $item->user));
                     }
                 }

@@ -24,9 +24,9 @@ class Progress extends Component
         // search
         $search = $this->search;
         $year = $this->year;
-        $step = 3;
-        $step_teacher = [15, 17, 18, 22];
-        $step_admin = [16, 19, 20, 21];
+        $step = 2;
+        $step_teacher = [7,9];
+        // $step_admin = [16, 19, 20, 21];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -55,9 +55,6 @@ class Progress extends Component
             })
             ->whereIn("status", $step_teacher);
         })
-        ->when($roleId == 3, function($when) use($step_admin){
-            $when->whereIn("status", $step_admin);
-        })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")
             ->orWhere("name_en","LIKE","%".$search."%");
@@ -80,7 +77,7 @@ class Progress extends Component
                 $project->refresh();
 
                 foreach($project->user_project as $item){
-                    if($item->user->role_id != 4 && $item->user->email){
+                    if($item->user->role_id == 1 && $item->user->email){
                         Mail::to($item->user->email)->send(new ProjectMail($project, $item->user));
                     }
                 }

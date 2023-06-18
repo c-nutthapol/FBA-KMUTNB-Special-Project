@@ -5,7 +5,7 @@
             <div
                 class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                    <i class="text-2xl text-white bi bi-5-circle-fill leading-0 dark:text-blue-500"></i>
+                    <i class="text-2xl text-white bi bi-7-circle-fill leading-0 dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
                     ส่งเล่ม
@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                    <div class="flex-1">
+                    {{-- <div class="flex-1">
                         <select class="select">
                             <option value="" selected>
                                 สถานะทั้งหมด
@@ -36,7 +36,7 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">

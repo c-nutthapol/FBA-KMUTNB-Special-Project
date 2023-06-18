@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                    <div class="flex-1">
+                    {{-- <div class="flex-1">
                         <select class="select">
                             <option value="" selected>
                                 สถานะทั้งหมด
@@ -36,7 +36,7 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">

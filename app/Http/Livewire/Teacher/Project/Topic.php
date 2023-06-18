@@ -24,9 +24,9 @@ class Topic extends Component
         // search
         $search = $this->search;
         $year = $this->year;
-        $step = 2;
-        $step_teacher = [6, 8, 9, 13];
-        $step_admin = [7, 10, 11, 12];
+        $step = 1;
+        $step_teacher = [2, 5, 6];
+        // $step_admin = [7, 10, 11, 12];
 
         // role
         $roleId = auth()->user()->role_id;
@@ -55,9 +55,6 @@ class Topic extends Component
             })
             ->whereIn("status", $step_teacher);
         })
-        ->when($roleId == 3, function($when) use($step_admin){
-            $when->whereIn("status", $step_admin);
-        })
         ->when($search, function($when) use($search){
             $when->where("name_th","LIKE","%".$search."%")
             ->orWhere("name_en","LIKE","%".$search."%");
@@ -66,6 +63,7 @@ class Topic extends Component
             $when->where("edu_term_id",$year);
         })
         ->paginate(10);
+        // ->get();
         // dd($projects);
         return view('livewire.teacher.project.topic', compact('projects','termFilter','statusFilter'));
     }
@@ -80,7 +78,7 @@ class Topic extends Component
                 $project->refresh();
 
                 foreach($project->user_project as $item){
-                    if($item->user->role_id != 4 && $item->user->email){
+                    if($item->user->role_id == 1 && $item->user->email){
                         Mail::to($item->user->email)->send(new ProjectMail($project, $item->user));
                     }
                 }

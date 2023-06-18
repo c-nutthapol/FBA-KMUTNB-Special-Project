@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 use Mail;
 use App\Mail\ProjectMail;
 
-class Defense extends Component
+class Defenseresult extends Component
 {
     use WithPagination;
 
@@ -25,7 +25,7 @@ class Defense extends Component
         $search = $this->search;
         $year = $this->year;
         $step = 3;
-        $step_teacher = [13, 15];
+        $step_teacher = [14, 18];
         // $step_admin = [25, 28, 29, 30];
 
         // role
@@ -67,7 +67,7 @@ class Defense extends Component
         })
         ->paginate(10);
         // dd($projects);
-        return view('livewire.teacher.project.defense', compact('projects','termFilter','statusFilter'));
+        return view('livewire.teacher.project.defenseresult', compact('projects','termFilter','statusFilter'));
     }
 
     public function updateStatusProject($id, $status)

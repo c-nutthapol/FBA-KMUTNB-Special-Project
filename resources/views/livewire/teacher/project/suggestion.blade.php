@@ -2,7 +2,7 @@
     <div class="flex flex-wrap mb-6 -mx-3">
         <div class="flex-none w-full max-w-full px-3">
             <div class="inline-block">
-                <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
+                <a href="{{ url()->previous() }}"
                     class="flex flex-row items-center gap-2 text-base font-semibold text-white dark:opacity-80 dark:hover:opacity-100 fade-opacity">
                     <i class="text-xl bi bi-arrow-left"></i>
                     <span class="inline-block">

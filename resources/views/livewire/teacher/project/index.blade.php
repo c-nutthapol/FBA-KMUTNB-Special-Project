@@ -8,7 +8,7 @@
                     <i class="text-2xl text-white bi bi-1-circle-fill leading-0 dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
-                    ลงทะเบียนโครงงานพิเศษ
+                    ลงทะเบียนสอบหัวข้อ
                 </h5>
             </div>
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                    <div class="flex-1">
+                    {{-- <div class="flex-1">
                         <select class="select">
                             <option value="" selected>
                                 สถานะทั้งหมด
@@ -36,14 +36,14 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหา">
+                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหาชื่อโครงการ">
                         </div>
                     </div>
                 </div>
