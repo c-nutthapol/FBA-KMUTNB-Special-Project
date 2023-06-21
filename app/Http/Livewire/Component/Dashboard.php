@@ -61,14 +61,12 @@ class Dashboard extends Component
         $this->dataProjects = $Data;
 
         //chart Data
-        $chart_all = $Data->count();
         $chart_watting = $Data->whereIn("status", $this->watting)->count();
         $chart_approved = $Data->whereIn("status", $this->approved)->count();
         $chart_approved_pass = $Data->whereIn("status", $this->approved_pass)->count();
         $chart_success = $Data->whereIn("status", $this->success)->count();
 
         $chartData = [
-            "chart_all" => $chart_all,
             "chart_watting" => $chart_watting,
             "chart_approved" => $chart_approved,
             "chart_approved_pass" => $chart_approved_pass,
@@ -89,6 +87,6 @@ class Dashboard extends Component
 
     public function export()
     {
-        return Excel::download(new ProjectExport($this->dataProjects), "dashboard.csv");
+        return Excel::download(new ProjectExport($this->dataProjects), "dashboard.xlsx");
     }
 }

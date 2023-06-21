@@ -15,8 +15,6 @@ class ProjectExport implements FromView, Responsable
 
     protected $data;
 
-    private $writerType = Excel::CSV;
-
     private $headers = [
         'Content-Type' => "text/csv; charset=UTF-8",
     ];

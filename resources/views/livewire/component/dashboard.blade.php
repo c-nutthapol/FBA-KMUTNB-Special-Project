@@ -154,19 +154,6 @@
                 data: {
                     labels: ['จำนวนโครงงาน'],
                     datasets: [{
-                            label: 'โครงงาน',
-                            data: [
-                                {{ $Data->count() }},
-                            ],
-                            borderWidth: 1,
-                            backgroundColor: [
-                                'rgba(94, 114, 228, 0.2)',
-                            ],
-                            borderColor: [
-                                'rgb(94, 114, 228)',
-                            ],
-                        },
-                        {
                             label: 'สอบหัวข้อ',
                             data: [
                                 {{ $Data->whereIn('status', $watting)->count() }},
@@ -232,13 +219,10 @@
             // Event listener for chart data update
             Livewire.on('chartDataUpdated', chartData => {
                 // Update chart data
-                chart.data.datasets[0].data = [chartData.chart_all];
-                chart.data.datasets[1].data = [chartData.chart_watting];
-                chart.data.datasets[2].data = [chartData.chart_approved];
-                chart.data.datasets[3].data = [chartData.chart_approved_pass];
-                chart.data.datasets[4].data = [chartData.chart_success];
-
-                // Update chart
+                chart.data.datasets[0].data = [chartData.chart_watting];
+                chart.data.datasets[1].data = [chartData.chart_approved];
+                chart.data.datasets[2].data = [chartData.chart_approved_pass];
+                chart.data.datasets[3].data = [chartData.chart_success];
                 chart.update();
             });
         });
