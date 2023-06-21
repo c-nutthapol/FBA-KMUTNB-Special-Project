@@ -27,7 +27,7 @@
                         </span>
                     </div>
                     <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
-                        <strong>เลขประจำตัวประชาชน:</strong>
+                        <strong>รหัสนักศึกษา:</strong>
                         <span class="inline-block ml-1">
                             {{ $pid }}
                         </span>

@@ -19,11 +19,12 @@ class ModalUserView extends Component
     public function getUserView($id)
     {
         $user = User::find($id);
+        // dd($user);
 
         if ($user) {
             $this->username = $user->username;
             $this->displayname = $user->displayname;
-            $this->pid = $user->pid;
+            $this->pid = ($user->role_id == 1) ? substr($user->username, 1) : "-" ;
             $this->email = $user->email;
             $this->firstname_en = $user->firstname_en;
             $this->lastname_en = $user->lastname_en;

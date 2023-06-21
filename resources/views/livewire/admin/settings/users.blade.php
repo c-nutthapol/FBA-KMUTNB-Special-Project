@@ -14,7 +14,7 @@
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
                 <div>
-                    <select wire:model="role" class="select">
+                    <select wire:model="role" class="select" id="role">
                         <option value="">
                             สิทธิ์ผู้ใช้งานทั้งหมด
                         </option>
@@ -41,7 +41,7 @@
 
             <div class="flex-wrap flex-auto p-6">
                 <div class="p-0 overflow-x-auto">
-                    <table
+                    <table id="table"
                         class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
                         <thead class="align-bottom">
                             <tr>
