@@ -14,17 +14,17 @@
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
                 <div>
-                    <select class="select">
-                        <option value="วันที่เขียนคำร้องล่าสุด" selected>
+                    <select class="select" wire:model='sortCreateDate'>
+                        <option value="desc" selected>
                             วันที่เขียนคำร้องล่าสุด
                         </option>
-                        <option value="วันที่เขียนคำร้องเก่าสุด">
+                        <option value="asc">
                             วันที่เขียนคำร้องเก่าสุด
                         </option>
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                    <div class="flex-1">
+                    {{-- <div class="flex-1">
                         <select class="select">
                             <option value="สถานะทั้งหมด" selected>
                                 สถานะทั้งหมด
@@ -39,14 +39,14 @@
                                 ไม่อนุมัติ
                             </option>
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา">
+                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา" wire:model='search'>
                         </div>
                     </div>
                 </div>

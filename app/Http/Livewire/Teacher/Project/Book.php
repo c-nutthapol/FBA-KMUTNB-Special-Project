@@ -9,6 +9,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Mail;
 use App\Mail\ProjectMail;
+use App\Exports\ProjectExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Book extends Component
 {
@@ -17,6 +19,7 @@ class Book extends Component
     protected $paginationTheme = 'default';
     public $search;
     public $year;
+    public $dataProjects = [];
 
     public function render()
     {
@@ -43,7 +46,7 @@ class Book extends Component
         // ->where("role_id",auth()->user()->role_id)
         // ->get();
 
-        $projects = Project::with("user_project","edu_term","master_status")
+        $res = Project::with("user_project","edu_term","master_status")
         ->whereHas("master_status", function($sub) use($step){
             $sub->where("step", $step);
         })
@@ -64,10 +67,9 @@ class Book extends Component
         })
         ->when($year, function($when) use($year){
             $when->where("edu_term_id",$year);
-        })
-        ->paginate(10);
-        // ->get();
-        // dd($projects);
+        });
+        $this->dataProjects = $res->get();
+        $projects = $res->paginate(10);
         return view('livewire.teacher.project.book', compact('projects','termFilter','statusFilter'));
     }
 
@@ -95,5 +97,10 @@ class Book extends Component
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProjectExport($this->dataProjects), "project-step-7.xlsx");
     }
 }
