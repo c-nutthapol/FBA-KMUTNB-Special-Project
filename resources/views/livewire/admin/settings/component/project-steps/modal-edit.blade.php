@@ -106,7 +106,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_3_start_date"/>
+                                <input type="date" class="input" wire:model.defer="phase_2_start_date"/>
                                 @error('phase_2_start_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -116,7 +116,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
-                                <input type="date" wire:model.defer="phase_3_end_date" class="input"/>
+                                <input type="date" wire:model.defer="phase_2_end_date" class="input"/>
                                 @error('phase_2_end_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -148,7 +148,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_4_end_date"/>
+                                <input type="date" class="input" wire:model.defer="phase_3_end_date"/>
                                 @error('phase_3_end_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -196,7 +196,7 @@
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                     ยกเลิก
                 </button>
-                <button type="submit" id="submit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400"
+                <button type="submit" id="editsubmit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400"
                         wire:target="submit" wire:loading.attr="disabled">
                     <div class="flex flex-row items-center gap-3" wire:target="submit" wire:loading.class="hidden">
                         <i class="text-base bi bi-pencil-square leading-0"></i>
