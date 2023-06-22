@@ -76,7 +76,7 @@
                             รายละเอียดข่าวสาร
                             <span class="text-rose-600">*</span>
                         </label>
-                        <textarea class="input h-auto" rows="6" id="editor" wire:model.defer="content"></textarea>
+                        <textarea class="input h-auto" rows="6" id="editor" name="editor" wire:model.defer="content"></textarea>
                         @error('content')
                             <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
@@ -103,7 +103,7 @@
                             class="mr-1 inline-block rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                             ยกเลิก
                         </a>
-                        <button type="submit" class="btn from-blue-500 to-violet-500 text-sm font-medium text-white">
+                        <button type="submit" id="submit" class="btn from-blue-500 to-violet-500 text-sm font-medium text-white">
                             <div class="flex flex-row items-center gap-3" wire:loading.class="hidden"
                                 wire:target="submit">
                                 <i class="bi bi-save-fill leading-0"></i>

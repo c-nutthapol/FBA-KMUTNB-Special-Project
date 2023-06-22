@@ -114,7 +114,7 @@
                             class="mr-1 inline-block rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                             ยกเลิก
                         </a>
-                        <button type="submit" class="btn from-orange-400 to-yellow-400 text-sm font-medium text-white"
+                        <button type="submit" id="submit" class="btn from-orange-400 to-yellow-400 text-sm font-medium text-white"
                             wire:target="submit" wire:loading.attr="disabled">
                             <div class="flex flex-row items-center gap-3" wire:target="submit"
                                 wire:loading.class="hidden">

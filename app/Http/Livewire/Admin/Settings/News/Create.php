@@ -12,7 +12,7 @@ class Create extends Component
 
     use WithFileUploads;
 
-    public $photo, $content, $title, $detail, $status, $masternew_id, $img;
+    public $photo, $content, $title, $detail, $status = 'active', $masternew_id, $img;
 
     protected function rules()
     {
