@@ -74,7 +74,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
-                                <input type="date" wire:model.defer="phase_1_start_date" class="input"/>
+                                <input type="date" id="phase_1_start_date" wire:model.defer="phase_1_start_date" class="input"/>
                                 @error('phase_1_start_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -84,7 +84,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
-                                <input type="date" wire:model.defer="phase_1_end_date" class="input"/>
+                                <input type="date" id="phase_1_end_date" wire:model.defer="phase_1_end_date" class="input"/>
                                 @error('phase_1_end_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -96,7 +96,7 @@
 
                     <div class="col-span-2 p-3 bg-gray-100 rounded-lg">
                         <div class="flex items-center mb-2">
-                            <input id="steps-3" type="checkbox" wire:model.defer="phase_3_status"
+                            <input id="steps-3" type="checkbox" wire:model.defer="phase_2_status"
                                    class="w-4 h-4 input-checkbox">
                             <label for="steps-3"
                                    class="ml-2 text-base tracking-wide dark:text-white dark:opacity-80">ยื่นขอสอบความก้าวหน้า</label>
@@ -107,7 +107,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_2_start_date"/>
+                                <input type="date" id="phase_2_start_date" class="input" wire:model.defer="phase_2_start_date"/>
                                 @error('phase_2_start_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -117,7 +117,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
-                                <input type="date" wire:model.defer="phase_2_end_date" class="input"/>
+                                <input type="date" id="phase_2_end_date" wire:model.defer="phase_2_end_date" class="input"/>
                                 @error('phase_2_end_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -139,7 +139,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_3_start_date"/>
+                                <input type="date" id="phase_3_start_date" class="input" wire:model.defer="phase_3_start_date"/>
                                 @error('phase_3_start_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -149,7 +149,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_3_end_date"/>
+                                <input type="date" id="phase_3_end_date" class="input" wire:model.defer="phase_3_end_date"/>
                                 @error('phase_3_end_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -170,7 +170,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_4_start_date"/>
+                                <input type="date" id="phase_4_start_date" class="input" wire:model.defer="phase_4_start_date"/>
                                 @error('phase_4_start_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -180,7 +180,7 @@
                                 <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
-                                <input type="date" class="input" wire:model.defer="phase_4_end_date"/>
+                                <input type="date" id="phase_4_end_date" class="input" wire:model.defer="phase_4_end_date"/>
                                 @error('phase_4_end_date')
                                 <span
                                     class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
@@ -197,7 +197,7 @@
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                     ยกเลิก
                 </button>
-                <button type="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500"
+                <button type="submit" id="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500"
                         wire:target="submit" wire:loading.attr="disabled">
                     <div class="flex flex-row items-center gap-3" wire:target="submit" wire:loading.class="hidden">
                         <i class="bi bi-save-fill leading-0"></i>

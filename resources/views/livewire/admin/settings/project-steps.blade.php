@@ -14,6 +14,7 @@
                 </div>
                 <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
                         data-modal-target="createModal" data-modal-toggle="createModal"
+                        id="btninsert"
                         wire:click="$emit('getProjectStepCreate')">
                     <div class="flex flex-row items-center justify-center gap-3">
                         <i class="bi bi-plus-lg leading-0"></i>
