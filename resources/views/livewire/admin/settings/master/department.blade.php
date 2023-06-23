@@ -13,7 +13,7 @@
                             สาขา
                         </h5>
                     </div>
-                    <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
+                    <button type="button" id="btninsert" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
                         data-modal-target="createModal" data-modal-toggle="createModal">
                         <div class="flex flex-row items-center justify-center gap-3">
                             <i class="bi bi-plus-lg leading-0"></i>
@@ -176,7 +176,7 @@
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                 สาขา
                             </label>
-                            <input type="text" wire:model="name" class="input" placeholder="กรุณากรอกสาขา" required></input>
+                            <input type="text" id="txtdepart" wire:model="name" class="input" placeholder="กรุณากรอกสาขา" required></input>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -192,7 +192,7 @@
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                         ยกเลิก
                     </button>
-                    <button type="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
+                    <button type="submit" id="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-save-fill leading-0"></i>
                             <span class="block">บันทึก</span>
@@ -244,7 +244,7 @@
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                 สาขา
                             </label>
-                            <input type="text" wire:model="t_name" class="input" placeholder="กรุณากรอกสาขา" required></input>
+                            <input type="text" id="edittxtdapart" wire:model="t_name" class="input" placeholder="กรุณากรอกสาขา" required></input>
                             @error('t_name')
                                 <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
@@ -286,7 +286,7 @@
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                         ยกเลิก
                     </button>
-                    <button type="submit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400">
+                    <button type="submit" id="editsubmit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400">
                         <div class="flex flex-row items-center gap-3">
                             <i class="text-base bi bi-pencil-square leading-0"></i>
                             <span class="block">แก้ไข</span>

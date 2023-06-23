@@ -79,7 +79,7 @@
                         {{ $Data->count() }}
                     </span>
                     <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
-                        โครงงาน
+                        รวมทั้งหมด
                     </h4>
                 </div>
             </div>
@@ -152,7 +152,7 @@
             var chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['จำนวนโครงงาน'],
+                    labels: ['สถานะโครงการ'],
                     datasets: [{
                             label: 'สอบหัวข้อ',
                             data: [
