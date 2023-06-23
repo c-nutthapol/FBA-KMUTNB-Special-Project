@@ -29,5 +29,7 @@ Route::middleware("auth", "role:student")->group(function () {
         Route::view("/suggestion", "students.suggestion")->name("suggestion");
         // ประวัติการส่งคำร้อง
         Route::view("/history", "students.history")->name("history");
+        // ดาวน์โหลดแบบฟอร์ม
+        Route::view("/document", "students.document")->name("document");
     });
 });

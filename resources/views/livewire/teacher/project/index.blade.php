@@ -17,15 +17,17 @@
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
                     <div class="flex-1">
-                        <button type="button" class="text-sm font-medium text-white btn from-green-500 to-emerald-500" wire:target="export"
-                            wire:loading.attr="disabled" wire:click="export">
-                            <div class="flex flex-row items-center gap-3" wire:target="export" wire:loading.class="hidden">
+                        <button type="button" class="text-sm font-medium text-white btn from-green-500 to-emerald-500"
+                            wire:target="export" wire:loading.attr="disabled" wire:click="export">
+                            <div class="flex flex-row items-center gap-3" wire:target="export"
+                                wire:loading.class="hidden">
                                 <i class="bi bi-download leading-0"></i>
                                 <span class="block">Export</span>
                             </div>
                             {{-- loading --}}
-                            <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin" wire:target="export"
-                                wire:loading.class.remove="hidden" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin"
+                                wire:target="export" wire:loading.class.remove="hidden" viewBox="0 0 100 101"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                                     fill="#E5E7EB" />
@@ -45,8 +47,8 @@
                             ปีการศึกษาทั้งหมด
                         </option>
                         @foreach ($termFilter as $item_term)
-                            <option value="{{$item_term->id}}">
-                                {{$item_term->term}} / {{$item_term->year}}
+                            <option value="{{ $item_term->id }}">
+                                {{ $item_term->term }} / {{ $item_term->year }}
                             </option>
                         @endforeach
                     </select>
@@ -70,7 +72,8 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" wire:model="search" placeholder="ค้นหาชื่อโครงการ">
+                            <input type="text" id="search" class="pl-10 input" wire:model="search"
+                                placeholder="ค้นหาชื่อโครงการ">
                         </div>
                     </div>
                 </div>
@@ -129,53 +132,85 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <span class="text-sm dark:text-slate-400">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
+                                        <span
+                                            class="text-sm dark:text-slate-400">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row justify-center space-x-4">
                                             <figure class="flex flex-row items-center space-x-2">
                                                 <figcaption class="text-sm dark:text-slate-400">
-                                                @foreach ($project->StudentListForTable as $item_student)
-                                                    {{ $item_student }}<br>
-                                                @endforeach
+                                                    @foreach ($project->StudentListForTable as $item_student)
+                                                        {{ $item_student }}<br>
+                                                    @endforeach
                                                 </figcaption>
                                             </figure>
                                         </div>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
+
+                                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                                            class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700"
+                                            type="button">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-download leading-0"></i>
+                                                <span class="block">โหลดเอกสาร</span>
+                                            </div>
+                                        </button>
+                                        <!-- Dropdown menu -->
+                                        <div id="dropdown"
+                                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-slate-850">
+                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                                aria-labelledby="dropdownDefaultButton">
+                                                <li>
+                                                    <a href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {{-- <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
                                             class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-download leading-0"></i>
                                                 <span class="block">โหลดเอกสาร</span>
                                             </div>
-                                        </a>
+                                        </a> --}}
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="inline-block">
-                                            <select id="UpdateStatusProject" class="select" data-id="{{$project->id}}">
+                                            <select id="UpdateStatusProject" class="select"
+                                                data-id="{{ $project->id }}">
                                                 <option value="" disabled selected>
-                                                    {{$project->master_status->status}}
+                                                    {{ $project->master_status->status }}
                                                 </option>
 
                                                 @if (Auth::user()->role_id === 2)
                                                     @forelse ($project->SelectOption as $item)
-                                                    <option value="{{$item->id}}">
-                                                        {{$item->status}}
-                                                    </option>
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->status }}
+                                                        </option>
                                                     @empty
-
                                                     @endforelse
                                                 @else
                                                     @forelse ($project->SelectOption as $item)
-                                                    <option value="{{$item->id}}" disabled>
-                                                        {{$item->status}}
-                                                    </option>
+                                                        <option value="{{ $item->id }}" disabled>
+                                                            {{ $item->status }}
+                                                        </option>
                                                     @empty
-
                                                     @endforelse
                                                 @endif
 
@@ -187,14 +222,14 @@
                                         class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         @if (auth()->user()->role_id == 2)
                                             <div class="flex flex-row justify-end gap-3">
-                                                <a href="{{ route('teacher.project.details',['id' => $project->id]) }}"
+                                                <a href="{{ route('teacher.project.details', ['id' => $project->id]) }}"
                                                     class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-eye leading-0"></i>
                                                         <span class="block">ดูรายละเอียด</span>
                                                     </div>
                                                 </a>
-                                                <a href="{{ route('teacher.project.suggestion',['id'=> $project->id]) }}"
+                                                <a href="{{ route('teacher.project.suggestion', ['id' => $project->id]) }}"
                                                     class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-chat-dots leading-0"></i>
@@ -204,14 +239,14 @@
                                             </div>
                                         @elseif(auth()->user()->role_id == 3)
                                             <div class="flex flex-row justify-end gap-3">
-                                                <a href="{{ route('admin.project.details',['id' => $project->id]) }}"
+                                                <a href="{{ route('admin.project.details', ['id' => $project->id]) }}"
                                                     class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-eye leading-0"></i>
                                                         <span class="block">ดูรายละเอียด</span>
                                                     </div>
                                                 </a>
-                                                <a href="{{ route('admin.project.suggestion',['id'=> $project->id]) }}"
+                                                <a href="{{ route('admin.project.suggestion', ['id' => $project->id]) }}"
                                                     class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-chat-dots leading-0"></i>
@@ -238,28 +273,28 @@
     </div>
 </div>
 @push('script')
-<script>
-    $(`#UpdateStatusProject`).on(`change`, function(){
-        const label = $(this).find("option:selected")[0].text;
-        const id = $(this).data("id");
-        const status = $(this).val();
-        Swal.fire({
-            icon: 'question',
-            title: 'คุณต้องการเปลี่ยนสถานะ',
-            text: `${label} ใช่หรือไม่`,
-            showCancelButton: true,
-            confirmButtonText: 'ยืนยัน',
-            cancelButtonText: 'ยกเลิก',
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                @this.updateStatusProject(id, status);
-            }
+    <script>
+        $(`#UpdateStatusProject`).on(`change`, function() {
+            const label = $(this).find("option:selected")[0].text;
+            const id = $(this).data("id");
+            const status = $(this).val();
+            Swal.fire({
+                icon: 'question',
+                title: 'คุณต้องการเปลี่ยนสถานะ',
+                text: `${label} ใช่หรือไม่`,
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.updateStatusProject(id, status);
+                }
+            })
         })
-    })
 
-    Livewire.on('refreshComponent', e => {
-        location.reload();
-    })
-</script>
+        Livewire.on('refreshComponent', e => {
+            location.reload();
+        })
+    </script>
 @endpush
