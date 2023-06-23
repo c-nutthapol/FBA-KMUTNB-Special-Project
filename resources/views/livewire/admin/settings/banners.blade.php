@@ -12,7 +12,7 @@
                         แบนเนอร์
                     </h5>
                 </div>
-                <button type="button" class="btn w-full from-blue-500 to-violet-500 text-sm text-white sm:w-auto"
+                <button type="button" id="btninsert" class="btn w-full from-blue-500 to-violet-500 text-sm text-white sm:w-auto"
                     data-modal-target="createModal" data-modal-toggle="createModal">
                     <div class="flex flex-row items-center justify-center gap-3">
                         <i class="bi bi-plus-lg leading-0"></i>
@@ -74,7 +74,9 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                        <img src="{{ Storage::disk('public')->url($banner->img) }}" alt="banner"
+
+                                        {{-- <img src="/storage/{{$cover_img}}" --}}
+                                        <img src="/storage/{{$banner->img }}" alt="banner"
                                             class="h-24 w-auto rounded-lg object-cover">
                                     </td>
                                     <td

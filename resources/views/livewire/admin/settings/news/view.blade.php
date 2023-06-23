@@ -25,7 +25,7 @@
                     <div class="block mx-auto">
                         {{-- มีรูป --}}
                         <div>
-                            <img src="{{ Storage::disk('public')->url($cover_img) }}"
+                            <img src="/storage/{{$cover_img}}"
                                 class="object-contain object-center w-full h-120 rounded-2" alt="Avatar">
                         </div>
                     </div>

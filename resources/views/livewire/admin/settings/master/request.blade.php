@@ -13,13 +13,13 @@
                             คำร้อง
                         </h5>
                     </div>
-                    <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
+                    {{-- <button type="button" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
                         data-modal-target="createModal" data-modal-toggle="createModal">
                         <div class="flex flex-row items-center justify-center gap-3">
                             <i class="bi bi-plus-lg leading-0"></i>
                             <span class="block">เพิ่มคำร้อง</span>
                         </div>
-                    </button>
+                    </button> --}}
                 </div>
 
                 <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-end sm:flex-row">
@@ -105,14 +105,14 @@
                                                         <span class="block">แก้ไข</span>
                                                     </div>
                                                 </button>
-                                                <button type="button"
+                                                {{-- <button type="button"
                                                 wire:click="$emit('delete',{{ $item->id }})"
                                                     class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-trash3 leading-0"></i>
                                                         <span class="block">ลบ</span>
                                                     </div>
-                                                </button>
+                                                </button> --}}
                                             </div>
                                         </td>
                                     </tr>
@@ -227,7 +227,7 @@
                             <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
                                 คำร้อง
                             </label>
-                            <input type="text" class="input" placeholder="กรุณากรอกคำร้อง" wire:model="t_name" required></input>
+                            <input type="text" id="requesttext" class="input" placeholder="กรุณากรอกคำร้อง" wire:model="t_name" required></input>
                             @error('t_name')
                                 <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
@@ -323,30 +323,30 @@
     <script>
 
 
-    window.addEventListener('closeModal', event => {
+    // window.addEventListener('closeModal', event => {
 
-        console.log(555);
-        const $targetEl = document.getElementById('createModal');
+    //     console.log(555);
+    //     const $targetEl = document.getElementById('createModal');
 
-        const modal = new Modal($targetEl);
+    //     const modal = new Modal($targetEl);
 
-        modal.hide();
-        // $targetEl.toggle();
-        // alert('Name updated to: ' + 5555);
-        // $('#createModal').modal('hide');
+    //     modal.hide();
+    //     // $targetEl.toggle();
+    //     // alert('Name updated to: ' + 5555);
+    //     // $('#createModal').modal('hide');
 
-        // modal.remove();
-        // $('#createModal').remove('hidden');
-                // $('#createModal').addClass('hidden');
-    })
+    //     // modal.remove();
+    //     // $('#createModal').remove('hidden');
+    //             // $('#createModal').addClass('hidden');
+    // })
     </script>
 
 <script>
-    window.addEventListener('openModal', event => {
-        // $("#editModal").modal('show');
-    });
-    window.addEventListener('closeModal', event => {
-        $("#editModal").modal('hide');
-    })
+    // window.addEventListener('openModal', event => {
+    //     // $("#editModal").modal('show');
+    // });
+    // window.addEventListener('closeModal', event => {
+    //     $("#editModal").modal('hide');
+    // })
 </script>
 @endpush

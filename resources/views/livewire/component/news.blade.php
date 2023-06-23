@@ -7,7 +7,11 @@
                         <a href="{{ route('news.view', $news->id) }}">
                             <div class="relative w-full h-full overflow-hidden bg-white rounded-4 dark:bg-slate-850">
                                 <img class="object-cover w-full h-52"
-                                    src="{{ Storage::disk('public')->url($news->cover_img) }}" alt="news pictures">
+                                    src="/storage/{{$news->cover_img}}" alt="news pictures">
+
+
+                                {{-- <img class="object-cover w-full h-52"
+                                    src="{{ Storage::disk('public')->url($news->cover_img) }}" alt="news pictures"> --}}
                                 <div class="flex flex-col justify-between h-full px-4">
                                     <div class="py-6">
                                         <h4

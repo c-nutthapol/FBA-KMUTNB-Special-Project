@@ -90,6 +90,7 @@ class Request extends Component
 
         $data = Master_request::query()
         ->where('name', 'like', '%' . $this->search . '%')
+        ->orderBy("id", "asc")
         ->paginate(10);
         // ->where(function ($sub_query) {
         //     $sub_query->where('title', 'like', '%' . $this->search . '%');

@@ -56,6 +56,7 @@ class ModalEdit extends Component
             $update->update($validatedData);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('refreshBanners');
+            $this->emit('close_modal', 'editModal');
         } catch (\Exception $e) {
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }

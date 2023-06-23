@@ -50,7 +50,7 @@
                                             <i class="bi bi-image-alt text-4xl leading-0"></i>
                                         </div>
                                     @else
-                                        <img src="{{ Storage::disk('public')->url($img) }}" alt="banner"
+                                        <img src="/storage/{{$img }}" alt="banner"
                                             class="mx-auto h-34 w-auto rounded-2 object-cover object-center">
                                     @endif
                                 </div>
@@ -71,7 +71,7 @@
                     class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                     ยกเลิก
                 </button>
-                <button type="submit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400"
+                <button type="submit" id="editsubmit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400"
                     wire:target="submit" wire:loading.attr="disabled">
                     <div class="flex flex-row items-center gap-3" wire:target="submit" wire:loading.class="hidden">
                         <i class="text-base bi bi-pencil-square leading-0"></i>
