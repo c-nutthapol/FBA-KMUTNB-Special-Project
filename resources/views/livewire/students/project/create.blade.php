@@ -39,7 +39,7 @@
                                 <label
                                     class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อโครงงาน
                                     (ภาษาไทย) <span class="text-rose-600">*</span></label>
-                                <input wire:model.defer="form.name_th" type="text" class="input"
+                                <input wire:model.defer="form.name_th" id="name_th" type="text" class="input"
                                        placeholder="กรุณากรอกชื่อโครงงานภาษาไทย"/>
                                 @error('form.name_th')
                                 <span
@@ -52,7 +52,7 @@
                                     ชื่อโครงงาน (ภาษาอังกฤษ)
                                     <span class="text-rose-600">*</span>
                                 </label>
-                                <input wire:model.defer="form.name_en" type="text" class="input"
+                                <input wire:model.defer="form.name_en" id="name_en" type="text" class="input"
                                        placeholder="กรุณากรอกชื่อโครงงานภาษาอังกฤษ"/>
                                 @error('form.name_en')
                                 <span
@@ -84,7 +84,7 @@
                                     สาขาวิชา
                                     <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select" wire:model.defer="form.student_1.department">
+                                <select class="select" wire:model.defer="form.student_1.department" id="depart1">
                                     <option value="" selected disabled>
                                         กรุณาเลือกสาขาวิชา
                                     </option>
@@ -105,7 +105,7 @@
                                     ห้อง
                                     <span class="text-rose-600">*</span>
                                 </label>
-                                <input wire:model.defer="form.student_1.room" type="text" class="input"
+                                <input wire:model.defer="form.student_1.room" type="text" class="input" id="room1"
                                        placeholder="กรุณากรอกห้อง"/>
                                 @error('form.student_1.room')
                                 <span
@@ -128,7 +128,7 @@
                                         สาขาวิชา
                                         <span class="text-rose-600">*</span>
                                     </label>
-                                    <select class="select" wire:model.defer="form.student_2.department">
+                                    <select class="select" wire:model.defer="form.student_2.department" id="depart1">
                                         <option value="" selected disabled>
                                             กรุณาเลือกสาขาวิชา
                                         </option>
@@ -151,7 +151,7 @@
                                             <span class="text-rose-600">*</span>
                                         @endif
                                     </label>
-                                    <input wire:model.defer="form.student_2.room" type="text" class="input"
+                                    <input wire:model.defer="form.student_2.room" type="text" class="input" id="room2"
                                            placeholder="กรุณากรอกห้อง"/>
                                     @error('form.student_2.room')
                                     <span
@@ -201,7 +201,7 @@
                                             <label
                                                 class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อ
                                                 <span class="text-rose-600">*</span></label>
-                                            <input type="text" class="input"
+                                            <input type="text" class="input" id="teachername_ex"
                                                    wire:model.defer="form.external.fname"
                                                    placeholder="กรุณากรอกชื่อ"/>
                                             @error('form.external.fname')
@@ -213,7 +213,7 @@
                                             <label
                                                 class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">นามสกุล
                                                 <span class="text-rose-600">*</span></label>
-                                            <input type="text" class="input"
+                                            <input type="text" class="input" id="teachersurname_ex"
                                                    wire:model.defer="form.external.lname"
                                                    placeholder="กรุณากรอกนามสกุล"/>
                                             @error('form.external.lname')
@@ -228,6 +228,7 @@
                                             </label>
                                             <input class="input p-0" type="file"
                                                    wire:model.defer="file_teacher"
+                                                   id="fileteacherupload"
                                                    accept="application/pdf,application/msword">
                                             @error('file_teacher')
                                             <span
@@ -265,7 +266,7 @@
                                     แนบเอกสาร
                                     <span class="text-rose-600">*</span>
                                 </label>
-                                <input accept="application/pdf,application/msword" class="input h-full p-0"
+                                <input accept="application/pdf,application/msword" id="fileupload" class="input h-full p-0"
                                        type="file" wire:model.defer="file_project">
                                 @error('file_project')
                                 <span
@@ -284,7 +285,7 @@
 
                         <div class="mt-10 text-end">
 
-                            <button type="submit" class="btn from-blue-500 to-violet-500 text-sm text-white"
+                            <button type="submit" id="submit" class="btn from-blue-500 to-violet-500 text-sm text-white"
                                     wire:loading.attr="disabled" wire:target="submit()">
                                 <div class="flex flex-row items-center gap-3">
                                     <i class="bi bi-save-fill text-base leading-0"></i>

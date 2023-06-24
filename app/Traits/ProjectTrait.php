@@ -20,7 +20,7 @@ trait ProjectTrait
         $result->redirect = null;
         $result->btn = null;
         if (!$this->term) {
-            $result->name = "ยังไม่มีการประกาศการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
+            $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
         } elseif (!$this->checkDate) {
 
             $request = StudentRequest::query()
