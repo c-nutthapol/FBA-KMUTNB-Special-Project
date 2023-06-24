@@ -77,3 +77,9 @@ html.dark *::-webkit-scrollbar-thumb {
         @apply duration-300 ease-in-out opacity-100;
     }
 }
+.card-discription img,
+.card-discription table,
+.card-discription iframe{
+    max-width: 100% !important;
+}
+

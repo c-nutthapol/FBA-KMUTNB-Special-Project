@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <div class="relative max-w-full tracking-wide">
+                    <div class="relative max-w-full tracking-wide card-discription">
                         {!! $detail !!}
                     </div>
 

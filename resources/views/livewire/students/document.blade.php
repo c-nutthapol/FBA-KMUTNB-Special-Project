@@ -33,7 +33,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse ($this->Request as $file)
+                            {{-- @forelse ($this->Request as $file)
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600 text-center">
@@ -67,7 +67,7 @@
                                     </td>
                                 </tr>
                             @empty
-                            @endforelse
+                            @endforelse --}}
 
                             </tbody>
                         </table>
