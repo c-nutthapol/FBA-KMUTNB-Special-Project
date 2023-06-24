@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-</head>
-<body>
-    <p>แจ้งเตือนการอัพเดทสถานะโครงงานพิเศษ</p>
-    <p>เรียนคุณ : {{$user->displayname}}</p>
-    <p>สถานะโครงงานพิเศษขั้นตอน{{$project->master_status->name}} : {{$project->master_status->status}}</p>
-</body>
-</html>
+@extends('layouts.mail')
+@section('content')
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="{{ asset('assets/img/logos/logo-fba.png') }}" style="width: 100%; height: 100%;" />
+            </div>
+            <h1>โครงงานพิเศษ คณะบริหารธุรกิจ</h1>
+        </div>
+        <div class="content">
+            <p>เรียนคุณ : {{ $user->displayname }}</p>
+            <p>สถานะโครงงานพิเศษขั้นตอน{{ $project->master_status->name }}</p>
+            <div class="content-status">
+                <span>{{ $project->master_status->status }}</span>
+            </div>
+        </div>
+        <div class="footer">
+            <span>Copyright © - คณะบริหารธุรกิจ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</span>
+        </div>
+    </div>
+@endsection
