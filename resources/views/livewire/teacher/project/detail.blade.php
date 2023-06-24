@@ -41,12 +41,37 @@
             </div>
             <div class="pb-6 sm:p-6">
                 {{-- ถ้าไม่มีเอกสารให้ซ่อน --}}
-                <a href="/storage/{{$detail->files->sortByDesc('created_at')->first()->path ?? ''}}" download class="text-xs text-white btn from-teal-400 to-green-400">
+                {{-- <a href="/storage/{{$detail->files->sortByDesc('created_at')->first()->path ?? ''}}" download class="text-xs text-white btn from-teal-400 to-green-400">
                     <div class="flex flex-row items-center gap-3">
                         <i class="bi bi-download leading-0"></i>
                         <span class="block">โหลดเอกสาร</span>
                     </div>
-                </a>
+                </a> --}}
+                <button type="button" data-dropdown-toggle="dropdown" class="text-xs text-white btn from-teal-400 to-green-400">
+                    <div class="flex flex-row items-center gap-3">
+                        <i class="bi bi-download leading-0"></i>
+                        <span class="block">โหลดเอกสาร</span>
+                    </div>
+                </button>
+                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-slate-850">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        @forelse ($detail->files as $item_file)
+                        <li>
+                            @if ($item_file->is_link == 0)
+                            <a href="/storage/{{$item_file->path ?? ''}}" download
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
+                            @else
+                            <a href="{{$item_file->path ?? ''}}" target="_blank"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
+                            @endif
+                        </li>
+                        @empty
+                        <li>
+                            ไม่พบไฟล์
+                        </li>
+                        @endforelse
+                    </ul>
+                </div>
                 @if (auth()->user()->role_id == 2)
                     <a href="{{ route('teacher.project.suggestion',['id' => $detail->id]) }}"
                         class="text-xs text-white btn from-blue-500 to-violet-500" type="button">

@@ -158,26 +158,23 @@
                                             </div>
                                         </button>
                                         <!-- Dropdown menu -->
-                                        <div id="dropdown"
-                                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-slate-850">
-                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                aria-labelledby="dropdownDefaultButton">
+                                        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-slate-850">
+                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                                @forelse ($project->files as $item_file)
                                                 <li>
-                                                    <a href="#"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
+                                                    @if ($item_file->is_link == 0)
+                                                    <a href="/storage/{{$item_file->path ?? ''}}" download
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
+                                                    @else
+                                                    <a href="{{$item_file->path ?? ''}}" target="_blank"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
+                                                    @endif
                                                 </li>
+                                                @empty
                                                 <li>
-                                                    <a href="#"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
+                                                    ไม่พบไฟล์
                                                 </li>
-                                                <li>
-                                                    <a href="#"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">wallpaperflare.com_wallpaper.jpg</a>
-                                                </li>
+                                                @endforelse
                                             </ul>
                                         </div>
                                         {{-- <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
