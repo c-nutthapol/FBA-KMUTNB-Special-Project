@@ -15,6 +15,13 @@ class History extends Component
 {
     use ProjectTrait;
 
+    public $config_day = [
+        1 => 7,
+        2 => 7,
+        3 => 7,
+    ];
+
+
     public function render()
     {
         return view("livewire.students.history");
