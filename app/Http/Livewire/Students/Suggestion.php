@@ -24,10 +24,11 @@ class Suggestion extends Component
 
     public function getCommentsProperty(): Collection
     {
-        return Comment::query()
-            ->whereHas("project", function ($q) {
-                $q->where("id", "=", $this->project->id);
-            })
-            ->get();
+
+        if ($this->project) {
+            $result = Comment::where("project_id", $this->project->id)->get();
+        }
+
+        return $result ?? new Collection();
     }
 }

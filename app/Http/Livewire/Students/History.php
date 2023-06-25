@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire\Students;
 
-use App\Models\Master_request;
-use App\Models\Project;
 use App\Models\StudentRequest;
 use App\Traits\ProjectTrait;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
-use stdClass;
 
 class History extends Component
 {
@@ -22,17 +21,18 @@ class History extends Component
     ];
 
 
-    public function render()
+    public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         return view("livewire.students.history");
     }
-    public function getRequestProperty()
+
+    public function getRequestProperty(): Collection
     {
-        return StudentRequest::where(
-            "project_id",
-            Project::whereHas("users", function ($query) {
-                $query->where("user_id", Auth::user()->id);
-            })->first()->id
-        )->get();
+
+        if ($this->project) {
+            $result = StudentRequest::where("project_id", $this->project->id)->get();
+        }
+
+        return $result ?? new Collection();
     }
 }

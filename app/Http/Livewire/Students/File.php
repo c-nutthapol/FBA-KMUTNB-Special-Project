@@ -19,6 +19,9 @@ class File extends Component
 
     public function getRequestProperty(): Collection
     {
-        return Files::where("project_id", "=", Auth::user()->projects->first()->id)->orderBy("id", "desc")->get();
+        if (Auth::user()->projects->first()) {
+            $result = Files::where("project_id", "=", Auth::user()->projects->first()->id)->orderBy("id", "desc")->get();
+        }
+        return $result ?? new Collection();
     }
 }

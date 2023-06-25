@@ -11,11 +11,9 @@ use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use Livewire\Redirector;
 use Livewire\WithFileUploads;
 use stdClass;
 
@@ -27,7 +25,7 @@ class Create extends Component
     public $form;
     //file
     public $file_teacher;
-    public $file_project;
+    public $file_project = [];
 
     //validation
     protected array $rules = [
@@ -37,7 +35,7 @@ class Create extends Component
         "form.student_1.department" => "required",
         "form.teacher_1" => "required",
         "form.teacher_3" => "required",
-        "file_project" => "required|mimes:doc,dot,pdf",
+        "file_project.*" => "required|mimes:doc,dot,pdf,docx",
     ];
 
     protected array $messages = [
@@ -48,7 +46,7 @@ class Create extends Component
         "form.teacher_1.required" => "กรุณาเลือกอาจารย์ที่ปรึกษาหลัก",
         "form.teacher_3.required" => "กรุณาเลือกประธานสอบ",
         "file_project.required" => "กรุณาเลือกไฟล์เอกสาร",
-        "file_project.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf)",
+        "file_project.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf,docx)",
     ];
 
     public function mount(): void
@@ -95,7 +93,7 @@ class Create extends Component
         return view($render, compact("data"));
     }
 
-    public function submit(): Redirector|RedirectResponse
+    public function submit(): void
     {
         $this->validate();
         if ($this->form->get("teacher_2") === "external") {
@@ -127,10 +125,8 @@ class Create extends Component
         try {
             //store image
             $upload_locate = "/file/project/";
-            $pname = $this->file_project?->getFilename();
             $tname = $this->file_teacher?->getFilename();
 
-            $this->file_project?->storeAs($upload_locate, $pname, "public");
             $this->file_teacher?->storeAs($upload_locate, $tname, "public");
             //start Transaction
             DB::beginTransaction();
@@ -140,12 +136,16 @@ class Create extends Component
                 "status" => 1,
                 "edu_term_id" => $this->term->id,
             ]);
-            File::create([
-                "title" => "step 1",
-                "project_id" => $project->id,
-                "is_link" => 0,
-                "path" => "/file/project/" . $pname,
-            ]);
+            foreach ($this->file_project as $file) {
+                $file->storeAs($upload_locate, $file->getFilename(), "public");
+
+                File::create([
+                    "title" => "step 1",
+                    "project_id" => $project->id,
+                    "is_link" => 0,
+                    "path" => "/file/project/" . $file->getFilename(),
+                ]);
+            }
             User::where("id", $this->form->get("student_1")["id"])->update([
                 "room" => $this->form->get("student_1")["room"],
                 "department" => $this->form->get("student_1")["department"],
@@ -183,15 +183,18 @@ class Create extends Component
             }
             DB::commit();
             $this->cleanupOldUploads();
-            $this->file_project?->delete();
+            foreach ($this->file_project as $file) {
+                $file->delete();
+            }
             $this->file_teacher?->delete();
             $this->emit("alert", ["status" => "success", "title" => "บันทึกสำเร็จ"]);
+            redirect()->route("student.project.home");
+
         } catch (Exception $e) {
             DB::rollBack();
             $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
         }
         //end Transaction
-        return redirect()->route("student.project.home");
 
     }
 }

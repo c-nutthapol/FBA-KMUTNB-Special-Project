@@ -13,6 +13,7 @@ use stdClass;
 
 trait ProjectTrait
 {
+
     public function checkError($isCreate = false): stdClass
     {
         $result = new stdClass();
@@ -22,19 +23,23 @@ trait ProjectTrait
         if (!$this->term) {
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
         } elseif (!$this->checkDate) {
-
-            $request = StudentRequest::query()
-                ->where("project_id", "=", $this->project->id)
-                ->where("status", 26)
-                ->where("updated_at", "<=", Carbon::now()->addDays(3))
-                ->first();
-
-            if (!$request?->title == $this->project->master_status->step) {
+            if ($this->project) {
+                $request = StudentRequest::query()
+                    ->where("project_id", "=", $this->project->id)
+                    ->where("status", "=", 26)
+                    ->where("updated_at", "<=", Carbon::now()->addDays(3))
+                    ->first();
+                if (!$request?->title == $this->project->master_status->step) {
+                    $result->name = "เลยระยะเวลาที่กำหนด";
+                    $result->redirect = route("student.petition");
+                    $result->btn = "สร้างคำร้อง";
+                }
+            } else {
                 $result->name = "เลยระยะเวลาที่กำหนด";
                 $result->redirect = route("student.petition");
                 $result->btn = "สร้างคำร้อง";
-            }
 
+            }
         } elseif ($this->project?->id && $isCreate) {
             $result->name = "ท่านมีโครงงานอยู่แล้ว";
             $result->redirect = route("student.project.home");
