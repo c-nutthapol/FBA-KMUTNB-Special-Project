@@ -35,27 +35,58 @@
                     </svg>
                 </div>
                 <div id="modal-change-request" class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                            {{ $name }}
+                    <div class="col-span-2 @if ($m_req_id != 1) hidden @endif">
+                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80 ">
+                            ชื่อโครงงาน (ภาษาไทย)
                         </label>
-                        <div class="flex flex-row gap-4">
-                            @if ($type == 'input')
-                                <input type="text" class="input" wire:model.defer="value" />
-                            @elseif ($type == 'select')
-                                <select class="select" wire:model.defer="value">
-                                    <option value="">
-                                        กรุณาเลือก
-                                    </option>
-                                    @foreach ($items as $item)
-                                        <option value="{{ $item->id }}">
-                                            {{ $item->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            @endif
 
+                        <div class="flex flex-row gap-4">
+
+                            <input type="text" class="input" wire:model.defer="data.name_th" />
+                            @error('data.name_th')
+                                <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            @enderror
                         </div>
+                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            ชื่อโครงงาน (ภาษาอังกฤษ)
+                        </label>
+                        <div class="flex flex-row gap-4 ">
+
+                            <input type="text" class="input" wire:model.defer="data.name_en" />
+                            @error('data.name_en')
+                                <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-span-2 @if ($m_req_id != 2) hidden @endif">
+                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            ที่ปรึกษาร่วม/กรรมการสอบ
+                        </label>
+                        <div wire:ignore>
+                            <select id="teacher2" class="select" wire:model.defer="data.teacher2">
+                                <option value="">
+                                    กรุณาเลือก
+                                </option>
+                            </select>
+                        </div>
+                        @error('data.teacher2')
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-span-2 @if ($m_req_id != 3) hidden @endif">
+                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            ประธานสอบ
+                        </label>
+                        <div wire:ignore>
+                            <select id="teacher3" class="select" wire:model.defer="data.teacher3">
+                                <option value="">
+                                    กรุณาเลือก
+                                </option>
+                            </select>
+                        </div>
+                        @error('data.teacher3')
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -89,3 +120,51 @@
         </form>
     </div>
 </div>
+@push('script')
+    <script>
+        let t2 = $('#teacher2')
+        let t3 = $('#teacher3')
+        //init
+        $(document).ready(function() {
+            t2.select2({
+                placeholder: "เลือกที่ปรึกษาร่วม/กรรมการสอบ",
+                ajax: {
+                    url: '/project/get_teacher',
+                    dataType: 'json',
+                    data: function(params) {
+                        var query = {
+                            search: params.term,
+                            type: "teacher2"
+                        }
+                        return query;
+                    },
+                }
+            });
+        });
+        $(document).ready(function() {
+            t3.select2({
+                placeholder: "เลือกประธานสอบ",
+                ajax: {
+                    url: '/project/get_teacher',
+                    dataType: 'json',
+                    data: function(params) {
+                        var query = {
+                            search: params.term
+                        }
+                        return query;
+                    },
+                }
+            });
+        });
+        //end init
+
+        t2.on('change', function(e) {
+            @this.
+            set('data.teacher2', t2.val(), true)
+        })
+        t3.on('change', function(e) {
+            @this.
+            set('data.teacher3', t3.val(), true)
+        })
+    </script>
+@endpush

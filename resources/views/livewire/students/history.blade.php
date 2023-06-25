@@ -85,7 +85,9 @@
 
 
                                             @if (
-                                                $request->status == 26 &&
+                                                !$request->modified_at &&
+                                                    $request->status == 26 &&
+                                                    in_array($request->title, [1, 2, 3]) &&
                                                     Carbon\Carbon::now()->timestamp <= $request->updated_at->addDays($config_day[$request->title])->timestamp)
                                                 <button type="button"
                                                     class="btn from-blue-500 to-violet-500 text-xs text-white"

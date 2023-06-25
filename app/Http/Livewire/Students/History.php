@@ -20,6 +20,7 @@ class History extends Component
         3 => 7,
     ];
 
+    protected $listeners = ['refreshHistory' => '$refresh'];
 
     public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
