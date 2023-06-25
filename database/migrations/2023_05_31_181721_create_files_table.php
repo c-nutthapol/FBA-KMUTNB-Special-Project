@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -19,13 +18,14 @@ return new class extends Migration
                 ->nullOnDelete();
             $table->string("path")->comment("ที่อยู่ไฟล์");
             $table->boolean("is_link")->default(0)->comment("กรณีแนบลิงค์");
-            $table->timestamp("created_at")->default(now("Asia/Bangkok"));
+            $table->timestamp("created_at")->nullable();
             $table->foreignId("created_by")
                 ->nullable()
                 ->constrained("users")
                 ->nullOnDelete();
         });
     }
+
     /**
      * Reverse the migrations.
      */
