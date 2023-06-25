@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,7 +23,7 @@ class Comment extends Model
         /* A method that is called when the model is being created. */
         static::creating(function ($model) {
             $model->created_by = auth()->check() ? auth()->user()->id : null;
-            $model->created_at = $model->freshTimestamp();
+            $model->created_at = Carbon::now();
         });
     }
 

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->text("title")->comment("array ของ master_suggestion");
             $table->text("detail")->nullable();
-            $table->timestamp("created_at")->default(now("Asia/Bangkok"));
+            $table->timestamp("created_at")->nullable();
             $table->foreignId("project_id")
                 ->constrained("projects")
                 ->cascadeOnDelete();
