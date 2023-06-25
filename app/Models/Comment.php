@@ -36,4 +36,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Project::class, "project_id", "id");
     }
+
+    public function masterSuggesstion()
+    {
+        return $this->hasOne(Master_suggestion::class, "id", "title");
+    }
 }

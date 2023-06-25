@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Students\Project;
 
+use App\Mail\ProjectStudentMail;
 use App\Models\File;
 use App\Models\Master_department;
 use App\Models\Project;
@@ -13,6 +14,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use stdClass;
@@ -95,6 +97,7 @@ class Create extends Component
 
     public function submit(): void
     {
+        $s = false;
         $this->validate();
         if ($this->form->get("teacher_2") === "external") {
             $this->validate(
@@ -188,6 +191,8 @@ class Create extends Component
             }
             $this->file_teacher?->delete();
             $this->emit("alert", ["status" => "success", "title" => "บันทึกสำเร็จ"]);
+
+            $s = true;
             redirect()->route("student.project.home");
 
         } catch (Exception $e) {
@@ -195,6 +200,9 @@ class Create extends Component
             $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
         }
         //end Transaction
-
+        if ($s) {
+            $user = $this->project->user_project->where("role", "teacher1")->first()->user;
+            Mail::to($user->email)->send(new ProjectStudentMail($this->project, $user));
+        }
     }
 }

@@ -274,8 +274,8 @@
                             แนบเอกสาร
                             <span class="text-rose-600">*</span>
                         </label>
-                        <input class="input h-full p-0" type="file" accept="application/pdf,application/msword"
-                               wire:model.defer="file">
+                        <input class="input h-full p-0" type="file" accept=".docx,application/pdf,application/msword"
+                               wire:model.defer="file" multiple>
                         @error('file')
                         <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
