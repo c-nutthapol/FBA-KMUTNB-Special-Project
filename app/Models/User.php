@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Master_department::class, "department", "id");
     }
+
+    public function roleChangeAdmin()
+    {
+        return $this->hasOne(RoleChangeAdmin::class, 'user_id', 'id');
+    }
 }

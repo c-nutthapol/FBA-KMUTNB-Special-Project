@@ -77,11 +77,22 @@ class Login extends Component
             $user->pid = $user_info["pid"];
             $user->email = $user_info["email"];
             if ($is_first_time) {
-                $user->role_id = $role_id;
+                if ($role_id == 3) {
+                    $user->role_id = 2;
+                } else {
+                    $user->role_id = $role_id;
+                }
+
+
                 $user->status = "active";
             }
 
-            $user->save();
+
+            if ($user->save() && $is_first_time && $role_id == 3) {
+                $user->roleChangeAdmin()->create(['current_role_id' => 2, 'requested_role_id' => $role_id]);
+            }
+
+
             return $user;
         } elseif ($api_status_code == 405) {
             $this->emit("alert", ["status" => "info", "title" => "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!"]);

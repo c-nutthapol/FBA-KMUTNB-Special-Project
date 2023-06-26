@@ -82,6 +82,10 @@
                                     สถานะ
                                 </th>
                                 <th
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    คำขออนุมัติใช้สิทธิ์แอดมิน
+                                </th>
+                                <th
                                     class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     รายละเอียด
                                 </th>
@@ -116,8 +120,8 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="inline-block">
-                                            <select class="select"
-                                                onchange="@this.changeRole({{ $user->id }},$(this).val())">
+                                            <select class="select confirm-alert" data-id="{{ $user->id }}"
+                                                data-type="สิทธิ์ผู้ใช้งาน">
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->id }}"
                                                         @if ($role->id == $user->role_id) selected @endif>
@@ -130,8 +134,8 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="inline-block">
-                                            <select class="select"
-                                                onchange="@this.changeStatus({{ $user->id }},$(this).val())">
+                                            <select class="select confirm-alert" data-type="สถานะ"
+                                                data-id="{{ $user->id }}">
                                                 <option value="active"
                                                     @if ($user->status == 'active') selected @endif>
                                                     ใช้งานปกติ
@@ -145,6 +149,29 @@
                                                     รอดำเนินการ
                                                 </option>
                                             </select>
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <div class="inline-block">
+                                            @if ($user->roleChangeAdmin && $user->roleChangeAdmin->status == 'wait')
+                                                <select class="select confirm-alert"
+                                                    data-type="คำขออนุมัติใช้สิทธิ์แอดมิน"
+                                                    data-id="{{ $user->id }}">
+                                                    <option value="">
+                                                        กรุณาเลือก
+                                                    </option>
+                                                    <option value="active"
+                                                        @if ($user->roleChangeAdmin->status == 'active') selected @endif>
+                                                        อนุมัติ
+                                                    </option>
+                                                    <option value="inactive"
+                                                        @if ($user->roleChangeAdmin->status == 'inactive') selected @endif>
+                                                        ไม่อนุมัติ
+                                                    </option>
+                                                </select>
+                                            @endif
+
                                         </div>
                                     </td>
                                     <td
@@ -176,6 +203,35 @@
 </div>
 @push('script')
     <script>
+        $('.confirm-alert').on('change', function() {
+            let type = $(this).data('type');
+            let value = $(this).val();
+            let user_id = $(this).data('id');
+            let lable = $(this).find('option:selected').text();
+            console.log(value);
+            if (value != null && value != '') {
+                Swal.fire({
+                    title: `คุณต้องการเปลี่ยน${type} ?`,
+                    text: `เป็น ${lable} ใช่หรือไม่`,
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonText: 'ยืนยัน',
+                    cancelButtonText: 'ยกเลิก',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        if (type == 'สิทธิ์ผู้ใช้งาน') {
+                            @this.changeRole(user_id, value)
+                        } else if (type == 'สถานะ') {
+                            @this.changeStatus(user_id, value)
+                        } else if (type == 'คำขออนุมัติใช้สิทธิ์แอดมิน') {
+                            @this.changeRoleAdmin(user_id, value)
+                        }
+                    }
+                })
+            }
+        });
+
         Livewire.hook('message.sent', (message, component) => {
             if (message.updateQueue[0].payload.event === 'getUserView') {
                 $('#loading-view').removeClass('hidden');

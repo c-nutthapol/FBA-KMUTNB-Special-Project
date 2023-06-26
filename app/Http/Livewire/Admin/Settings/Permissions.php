@@ -64,4 +64,23 @@ class Permissions extends Component
             $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
         }
     }
+
+    public function changeRoleAdmin($id, $status)
+    {
+        try {
+            $user = User::find($id);
+            if ($user) {
+                $role = $user->roleChangeAdmin->requested_role_id;
+                if ($status == 'active') {
+                    $user->role_id = $role;
+                }
+                $user->roleChangeAdmin->status = $status;
+                $user->roleChangeAdmin->save();
+                $user->save();
+                $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
+            }
+        } catch (\Exception $e) {
+            $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
+        }
+    }
 }
