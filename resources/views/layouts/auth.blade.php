@@ -9,6 +9,7 @@
     <!-- CSS -->
     @include('layouts.partials.css')
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link href="['resources/css/app.css', 'resources/js/app.js']" rel="stylesheet" />
     @livewireStyles
 </head>
 
