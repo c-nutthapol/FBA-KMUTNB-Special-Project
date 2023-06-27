@@ -70,7 +70,7 @@
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row items-center gap-2">
                                             <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
-                                                {{ $log->user->fullname_th }}
+                                                {{ $log->user->fullname_th ?? '-'}}
                                             </h6>
                                         </div>
                                     </td>
@@ -78,26 +78,26 @@
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            {{ $log->ip }}
+                                            {{ $log->ip ?? '-'}}
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            {{ $log->browser }}
+                                            {{ $log->browser ?? '-'}}
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
                                             class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                            <i class="bi bi-calendar2-week-fill"></i> {{ $log->created_at->thaidate() }}
+                                            <i class="bi bi-calendar2-week-fill"></i> {{ $log->created_at->thaidate() ?? '-' }}
                                         </span>
                                         <span
                                             class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
                                             <i class="bi bi-clock-fill"></i>
-                                            {{ $log->created_at->thaidate('H:i:s น.') }}
+                                            {{ $log->created_at->thaidate('H:i:s น.') ?? '-' }}
                                         </span>
                                     </td>
 
