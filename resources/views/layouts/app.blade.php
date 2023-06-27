@@ -12,7 +12,8 @@
 
     <!-- CSS -->
     @include('layouts.partials.css')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     @livewireStyles
 </head>
 
