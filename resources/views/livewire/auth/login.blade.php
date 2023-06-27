@@ -66,7 +66,7 @@
         </form>
 
     </div>
-    <div class="rounded-b-2xl border-t-0 border-solid border-black/12.5 p-6 px-1 pt-0 text-center sm:px-6">
+    {{-- <div class="rounded-b-2xl border-t-0 border-solid border-black/12.5 p-6 px-1 pt-0 text-center sm:px-6">
         <p class="mx-auto mb-2.5 text-sm leading-normal tracking-wide dark:text-white/80">ดาวน์โหลดเอกสาร
             <a href="#"
                 class="font-semibold text-transparent bg-gradient-to-tl from-blue-500 to-violet-500 bg-clip-text">
@@ -79,6 +79,6 @@
                 คลิก
             </a>
         </p>
-    </div>
+    </div> --}}
 </div>
 
