@@ -12,9 +12,9 @@
 
     <!-- CSS -->
     @include('layouts.partials.css')
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"> --}}
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     @livewireStyles
 </head>
 
