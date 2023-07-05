@@ -45,19 +45,19 @@
                         <thead class="align-bottom">
                             <tr>
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     ชื่อ-นามสกุล
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     IP Address
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     เบราว์เซอร์
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     เวลาเข้าใช้ล่าสุด
                                 </th>
 
@@ -69,7 +69,7 @@
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row items-center gap-2">
-                                            <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
+                                            <h6 class="mb-0 text-sm text-black leading-normal dark:text-black">
                                                 {{ $log->user->fullname_th ?? '-'}}
                                             </h6>
                                         </div>
@@ -77,25 +77,25 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             {{ $log->ip ?? '-'}}
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             {{ $log->browser ?? '-'}}
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i> {{ $log->created_at->thaidate() ?? '-' }}
                                         </span>
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-clock-fill"></i>
                                             {{ $log->created_at->thaidate('H:i:s น.') ?? '-' }}
                                         </span>
@@ -104,7 +104,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4"> ไม่พบข้อมูล </td>
+                                    <td colspan="4" class="text-black"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
 

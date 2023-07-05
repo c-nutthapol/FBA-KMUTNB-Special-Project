@@ -15,19 +15,19 @@
                 <div class="flex-auto p-6">
                     <div class="overflow-x-auto p-0">
                         <table
-                            class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
+                            class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-black dark:border-slate-600">
                             <thead class="align-bottom">
                             <tr>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อเอกสาร
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     วันที่แนบไฟล์
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     ดาวน์โหลด
                                 </th>
                             </tr>
@@ -37,19 +37,19 @@
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600 text-center">
-                                        <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
+                                        <h6 class="mb-0 text-sm leading-normal dark:text-black">
                                             {{ $file->title }}
                                         </h6>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                             <span
-                                                class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                                 <i class="bi bi-calendar2-week-fill"></i>
                                                 {{ dateThai($file->create_at) }}
                                             </span>
                                         <span
-                                            class="ml-2 inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="ml-2 inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                                 <i class="bi bi-clock-fill"></i> {{ date('H:m', $file->create_at) }}
                                                 น.
                                             </span>

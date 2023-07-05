@@ -53,27 +53,27 @@
                         <thead class="align-bottom">
                             <tr>
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-xxs tracking-none text-slate-400 opacity-70 dark:border-slate-600">
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-base tracking-none text-black opacity-70 dark:border-slate-600">
                                     ลำดับ
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-xxs tracking-none text-slate-400 opacity-70 dark:border-slate-600">
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-base tracking-none text-black opacity-70 dark:border-slate-600">
                                     ชื่อข่าว
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-xxs tracking-none text-slate-400 opacity-70 dark:border-slate-600">
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-base tracking-none text-black opacity-70 dark:border-slate-600">
                                     ประเภทข่าวสาร
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-xxs tracking-none text-slate-400 opacity-70 dark:border-slate-600">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-base tracking-none text-black opacity-70 dark:border-slate-600">
                                     วันที่สร้าง
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-xxs tracking-none text-slate-400 opacity-70 dark:border-slate-600">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-base tracking-none text-black opacity-70 dark:border-slate-600">
                                     สถานะ
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-xxs tracking-none text-slate-400 opacity-70 dark:border-slate-600">
+                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid whitespace-nowrap text-base tracking-none text-black opacity-70 dark:border-slate-600">
                                     รายละเอียด
                                 </th>
                             </tr>
@@ -84,7 +84,7 @@
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
                                             {{ $news->firstItem() + $key }}
                                         </span>
                                     </td>
@@ -92,7 +92,7 @@
                                         class="relative px-6 py-3 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent dark:border-slate-600">
                                         <a href="{{ route('news.view', $data->id) }}">
                                             <p
-                                                class="inline-block mb-0 text-xs font-semibold leading-tight tracking-wide underline title text-slate-400 hover:cursor-pointer hover:text-blue-500 dark:text-slate-400">
+                                                class="inline-block mb-0 text-xs font-semibold leading-tight tracking-wide underline title text-black hover:cursor-pointer hover:text-blue-500 dark:text-black">
                                                 {{ Str::limit($data->title, 40) }}
                                             </p>
                                         </a>
@@ -100,14 +100,14 @@
                                     <td
                                         class="px-6 py-3 text-left align-middle bg-transparent border-b whitespace-nowrap shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             {{ $data->master_new->name }}
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             {{ $data->created_at->thaidate() }}
                                         </span>

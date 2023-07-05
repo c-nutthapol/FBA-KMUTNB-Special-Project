@@ -26,13 +26,13 @@
 
                                     <div class="flex flex-row justify-between py-3 border-t-2 border-gray-100/30">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             <span
                                                 class="inline-block ml-1 tracking-wide">{{ $news->created_at->thaidate() }}</span>
                                         </span>
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-eye-fill"></i>
                                             <span class="inline-block ml-1 tracking-wide">{{ $news->view }}</span>
                                         </span>

@@ -48,19 +48,19 @@
                             <thead class="align-bottom">
                                 <tr>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         ชื่อ-นามสกุล
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         IP Address
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         เวลาเข้า
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         เวลาออก
                                     </th>
                                 </tr>
@@ -72,7 +72,7 @@
                                         <div class="flex flex-row items-center gap-2">
                                             <img src="https://images.pexels.com/photos/1436962/pexels-photo-1436962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                                 class="object-cover object-center w-10 h-10 rounded-full" alt="Avatar">
-                                            <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
+                                            <h6 class="mb-0 text-sm leading-normal dark:text-black">
                                                 นายชื่อ นามสกุล
                                             </h6>
                                         </div>
@@ -80,29 +80,29 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             1.1.1.1
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i> 23/04/18
                                         </span>
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-clock-fill"></i> 14:23 น.
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i> 23/04/18
                                         </span>
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-clock-fill"></i> 16:23 น.
                                         </span>
                                     </td>

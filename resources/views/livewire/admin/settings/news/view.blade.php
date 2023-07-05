@@ -9,11 +9,11 @@
                 </h5>
                 <div class="flex flex-row items-center gap-2">
                     <span
-                        class="inline-block text-xs font-semibold leading-tight tracking-wide text-slate-400 dark:text-slate-400">
+                        class="inline-block text-xs font-semibold leading-tight tracking-wide text-black dark:text-black">
                         <i class="bi bi-calendar2-week-fill"></i> {{ $created_at->thaidate() }}
                     </span>
                     <span class="block">|</span>
-                    <span class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                    <span class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                         {{ $masternew_id }}
                     </span>
                 </div>
