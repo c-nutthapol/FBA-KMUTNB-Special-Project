@@ -18,30 +18,30 @@ class SuggestionSeeder extends Seeder
         DB::table('master_suggestions')->insert([
             [
                 'name' => 'สะกดคำผิด',
-                'created_by' => 1,
+                'created_by' => 2,
                 'created_at' => now(),
-                'updated_by' => 1,
+                'updated_by' => 2,
                 'updated_at' => now(),
             ],
             [
                 'name' => 'การเว้นวรรคไม่ถูกต้อง',
-                'created_by' => 1,
+                'created_by' => 2,
                 'created_at' => now(),
-                'updated_by' => 1,
+                'updated_by' => 2,
                 'updated_at' => now(),
             ],
             [
                 'name' => 'การจัดรูปแบบไม่ถูกต้อง',
-                'created_by' => 1,
+                'created_by' => 2,
                 'created_at' => now(),
-                'updated_by' => 1,
+                'updated_by' => 2,
                 'updated_at' => now(),
             ],
             [
                 'name' => 'รูปแบบการอ้างอิงไม่ถูกต้อง',
-                'created_by' => 1,
+                'created_by' => 2,
                 'created_at' => now(),
-                'updated_by' => 1,
+                'updated_by' => 2,
                 'updated_at' => now(),
             ],
         ]);

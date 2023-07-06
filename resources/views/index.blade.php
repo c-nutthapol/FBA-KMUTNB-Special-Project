@@ -15,8 +15,9 @@
             @livewire('component.news')
         </div>
 
-        @livewire('component.dashboard')
-
+        @if (auth()->user()->role_id == 3)
+            @livewire('component.dashboard')
+        @endif
 
     </div>
 
