@@ -22,7 +22,7 @@
                 <td>{{ $project->name_en }}</td>
                 @php
                     $student1 = $project->user_project->where('role', 'student1')->first();
-                    $student2 = $project->user_project->where('role', 'student1')->first();
+                    $student2 = $project->user_project->where('role', 'student2')->first();
                     $teacher1 = $project->user_project->where('role', 'teacher1')->first();
                     $teacher2 = $project->user_project->where('role', 'teacher2')->first();
                     $teacher3 = $project->user_project->where('role', 'teacher3')->first();
