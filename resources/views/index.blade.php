@@ -9,7 +9,7 @@
 
         <div class="flex flex-wrap">
             <div class="flex-none w-full max-w-full px-3 mb-6">
-                <h2 class="mb-0 text-3xl tracking-wide dark:text-white dark:opacity-90">ข่าวสาร</h2>
+                <h2 class="mb-0 text-3xl tracking-wide dark:text-slate-300 dark:opacity-90">ข่าวสาร</h2>
             </div>
 
             @livewire('component.news')

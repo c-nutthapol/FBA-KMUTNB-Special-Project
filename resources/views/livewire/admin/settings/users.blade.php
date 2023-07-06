@@ -7,14 +7,14 @@
                 <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                     <i class="bi bi-people-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     ข้อมูลผู้ใช้งาน
                 </h5>
             </div>
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select wire:model="role" class="select dark:text-white" id="role">
+                    <select wire:model="role" class="select dark:text-slate-300" id="role">
                         <option value="" class="text-black">
                             สิทธิ์ผู้ใช้งานทั้งหมด
                         </option>
@@ -44,7 +44,7 @@
                     <table id="table"
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr class="text-black dark:text-white">
+                            <tr class="text-black dark:text-slate-300">
                                 <th
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อ-นามสกุล
@@ -69,7 +69,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row items-center gap-2">
-                                            <h6 class="mb-0 leading-normal dark:text-white">
+                                            <h6 class="mb-0 leading-normal dark:text-slate-300">
                                                 {{ $user->fullname_th }}
                                             </h6>
                                         </div>
@@ -91,16 +91,16 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         @if ($user->log)
-                                            <span class="inline-block leading-tight text-black dark:text-white">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
                                                 {{ $user->log->updated_at->thaidate() }}
                                             </span>
-                                            <span class="ml-2 inline-block leading-tight text-black dark:text-white">
+                                            <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-clock-fill"></i>
                                                 {{ $user->log->updated_at->thaidate('H:i:s') }}
                                             </span>
                                         @else
-                                            <span class="inline-block leading-tight text-black dark:text-white">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
                                                 ไม่พบข้อมูล
                                             </span>
                                         @endif
@@ -133,7 +133,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-black dark:text-white"> ไม่พบข้อมูล </td>
+                                    <td colspan="4" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
 

@@ -7,7 +7,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-brush leading-0"></i> จัดการคำร้อง
                 </h3>
                 <button type="button"
@@ -25,7 +25,7 @@
             <!-- Modal body -->
             <div class="p-6">
                 <div class="mb-3">
-                    <label class="mb-4 text-sm tracking-wide dark:text-white dark:opacity-80">
+                    <label class="mb-4 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                         สถานะ
                     </label>
                     {{-- {{dd($masterStatus)}} --}}
@@ -33,7 +33,7 @@
                         @foreach ($masterStatus as $index => $item)
                         <div class="flex items-center mb-4">
                             <input id="status-{{$index}}" type="radio" wire:model.defer="status" name="status" value="{{$item->id}}" class="w-4 h-4 input-radio">
-                            <label for="status-{{$index}}" class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                            <label for="status-{{$index}}" class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                 {{$item->status}}
                             </label>
                         </div>
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <label for="note"
-                        class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">หมายเหตุ</label>
+                        class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">หมายเหตุ</label>
                     <textarea class="input" placeholder="กรุณากรอกหมายเหตุ" rows="2" wire:model.defer="note"></textarea>
                 </div>
             </div>

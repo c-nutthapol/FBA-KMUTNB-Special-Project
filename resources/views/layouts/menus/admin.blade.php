@@ -1,5 +1,5 @@
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.home') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -11,7 +11,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.topic' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.topic' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.topic') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.progress' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.progress' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.progress') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.progressresult' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.progressresult' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.progressresult') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -48,7 +48,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.defense' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.defense' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.defense') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -60,7 +60,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.defenseresult' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.defenseresult' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.defenseresult') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -72,7 +72,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.book' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.project.book' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.project.book') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -84,13 +84,13 @@
                 </li>
 
                 <li class="mt-4 w-full">
-                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-white">
+                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
                         คำร้องทั่วไป
                     </h6>
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.petition' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.petition' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.petition') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -102,13 +102,13 @@
                 </li>
 
                 <li class="mt-4 w-full">
-                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-white">
+                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
                         ตั้งค่าข้อมูลผู้ใช้
                     </h6>
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.users' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.users' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.users') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -122,7 +122,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.users-permissions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.users-permissions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.users-permissions') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -136,13 +136,13 @@
                 </li>
 
                 <li class="mt-4 w-full">
-                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-white">
+                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
                         ข่าวสาร
                     </h6>
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.news.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.news.home' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.news.home') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -156,7 +156,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.newtype' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.newtype' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.newtype') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -170,13 +170,13 @@
                 </li>
 
                 <li class="mt-4 w-full">
-                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-white">
+                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
                         ตั้งค่า
                     </h6>
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.term' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.term' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.term') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -190,7 +190,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.project-steps' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.project-steps' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.project-steps') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -203,7 +203,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.petition' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.petition' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.petition') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -215,7 +215,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.suggestions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.suggestions' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.suggestions') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -233,7 +233,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.banners' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.banners' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.banners') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -248,7 +248,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.department' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.department' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.department') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -262,7 +262,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.document' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.document' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.document') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -276,7 +276,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.status' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.status' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.status') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -290,13 +290,13 @@
                 </li>
 
                 <li class="mt-4 w-full">
-                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-white">
+                    <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
                         log
                     </h6>
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.logs.students' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.logs.students' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.logs', 'students') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -310,7 +310,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.logs.teachers' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.logs.teachers' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.logs', 'teachers') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -324,7 +324,7 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.logs.administrators' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-white dark:opacity-80"
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.logs.administrators' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.logs', 'administrators') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">

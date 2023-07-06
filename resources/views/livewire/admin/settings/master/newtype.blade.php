@@ -10,7 +10,7 @@
                             class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                             <i class="bi bi-chat-dots-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                         </div>
-                        <h5 class="mb-0 tracking-wide dark:text-white">
+                        <h5 class="mb-0 tracking-wide dark:text-slate-300">
                             ประเภทข่าว
                         </h5>
                     </div>
@@ -56,7 +56,7 @@
                         <table
                             class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr class="text-black dark:text-white">
+                                <tr class="text-black dark:text-slate-300">
                                     <th
                                         class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ลำดับ
@@ -84,13 +84,13 @@
                                     <tr>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <span class="ml-2 inline-block leading-tight text-black dark:text-white">
+                                            <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $data->firstItem() + $loop->index }}
                                             </span>
                                         </td>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <span class="inline-block leading-tight text-black dark:text-white">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $item->name ?? '' }}
                                             </span>
                                         </td>
@@ -153,7 +153,7 @@
             <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="submit">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-plus-lg leading-0"></i> เพิ่มประเภทข่าว
                     </h3>
                     <button type="button"
@@ -172,7 +172,7 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ประเภทข่าว
                             </label>
                             <input type="text" wire:model="name" class="input" placeholder="กรุณากรอกประเภทข่าว"
@@ -221,7 +221,7 @@
             <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="update">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-pencil-square leading-0"></i> แก้ไขประเภทข่าว
                     </h3>
                     <button type="button"
@@ -240,7 +240,7 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ประเภทข่าว
                             </label>
                             <input type="text" wire:model="t_name" class="input"
@@ -252,7 +252,7 @@
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกประเภทข่าว</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 สถานะ
                             </label>
                             <div class="flex flex-row gap-4">
@@ -260,7 +260,7 @@
                                     <input id="term-1" type="radio" value="active" name="status"
                                         class="input-radio h-4 w-4" wire:model.defer="t_status">
                                     <label for="term-1"
-                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         active
                                     </label>
                                 </div>
@@ -268,7 +268,7 @@
                                     <input id="term-2" type="radio" value="inactive" name="status"
                                         class="input-radio h-4 w-4" wire:model.defer="t_status">
                                     <label for="term-2"
-                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         inactive
                                     </label>
                                 </div>

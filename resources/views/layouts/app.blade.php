@@ -50,12 +50,12 @@
             class="ease fixed -right-90 top-0 left-auto z-sticky flex h-full w-90 min-w-0 flex-col break-words rounded-none border-0 bg-white/80 bg-clip-border px-2.5 shadow-3xl backdrop-blur-2xl backdrop-saturate-200 duration-200 dark:bg-slate-850/80">
             <div class="mb-0 rounded-t-2xl border-b-0 px-6 pt-4 pb-0">
                 <div class="float-left">
-                    <h5 class="mt-4 mb-0 dark:text-white">Argon Configurator</h5>
-                    <p class="dark:text-white dark:opacity-80">See our dashboard options.</p>
+                    <h5 class="mt-4 mb-0 dark:text-slate-300">Argon Configurator</h5>
+                    <p class="dark:text-slate-300 dark:opacity-80">See our dashboard options.</p>
                 </div>
                 <div class="float-right mt-6">
                     <button fixed-plugin-close-button
-                        class="mb-4 inline-block cursor-pointer rounded-lg border-0 bg-transparent bg-150 bg-x-25 p-0 text-center align-middle text-sm font-bold uppercase leading-normal tracking-tight-rem text-slate-700 shadow-none transition-all ease-in hover:-translate-y-px active:opacity-85 dark:text-white">
+                        class="mb-4 inline-block cursor-pointer rounded-lg border-0 bg-transparent bg-150 bg-x-25 p-0 text-center align-middle text-sm font-bold uppercase leading-normal tracking-tight-rem text-slate-700 shadow-none transition-all ease-in hover:-translate-y-px active:opacity-85 dark:text-slate-300">
                         <i class="fa fa-close"></i>
                     </button>
                 </div>
@@ -66,7 +66,7 @@
             <div class="flex-auto overflow-auto p-6 pt-0 sm:pt-4">
                 <!-- Navbar Fixed -->
                 <div class="my-4 flex">
-                    <h6 class="mb-0 dark:text-white">Navbar Fixed</h6>
+                    <h6 class="mb-0 dark:text-slate-300">Navbar Fixed</h6>
                     <div class="ml-auto block min-h-6 pl-0">
                         <input navbarFixed
                             class="relative float-left mt-1 ml-auto h-5 w-10 cursor-pointer appearance-none rounded-10 border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all duration-250 ease-in-out after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:rounded-circle after:bg-white after:shadow-2xl after:duration-250 after:content-[''] checked:border-blue-500/95 checked:bg-blue-500/95 checked:bg-none checked:bg-right checked:after:translate-x-5.3"
@@ -76,7 +76,7 @@
                 <hr
                     class="my-6 h-px bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
                 <div class="mt-2 mb-12 flex">
-                    <h6 class="mb-0 dark:text-white">Light / Dark</h6>
+                    <h6 class="mb-0 dark:text-slate-300">Light / Dark</h6>
                     <div class="ml-auto block min-h-6 pl-0">
                         <input dark-toggle
                             class="relative float-left mt-1 ml-auto h-5 w-10 cursor-pointer appearance-none rounded-10 border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all duration-250 ease-in-out after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:rounded-circle after:bg-white after:shadow-2xl after:duration-250 after:content-[''] checked:border-blue-500/95 checked:bg-blue-500/95 checked:bg-none checked:bg-right checked:after:translate-x-5.3"

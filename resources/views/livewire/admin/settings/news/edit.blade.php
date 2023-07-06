@@ -8,7 +8,7 @@
                     <div class="flex h-full items-center rounded-3 bg-yellow-300 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-pencil-square text-2xl leading-0 text-white dark:text-yellow-300"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         แก้ไขข่าวสาร
                     </h5>
                 </div>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ชื่อข่าวสาร
                             <span class="text-rose-600">*</span>
                         </label>
@@ -56,20 +56,21 @@
                         @enderror
                     </div>
                     <div>
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ประเภทข่าวสาร
                             <span class="text-rose-600">*</span>
                         </label>
-                        <select class="select" wire:model.defer="masternew_id">
-                            <option value="">
+                        <select class="select dark:text-slate-300" wire:model.defer="masternew_id">
+                            <option value="" class="text-black">
                                 กรุณาเลือกประเภทข่าวสาร
                             </option>
                             @forelse ($master_news as $master)
-                                <option value="{{ $master->id }}" @if ($master->id == $masternew_id) selected @endif>
+                                <option value="{{ $master->id }}" class="text-black"
+                                    @if ($master->id == $masternew_id) selected @endif>
                                     {{ $master->name }}
                                 </option>
                             @empty
-                                <option value="" disabled>
+                                <option value="" disabled class="text-black">
                                     ไม่มีข้อมูลกรุณาเพิ่มประเภทข่าวสาร
                                 </option>
                             @endforelse
@@ -79,7 +80,7 @@
                         @enderror
                     </div>
                     <div wire:ignore>
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             รายละเอียดข่าวสาร
                             <span class="text-rose-600">*</span>
                         </label>
@@ -89,11 +90,12 @@
                         @enderror
                     </div>
                     <div>
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             สถานะข่าวสาร
                         </label>
                         <div class="flex flex-row items-center">
-                            <span class="mr-3 text-sm tracking-wide dark:text-white dark:opacity-80">ปิดใช้งาน</span>
+                            <span
+                                class="mr-3 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">ปิดใช้งาน</span>
                             <label class="relative inline-flex cursor-pointer items-center">
                                 <input type="checkbox" value="active" class="peer sr-only" wire:change="changeStatus"
                                     @if ($status == 'active') checked @endif>
@@ -101,7 +103,7 @@
                                     class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800">
                                 </div>
                                 <span
-                                    class="ml-3 text-sm tracking-wide dark:text-white dark:opacity-80">เปิดใช้งาน</span>
+                                    class="ml-3 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">เปิดใช้งาน</span>
                             </label>
                         </div>
                         @error('*')
@@ -114,7 +116,8 @@
                             class="mr-1 inline-block rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                             ยกเลิก
                         </a>
-                        <button type="submit" id="submit" class="btn from-orange-400 to-yellow-400 text-sm font-medium text-white"
+                        <button type="submit" id="submit"
+                            class="btn from-orange-400 to-yellow-400 text-sm font-medium text-white"
                             wire:target="submit" wire:loading.attr="disabled">
                             <div class="flex flex-row items-center gap-3" wire:target="submit"
                                 wire:loading.class="hidden">

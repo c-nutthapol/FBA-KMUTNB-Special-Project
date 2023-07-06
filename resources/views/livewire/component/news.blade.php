@@ -1,21 +1,20 @@
-<div class="flex-none w-full max-w-full px-3">
+<div class="w-full max-w-full flex-none px-3">
     @if ($News->count())
-        <div class="relative swiper news">
+        <div class="swiper news relative">
             <div class="swiper-wrapper">
                 @forelse ($News as $news)
-                    <div class="relative swiper-slide">
+                    <div class="swiper-slide relative">
                         <a href="{{ route('news.view', $news->id) }}">
-                            <div class="relative w-full h-full overflow-hidden bg-white rounded-4 dark:bg-slate-850">
-                                <img class="object-cover w-full h-52"
-                                    src="/storage/{{$news->cover_img}}" alt="news pictures">
-
+                            <div class="relative h-full w-full overflow-hidden rounded-4 bg-white dark:bg-slate-850">
+                                <img class="h-52 w-full object-cover" src="/storage/{{ $news->cover_img }}"
+                                    alt="news pictures">
 
                                 {{-- <img class="object-cover w-full h-52"
                                     src="{{ Storage::disk('public')->url($news->cover_img) }}" alt="news pictures"> --}}
-                                <div class="flex flex-col justify-between h-full px-4">
+                                <div class="flex h-full flex-col justify-between px-4">
                                     <div class="py-6">
                                         <h4
-                                            class="mb-0 text-2xl font-bold tracking-wide line-clamp-2 dark:text-white dark:opacity-90">
+                                            class="mb-0 text-2xl font-bold tracking-wide line-clamp-2 dark:text-slate-300 dark:opacity-90">
                                             {{ $news->title }}
                                         </h4>
                                         <span
@@ -24,17 +23,17 @@
                                         </span>
                                     </div>
 
-                                    <div class="flex flex-row justify-between py-3 border-t-2 border-gray-100/30">
+                                    <div class="flex flex-row justify-between border-t-2 border-gray-100/30 py-3">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             <span
-                                                class="inline-block ml-1 tracking-wide">{{ $news->created_at->thaidate() }}</span>
+                                                class="ml-1 inline-block tracking-wide">{{ $news->created_at->thaidate() }}</span>
                                         </span>
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-eye-fill"></i>
-                                            <span class="inline-block ml-1 tracking-wide">{{ $news->view }}</span>
+                                            <span class="ml-1 inline-block tracking-wide">{{ $news->view }}</span>
                                         </span>
                                     </div>
                                 </div>
@@ -42,22 +41,23 @@
                         </a>
                     </div>
                 @empty
-                    <p class="text-red-600 text-2xl m-auto">ไม่มีข่าวสาร</p>
+                    <p class="m-auto text-2xl text-red-600 dark:text-slate-300">ไม่มีข่าวสาร</p>
                 @endforelse
 
             </div>
-            <div class="absolute z-10 flex flex-row justify-between w-full px-2 inset-y-2/4">
+            <div class="absolute inset-y-2/4 z-10 flex w-full flex-row justify-between px-2">
                 <div
-                    class="flex items-center justify-center w-10 h-10 p-3 text-xl text-white transition-all bg-blue-500 swiper-prev rounded-3 opacity-65 hover:opacity-100">
-                    <i class="block bi bi-chevron-left leading-0"></i>
+                    class="swiper-prev flex h-10 w-10 items-center justify-center rounded-3 bg-blue-500 p-3 text-xl text-white opacity-65 transition-all hover:opacity-100">
+                    <i class="bi bi-chevron-left block leading-0"></i>
                 </div>
                 <div
-                    class="flex items-center justify-center w-10 h-10 p-3 text-xl text-white transition-all bg-blue-500 swiper-next rounded-3 opacity-65 hover:opacity-100">
-                    <i class="block bi bi-chevron-right leading-0"></i>
+                    class="swiper-next flex h-10 w-10 items-center justify-center rounded-3 bg-blue-500 p-3 text-xl text-white opacity-65 transition-all hover:opacity-100">
+                    <i class="bi bi-chevron-right block leading-0"></i>
                 </div>
             </div>
         </div>
     @else
-        <p class="text-red-600 text-2xl m-auto">ไม่มีข่าวสาร</p>
+        <p class="m-auto text-2xl text-red-600">ไม่มีข่าวสาร</p>
     @endif
 </div>
+

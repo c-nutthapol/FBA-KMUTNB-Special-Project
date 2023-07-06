@@ -10,7 +10,7 @@
                             class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                             <i class="bi bi-chat-dots-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                         </div>
-                        <h5 class="mb-0 tracking-wide dark:text-white">
+                        <h5 class="mb-0 tracking-wide dark:text-slate-300">
                             เอกสารดาวน์โหลด
                         </h5>
                     </div>
@@ -44,7 +44,7 @@
                         <table
                             class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr class="text-black dark:text-white">
+                                <tr class="text-black dark:text-slate-300">
                                     <th
                                         class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ลำดับ
@@ -80,13 +80,13 @@
                                     <tr>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <span class="ml-2 inline-block leading-tight text-black dark:text-white">
+                                            <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $data->firstItem() + $loop->index }}
                                             </span>
                                         </td>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <span class="inline-block leading-tight text-black dark:text-white">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $item->name ?? '' }}
                                             </span>
                                         </td>
@@ -102,7 +102,7 @@
                                         </td>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <span class="inline-block leading-tight text-black dark:text-white">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $item->date ?? '-' }}
                                             </span>
                                         </td>
@@ -160,7 +160,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="text-black dark:text-white"> ไม่พบข้อมูล </td>
+                                        <td colspan="5" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -180,7 +180,7 @@
             <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="submit">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-plus-lg leading-0"></i> เพิ่มเอกสารดาวน์โหลด
                     </h3>
                     <button type="button"
@@ -199,7 +199,7 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ชื่อ
                             </label>
                             <input type="text" id="name" wire:model="name" class="input"
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="mb-1 mt-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 mt-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             วันที่
                         </label>
                         <input type="date" id="date" class="input" wire:model.defer="date" />
@@ -220,14 +220,14 @@
                         @enderror
                     </div>
                     <div class="col-span-2 mt-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             สถานะปักหมุด
                         </label>
                         <div class="flex items-center">
                             <input id="term-1" type="radio" value="active" name="pin"
                                 class="input-radio h-4 w-4" wire:model.defer="pin">
                             <label for="term-1"
-                                class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                 ปักหมุด
                             </label>
                         </div>
@@ -235,7 +235,7 @@
                             <input id="term-2" type="radio" value="inactive" name="pin"
                                 class="input-radio h-4 w-4" wire:model.defer="pin">
                             <label for="term-2"
-                                class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                 ไม่ปักหมุด
                             </label>
                         </div>
@@ -246,7 +246,7 @@
                 <div class="inline-block w-auto p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 อัพโหลด
                             </label>
                         </div>
@@ -319,7 +319,7 @@
             <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="update">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-pencil-square leading-0"></i> แก้ไขเอกสารดาวน์โหลด
                     </h3>
                     <button type="button"
@@ -338,7 +338,7 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ชื่อ
                             </label>
                             <input type="text" wire:model="t_name" class="input" placeholder="กรุณากรอกชื่อ"
@@ -350,7 +350,7 @@
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 วันที่
                             </label>
                             <input type="date" class="input" wire:model.defer="t_date" />
@@ -361,7 +361,7 @@
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ปักหมุด
                             </label>
                             <div class="flex flex-row gap-4">
@@ -369,7 +369,7 @@
                                     <input id="term-1" type="radio" value="active" name="pin"
                                         class="input-radio h-4 w-4" wire:model.defer="t_pin">
                                     <label for="term-1"
-                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         ปักหมุด
                                     </label>
                                 </div>
@@ -377,7 +377,7 @@
                                     <input id="term-2" type="radio" value="inactive" name="pin"
                                         class="input-radio h-4 w-4" wire:model.defer="t_pin">
                                     <label for="term-2"
-                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         ไม่ปักหมุด
                                     </label>
                                 </div>
@@ -390,7 +390,7 @@
                         </div>
 
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 สถานะ
                             </label>
                             <div class="flex flex-row gap-4">
@@ -398,7 +398,7 @@
                                     <input id="term-1" type="radio" value="active" name="status"
                                         class="input-radio h-4 w-4" wire:model.defer="t_status">
                                     <label for="term-1"
-                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         active
                                     </label>
                                 </div>
@@ -406,7 +406,7 @@
                                     <input id="term-2" type="radio" value="inactive" name="status"
                                         class="input-radio h-4 w-4" wire:model.defer="t_status">
                                     <label for="term-2"
-                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-white">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         inactive
                                     </label>
                                 </div>
@@ -419,7 +419,7 @@
                         </div>
 
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ไฟล์
                             </label>
                             <input class="input h-full p-0" type="file" id="docFile" wire:model="t_file"
@@ -434,7 +434,7 @@
                         </div>
 
                         {{-- <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 สถานะ
                             </label>
                             <div class="flex flex-row gap-4">
@@ -442,7 +442,7 @@
                                     <input id="term-1" type="radio" value="active" name="status"
                                         class="w-4 h-4 input-radio" wire:model.defer="t_status">
                                     <label for="term-1"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         active
                                     </label>
                                 </div>
@@ -450,7 +450,7 @@
                                     <input id="term-2" type="radio" value="inactive" name="status"
                                         class="w-4 h-4 input-radio" wire:model.defer="t_status">
                                     <label for="term-2"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         inactive
                                     </label>
                                 </div>

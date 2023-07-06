@@ -6,7 +6,7 @@
         <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-eye leading-0"></i> ดูข้อเสนอแนะ
                 </h3>
                 <button type="button"
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <label class="mb-2 text-sm font-bold tracking-wide dark:text-white dark:opacity-80">
+                    <label class="mb-2 text-sm font-bold tracking-wide dark:text-slate-300 dark:opacity-80">
                         ข้อเสนอแนะอื่น ๆ
                     </label>
                     <p class="mb-0 text-sm leading-relaxed tracking-wide dark:text-gray-300">

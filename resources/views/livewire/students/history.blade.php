@@ -10,7 +10,7 @@
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-clock-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         ประวัติการส่งคำร้อง
                     </h5>
                 </div>
@@ -19,7 +19,7 @@
                         <table
                             class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-black dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr class="text-black dark:text-white">
+                                <tr class="text-black dark:text-slate-300">
                                     <th
                                         class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         คำร้อง
@@ -43,19 +43,19 @@
                                     <tr>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <h6 class="mb-0 leading-normal text-black dark:text-white">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
                                                 {{ $request->master_requests->name }}
                                             </h6>
                                         </td>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                             <span
-                                                class="inline-block font-semibold leading-tight text-black dark:text-white">
+                                                class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
                                                 {{ dateThai($request->create_at) }}
                                             </span>
                                             <span
-                                                class="ml-2 inline-block font-semibold leading-tight text-black dark:text-white">
+                                                class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-clock-fill"></i> {{ date('H:m', $request->create_at) }}
                                                 น.
                                             </span>
@@ -128,7 +128,7 @@
             <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         รายละเอียด
                     </h3>
                     <button type="button"

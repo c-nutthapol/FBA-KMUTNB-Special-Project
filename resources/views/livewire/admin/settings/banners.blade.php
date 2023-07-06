@@ -8,7 +8,7 @@
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-chat-dots-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         แบนเนอร์
                     </h5>
                 </div>
@@ -24,7 +24,7 @@
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select class="select dark:text-white" wire:model="order_by">
+                    <select class="select dark:text-slate-300" wire:model="order_by">
                         <option value="DESC" class="text-black" selected>
                             วันที่ล่าสุด
                         </option>
@@ -40,7 +40,7 @@
                     <table
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr class="text-black dark:text-white">
+                            <tr class="text-black dark:text-slate-300">
                                 <th
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ลำดับ
@@ -68,7 +68,7 @@
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                        <span class="ml-2 inline-block leading-tight text-black dark:text-white">
+                                        <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
                                             {{ $banners->firstItem() + $key }}
                                         </span>
                                     </td>
@@ -82,7 +82,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <div class="w-32">
-                                            <select class="select dark:text-white"
+                                            <select class="select dark:text-slate-300"
                                                 onchange="@this.ChangeStatus({{ $banner->id }})">
                                                 <option value="เปิดใช้งาน" class="text-black"
                                                     @if ($banner->status == 1) selected @endif>
@@ -97,7 +97,7 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <span class="inline-block leading-tight text-black dark:text-white">
+                                        <span class="inline-block leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             {{ $banner->created_at->thaidate('j F Y H:i:s') }}
                                         </span>

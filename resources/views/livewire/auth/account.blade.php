@@ -3,44 +3,44 @@
     <form wire:submit.prevent="submit">
         <div class="grid grid-cols-2 gap-4">
             <div class="col-span-2">
-                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     ชื่อผู้ใช้
                 </label>
                 <input type="text" class="input" wire:model.defer="username" disabled />
             </div>
             <div class="col-span-2">
-                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     เลขประจำตัวประชาชน
                 </label>
                 <input type="text" class="input" wire:model.defer="pid" disabled />
             </div>
             <div>
-                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     อีเมล
                 </label>
                 <input type="email" class="input" wire:model.defer="email" disabled />
             </div>
             <div>
-                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     ชื่อ
                 </label>
                 <input type="text" class="input" wire:model.defer="displayname" disabled />
             </div>
             <div>
-                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     ชื่อ (ภาษาอังกฤษ)
                 </label>
                 <input type="text" class="input" wire:model.defer="firstname_en" disabled />
             </div>
             <div>
-                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     นามสกุล (ภาษาอังกฤษ)
                 </label>
                 <input type="text" class="input" wire:model.defer="lastname_en" disabled />
             </div>
             @if (false)
                 <div>
-                    <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                    <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                         ห้อง
                     </label>
                     <select class="select" wire:model.defer="room">
@@ -59,7 +59,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                    <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                         สาขาวิชา
                     </label>
                     <select class="select" wire:model.defer="department">

@@ -11,7 +11,7 @@
                         class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-journal-plus text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         ลงทะเบียนโครงงาน
                     </h5>
                 </div>
@@ -20,7 +20,7 @@
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label
-                                    class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="name_th">ชื่อโครงงาน
+                                    class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="name_th">ชื่อโครงงาน
                                     (ภาษาไทย) <span class="text-rose-600">*</span></label>
                                 <input wire:model.defer="form.name_th" id="name_th" type="text" class="input"
                                        placeholder="กรุณากรอกชื่อโครงงานภาษาไทย"/>
@@ -31,7 +31,7 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="name_en">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="name_en">
                                     ชื่อโครงงาน (ภาษาอังกฤษ)
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -46,12 +46,12 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">
                             ผู้จัดทำโครงงาน
                         </h6>
                         <div class="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                        for="selectstudent1">
                                     ชื่อนักศึกษาคนที่ 1
                                     <span class="text-rose-600">*</span>
@@ -65,7 +65,7 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="depart1">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="depart1">
                                     สาขาวิชา
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="room1">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="room1">
                                     ห้อง
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div wire:ignore>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                        for="select_student2">
                                     ชื่อนักศึกษาคนที่ 2
                                 </label>
@@ -110,7 +110,7 @@
                             @if ($form->get('student_2')['id'])
 
                                 <div>
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                         สาขาวิชา
                                         <span class="text-rose-600">*</span>
                                     </label>
@@ -131,7 +131,7 @@
                                 </div>
 
                                 <div>
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                            for="room2">
                                         ห้อง
                                         @if ($form->get('student_2')['id'])
@@ -149,12 +149,12 @@
 
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">อาจารย์ที่ปรึกษาโครงงาน</h6>
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">อาจารย์ที่ปรึกษาโครงงาน</h6>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <div wire:ignore>
 
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                            for="select_teacher1">
                                         ที่ปรึกษาหลัก
                                         <span class="text-rose-600">*</span>
@@ -172,7 +172,7 @@
                                 <div>
                                     <div wire:ignore>
                                         <label
-                                            class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                            class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                             for="select_teacher2">
                                             ที่ปรึกษาร่วม/กรรมการสอบ
                                         </label>
@@ -188,7 +188,7 @@
                                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                         <div>
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                                 for="teachername_ex">ชื่อ
                                                 <span class="text-rose-600">*</span></label>
                                             <input type="text" class="input" id="teachername_ex"
@@ -201,7 +201,7 @@
                                         </div>
                                         <div>
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                                 for="teachersurname_ex">นามสกุล
                                                 <span class="text-rose-600">*</span></label>
                                             <input type="text" class="input" id="teachersurname_ex"
@@ -214,7 +214,7 @@
                                         </div>
                                         <div class="col-span-2">
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                                class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                                 แนบเอกสาร (หนังสือแต่งตั้ง) <span class="text-rose-600">*</span>
                                             </label>
                                             <input class="input p-0" type="file"
@@ -232,11 +232,11 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">ประธานสอบ</h6>
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">ประธานสอบ</h6>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <div wire:ignore>
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                            for="select_teacher3">
                                         ประธานสอบ
                                         <span class="text-rose-600">*</span>
@@ -252,7 +252,7 @@
                                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                         <div>
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                                 for="teacher3name_ex">ชื่อ
                                                 <span class="text-rose-600">*</span></label>
                                             <input type="text" class="input" id="teacher3name_ex"
@@ -265,7 +265,7 @@
                                         </div>
                                         <div>
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                                 for="teacher3surname_ex">นามสกุล
                                                 <span class="text-rose-600">*</span></label>
                                             <input type="text" class="input" id="teacher3surname_ex"
@@ -278,7 +278,7 @@
                                         </div>
                                         <div class="col-span-2">
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
                                                 for="fileteacher3upload">
                                                 แนบเอกสาร (หนังสือแต่งตั้ง) <span class="text-rose-600">*</span>
                                             </label>
@@ -297,10 +297,10 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">เอกสารประกอบ</h6>
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">เอกสารประกอบ</h6>
                         <div>
                             <div class="mb-2">
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     แนบเอกสาร
                                     <span class="text-rose-600">*</span>
                                 </label>

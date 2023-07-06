@@ -6,7 +6,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-plus-lg leading-0"></i> {{ $name }}
                 </h3>
                 <button type="button"
@@ -36,7 +36,7 @@
                 </div>
                 <div id="modal-change-request" class="grid grid-cols-2 gap-4">
                     <div class="col-span-2 @if ($m_req_id != 1) hidden @endif">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80 ">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80 ">
                             ชื่อโครงงาน (ภาษาไทย)
                         </label>
 
@@ -47,7 +47,7 @@
                                 <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                         </div>
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ชื่อโครงงาน (ภาษาอังกฤษ)
                         </label>
                         <div class="flex flex-row gap-4 ">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="col-span-2 @if ($m_req_id != 2) hidden @endif">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ที่ปรึกษาร่วม/กรรมการสอบ
                         </label>
                         <div wire:ignore>
@@ -74,7 +74,7 @@
                         @enderror
                     </div>
                     <div class="col-span-2 @if ($m_req_id != 3) hidden @endif">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ประธานสอบ
                         </label>
                         <div wire:ignore>

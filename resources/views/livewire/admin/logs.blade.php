@@ -9,14 +9,14 @@
                 <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                     <i class="bi bi-person-badge-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     {{ $title }}
                 </h5>
             </div>
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select wire:model="order_by" class="select dark:text-white">
+                    <select wire:model="order_by" class="select dark:text-slate-300">
                         <option value="DESC" class="text-black">
                             เวลาเข้าใช้งานล่าสุด
                         </option>
@@ -44,7 +44,7 @@
                     <table
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr class="text-black dark:text-white">
+                            <tr class="text-black dark:text-slate-300">
                                 <th
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อ-นามสกุล
@@ -70,7 +70,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row items-center gap-2">
-                                            <h6 class="mb-0 leading-normal text-black dark:text-white">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
                                                 {{ $log->user->fullname_th ?? '-' }}
                                             </h6>
                                         </div>
@@ -78,26 +78,26 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block font-semibold leading-tight text-black dark:text-white">
+                                            class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             {{ $log->ip ?? '-' }}
                                         </span>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block font-semibold leading-tight text-black dark:text-white">
+                                            class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             {{ $log->browser ?? '-' }}
                                         </span>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block font-semibold leading-tight text-black dark:text-white">
+                                            class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             {{ $log->created_at->thaidate() ?? '-' }}
                                         </span>
                                         <span
-                                            class="ml-2 inline-block font-semibold leading-tight text-black dark:text-white">
+                                            class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-clock-fill"></i>
                                             {{ $log->created_at->thaidate('H:i:s น.') ?? '-' }}
                                         </span>
@@ -106,7 +106,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-black dark:text-white"> ไม่พบข้อมูล </td>
+                                    <td colspan="4" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
 

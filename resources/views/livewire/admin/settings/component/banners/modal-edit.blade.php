@@ -6,7 +6,7 @@
         <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-pencil-square leading-0"></i> แก้ไขแบนเนอร์
                 </h3>
                 <button type="button"

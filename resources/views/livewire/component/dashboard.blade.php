@@ -1,24 +1,24 @@
 <div class="flex flex-wrap">
-    <div class="flex-none w-full max-w-full px-3 mb-6">
-        <h2 class="mb-0 text-3xl tracking-wide dark:text-white dark:opacity-90">แดชบอร์ด</h2>
+    <div class="mb-6 w-full max-w-full flex-none px-3">
+        <h2 class="mb-0 text-3xl tracking-wide dark:text-slate-300 dark:opacity-90">แดชบอร์ด</h2>
     </div>
 
-    <div class="flex-none w-full max-w-full px-3 mb-6">
+    <div class="mb-6 w-full max-w-full flex-none px-3">
         <form
-            class="flex flex-row items-end justify-between gap-4 p-4 bg-white rounded-lg dark:bg-slate-850 dark:text-white dark:opacity-90">
-            <div class="flex flex-row flex-1 gap-4">
+            class="flex flex-row items-end justify-between gap-4 rounded-lg bg-white p-4 dark:bg-slate-850 dark:text-slate-300 dark:opacity-90">
+            <div class="flex flex-1 flex-row gap-4">
                 <div class="flex-initial">
-                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="year">
+                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="year">
                         เลือกปีการศึกษา/ภาคเรียน
                     </label>
-                    <select id="year" class="select" wire:model="year">
-                        <option value="" selected>
+                    <select id="year" class="select dark:text-slate-300" wire:model="year">
+                        <option value="" class="text-black" selected>
                             ปีการศึกษา/ภาคเรียนทั้งหมด
                         </option>
                         @foreach ($edu_years as $year => $terms)
-                            <optgroup label="ปีการศึกษา {{ $year }}">
+                            <optgroup label="ปีการศึกษา {{ $year }}" class="text-black">
                                 @foreach ($terms as $term)
-                                    <option value="{{ $term->id }}">
+                                    <option value="{{ $term->id }}" class="text-black">
                                         ภาคเรียน {{ $term->term }}
                                     </option>
                                 @endforeach
@@ -28,15 +28,15 @@
                 </div>
 
                 <div class="flex-initial">
-                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="major">
+                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="major">
                         เลือกสาขาวิชา
                     </label>
-                    <select id="departments" class="select" wire:model="department">
-                        <option value="" selected>
+                    <select id="departments" class="select dark:text-slate-300" wire:model="department">
+                        <option value="" class="text-black" selected>
                             สาขาวิชาทั้งหมด
                         </option>
                         @foreach ($departments as $department)
-                            <option value="{{ $department->id }}">
+                            <option value="{{ $department->id }}" class="text-black">
                                 {{ $department->name }}
                             </option>
                         @endforeach
@@ -48,14 +48,14 @@
                     class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                     รีเซ็ต
                 </button>
-                <button type="button" class="text-sm font-medium text-white btn from-green-500 to-emerald-500"
+                <button type="button" class="btn from-green-500 to-emerald-500 text-sm font-medium text-white"
                     wire:target="export" wire:loading.attr="disabled" wire:click="export">
                     <div class="flex flex-row items-center gap-3" wire:target="export" wire:loading.class="hidden">
                         <i class="bi bi-download leading-0"></i>
                         <span class="block">Export</span>
                     </div>
                     {{-- loading --}}
-                    <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin"
+                    <svg aria-hidden="true" role="status" class="inline hidden h-4 w-4 animate-spin text-white"
                         wire:target="export" wire:loading.class.remove="hidden" viewBox="0 0 100 101" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -70,62 +70,62 @@
         </form>
     </div>
 
-    <div class="flex-none w-full max-w-full px-3">
+    <div class="w-full max-w-full flex-none px-3">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850 ">
-                <div class="relative flex flex-row items-center justify-between h-full">
+            <div class="flex flex-col rounded-lg bg-white dark:bg-slate-850">
+                <div class="relative flex h-full flex-row items-center justify-between">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-blue-500 h-14 w-14 rounded-2 leading-0">
+                        class="ml-1 flex h-14 w-14 items-center justify-center rounded-2 bg-blue-500 p-2 text-xl font-bold leading-0 text-white">
                         {{ $Data->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="mb-0 ml-1 inline p-4 text-xl tracking-wide dark:text-slate-300 dark:opacity-90">
                         รวมทั้งหมด
                     </h4>
                 </div>
             </div>
-            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
-                <div class="relative flex flex-row items-center justify-between h-full">
+            <div class="flex flex-col rounded-lg bg-white dark:bg-slate-850">
+                <div class="relative flex h-full flex-row items-center justify-between">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-rose-500 h-14 w-14 rounded-2 leading-0">
+                        class="ml-1 flex h-14 w-14 items-center justify-center rounded-2 bg-rose-500 p-2 text-xl font-bold leading-0 text-white">
                         {{ $Data->whereIn('status', $watting)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="mb-0 ml-1 inline p-4 text-xl tracking-wide dark:text-slate-300 dark:opacity-90">
                         สอบหัวข้อ
                     </h4>
                 </div>
             </div>
 
-            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
-                <div class="relative flex flex-row items-center justify-between h-full">
+            <div class="flex flex-col rounded-lg bg-white dark:bg-slate-850">
+                <div class="relative flex h-full flex-row items-center justify-between">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-yellow-400 h-14 w-14 rounded-2 leading-0">
+                        class="ml-1 flex h-14 w-14 items-center justify-center rounded-2 bg-yellow-400 p-2 text-xl font-bold leading-0 text-white">
                         {{ $Data->whereIn('status', $approved)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="mb-0 ml-1 inline p-4 text-xl tracking-wide dark:text-slate-300 dark:opacity-90">
                         สอบก้าวหน้า
                     </h4>
                 </div>
             </div>
 
-            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
-                <div class="relative flex flex-row items-center justify-between h-full">
+            <div class="flex flex-col rounded-lg bg-white dark:bg-slate-850">
+                <div class="relative flex h-full flex-row items-center justify-between">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white bg-teal-400 h-14 w-14 rounded-2 leading-0">
+                        class="ml-1 flex h-14 w-14 items-center justify-center rounded-2 bg-teal-400 p-2 text-xl font-bold leading-0 text-white">
                         {{ $Data->whereIn('status', $approved_pass)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="mb-0 ml-1 inline p-4 text-xl tracking-wide dark:text-slate-300 dark:opacity-90">
                         สอบป้องกัน
                     </h4>
                 </div>
             </div>
 
-            <div class="flex flex-col bg-white rounded-lg dark:bg-slate-850">
-                <div class="relative flex flex-row items-center justify-between h-full">
+            <div class="flex flex-col rounded-lg bg-white dark:bg-slate-850">
+                <div class="relative flex h-full flex-row items-center justify-between">
                     <span
-                        class="flex items-center justify-center p-2 ml-1 text-xl font-bold text-white h-14 w-14 rounded-2 bg-emerald-500 leading-0">
+                        class="ml-1 flex h-14 w-14 items-center justify-center rounded-2 bg-emerald-500 p-2 text-xl font-bold leading-0 text-white">
                         {{ $Data->whereIn('status', $success)->count() }}
                     </span>
-                    <h4 class="inline p-4 mb-0 ml-1 text-xl tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="mb-0 ml-1 inline p-4 text-xl tracking-wide dark:text-slate-300 dark:opacity-90">
                         ส่งเลม
                     </h4>
                 </div>
@@ -135,13 +135,12 @@
 </div>
 
 <div class="flex flex-wrap">
-    <div class="flex-none w-full max-w-full px-3">
-        <div class="p-6 bg-white rounded-lg dark:bg-slate-850">
+    <div class="w-full max-w-full flex-none px-3">
+        <div class="rounded-lg bg-white p-6 dark:bg-slate-850">
             <canvas id="barchart"></canvas>
         </div>
     </div>
 </div>
-
 
 @push('script')
     <script>
@@ -228,3 +227,4 @@
         });
     </script>
 @endpush
+

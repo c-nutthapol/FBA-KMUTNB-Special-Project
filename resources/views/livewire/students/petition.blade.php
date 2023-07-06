@@ -7,7 +7,7 @@
                 <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                     <i class="bi bi-brush-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     เขียนคำร้องทั่วไป
                 </h5>
             </div>
@@ -15,11 +15,11 @@
                 <form wire:submit.prevent='submit'>
                     <div class="mb-4">
                         {{-- If there is an error, enter the Error class. = label class='... error', select class="... error"  --}}
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             คำร้อง
                             <span class="text-rose-600">*</span>
                         </label>
-                        <select class="select dark:text-white" wire:model.defer='form.title'>
+                        <select class="select dark:text-slate-300" wire:model.defer='form.title'>
                             <option value="" class="text-black" selected disabled>
                                 กรุณาเลือกคำร้อง
                             </option>
@@ -35,7 +35,7 @@
                     </div>
                     <div>
 
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             หมายเหตุ
                             <span class="text-rose-600">*</span>
                         </label>

@@ -7,14 +7,14 @@
                 <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                     <i class="bi bi-brush-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     อนุมัติคำร้องทั่วไป
                 </h5>
             </div>
 
             <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select class="select dark:text-white" wire:model='sortCreateDate'>
+                    <select class="select dark:text-slate-300" wire:model='sortCreateDate'>
                         <option value="desc" class="text-black" selected>
                             วันที่เขียนคำร้องล่าสุด
                         </option>
@@ -58,7 +58,7 @@
                     <table
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr class="text-black dark:text-white">
+                            <tr class="text-black dark:text-slate-300">
                                 <th
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อโครงงาน
@@ -104,10 +104,10 @@
                                                 <i
                                                     class="bi bi-folder-fill text-xs leading-0 text-white dark:text-teal-500"></i>
                                             </div>
-                                            <h6 class="mb-0 leading-normal text-black dark:text-white">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
                                                 {{ $item->project->name_th }}
                                                 <span
-                                                    class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
+                                                    class="block text-xs font-normal text-slate-600 dark:text-slate-300 dark:opacity-60">New
                                                     {{ $item->project->name_en }}
                                                 </span>
                                             </h6>
@@ -115,15 +115,15 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <span class="text-black dark:text-white">{{ $item->NameRequestForTable }}</span>
+                                        <span class="text-black dark:text-slate-300">{{ $item->NameRequestForTable }}</span>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <span class="inline-block leading-tight text-black dark:text-white">
+                                        <span class="inline-block leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             {{ $item->created_at->thaidate() }}
                                         </span>
-                                        <span class="ml-2 inline-block leading-tight text-black dark:text-white">
+                                        <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-clock-fill"></i>
                                             {{ date('H:i น.', strtotime($item->created_at)) }}
                                         </span>
@@ -131,7 +131,7 @@
                                     {{-- <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     <span
-                                        class="inline-block text-xs font-semibold leading-tight text-black dark:text-white">
+                                        class="inline-block text-xs font-semibold leading-tight text-black dark:text-slate-300">
                                         <i class="bi bi-calendar2-week-fill"></i> 30/04/2566
                                     </span>
                                 </td> --}}
@@ -220,7 +220,7 @@
                             </li>
                             <li>
                                 <a href="#" aria-current="page"
-                                    class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                    class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-slate-300">
                                     1
                                 </a>
                             </li>

@@ -15,7 +15,7 @@
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
                         <i class="text-2xl text-white bi bi-brush-fill leading-0 dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         อนุมัติคำร้องทั่วไป
                     </h5>
                 </div>
@@ -109,7 +109,7 @@
                                             <h6 class="mb-0 text-sm leading-normal dark:text-black">
                                                 ทดสอบการพัฒนาระบบใหม่
                                                 <span
-                                                    class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
+                                                    class="block text-xs font-normal text-slate-600 dark:text-slate-300 dark:opacity-60">New
                                                     Development
                                                 </span>
                                             </h6>
@@ -202,7 +202,7 @@
                                 </li>
                                 <li>
                                     <a href="#" aria-current="page"
-                                        class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                        class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-slate-300">
                                         1
                                     </a>
                                 </li>
@@ -242,7 +242,7 @@
             <form class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-eye leading-0"></i> รายละเอียดคำร้อง
                     </h3>
                     <button type="button"

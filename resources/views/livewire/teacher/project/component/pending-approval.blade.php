@@ -7,11 +7,11 @@
                         class="flex items-center justify-center w-6 h-6 p-2 text-base font-bold text-white bg-yellow-400 rounded-full">
                         {{$countProject}}
                     </span>
-                    <h4 class="inline mb-0 ml-1 tracking-wide dark:text-white dark:opacity-90">
+                    <h4 class="inline mb-0 ml-1 tracking-wide dark:text-slate-300 dark:opacity-90">
                         รออนุมัติ
                     </h4>
                 </div>
-                <div class="dark:text-white dark:opacity-60">
+                <div class="dark:text-slate-300 dark:opacity-60">
                     {{$stepText}}
                 </div>
             </div>

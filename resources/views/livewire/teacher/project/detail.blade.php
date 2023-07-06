@@ -34,9 +34,9 @@
                 <div class="flex items-center h-full p-3.5 rounded-3 bg-teal-400 dark:bg-slate-700/40 text-white">
                     <i class="text-2xl text-white bi bi-folder-fill leading-0 dark:text-teal-400"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     <span class="block font-bold">{{ $detail->name_th }}</span>
-                    <span class="block font-normal text-slate-600 dark:text-white">{{ $detail->name_en }}</span>
+                    <span class="block font-normal text-slate-600 dark:text-slate-300">{{ $detail->name_en }}</span>
                 </h5>
             </div>
             <div class="pb-6 sm:p-6">
@@ -101,7 +101,7 @@
                 <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
                     <i class="text-2xl text-white bi bi-mortarboard-fill leading-0 dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     ผู้จัดทำโครงงาน
                 </h5>
             </div>
@@ -117,7 +117,7 @@
                                             class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
                                     </div>
                                     <figcaption class="space-y-1 text-center sm:text-left">
-                                        <div class="text-lg font-bold tracking-wide dark:text-white">
+                                        <div class="text-lg font-bold tracking-wide dark:text-slate-300">
                                             {{$item_student->user->displayname ?? $item_student->user->name}}
                                         </div>
                                         <div class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
@@ -144,7 +144,7 @@
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
                         <i class="text-2xl text-white bi bi-people-fill leading-0 dark:text-orange-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         อาจารย์ที่ปรึกษา
                     </h5>
                 </div>
@@ -159,7 +159,7 @@
                                             <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
                                                 class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
                                         </div>
-                                        <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                        <figcaption class="text-lg font-bold tracking-wide dark:text-slate-300">
                                             {{$item_teacher->user->displayname ?? $item_teacher->user->name}}
                                         </figcaption>
                                         <span
@@ -186,7 +186,7 @@
                     <div class="flex items-center h-full p-3.5 rounded-3 bg-orange-500 dark:bg-slate-700/40 text-white">
                         <i class="text-2xl text-white bi bi-person-workspace leading-0 dark:text-orange-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         ประธานสอบ
                     </h5>
                 </div>
@@ -201,7 +201,7 @@
                                             <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
                                                 class="object-cover object-center w-32 h-32 rounded-4 shadow-dark-blur" />
                                         </div>
-                                        <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                        <figcaption class="text-lg font-bold tracking-wide dark:text-slate-300">
                                             {{$item_external->user->displayname ?? $item_external->user->name}}
                                         </figcaption>
                                     </figure>

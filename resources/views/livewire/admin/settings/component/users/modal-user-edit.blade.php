@@ -6,7 +6,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-pencil-square leading-0"></i> แก้ไขข้อมูลผู้ใช้
                 </h3>
                 <button type="button"
@@ -36,35 +36,35 @@
             <div id="modal-user-edit" class="p-6">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ชื่อผู้ใช้
                         </label>
                         <input type="text" class="input" placeholder="กรุณากรอกรหัสประจำตัว" w />
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกรหัสประจำตัว</span> --}}
                     </div>
                     <div class="col-span-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             เลขประจำตัวประชาชน
                         </label>
                         <input type="email" class="input" placeholder="กรุณากรอกอีเมล" />
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกอีเมล</span> --}}
                     </div>
                     <div>
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ชื่อ
                         </label>
                         <input type="text" class="input" placeholder="กรุณากรอกชื่อ" />
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกชื่อ</span> --}}
                     </div>
                     <div>
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             นามสกุล
                         </label>
                         <input type="text" class="input" placeholder="กรุณากรอกนามสกุล" />
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกนามสกุล</span> --}}
                     </div>
                     <div>
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ห้อง
                         </label>
                         <select class="select">
@@ -81,7 +81,7 @@
                         {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกห้อง</span> --}}
                     </div>
                     <div>
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             สาขาวิชา
                         </label>
                         <select class="select">
