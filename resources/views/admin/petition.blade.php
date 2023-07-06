@@ -67,31 +67,31 @@
                             <thead class="align-bottom">
                                 <tr>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         ชื่อโครงงาน
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         คำร้อง
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         วันที่เขียนคำร้อง
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         กรุณาอนุมัติก่อนวันที่
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         สถานะของที่ปรึกษา
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         สถานะ
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         รายละเอียด
                                     </th>
                                 </tr>
@@ -106,7 +106,7 @@
                                                 <i
                                                     class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
                                             </div>
-                                            <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
+                                            <h6 class="mb-0 text-sm leading-normal dark:text-black">
                                                 ทดสอบการพัฒนาระบบใหม่
                                                 <span
                                                     class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
@@ -117,23 +117,23 @@
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <span class="text-sm font-bold dark:text-slate-400">ขอเปลี่ยนชื่อโครงงานพิเศษ</span>
+                                        <span class="text-sm font-bold dark:text-black">ขอเปลี่ยนชื่อโครงงานพิเศษ</span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i> 23/04/2566
                                         </span>
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-clock-fill"></i> 14:23 น.
                                         </span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i> 30/04/2566
                                         </span>
                                     </td>

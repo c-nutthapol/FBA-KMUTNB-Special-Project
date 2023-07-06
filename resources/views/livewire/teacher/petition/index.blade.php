@@ -46,7 +46,8 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา" wire:model='search'>
+                            <input type="text" id="search" class="pl-10 input" placeholder="ค้นหา"
+                                wire:model='search'>
                         </div>
                     </div>
                 </div>
@@ -59,146 +60,152 @@
                         <thead class="align-bottom">
                             <tr>
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     ชื่อโครงงาน
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     คำร้อง
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     วันที่เขียนคำร้อง
                                 </th>
                                 {{-- <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     กรุณาอนุมัติก่อนวันที่
                                 </th> --}}
                                 @if (auth()->user()->role_id == 2)
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    สถานะของที่ปรึกษา
-                                </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        สถานะของที่ปรึกษา
+                                    </th>
                                 @endif
                                 @if (auth()->user()->role_id == 3)
-                                <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                    สถานะของผู้ดูแลระบบ
-                                </th>
+                                    <th
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        สถานะของผู้ดูแลระบบ
+                                    </th>
                                 @endif
                                 <th
-                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     รายละเอียด
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($studentRequest as $item)
-                            <tr>
-                                <td
-                                    class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <div class="flex flex-row items-center gap-2">
-                                        <div
-                                            class="flex items-center h-full p-2.5 rounded-1.75 bg-teal-400 dark:bg-slate-700/40 text-white">
-                                            <i
-                                                class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
+                                <tr>
+                                    <td
+                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <div class="flex flex-row items-center gap-2">
+                                            <div
+                                                class="flex items-center h-full p-2.5 rounded-1.75 bg-teal-400 dark:bg-slate-700/40 text-white">
+                                                <i
+                                                    class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
+                                            </div>
+                                            <h6 class="mb-0 text-sm leading-normal text-black dark:text-black">
+                                                {{ $item->project->name_th }}
+                                                <span
+                                                    class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
+                                                    {{ $item->project->name_en }}
+                                                </span>
+                                            </h6>
                                         </div>
-                                        <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
-                                            {{$item->project->name_th}}
-                                            <span
-                                                class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">New
-                                                {{$item->project->name_en}}
-                                            </span>
-                                        </h6>
-                                    </div>
-                                </td>
-                                <td
-                                    class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <span class="text-sm font-bold dark:text-slate-400">{{$item->NameRequestForTable}}</span>
-                                </td>
-                                <td
-                                    class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <span
-                                        class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                        <i class="bi bi-calendar2-week-fill"></i> {{$item->created_at->thaidate()}}
-                                    </span>
-                                    <span
-                                        class="inline-block ml-2 text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
-                                        <i class="bi bi-clock-fill"></i> {{ date('H:i น.', strtotime($item->created_at)) }}
-                                    </span>
-                                </td>
-                                {{-- <td
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <span
+                                            class="text-sm font-bold dark:text-black text-black">{{ $item->NameRequestForTable }}</span>
+                                    </td>
+                                    <td
+                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <span
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            <i class="bi bi-calendar2-week-fill"></i>
+                                            {{ $item->created_at->thaidate() }}
+                                        </span>
+                                        <span
+                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
+                                            <i class="bi bi-clock-fill"></i>
+                                            {{ date('H:i น.', strtotime($item->created_at)) }}
+                                        </span>
+                                    </td>
+                                    {{-- <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     <span
-                                        class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                        class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                         <i class="bi bi-calendar2-week-fill"></i> 30/04/2566
                                     </span>
                                 </td> --}}
-                                @if (auth()->user()->role_id == 2)
-                                <td
-                                    class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    {!!$item->StatusRequestForTable!!}
-                                    {{-- <span
-                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-500 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
-                                        รออนุมัติ
-                                    </span>
-                                    <span
-                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
-                                        อนุมัติ
-                                    </span>
-                                    <span
-                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
-                                        ไม่อนุมัติ
-                                    </span> --}}
-                                </td>
-                                @endif
-                                @if (auth()->user()->role_id == 3)
-                                <td
-                                    class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    {!!$item->StatusRequestForTable!!}
-                                    {{-- <span
-                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-500 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
-                                        รออนุมัติ
-                                    </span>
-                                    <span
-                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
-                                        อนุมัติ
-                                    </span>
-                                    <span
-                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
-                                        ไม่อนุมัติ
-                                    </span> --}}
-                                </td>
-                                @endif
-                                <td
-                                    class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                    <button type="button" data-modal-target="noteModal" data-modal-toggle="noteModal"
-                                        wire:click="$emit('getPetitionModalEdit',{{ $item->id }})"
-                                        class="inline-block mr-2 text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                        <div class="flex flex-row items-center gap-2">
-                                            <i class="bi bi-brush leading-0"></i>
-                                            <span class="block">จัดการคำร้อง</span>
-                                        </div>
-                                    </button>
                                     @if (auth()->user()->role_id == 2)
-                                        <a href="{{ route('teacher.project.details',['id' => $item->project]) }}" target="_blank"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                            <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-eye leading-0"></i>
-                                                <span class="block">ดูโครงงาน</span>
-                                            </div>
-                                        </a>
-                                    @elseif(auth()->user()->role_id == 3)
-                                        <a href="{{ route('admin.project.details',['id' => $item->project]) }}" target="_blank"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
-                                            <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-eye leading-0"></i>
-                                                <span class="block">ดูโครงงาน</span>
-                                            </div>
-                                        </a>
+                                        <td
+                                            class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent text-black">
+                                            {!! $item->StatusRequestForTable !!}
+                                            {{-- <span
+                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-500 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                        รออนุมัติ
+                                    </span>
+                                    <span
+                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                        อนุมัติ
+                                    </span>
+                                    <span
+                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                        ไม่อนุมัติ
+                                    </span> --}}
+                                        </td>
                                     @endif
-                                </td>
-                            </tr>
+                                    @if (auth()->user()->role_id == 3)
+                                        <td
+                                            class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent text-black">
+                                            {!! $item->StatusRequestForTable !!}
+                                            {{-- <span
+                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-gray-500 to-slate-400 align-baseline font-bold uppercase leading-none text-white">
+                                        รออนุมัติ
+                                    </span>
+                                    <span
+                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                        อนุมัติ
+                                    </span>
+                                    <span
+                                        class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                        ไม่อนุมัติ
+                                    </span> --}}
+                                        </td>
+                                    @endif
+                                    <td
+                                        class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        <button type="button" data-modal-target="noteModal"
+                                            data-modal-toggle="noteModal"
+                                            wire:click="$emit('getPetitionModalEdit',{{ $item->id }})"
+                                            class="inline-block mr-2 text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-brush leading-0"></i>
+                                                <span class="block">จัดการคำร้อง</span>
+                                            </div>
+                                        </button>
+                                        @if (auth()->user()->role_id == 2)
+                                            <a href="{{ route('teacher.project.details', ['id' => $item->project]) }}"
+                                                target="_blank"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-eye leading-0"></i>
+                                                    <span class="block">ดูโครงงาน</span>
+                                                </div>
+                                            </a>
+                                        @elseif(auth()->user()->role_id == 3)
+                                            <a href="{{ route('admin.project.details', ['id' => $item->project]) }}"
+                                                target="_blank"
+                                                class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-eye leading-0"></i>
+                                                    <span class="block">ดูโครงงาน</span>
+                                                </div>
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -248,9 +255,9 @@
     </div>
 </div>
 @push('script')
-<script>
-    Livewire.on('refreshComponent', e => {
-        location.reload();
-    })
-</script>
+    <script>
+        Livewire.on('refreshComponent', e => {
+            location.reload();
+        })
+    </script>
 @endpush

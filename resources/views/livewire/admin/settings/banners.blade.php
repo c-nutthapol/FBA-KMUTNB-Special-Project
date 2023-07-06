@@ -41,23 +41,23 @@
                         <thead class="align-bottom">
                             <tr>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     ลำดับ
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     รูปภาพ
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     สถานะ
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     วันที่สร้าง
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
                                     รายละเอียด
                                 </th>
                             </tr>
@@ -68,7 +68,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="ml-2 inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="ml-2 inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             {{ $banners->firstItem() + $key }}
                                         </span>
                                     </td>
@@ -97,7 +97,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">
+                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
                                             <i class="bi bi-calendar2-week-fill"></i>
                                             {{ $banner->created_at->thaidate('j F Y H:i:s') }}
                                         </span>

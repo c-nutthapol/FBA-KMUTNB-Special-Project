@@ -20,50 +20,50 @@
 
             <div id="modal-user-view" class="p-6 space-y-6">
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                    <div class="col-span-2 text-base tracking-wide dark:text-black">
                         <strong>ชื่อผู้ใช้:</strong>
                         <span class="inline-block ml-1">
                             {{ $username }}
                         </span>
                     </div>
-                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                    <div class="col-span-2 text-base tracking-wide dark:text-black">
                         <strong>รหัสนักศึกษา:</strong>
                         <span class="inline-block ml-1">
                             {{ $pid }}
                         </span>
                     </div>
-                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                    <div class="col-span-2 text-base tracking-wide dark:text-black">
                         <strong>อีเมล:</strong>
                         <span class="inline-block ml-1">
                             {{ $email }}
                         </span>
                     </div>
-                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                    <div class="col-span-2 text-base tracking-wide dark:text-black">
                         <strong>ชื่อ :</strong>
                         <span class="inline-block ml-1">
                             {{ $displayname }}
                         </span>
                     </div>
-                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                    <div class="col-span-2 text-base tracking-wide dark:text-black">
                         <strong>ชื่อ (ภาษาอังกฤษ) :</strong>
                         <span class="inline-block ml-1">
                             {{ $firstname_en }}
                         </span>
                     </div>
-                    <div class="col-span-2 text-base tracking-wide dark:text-slate-400">
+                    <div class="col-span-2 text-base tracking-wide dark:text-black">
                         <strong>นามสกุล (ภาษาอังกฤษ) :</strong>
                         <span class="inline-block ml-1">
                             {{ $lastname_en }}
                         </span>
                     </div>
 
-                    <div class="text-base tracking-wide dark:text-slate-400">
+                    <div class="text-base tracking-wide dark:text-black">
                         <strong>ห้อง:</strong>
                         <span class="inline-block ml-1">
                             {{ $room }}
                         </span>
                     </div>
-                    <div class="text-base tracking-wide dark:text-slate-400">
+                    <div class="text-base tracking-wide dark:text-black">
                         <strong>สาขาวิชา:</strong>
                         <span class="inline-block ml-1">
                             {{ $department }}

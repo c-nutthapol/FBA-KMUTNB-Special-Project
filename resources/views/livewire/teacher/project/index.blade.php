@@ -85,27 +85,27 @@
                         <thead class="align-bottom">
                             <tr>
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     ชื่อโครงงาน
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     ภาคเรียน/ปีการศึกษา
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     นักศึกษา
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     เอกสาร
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     สถานะ
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                     ตัวเลือก
                                 </th>
                             </tr>
@@ -121,7 +121,7 @@
                                                 <i
                                                     class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
                                             </div>
-                                            <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
+                                            <h6 class="mb-0 text-sm leading-normal text-black dark:text-black">
                                                 {{ $project->name_th }}
                                                 <span
                                                     class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">
@@ -133,13 +133,13 @@
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm dark:text-slate-400">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
+                                            class="text-sm dark:text-black text-black">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <div class="flex flex-row justify-center space-x-4">
                                             <figure class="flex flex-row items-center space-x-2">
-                                                <figcaption class="text-sm dark:text-slate-400">
+                                                <figcaption class="text-sm text-black dark:text-black">
                                                     @foreach ($project->StudentListForTable as $item_student)
                                                         {{ $item_student }}<br>
                                                     @endforeach
@@ -258,7 +258,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6"> ไม่พบข้อมูล </td>
+                                    <td colspan="6" class="text-black"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
 

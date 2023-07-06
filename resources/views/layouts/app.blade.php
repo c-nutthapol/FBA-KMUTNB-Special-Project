@@ -19,7 +19,7 @@
 </head>
 
 <body
-    class="m-0 bg-gray-50 font-sans text-base font-normal leading-default text-slate-500 antialiased dark:bg-slate-900">
+    class="m-0 bg-gray-50 font-sans text-base font-normal leading-default text-black antialiased dark:bg-slate-900">
     <div class="absolute min-h-75 w-full bg-teal-400 dark:hidden"></div>
     <!-- sidenav  -->
     @include('layouts.partials.sidebar')

@@ -94,15 +94,15 @@
                             <thead class="align-bottom">
                                 <tr>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         ชื่อผู้เสนอแนะ
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         วันที่
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
                                         ตัวเลือก
                                     </th>
                                 </tr>
@@ -112,14 +112,14 @@
                                 <tr>
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                        <h6 class="mb-0 text-sm leading-normal dark:text-slate-400">
+                                        <h6 class="mb-0 text-sm leading-normal dark:text-black">
                                             {{$item->user->displayname}}
                                         </h6>
                                     </td>
                                     <td
                                         class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-xs font-semibold leading-tight text-slate-400 dark:text-slate-400">{{$item->created_at->thaidate()}} {{ date('H:i น.', strtotime($item->created_at)) }}</span>
+                                            class="text-xs font-semibold leading-tight text-black dark:text-black">{{$item->created_at->thaidate()}} {{ date('H:i น.', strtotime($item->created_at)) }}</span>
                                     </td>
                                     <td
                                         class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">

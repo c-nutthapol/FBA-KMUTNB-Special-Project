@@ -32,7 +32,7 @@
         <div class="container">
             <div class="flex flex-wrap -mx-3">
                 <div class="w-8/12 max-w-full px-3 mx-auto text-center flex-0">
-                    <p class="mb-0 text-slate-400">
+                    <p class="mb-0 text-black">
                         Copyright ©
                         <script>
                             document.write(new Date().getFullYear());
