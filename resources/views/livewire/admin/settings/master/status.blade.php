@@ -1,13 +1,14 @@
 <div>
-    <div class="flex flex-wrap -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
+    <div class="-mx-3 flex flex-wrap">
+        <div class="w-full max-w-full flex-none px-3">
             <div
-                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
                 <div
-                    class="flex flex-col items-start justify-start gap-4 p-6 mb-0 border-b-0 sm:items-center sm:justify-between sm:flex-row border-b-solid rounded-t-2xl border-b-transparent">
+                    class="border-b-solid mb-0 flex flex-col items-start justify-start gap-4 rounded-t-2xl border-b-0 border-b-transparent p-6 sm:flex-row sm:items-center sm:justify-between">
                     <div class="flex flex-row items-center space-x-4">
-                        <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                            <i class="text-2xl text-white bi bi-chat-dots-fill leading-0 dark:text-blue-500"></i>
+                        <div
+                            class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                            <i class="bi bi-chat-dots-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                         </div>
                         <h5 class="mb-0 tracking-wide dark:text-white">
                             สถานะ
@@ -22,7 +23,7 @@
                     </button> --}}
                 </div>
 
-                <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-end sm:flex-row">
+                <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-end">
                     <div class="flex flex-col gap-3 sm:flex-row">
                         {{-- <div class="flex-1">
                             <select class="select">
@@ -49,30 +50,30 @@
                     </div>
                 </div>
 
-                <div class="flex-wrap flex-auto p-6">
-                    <div class="p-0 overflow-x-auto">
+                <div class="flex-auto flex-wrap p-6">
+                    <div class="overflow-x-auto p-0">
                         <table
-                            class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
+                            class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr>
+                                <tr class="text-black dark:text-white">
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ลำดับ
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ขั้นตอน
                                     </th>
                                     {{-- <th
-                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap  opacity-70">
                                         หมวดหมู่
                                     </th> --}}
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         สถานะ
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ผู้เกี่ยวข้อง
                                     </th>
                                 </tr>
@@ -81,38 +82,34 @@
                                 @forelse ($data as $key => $item)
                                     <tr>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="ml-2 inline-block leading-tight text-black dark:text-white">
                                                 {{ $data->firstItem() + $loop->index }}
                                             </span>
                                         </td>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="inline-block leading-tight text-black dark:text-white">
                                                 {{ $item->name ?? '' }}
                                             </span>
                                         </td>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="inline-block leading-tight text-black dark:text-white">
                                                 {{ $item->status ?? '' }}
                                             </span>
                                         </td>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="inline-block leading-tight text-black dark:text-white">
                                                 {{ $item->role->name ?? '' }}
                                             </span>
                                         </td>
                                     </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="5"> ไม่พบข้อมูล </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-black dark:text-white"> ไม่พบข้อมูล </td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -123,9 +120,8 @@
         </div>
     </div>
 
-
 </div>
 
 @push('script')
-
 @endpush
+

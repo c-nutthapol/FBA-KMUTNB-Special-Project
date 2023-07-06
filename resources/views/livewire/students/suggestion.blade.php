@@ -18,51 +18,50 @@
                         <table
                             class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                             <thead class="align-bottom">
-                            <tr>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
-                                    ชื่อผู้เสนอแนะ
-                                </th>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
-                                    วันที่
-                                </th>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
-                                    ข้อเสนอแนะ
-                                </th>
-                            </tr>
+                                <tr class="text-black dark:text-white">
+                                    <th
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                        ชื่อผู้เสนอแนะ
+                                    </th>
+                                    <th
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                        วันที่
+                                    </th>
+                                    <th
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                        ข้อเสนอแนะ
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            @forelse ($this->comments as $r_comment)
-                                <tr>
-                                    <td
-                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                        <h6 class="mb-0 text-sm leading-normal dark:text-black text-black">
-                                            {{ $r_comment->user->displayname }}
-                                        </h6>
-                                    </td>
-                                    <td
-                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                            <span
-                                                class="text-xs font-semibold leading-tight text-black dark:text-black">
+                                @forelse ($this->comments as $r_comment)
+                                    <tr>
+                                        <td
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-white">
+                                                {{ $r_comment->user->displayname }}
+                                            </h6>
+                                        </td>
+                                        <td
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="font-semibold leading-tight text-black dark:text-white">
                                                 {{ dateThai($r_comment->create_at) }}</span>
-                                    </td>
-                                    <td
-                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
-                                        <button type="button" data-modal-target="viewModal"
+                                        </td>
+                                        <td
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
+                                            <button type="button" data-modal-target="viewModal"
                                                 data-modal-toggle="viewModal"
-                                                class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-800">
-                                            <div class="flex flex-row items-center gap-2"
-                                                 wire:click="$set('idProject',{{$r_comment->id}})">
-                                                <i class="bi bi-eye leading-0"></i>
-                                                <span class="block">ดูข้อเสนอแนะ</span>
-                                            </div>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @empty
-                            @endforelse
+                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-800">
+                                                <div class="flex flex-row items-center gap-2"
+                                                    wire:click="$set('idProject',{{ $r_comment->id }})">
+                                                    <i class="bi bi-eye leading-0"></i>
+                                                    <span class="block">ดูข้อเสนอแนะ</span>
+                                                </div>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                @endforelse
 
                             </tbody>
                         </table>
@@ -74,9 +73,8 @@
 
     <!-- View Modal -->
     <div id="viewModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-         class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full"
-         wire:ignore.self
-    >
+        class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full"
+        wire:ignore.self>
         <div class="relative h-full w-full max-w-6xl md:h-auto">
             <!-- Modal content -->
             <form class="relative rounded-lg bg-white shadow dark:bg-gray-700">
@@ -86,13 +84,13 @@
                         <i class="bi bi-eye leading-0"></i> ดูข้อเสนอแนะ
                     </h3>
                     <button type="button"
-                            class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="viewModal">
+                        class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="viewModal">
                         <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
-                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                  clip-rule="evenodd"></path>
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
                         </svg>
                         <span class="sr-only">ปิด</span>
                     </button>
@@ -104,16 +102,16 @@
                         <div class="flex flex-row space-x-1">
                             <i class="bi bi-badge-ad-fill"></i>
                             <span
-                                class="block font-bold tracking-wide">{{$this->comments->where("id",$idProject)->first()?->masterSuggesstion->name}}</span>
+                                class="block font-bold tracking-wide">{{ $this->comments->where('id', $idProject)->first()?->masterSuggesstion->name }}</span>
                         </div>
                     </div>
-                    @if($this->comments->where("id",$idProject)->first()?->detail)
+                    @if ($this->comments->where('id', $idProject)->first()?->detail)
                         <div class="mt-3">
                             <label class="mb-2 text-sm font-bold tracking-wide dark:text-white dark:opacity-80">
                                 ข้อเสนอแนะอื่น ๆ
                             </label>
                             <p class="mb-0 text-sm leading-relaxed tracking-wide dark:text-gray-300">
-                                {{$this->comments->where("id",$idProject)->first()?->detail}}
+                                {{ $this->comments->where('id', $idProject)->first()?->detail }}
                             </p>
                         </div>
                     @endif
@@ -122,7 +120,7 @@
                 <div
                     class="flex items-center justify-end space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
                     <button data-modal-hide="viewModal" type="button"
-                            class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
+                        class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                         ปิด
                     </button>
                 </div>

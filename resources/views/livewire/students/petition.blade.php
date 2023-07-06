@@ -19,18 +19,18 @@
                             คำร้อง
                             <span class="text-rose-600">*</span>
                         </label>
-                        <select class="select" wire:model.defer='form.title'>
-                            <option value="" selected disabled>
+                        <select class="select dark:text-white" wire:model.defer='form.title'>
+                            <option value="" class="text-black" selected disabled>
                                 กรุณาเลือกคำร้อง
                             </option>
                             @foreach ($data->petition as $petition)
-                                <option value="{{ $petition->id }}">
+                                <option value="{{ $petition->id }}" class="text-black">
                                     {{ $petition->name }}
                                 </option>
                             @endforeach
                         </select>
                         @error('form.title')
-                        <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>
                     <div>
@@ -39,16 +39,15 @@
                             หมายเหตุ
                             <span class="text-rose-600">*</span>
                         </label>
-                        <textarea class="input h-auto" placeholder="กรุณากรอกหมายเหตุ" rows="6"
-                                  wire:model.defer="form.desc"></textarea>
+                        <textarea class="input h-auto" placeholder="กรุณากรอกหมายเหตุ" rows="6" wire:model.defer="form.desc"></textarea>
                         @error('form.desc')
-                        <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="mt-10 text-end">
                         <button type="submit" class="btn from-blue-500 to-violet-500 text-sm text-white"
-                                wire:loading.remove>
+                            wire:loading.remove>
                             <div class="flex flex-row items-center gap-3">
                                 <i class="bi bi-send-fill text-base leading-0"></i>
                                 <span class="block">ส่งคำร้อง</span>

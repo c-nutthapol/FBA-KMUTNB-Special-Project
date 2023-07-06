@@ -17,7 +17,7 @@
                     </h5>
                 </div>
                 <div class="pb-6 sm:p-6">
-                    <span class="block text-center text-xl font-bold">สถานะ</span>
+                    <span class="block text-center text-xl font-bold dark:text-white">สถานะ</span>
                     {{-- รออนุมัติ --}}
                     @if (in_array($data->project->status, [1,7,13,19]))
                         <span

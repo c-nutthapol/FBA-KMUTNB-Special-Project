@@ -1,23 +1,23 @@
-<div class="flex flex-wrap -mx-3">
-    <div class="flex-none w-full max-w-full px-3">
+<div class="-mx-3 flex flex-wrap">
+    <div class="w-full max-w-full flex-none px-3">
         <div
-            class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+            class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
             <div
-                class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                    <i class="text-2xl text-white bi bi-1-circle-fill leading-0 dark:text-blue-500"></i>
+                class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
+                <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                    <i class="bi bi-1-circle-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-white">
                     ลงทะเบียนสอบหัวข้อ
                 </h5>
             </div>
 
-            <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row mb-3">
+            <div class="mb-3 flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
                     <div class="flex-1">
-                        <button type="button" class="text-sm font-medium text-white btn from-green-500 to-emerald-500"
+                        <button type="button" class="btn from-green-500 to-emerald-500 font-medium text-white"
                             wire:target="export" wire:loading.attr="disabled" wire:click="export">
                             <div class="flex flex-row items-center gap-3" wire:target="export"
                                 wire:loading.class="hidden">
@@ -25,7 +25,7 @@
                                 <span class="block">Export</span>
                             </div>
                             {{-- loading --}}
-                            <svg aria-hidden="true" role="status" class="hidden inline w-4 h-4 text-white animate-spin"
+                            <svg aria-hidden="true" role="status" class="inline hidden h-4 w-4 animate-spin text-white"
                                 wire:target="export" wire:loading.class.remove="hidden" viewBox="0 0 100 101"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -40,14 +40,14 @@
                 </div>
             </div>
 
-            <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
+            <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select class="select" wire:model='year'>
-                        <option value="" selected>
+                    <select class="select dark:text-white" wire:model='year'>
+                        <option value="" class="text-black" selected>
                             ปีการศึกษาทั้งหมด
                         </option>
                         @foreach ($termFilter as $item_term)
-                            <option value="{{ $item_term->id }}">
+                            <option value="{{ $item_term->id }}" class="text-black">
                                 {{ $item_term->term }} / {{ $item_term->year }}
                             </option>
                         @endforeach
@@ -69,43 +69,43 @@
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="bi bi-search text-lg leading-0 text-gray-500 dark:text-gray-400"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" wire:model="search"
+                            <input type="text" id="search" class="input pl-10" wire:model="search"
                                 placeholder="ค้นหาชื่อโครงการ">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex-auto p-6">
-                <div class="p-0 overflow-x-auto">
+                <div class="overflow-x-auto p-0">
                     <table
-                        class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
+                        class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr>
+                            <tr class="text-black dark:text-white">
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-white">
                                     ชื่อโครงงาน
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-white">
                                     ภาคเรียน/ปีการศึกษา
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-white">
                                     นักศึกษา
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-white">
                                     เอกสาร
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-white">
                                     สถานะ
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-white">
                                     ตัวเลือก
                                 </th>
                             </tr>
@@ -114,14 +114,14 @@
                             @forelse ($projects as $project)
                                 <tr>
                                     <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row items-center gap-2">
                                             <div
-                                                class="flex items-center h-full p-2.5 rounded-1.75 bg-teal-400 dark:bg-slate-700/40 text-white">
+                                                class="flex h-full items-center rounded-1.75 bg-teal-400 p-2.5 text-white dark:bg-slate-700/40">
                                                 <i
-                                                    class="text-xs text-white bi bi-folder-fill leading-0 dark:text-teal-500"></i>
+                                                    class="bi bi-folder-fill text-xs leading-0 text-white dark:text-teal-500"></i>
                                             </div>
-                                            <h6 class="mb-0 text-sm leading-normal text-black dark:text-black">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-white">
                                                 {{ $project->name_th }}
                                                 <span
                                                     class="block text-xs font-normal text-slate-600 dark:text-white dark:opacity-60">
@@ -131,15 +131,15 @@
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="text-sm dark:text-black text-black">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
+                                            class="text-black dark:text-white">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row justify-center space-x-4">
                                             <figure class="flex flex-row items-center space-x-2">
-                                                <figcaption class="text-sm text-black dark:text-black">
+                                                <figcaption class="text-black dark:text-white">
                                                     @foreach ($project->StudentListForTable as $item_student)
                                                         {{ $item_student }}<br>
                                                     @endforeach
@@ -148,10 +148,10 @@
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
 
                                         <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700"
+                                            class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700"
                                             type="button">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-download leading-0"></i>
@@ -160,28 +160,28 @@
                                         </button>
                                         <!-- Dropdown menu -->
                                         <div id="dropdown"
-                                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-auto dark:bg-slate-850">
-                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                            class="z-10 hidden w-auto divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-slate-850">
+                                            <ul class="py-2 text-gray-700 dark:text-gray-200"
                                                 aria-labelledby="dropdownDefaultButton">
                                                 @forelse ($project->files as $item_file)
-                                                <li>
-                                                    @if ($item_file->is_link == 0)
-                                                    <a href="/storage/{{$item_file->path ?? ''}}" download
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
-                                                    @else
-                                                    <a href="{{$item_file->path ?? ''}}" target="_blank"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
-                                                    @endif
-                                                </li>
+                                                    <li>
+                                                        @if ($item_file->is_link == 0)
+                                                            <a href="/storage/{{ $item_file->path ?? '' }}" download
+                                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
+                                                        @else
+                                                            <a href="{{ $item_file->path ?? '' }}" target="_blank"
+                                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
+                                                        @endif
+                                                    </li>
                                                 @empty
-                                                <li>
-                                                    ไม่พบไฟล์
-                                                </li>
+                                                    <li>
+                                                        ไม่พบไฟล์
+                                                    </li>
                                                 @endforelse
                                             </ul>
                                         </div>
                                         {{-- <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
-                                            class="inline-block text-sm font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
+                                            class="inline-block  font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-download leading-0"></i>
                                                 <span class="block">โหลดเอกสาร</span>
@@ -189,47 +189,47 @@
                                         </a> --}}
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="inline-block">
-                                            <select id="UpdateStatusProject" class="select"
+                                            <select id="UpdateStatusProject" class="select dark:text-white"
                                                 data-id="{{ $project->id }}">
-                                                <option value="" disabled selected>
+                                                <option value="" class="text-black" disabled selected>
                                                     {{ $project->master_status->status }}
                                                 </option>
 
                                                 @if (Auth::user()->role_id === 2)
                                                     @forelse ($project->SelectOption as $item)
-                                                        <option value="{{ $item->id }}">
+                                                        <option value="{{ $item->id }}" class="text-black">
                                                             {{ $item->status }}
                                                         </option>
                                                     @empty
                                                     @endforelse
                                                 @else
                                                     @forelse ($project->SelectOption as $item)
-                                                        <option value="{{ $item->id }}" disabled>
+                                                        <option value="{{ $item->id }}" class="text-black"
+                                                            disabled>
                                                             {{ $item->status }}
                                                         </option>
                                                     @empty
                                                     @endforelse
                                                 @endif
 
-
                                             </select>
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
                                         @if (auth()->user()->role_id == 2)
                                             <div class="flex flex-row justify-end gap-3">
                                                 <a href="{{ route('teacher.project.details', ['id' => $project->id]) }}"
-                                                    class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-eye leading-0"></i>
                                                         <span class="block">ดูรายละเอียด</span>
                                                     </div>
                                                 </a>
                                                 <a href="{{ route('teacher.project.suggestion', ['id' => $project->id]) }}"
-                                                    class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-yellow-400 transition-all ease-in hover:text-yellow-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-chat-dots leading-0"></i>
                                                         <span class="block">เสนอแนะ</span>
@@ -239,14 +239,14 @@
                                         @elseif(auth()->user()->role_id == 3)
                                             <div class="flex flex-row justify-end gap-3">
                                                 <a href="{{ route('admin.project.details', ['id' => $project->id]) }}"
-                                                    class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700">
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-eye leading-0"></i>
                                                         <span class="block">ดูรายละเอียด</span>
                                                     </div>
                                                 </a>
                                                 <a href="{{ route('admin.project.suggestion', ['id' => $project->id]) }}"
-                                                    class="inline-block text-sm font-bold leading-normal text-center text-yellow-400 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-700">
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-yellow-400 transition-all ease-in hover:text-yellow-700">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-chat-dots leading-0"></i>
                                                         <span class="block">เสนอแนะ</span>
@@ -258,7 +258,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-black"> ไม่พบข้อมูล </td>
+                                    <td colspan="6" class="text-black dark:text-white"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
 
@@ -297,3 +297,4 @@
         })
     </script>
 @endpush
+
