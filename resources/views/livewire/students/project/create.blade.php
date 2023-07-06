@@ -16,28 +16,11 @@
                     </h5>
                 </div>
                 <div class="flex-auto flex-wrap p-6">
-                    @if (session()->has('success'))
-                        <div
-                            class="mb-4 flex rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 dark:border-green-800 dark:bg-gray-800 dark:text-green-400"
-                            role="alert">
-                            <div>
-                                <span class="font-medium">{{ session('success') }}</span>
-                            </div>
-                        </div>
-                    @elseif(session()->has('error'))
-                        <div
-                            class="mb-4 flex rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
-                            role="alert">
-                            <div>
-                                <span class="font-medium">{{ session('error') }}</span>
-                            </div>
-                        </div>
-                    @endif
                     <form wire:submit.prevent="submit">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label
-                                    class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อโครงงาน
+                                    class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="name_th">ชื่อโครงงาน
                                     (ภาษาไทย) <span class="text-rose-600">*</span></label>
                                 <input wire:model.defer="form.name_th" id="name_th" type="text" class="input"
                                        placeholder="กรุณากรอกชื่อโครงงานภาษาไทย"/>
@@ -48,7 +31,7 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="name_en">
                                     ชื่อโครงงาน (ภาษาอังกฤษ)
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -68,11 +51,13 @@
                         </h6>
                         <div class="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                       for="selectstudent1">
                                     ชื่อนักศึกษาคนที่ 1
                                     <span class="text-rose-600">*</span>
                                 </label>
-                                <select class="select" disabled wire:model.defer="form.student_1.id">
+                                <select id="selectstudent1" class="select" disabled
+                                        wire:model.defer="form.student_1.id">
                                     <option value="{{ Auth::user()->id }}" selected>
                                         {{ Auth::user()->displayname }}
                                     </option>
@@ -80,7 +65,7 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="depart1">
                                     สาขาวิชา
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -101,7 +86,7 @@
                             </div>
 
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80" for="room1">
                                     ห้อง
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -115,7 +100,8 @@
                         </div>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div wire:ignore>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                       for="select_student2">
                                     ชื่อนักศึกษาคนที่ 2
                                 </label>
                                 <select class="select" id="select_student2">
@@ -145,7 +131,8 @@
                                 </div>
 
                                 <div>
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                           for="room2">
                                         ห้อง
                                         @if ($form->get('student_2')['id'])
                                             <span class="text-rose-600">*</span>
@@ -167,7 +154,8 @@
                             <div>
                                 <div wire:ignore>
 
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                           for="select_teacher1">
                                         ที่ปรึกษาหลัก
                                         <span class="text-rose-600">*</span>
                                     </label>
@@ -184,7 +172,8 @@
                                 <div>
                                     <div wire:ignore>
                                         <label
-                                            class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                            class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                            for="select_teacher2">
                                             ที่ปรึกษาร่วม/กรรมการสอบ
                                         </label>
                                         <select class="select" id="select_teacher2">
@@ -199,7 +188,8 @@
                                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                         <div>
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อ
+                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                for="teachername_ex">ชื่อ
                                                 <span class="text-rose-600">*</span></label>
                                             <input type="text" class="input" id="teachername_ex"
                                                    wire:model.defer="form.external.fname"
@@ -211,7 +201,8 @@
                                         </div>
                                         <div>
                                             <label
-                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">นามสกุล
+                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                for="teachersurname_ex">นามสกุล
                                                 <span class="text-rose-600">*</span></label>
                                             <input type="text" class="input" id="teachersurname_ex"
                                                    wire:model.defer="form.external.lname"
@@ -224,12 +215,12 @@
                                         <div class="col-span-2">
                                             <label
                                                 class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
-                                                แนบเอกสาร (หนังสือแต่งตั้ง)
+                                                แนบเอกสาร (หนังสือแต่งตั้ง) <span class="text-rose-600">*</span>
                                             </label>
                                             <input class="input p-0" type="file"
                                                    wire:model.defer="file_teacher"
                                                    id="fileteacherupload"
-                                                   accept="application/pdf,application/msword">
+                                                   accept="application/pdf" multiple>
                                             @error('file_teacher')
                                             <span
                                                 class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}
@@ -245,7 +236,8 @@
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <div wire:ignore>
-                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                           for="select_teacher3">
                                         ประธานสอบ
                                         <span class="text-rose-600">*</span>
                                     </label>
@@ -256,6 +248,52 @@
                                 <span
                                     class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror
+                                @if ($form->get('teacher_3') === 'external')
+                                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                        <div>
+                                            <label
+                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                for="teacher3name_ex">ชื่อ
+                                                <span class="text-rose-600">*</span></label>
+                                            <input type="text" class="input" id="teacher3name_ex"
+                                                   wire:model.defer="form.external1.fname"
+                                                   placeholder="กรุณากรอกชื่อ"/>
+                                            @error('form.external1.fname')
+                                            <span
+                                                class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div>
+                                            <label
+                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                for="teacher3surname_ex">นามสกุล
+                                                <span class="text-rose-600">*</span></label>
+                                            <input type="text" class="input" id="teacher3surname_ex"
+                                                   wire:model.defer="form.external1.lname"
+                                                   placeholder="กรุณากรอกนามสกุล"/>
+                                            @error('form.external1.lname')
+                                            <span
+                                                class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-span-2">
+                                            <label
+                                                class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80"
+                                                for="fileteacher3upload">
+                                                แนบเอกสาร (หนังสือแต่งตั้ง) <span class="text-rose-600">*</span>
+                                            </label>
+                                            <input class="input p-0" type="file"
+                                                   wire:model.defer="file_teacher1"
+                                                   id="fileteacher3upload"
+                                                   accept="application/pdf" multiple>
+                                            @error('file_teacher')
+                                            <span
+                                                class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
 
@@ -266,7 +304,7 @@
                                     แนบเอกสาร
                                     <span class="text-rose-600">*</span>
                                 </label>
-                                <input accept=".docx,application/pdf,application/msword" id="fileupload"
+                                <input accept="application/pdf" id="fileupload"
                                        class="input h-full p-0"
                                        type="file" wire:model.defer="file_project" multiple>
                                 @error('file_project')
@@ -328,10 +366,9 @@
                     url: 'get_student',
                     dataType: 'json',
                     data: function (params) {
-                        var query = {
+                        return {
                             search: params.term
-                        }
-                        return query;
+                        };
                     },
                 }
             });
@@ -343,10 +380,9 @@
                     url: 'get_teacher',
                     dataType: 'json',
                     data: function (params) {
-                        var query = {
+                        return {
                             search: params.term
-                        }
-                        return query;
+                        };
                     },
                 }
             });
@@ -358,11 +394,10 @@
                     url: 'get_teacher',
                     dataType: 'json',
                     data: function (params) {
-                        var query = {
+                        return {
                             search: params.term,
                             type: "teacher2"
-                        }
-                        return query;
+                        };
                     },
                 }
             });
@@ -374,10 +409,10 @@
                     url: 'get_teacher',
                     dataType: 'json',
                     data: function (params) {
-                        var query = {
-                            search: params.term
-                        }
-                        return query;
+                        return {
+                            search: params.term,
+                            type: "teacher2"
+                        };
                     },
                 }
             });

@@ -21,12 +21,12 @@ class Home extends Component
 
     public $file = [];
     protected $rules = [
-        "file.*" => "required|mimes:doc,dot,pdf,docx",
+        "file.*" => "required|mimes:pdf",
     ];
 
     protected $messages = [
         "file.required" => "กรุณาเลือกไฟล์เอกสาร",
-        "file.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf,docx)",
+        "file.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (pdf)",
     ];
 
     public function render(): View|\Illuminate\Foundation\Application|Factory|Application
@@ -54,16 +54,16 @@ class Home extends Component
         try {
             //store image
             $upload_locate = "/file/project/";
-
             //start Transaction
             DB::beginTransaction();
             $this->project->status = $this->nextStatus();
             $this->project->save();
-            foreach ($this->file as $file) {
+            $times = File::query()->where("title", "like", "%" . $this->project->master_status->name . "%")->count();
+            foreach ($this->file as $i => $file) {
                 $pname = $file->getFilename();
                 $file->storeAs($upload_locate, $pname, "public");
                 File::create([
-                    "title" => "step " . $this->step,
+                    "title" => $this->project->master_status->name . "ครั้งที่ " . $times + 1 . " ไฟล์ที่ " . $i + 1,
                     "project_id" => $this->project->id,
                     "is_link" => 0,
                     "path" => $upload_locate . $pname,

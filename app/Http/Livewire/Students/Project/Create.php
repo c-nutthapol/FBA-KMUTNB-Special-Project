@@ -26,7 +26,8 @@ class Create extends Component
     //varible
     public $form;
     //file
-    public $file_teacher;
+    public $file_teacher = [];
+    public $file_teacher1 = [];
     public $file_project = [];
 
     //validation
@@ -37,7 +38,8 @@ class Create extends Component
         "form.student_1.department" => "required",
         "form.teacher_1" => "required",
         "form.teacher_3" => "required",
-        "file_project.*" => "required|mimes:doc,dot,pdf,docx",
+        "file_project.*" => "required|mimes:pdf",
+
     ];
 
     protected array $messages = [
@@ -48,7 +50,7 @@ class Create extends Component
         "form.teacher_1.required" => "กรุณาเลือกอาจารย์ที่ปรึกษาหลัก",
         "form.teacher_3.required" => "กรุณาเลือกประธานสอบ",
         "file_project.required" => "กรุณาเลือกไฟล์เอกสาร",
-        "file_project.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,dot,pdf,docx)",
+        "file_project.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (pdf)",
     ];
 
     public function mount(): void
@@ -70,6 +72,11 @@ class Create extends Component
             "teacher_2" => "",
             "teacher_3" => "",
             "external" => collect([
+                "fname" => "",
+                "lname" => "",
+                "file" => "",
+            ]),
+            "external1" => collect([
                 "fname" => "",
                 "lname" => "",
                 "file" => "",
@@ -99,19 +106,41 @@ class Create extends Component
     {
         $s = false;
         $this->validate();
+        // add teacher2 validate
         if ($this->form->get("teacher_2") === "external") {
             $this->validate(
                 [
                     "form.external.fname" => "required",
                     "form.external.lname" => "required",
+                    "file_teacher.*" => "required|mimes:pdf",
+
                 ],
                 [
                     "form.external.fname.required" => "กรุณากรอกชื่อ",
                     "form.external.lname.required" => "กรุณากรอกนามสกุล",
-                    "file_teacher.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (doc,pdf)",
+                    "file_teacher.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (pdf)",
+
                 ]
             );
         }
+        // add teacher3 validate
+        if ($this->form->get("teacher_3") === "external") {
+            $this->validate(
+                [
+                    "form.external1.fname" => "required",
+                    "form.external1.lname" => "required",
+                    "file_teacher1.*" => "required|mimes:pdf",
+
+                ],
+                [
+                    "form.external1.fname.required" => "กรุณากรอกชื่อ",
+                    "form.external1.lname.required" => "กรุณากรอกนามสกุล",
+                    "file_teacher1.*.mimes" => "กรุณาเลือกประเภทไฟล์ที่กำหนดเท่านั้น (pdf)",
+
+                ]
+            );
+        }
+        // add student2 validation
         if ($this->form->get("student_2")["id"] != "") {
             $this->validate(
                 [
@@ -124,31 +153,30 @@ class Create extends Component
                 ]
             );
         }
-        //begin Transaction
+        // begin Transaction
         try {
-            //store image
-            $upload_locate = "/file/project/";
-            $tname = $this->file_teacher?->getFilename();
-
-            $this->file_teacher?->storeAs($upload_locate, $tname, "public");
-            //start Transaction
             DB::beginTransaction();
+            // image location
+            $upload_locate = "/file/project/";
             $project = Project::create([
                 "name_th" => $this->form->get("name_th"),
                 "name_en" => $this->form->get("name_en"),
                 "status" => 1,
                 "edu_term_id" => $this->term->id,
             ]);
-            foreach ($this->file_project as $file) {
+            //project file
+            foreach ($this->file_project as $i => $file) {
                 $file->storeAs($upload_locate, $file->getFilename(), "public");
 
                 File::create([
-                    "title" => "step 1",
+                    "title" => "สอบหัวข้อครั้งที่ " . File::query()->whereJsonContains("title", "สอบหัวข้อ")->count() + 1 . " ไฟล์ที่ " . $i + 1,
                     "project_id" => $project->id,
                     "is_link" => 0,
                     "path" => "/file/project/" . $file->getFilename(),
                 ]);
             }
+
+
             User::where("id", $this->form->get("student_1")["id"])->update([
                 "room" => $this->form->get("student_1")["room"],
                 "department" => $this->form->get("student_1")["department"],
@@ -157,7 +185,6 @@ class Create extends Component
             //add users to project
             $project->users()->attach($this->form->get("student_1")["id"], ["role" => "student1"]);
             $project->users()->attach($this->form->get("teacher_1"), ["role" => "teacher1"]);
-            $project->users()->attach($this->form->get("teacher_3"), ["role" => "teacher3"]);
             //check null
             if ($this->form->get("student_2")["id"]) {
                 $project->users()->attach($this->form->get("student_2")["id"], ["role" => "student2"]);
@@ -166,7 +193,7 @@ class Create extends Component
                     "department" => $this->form->get("student_2")["department"],
                 ]);
             }
-            //if external
+            //if external teacher2
             if ($this->form->get("teacher_2") == "external") {
                 $user = User::updateorCreate([
                     "displayname" =>
@@ -174,22 +201,53 @@ class Create extends Component
                     "role_id" => 4,
                 ]);
                 $project->users()->attach($user->id, ["role" => "teacher2"]);
-                //store file
-                File::create([
-                    "title" => "teacher",
-                    "project_id" => $project->id,
-                    "is_link" => 0,
-                    "path" => "/file/project/" . $tname,
-                ]);
+                //teaher file
+                foreach ($this->file_teacher as $file) {
+                    $file->storeAs($upload_locate, $file->getFilename(), "public");
+
+                    File::create([
+                        "title" => "หนังสือแต่งตั้งที่ปรึกษาร่วม",
+                        "project_id" => $project->id,
+                        "is_link" => 0,
+                        "path" => "/file/project/" . $file->getFilename(),
+                    ]);
+                }
+
             } else if ($this->form->get("teacher_2")) {
                 $project->users()->attach($this->form->get("teacher_2"), ["role" => "teacher2"]);
+            }
+            //if external teacher3
+            if ($this->form->get("teacher_3") == "external") {
+                $user = User::updateorCreate([
+                    "displayname" =>
+                        $this->form->get("external1")["fname"] . " " . $this->form->get("external1")["lname"],
+                    "role_id" => 4,
+                ]);
+                $project->users()->attach($user->id, ["role" => "teacher3"]);
+                foreach ($this->file_teacher1 as $file) {
+                    $file->storeAs($upload_locate, $file->getFilename(), "public");
+                    File::create([
+                        "title" => "หนังสือแต่งตั้งประธานสอบ",
+                        "project_id" => $project->id,
+                        "is_link" => 0,
+                        "path" => "/file/project/" . $file->getFilename(),
+                    ]);
+                }
+            } else if ($this->form->get("teacher_3")) {
+                $project->users()->attach($this->form->get("teacher_3"), ["role" => "teacher3"]);
+
             }
             DB::commit();
             $this->cleanupOldUploads();
             foreach ($this->file_project as $file) {
                 $file->delete();
             }
-            $this->file_teacher?->delete();
+            foreach ($this->file_teacher as $file) {
+                $file->delete();
+            }
+            foreach ($this->file_teacher1 as $file) {
+                $file->delete();
+            }
             $this->emit("alert", ["status" => "success", "title" => "บันทึกสำเร็จ"]);
 
             $s = true;
