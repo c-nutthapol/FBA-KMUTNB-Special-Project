@@ -10,7 +10,7 @@
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-clock-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         ประวัติการส่งคำร้อง
                     </h5>
                 </div>
@@ -19,21 +19,21 @@
                         <table
                             class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-black dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr>
+                                <tr class="text-black dark:text-slate-300">
                                     <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         คำร้อง
                                     </th>
                                     <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         วันที่เขียนคำร้อง
                                     </th>
                                     <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         สถานะ
                                     </th>
                                     <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none text-black opacity-70 shadow-none dark:border-slate-600">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         รายละเอียด
                                     </th>
                                 </tr>
@@ -43,19 +43,19 @@
                                     <tr>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                            <h6 class="mb-0 text-sm leading-normal dark:text-slate-400 text-black">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
                                                 {{ $request->master_requests->name }}
                                             </h6>
                                         </td>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                             <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-slate-400">
+                                                class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
                                                 {{ dateThai($request->create_at) }}
                                             </span>
                                             <span
-                                                class="ml-2 inline-block text-xs font-semibold leading-tight text-black dark:text-slate-400">
+                                                class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-clock-fill"></i> {{ date('H:m', $request->create_at) }}
                                                 น.
                                             </span>
@@ -64,17 +64,17 @@
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                             @if (in_array($request->status, [22, 23, 25]))
                                                 <span
-                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-gray-500 to-teal-400 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-gray-500 to-teal-400 py-1.4 px-2.5 text-center align-baseline font-bold uppercase leading-none tracking-wider text-white">
                                                     รออนุมัติ
                                                 </span>
                                             @elseif($request->status == 26)
                                                 <span
-                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-emerald-500 to-teal-400 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-emerald-500 to-teal-400 py-1.4 px-2.5 text-center align-baseline font-bold uppercase leading-none tracking-wider text-white">
                                                     อนุมัติ
                                                 </span>
                                             @elseif (in_array($request->status, [24, 27]))
                                                 <span
-                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-red-600 to-orange-600 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-red-600 to-orange-600 py-1.4 px-2.5 text-center align-baseline font-bold uppercase leading-none tracking-wider text-white">
                                                     ไม่อนุมัติ
                                                 </span>
                                             @endif
@@ -83,14 +83,13 @@
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
 
-
                                             @if (
                                                 !$request->modified_at &&
                                                     $request->status == 26 &&
                                                     in_array($request->title, [1, 2, 3]) &&
                                                     Carbon\Carbon::now()->timestamp <= $request->updated_at->addDays($config_day[$request->title])->timestamp)
                                                 <button type="button"
-                                                    class="btn from-blue-500 to-violet-500 text-xs text-white"
+                                                    class="btn from-blue-500 to-violet-500 text-white"
                                                     data-modal-target="modalChangeRequest"
                                                     data-modal-toggle="modalChangeRequest"
                                                     onclick="@this.emit('getModal',{{ $request->id }})">
@@ -100,8 +99,7 @@
                                                     </div>
                                                 </button>
                                             @endif
-                                            <button type="button"
-                                                class="btn from-blue-500 to-violet-500 text-xs text-white"
+                                            <button type="button" class="btn from-blue-500 to-violet-500 text-white"
                                                 data-modal-target="viewModal" data-modal-toggle="viewModal">
                                                 <div class="flex flex-row items-center gap-3">
                                                     <i class="bi bi-eye-fill leading-0"></i>
@@ -130,7 +128,7 @@
             <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         รายละเอียด
                     </h3>
                     <button type="button"
@@ -171,3 +169,4 @@
     </div>
 
 </div>
+

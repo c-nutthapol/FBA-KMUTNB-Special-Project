@@ -6,7 +6,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-plus-lg leading-0"></i> เพิ่มขั้นตอนโครงงาน
                 </h3>
                 <button type="button"
@@ -36,7 +36,7 @@
                 </div>
                 <div id="modal-project-step-create" class="grid grid-cols-2 gap-4">
                     <div class="col-span-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ภาคเรียน/ปีการศึกษา
                         </label>
                         <div class="flex flex-row gap-4">
@@ -46,7 +46,7 @@
                                            name="edu_term_id" wire:model.defer="edu_term_id"
                                            class="w-4 h-4 input-radio">
                                     <label for="term-{{ $key }}"
-                                           class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-80">
+                                           class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-80">
                                         {{ $edu_term->term }}/{{ $edu_term->year }}
                                     </label>
                                 </div>
@@ -57,21 +57,21 @@
                         @enderror
                     </div>
                     <div class="col-span-2">
-                        <h4 class="mb-0 text-base tracking-wide dark:text-white dark:opacity-80">
+                        <h4 class="mb-0 text-base tracking-wide dark:text-slate-300 dark:opacity-80">
                             ขั้นตอนการทำงาน
                         </h4>
                     </div>
-                    <div class="col-span-2 p-3 bg-gray-100 rounded-lg">
+                    <div class="col-span-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                         <div class="flex items-center mb-2">
                             <input id="steps-1" type="checkbox" wire:model.defer="phase_1_status"
                                    class="w-4 h-4 input-checkbox">
                             <label for="steps-1"
-                                   class="ml-2 text-base tracking-wide dark:text-white dark:opacity-80">สอบหัวข้อ</label>
+                                   class="ml-2 text-base tracking-wide dark:text-slate-300 dark:opacity-80">สอบหัวข้อ</label>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
                                 <input type="date" id="phase_1_start_date" wire:model.defer="phase_1_start_date" class="input"/>
@@ -81,7 +81,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
                                 <input type="date" id="phase_1_end_date" wire:model.defer="phase_1_end_date" class="input"/>
@@ -94,17 +94,17 @@
                     </div>
 
 
-                    <div class="col-span-2 p-3 bg-gray-100 rounded-lg">
+                    <div class="col-span-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                         <div class="flex items-center mb-2">
                             <input id="steps-3" type="checkbox" wire:model.defer="phase_2_status"
                                    class="w-4 h-4 input-checkbox">
                             <label for="steps-3"
-                                   class="ml-2 text-base tracking-wide dark:text-white dark:opacity-80">ยื่นขอสอบความก้าวหน้า</label>
+                                   class="ml-2 text-base tracking-wide dark:text-slate-300 dark:opacity-80">ยื่นขอสอบความก้าวหน้า</label>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
                                 <input type="date" id="phase_2_start_date" class="input" wire:model.defer="phase_2_start_date"/>
@@ -114,7 +114,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
                                 <input type="date" id="phase_2_end_date" wire:model.defer="phase_2_end_date" class="input"/>
@@ -126,17 +126,17 @@
                         </div>
                     </div>
 
-                    <div class="col-span-2 p-3 bg-gray-100 rounded-lg">
+                    <div class="col-span-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                         <div class="flex items-center mb-2">
                             <input id="steps-4" type="checkbox" wire:model.defer="phase_3_status"
                                    class="w-4 h-4 input-checkbox">
                             <label for="steps-4"
-                                   class="ml-2 text-base tracking-wide dark:text-white dark:opacity-80">ยื่นขอสอบป้องกัน</label>
+                                   class="ml-2 text-base tracking-wide dark:text-slate-300 dark:opacity-80">ยื่นขอสอบป้องกัน</label>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
                                 <input type="date" id="phase_3_start_date" class="input" wire:model.defer="phase_3_start_date"/>
@@ -146,7 +146,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
                                 <input type="date" id="phase_3_end_date" class="input" wire:model.defer="phase_3_end_date"/>
@@ -157,17 +157,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2 p-3 bg-gray-100 rounded-lg">
+                    <div class="col-span-2 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                         <div class="flex items-center mb-2">
                             <input id="steps-5" type="checkbox" wire:model.defer="phase_4_status"
                                    class="w-4 h-4 input-checkbox">
                             <label for="steps-5"
-                                   class="ml-2 text-base tracking-wide dark:text-white dark:opacity-80">ส่งเล่ม</label>
+                                   class="ml-2 text-base tracking-wide dark:text-slate-300 dark:opacity-80">ส่งเล่ม</label>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่เริ่ม
                                 </label>
                                 <input type="date" id="phase_4_start_date" class="input" wire:model.defer="phase_4_start_date"/>
@@ -177,7 +177,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     วันที่สิ้นสุด
                                 </label>
                                 <input type="date" id="phase_4_end_date" class="input" wire:model.defer="phase_4_end_date"/>

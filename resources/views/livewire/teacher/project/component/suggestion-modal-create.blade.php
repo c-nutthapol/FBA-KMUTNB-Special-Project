@@ -7,7 +7,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-plus-lg leading-0"></i> เพิ่มข้อเสนอแนะ
                 </h3>
                 <button type="button"
@@ -27,7 +27,7 @@
                 <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                 @foreach ($suggestion as $item)
                     <div class="flex flex-col space-y-3">
-                        {{-- <h4 class="mb-0 text-base font-bold tracking-wide text-gray-800 dark:text-white dark:opacity-60">
+                        {{-- <h4 class="mb-0 text-base font-bold tracking-wide text-gray-800 dark:text-slate-300 dark:opacity-60">
                             หัวข้อที่ผิดบ่อย</h4> --}}
                         <div class="flex items-start">
                             <input id="{{$item->id}}" type="checkbox" wire:model.defer="suggestionId" value="{{$item->id}}" class="mt-1 input-checkbox">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     {{-- <div class="flex flex-col space-y-3">
-                        <h4 class="mb-0 text-base font-bold tracking-wide text-gray-800 dark:text-white dark:opacity-60">
+                        <h4 class="mb-0 text-base font-bold tracking-wide text-gray-800 dark:text-slate-300 dark:opacity-60">
                             การจัดรูปแบบการพิมพ์ที่ผิดบ่อย
                         </h4>
                         <div class="flex items-start">
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                         ข้อเสนอแนะอื่น ๆ
                     </label>
                     <textarea class="h-auto input" placeholder="ข้อเสนอแนะอื่น ๆ" rows="3" wire:model.defer="note"></textarea>

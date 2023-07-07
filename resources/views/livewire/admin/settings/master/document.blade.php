@@ -1,19 +1,21 @@
 <div>
-    <div class="flex flex-wrap -mx-3">
-        <div class="flex-none w-full max-w-full px-3">
+    <div class="-mx-3 flex flex-wrap">
+        <div class="w-full max-w-full flex-none px-3">
             <div
-                class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
                 <div
-                    class="flex flex-col items-start justify-start gap-4 p-6 mb-0 border-b-0 sm:items-center sm:justify-between sm:flex-row border-b-solid rounded-t-2xl border-b-transparent">
+                    class="border-b-solid mb-0 flex flex-col items-start justify-start gap-4 rounded-t-2xl border-b-0 border-b-transparent p-6 sm:flex-row sm:items-center sm:justify-between">
                     <div class="flex flex-row items-center space-x-4">
-                        <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                            <i class="text-2xl text-white bi bi-chat-dots-fill leading-0 dark:text-blue-500"></i>
+                        <div
+                            class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                            <i class="bi bi-chat-dots-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                         </div>
-                        <h5 class="mb-0 tracking-wide dark:text-white">
+                        <h5 class="mb-0 tracking-wide dark:text-slate-300">
                             เอกสารดาวน์โหลด
                         </h5>
                     </div>
-                    <button type="button" id="btninsert" class="w-full text-sm text-white sm:w-auto btn from-blue-500 to-violet-500"
+                    <button type="button" id="btninsert"
+                        class="btn w-full from-blue-500 to-violet-500 text-sm text-white sm:w-auto"
                         data-modal-target="createModal" data-modal-toggle="createModal">
                         <div class="flex flex-row items-center justify-center gap-3">
                             <i class="bi bi-plus-lg leading-0"></i>
@@ -22,52 +24,53 @@
                     </button>
                 </div>
 
-                <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-end sm:flex-row">
+                <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-end">
                     <div class="flex flex-col gap-3 sm:flex-row">
                         <div class="flex-1">
                             <label for="search" class="sr-only">Search</label>
                             <div class="relative w-full">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <i class="bi bi-search text-lg leading-0 text-gray-500 dark:text-gray-400"></i>
                                 </div>
-                                <input type="text" id="search" wire:model="search" class="pl-10 input" placeholder="ค้นหา">
+                                <input type="text" id="search" wire:model="search" class="input pl-10"
+                                    placeholder="ค้นหา">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex-wrap flex-auto p-6">
-                    <div class="p-0 overflow-x-auto">
+                <div class="flex-auto flex-wrap p-6">
+                    <div class="overflow-x-auto p-0">
                         <table
-                            class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
+                            class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr>
+                                <tr class="text-black dark:text-slate-300">
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ลำดับ
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ชื่อไฟล์
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ไฟล์
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         วันที่
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ปักหมุด
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         สถานะ
                                     </th>
                                     <th
-                                        class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         รายละเอียด
                                     </th>
                                 </tr>
@@ -76,23 +79,21 @@
                                 @forelse ($data as $key => $item)
                                     <tr>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $data->firstItem() + $loop->index }}
                                             </span>
                                         </td>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
                                                 {{ $item->name ?? '' }}
                                             </span>
                                         </td>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                             <a href="{{ asset('storage') }}/{{ $item->file }}"
-                                                class="inline-block text-sm font-bold leading-normal text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
+                                                class="inline-block cursor-pointer rounded-lg align-middle text-sm font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-download leading-0"></i>
                                                     <span class="block">โหลดเอกสาร</span>
@@ -100,57 +101,55 @@
                                             </a>
                                         </td>
                                         <td
-                                            class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
-                                                {{ $item->date ?? '-'  }}
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="inline-block leading-tight text-black dark:text-slate-300">
+                                                {{ $item->date ?? '-' }}
                                             </span>
                                         </td>
                                         <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            @if ($item->pin  == 'active')
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            @if ($item->pin == 'active')
                                                 <span
-                                                    class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-blue-500 to-violet-400 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
                                                     ปักหมุด
                                                 </span>
                                             @endif
-                                            @if ($item->pin  == 'inactive')
+                                            @if ($item->pin == 'inactive')
                                                 <span
-                                                    class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-pink-500 to-rose-400 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
                                                     ไม่ปักหมุด
                                                 </span>
                                             @endif
                                         </td>
                                         <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
-                                            @if ($item->status  == 'active')
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                            @if ($item->status == 'active')
                                                 <span
-                                                    class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-blue-500 to-violet-400 align-baseline font-bold uppercase leading-none text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-blue-500 to-violet-400 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
                                                     active
                                                 </span>
                                             @endif
-                                            @if ($item->status  == 'inactive')
+                                            @if ($item->status == 'inactive')
                                                 <span
-                                                    class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-rose-400 align-baseline font-bold uppercase leading-none text-white">
+                                                    class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-pink-500 to-rose-400 py-1.4 px-2.5 text-center align-baseline text-xs font-bold uppercase leading-none tracking-wider text-white">
                                                     inactive
                                                 </span>
                                             @endif
                                         </td>
                                         <td
-                                            class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
                                             <div class="flex flex-row justify-end gap-3">
                                                 <button type="button" data-modal-target="editModal"
                                                     data-modal-toggle="editModal"
                                                     wire:click="edit({{ $item->id }},'{{ $item->name }}','{{ $item->status }}','{{ $item->pin }}','{{ $item->date }}','{{ $item->file }}')"
-                                                    class="inline-block text-sm font-bold leading-normal text-center text-yellow-300 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-yellow-500">
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-yellow-300 transition-all ease-in hover:text-yellow-500">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-pencil-square leading-0"></i>
                                                         <span class="block">แก้ไข</span>
                                                     </div>
                                                 </button>
-                                                <button type="button"
-                                                wire:click="$emit('delete',{{ $item->id }})"
-                                                    class="inline-block text-sm font-bold leading-normal text-center uppercase align-middle transition-all ease-in rounded-lg cursor-pointer text-rose-500 hover:text-rose-800">
+                                                <button type="button" wire:click="$emit('delete',{{ $item->id }})"
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-rose-500 transition-all ease-in hover:text-rose-800">
                                                     <div class="flex flex-row items-center gap-2">
                                                         <i class="bi bi-trash3 leading-0"></i>
                                                         <span class="block">ลบ</span>
@@ -160,9 +159,9 @@
                                         </td>
                                     </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="5" class="text-black"> ไม่พบข้อมูล </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -174,20 +173,20 @@
     </div>
 
     <!-- Create Modal -->
-    <div id="createModal" data-modal-backdrop="static"  wire:ignore.self tabindex="-1" aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-        <div class="relative w-full h-full max-w-2xl md:h-auto">
+    <div id="createModal" data-modal-backdrop="static" wire:ignore.self tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+        <div class="relative h-full w-full max-w-2xl md:h-auto">
             <!-- Modal content -->
-            <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
+            <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="submit">
                 <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-plus-lg leading-0"></i> เพิ่มเอกสารดาวน์โหลด
                     </h3>
                     <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="createModal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -200,10 +199,11 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ชื่อ
                             </label>
-                            <input type="text" id="name" wire:model="name" class="input" placeholder="กรุณากรอกชื่อ" required></input>
+                            <input type="text" id="name" wire:model="name" class="input"
+                                placeholder="กรุณากรอกชื่อ" required></input>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -211,31 +211,31 @@
                         </div>
                     </div>
                     <div>
-                        <label class="mb-1 mt-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 mt-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             วันที่
                         </label>
                         <input type="date" id="date" class="input" wire:model.defer="date" />
                         @error('date')
-                            <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                            <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-span-2 mt-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             สถานะปักหมุด
                         </label>
                         <div class="flex items-center">
                             <input id="term-1" type="radio" value="active" name="pin"
-                                class="w-4 h-4 input-radio" wire:model.defer="pin">
+                                class="input-radio h-4 w-4" wire:model.defer="pin">
                             <label for="term-1"
-                                class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                 ปักหมุด
                             </label>
                         </div>
                         <div class="flex items-center">
                             <input id="term-2" type="radio" value="inactive" name="pin"
-                                class="w-4 h-4 input-radio" wire:model.defer="pin">
+                                class="input-radio h-4 w-4" wire:model.defer="pin">
                             <label for="term-2"
-                                class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                 ไม่ปักหมุด
                             </label>
                         </div>
@@ -246,7 +246,7 @@
                 <div class="inline-block w-auto p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 อัพโหลด
                             </label>
                         </div>
@@ -254,32 +254,29 @@
                 </div>
                 <div class="inline-block w-auto pb-6">
                     <div class="flex flex-row gap-3">
-                        <input class="input h-full p-0"
-                        type="file"
-                        id="docFile"
-                        wire:model="file"
-                        accept = "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                        text/plain, application/pdf, image/*"
-                        >
+                        <input class="input h-full p-0" type="file" id="docFile" wire:model="file"
+                            accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                        text/plain, application/pdf, image/*">
                         <div wire:loading wire:target="file">Uploading...</div>
-                        @error('file') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('file')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         {{-- <label class="custom-file-label text-success" for="docFile">
                             อัพโหลดสำเร็จ
                         </label> --}}
-
 
                     </div>
 
                     {{-- <div class="invalid-feedback">กรุณาแทรกไฟล์</div>
                     @error('file') <span class="text-danger">{{ $message }}</span> @enderror --}}
-                        {{-- @if($file)
+                    {{-- @if ($file)
 
                         @else
                             <label class="custom-file-label" for="docFile">
                                 อัพโหลด ไฟล์เอกสาร
                             </label>
                         @endif --}}
-                        {{-- <div wire:loading wire:target="file">Uploading...</div>
+                    {{-- <div wire:loading wire:target="file">Uploading...</div>
                             <div class="invalid-feedback">กรุณาแทรกไฟล์</div>
                             @error('file') <span class="text-danger">{{ $message }}</span> @enderror
                         </div> --}}
@@ -287,12 +284,13 @@
                 </div>
                 <!-- Modal footer -->
                 <div
-                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    class="flex items-center justify-end space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
                     <button data-modal-hide="createModal" type="button"
-                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                        class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                         ยกเลิก
                     </button>
-                    <button type="submit" id="submit" class="text-sm font-medium text-white btn from-blue-500 to-violet-500">
+                    <button type="submit" id="submit"
+                        class="btn from-blue-500 to-violet-500 text-sm font-medium text-white">
                         <div class="flex flex-row items-center gap-3">
                             <i class="bi bi-save-fill leading-0"></i>
                             <span class="block">บันทึก</span>
@@ -313,22 +311,21 @@
         </div>
     </div>
 
-
     <!-- Edit Modal -->
     <div id="editModal" data-modal-backdrop="static" wire:ignore.self tabindex="-1" aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-        <div class="relative w-full h-full max-w-2xl md:h-auto">
+        class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+        <div class="relative h-full w-full max-w-2xl md:h-auto">
             <!-- Modal content -->
-            <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="update">
+            <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="update">
                 <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-pencil-square leading-0"></i> แก้ไขเอกสารดาวน์โหลด
                     </h3>
                     <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="editModal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -341,101 +338,103 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ชื่อ
                             </label>
-                            <input type="text" wire:model="t_name" class="input" placeholder="กรุณากรอกชื่อ" required></input>
+                            <input type="text" wire:model="t_name" class="input" placeholder="กรุณากรอกชื่อ"
+                                required></input>
                             @error('t_name')
-                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 วันที่
                             </label>
                             <input type="date" class="input" wire:model.defer="t_date" />
                             @error('t_date')
-                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ปักหมุด
                             </label>
                             <div class="flex flex-row gap-4">
                                 <div class="flex items-center">
                                     <input id="term-1" type="radio" value="active" name="pin"
-                                        class="w-4 h-4 input-radio" wire:model.defer="t_pin">
+                                        class="input-radio h-4 w-4" wire:model.defer="t_pin">
                                     <label for="term-1"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         ปักหมุด
                                     </label>
                                 </div>
                                 <div class="flex items-center">
                                     <input id="term-2" type="radio" value="inactive" name="pin"
-                                        class="w-4 h-4 input-radio" wire:model.defer="t_pin">
+                                        class="input-radio h-4 w-4" wire:model.defer="t_pin">
                                     <label for="term-2"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         ไม่ปักหมุด
                                     </label>
                                 </div>
                             </div>
                             @error('t_pin')
-                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
 
                         </div>
 
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 สถานะ
                             </label>
                             <div class="flex flex-row gap-4">
                                 <div class="flex items-center">
                                     <input id="term-1" type="radio" value="active" name="status"
-                                        class="w-4 h-4 input-radio" wire:model.defer="t_status">
+                                        class="input-radio h-4 w-4" wire:model.defer="t_status">
                                     <label for="term-1"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         active
                                     </label>
                                 </div>
                                 <div class="flex items-center">
                                     <input id="term-2" type="radio" value="inactive" name="status"
-                                        class="w-4 h-4 input-radio" wire:model.defer="t_status">
+                                        class="input-radio h-4 w-4" wire:model.defer="t_status">
                                     <label for="term-2"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="dark:opacity-800 ml-2 cursor-pointer text-sm tracking-wide dark:text-slate-300">
                                         inactive
                                     </label>
                                 </div>
                             </div>
                             @error('t_status')
-                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
 
                         </div>
 
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ไฟล์
                             </label>
-                            <input class="input h-full p-0"
-                            type="file"
-                            id="docFile"
-                            wire:model="t_file"
-                            accept = "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                            text/plain, application/pdf, image/*"
-                            >
+                            <input class="input h-full p-0" type="file" id="docFile" wire:model="t_file"
+                                accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                            text/plain, application/pdf, image/*">
                             <div wire:loading wire:target="t_file">Uploading...</div>
                             @error('t_file')
-                                <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                <span
+                                    class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                             @enderror
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกเอกสารดาวน์โหลด</span> --}}
                         </div>
 
                         {{-- <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 สถานะ
                             </label>
                             <div class="flex flex-row gap-4">
@@ -443,7 +442,7 @@
                                     <input id="term-1" type="radio" value="active" name="status"
                                         class="w-4 h-4 input-radio" wire:model.defer="t_status">
                                     <label for="term-1"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         active
                                     </label>
                                 </div>
@@ -451,7 +450,7 @@
                                     <input id="term-2" type="radio" value="inactive" name="status"
                                         class="w-4 h-4 input-radio" wire:model.defer="t_status">
                                     <label for="term-2"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         inactive
                                     </label>
                                 </div>
@@ -462,19 +461,19 @@
 
                         </div> --}}
 
-
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div
-                    class="flex items-center justify-end p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    class="flex items-center justify-end space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
                     <button data-modal-hide="editModal" type="button"
-                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                        class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                         ยกเลิก
                     </button>
-                    <button type="submit" id="editsubmit" class="text-sm font-medium text-white btn from-orange-400 to-yellow-400">
+                    <button type="submit" id="editsubmit"
+                        class="btn from-orange-400 to-yellow-400 text-sm font-medium text-white">
                         <div class="flex flex-row items-center gap-3">
-                            <i class="text-base bi bi-pencil-square leading-0"></i>
+                            <i class="bi bi-pencil-square text-base leading-0"></i>
                             <span class="block">แก้ไข</span>
                         </div>
                         {{-- loading --}}
@@ -495,30 +494,31 @@
 </div>
 
 @push('script')
-<script>
-    document.addEventListener('livewire:load', function() {
-        @this.on('delete', (id) => {
-            Swal.fire({
-                title: 'คุณต้องการลบข้อมูลนี้หรือไม่?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'ใช่',
-                cancelButtonText: 'ไม่',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    @this.call('delete', id)
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    Swal.fire(
-                        'Cancelled',
-                        'Your data is safe :)',
-                        'error'
-                    )
-                }
+    <script>
+        document.addEventListener('livewire:load', function() {
+            @this.on('delete', (id) => {
+                Swal.fire({
+                    title: 'คุณต้องการลบข้อมูลนี้หรือไม่?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'ใช่',
+                    cancelButtonText: 'ไม่',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        @this.call('delete', id)
+                    } else if (
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        Swal.fire(
+                            'Cancelled',
+                            'Your data is safe :)',
+                            'error'
+                        )
+                    }
+                })
             })
         })
-    })
-</script>
+    </script>
 @endpush
+

@@ -1,26 +1,26 @@
 @section('title', $title)
 
-<div class="flex flex-wrap -mx-3">
-    <div class="flex-none w-full max-w-full px-3">
+<div class="-mx-3 flex flex-wrap">
+    <div class="w-full max-w-full flex-none px-3">
         <div
-            class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+            class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
             <div
-                class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                    <i class="text-2xl text-white bi bi-person-badge-fill leading-0 dark:text-blue-500"></i>
+                class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
+                <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                    <i class="bi bi-person-badge-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     {{ $title }}
                 </h5>
             </div>
 
-            <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
+            <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <select wire:model="order_by" class="select">
-                        <option value="DESC">
+                    <select wire:model="order_by" class="select dark:text-slate-300">
+                        <option value="DESC" class="text-black">
                             เวลาเข้าใช้งานล่าสุด
                         </option>
-                        <option value="ASC">
+                        <option value="ASC" class="text-black">
                             เวลาเข้าใช้งานเก่าสุด
                         </option>
                     </select>
@@ -29,35 +29,36 @@
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="bi bi-search text-lg leading-0 text-gray-500 dark:text-gray-400"></i>
                             </div>
-                            <input type="text" id="search" wire:model="search" class="pl-10 input" placeholder="ค้นหา">
+                            <input type="text" id="search" wire:model="search" class="input pl-10"
+                                placeholder="ค้นหา">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flex-wrap flex-auto p-6">
-                <div class="p-0 overflow-x-auto">
+            <div class="flex-auto flex-wrap p-6">
+                <div class="overflow-x-auto p-0">
                     <table
-                        class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
+                        class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr>
+                            <tr class="text-black dark:text-slate-300">
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อ-นามสกุล
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     IP Address
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     เบราว์เซอร์
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     เวลาเข้าใช้ล่าสุด
                                 </th>
 
@@ -67,44 +68,45 @@
                             @forelse ($logs as $log)
                                 <tr>
                                     <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row items-center gap-2">
-                                            <h6 class="mb-0 text-sm text-black leading-normal dark:text-black">
-                                                {{ $log->user->fullname_th ?? '-'}}
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
+                                                {{ $log->user->fullname_th ?? '-' }}
                                             </h6>
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
-                                            {{ $log->ip ?? '-'}}
+                                            class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
+                                            {{ $log->ip ?? '-' }}
                                         </span>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
-                                            {{ $log->browser ?? '-'}}
+                                            class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
+                                            {{ $log->browser ?? '-' }}
                                         </span>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span
-                                            class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
-                                            <i class="bi bi-calendar2-week-fill"></i> {{ $log->created_at->thaidate() ?? '-' }}
+                                            class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
+                                            <i class="bi bi-calendar2-week-fill"></i>
+                                            {{ $log->updated_at->thaidate() ?? '-' }}
                                         </span>
                                         <span
-                                            class="inline-block ml-2 text-xs font-semibold leading-tight text-black dark:text-black">
+                                            class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-clock-fill"></i>
-                                            {{ $log->created_at->thaidate('H:i:s น.') ?? '-' }}
+                                            {{ $log->updated_at->thaidate('H:i:s น.') ?? '-' }}
                                         </span>
                                     </td>
 
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-black"> ไม่พบข้อมูล </td>
+                                    <td colspan="4" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
 
@@ -117,3 +119,4 @@
         </div>
     </div>
 </div>
+

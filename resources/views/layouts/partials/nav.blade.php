@@ -34,7 +34,7 @@
                                             </div>
                                             <div>
                                                 <h6
-                                                    class="mb-0 text-sm font-normal tracking-wide leading-0 dark:text-white">
+                                                    class="mb-0 text-sm font-normal tracking-wide leading-0 dark:text-slate-300">
                                                     บัญชีผู้ใช้
                                                 </h6>
                                             </div>
@@ -52,7 +52,7 @@
                                             </div>
                                             <div>
                                                 <h6
-                                                    class="mb-0 text-sm font-normal tracking-wide leading-0 dark:text-white">
+                                                    class="mb-0 text-sm font-normal tracking-wide leading-0 dark:text-slate-300">
                                                     ออกจากระบบ
                                                 </h6>
                                             </div>

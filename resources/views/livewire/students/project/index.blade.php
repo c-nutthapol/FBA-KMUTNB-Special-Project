@@ -10,14 +10,14 @@
                     <div class="flex h-full items-center rounded-3 bg-teal-400 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-folder-fill text-2xl leading-0 text-white dark:text-teal-400"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         <span class="block font-bold">{{ $data->project->name_th ?? '' }}</span>
                         <span
-                            class="block font-normal text-slate-600 dark:text-white">{{ $data->project->name_en ?? '' }}</span>
+                            class="block font-normal text-slate-600 dark:text-slate-300">{{ $data->project->name_en ?? '' }}</span>
                     </h5>
                 </div>
                 <div class="pb-6 sm:p-6">
-                    <span class="block text-center text-xl font-bold">สถานะ</span>
+                    <span class="block text-center text-xl font-bold dark:text-slate-300">สถานะ</span>
                     {{-- รออนุมัติ --}}
                     @if (in_array($data->project->status, [1,7,13,19]))
                         <span
@@ -75,7 +75,7 @@
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-mortarboard-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         ผู้จัดทำโครงงาน
                     </h5>
                 </div>
@@ -89,7 +89,7 @@
                                          class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                 </div>
                                 <figcaption class="space-y-1 text-center sm:text-left">
-                                    <div class="text-lg font-bold tracking-wide dark:text-white">
+                                    <div class="text-lg font-bold tracking-wide dark:text-slate-300">
                                         {{ $data->project->user_project->where('role', 'student1')->first()->user->displayname ?? '' }}
                                     </div>
                                     <div
@@ -123,7 +123,7 @@
                                              class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                     </div>
                                     <figcaption class="space-y-1 text-center sm:text-left">
-                                        <div class="text-lg font-bold tracking-wide dark:text-white">
+                                        <div class="text-lg font-bold tracking-wide dark:text-slate-300">
                                             {{ $data->project->user_project->where('role', 'student2')->first()->user->displayname ?? '' }}
                                         </div>
                                         <div
@@ -166,7 +166,7 @@
                             class="flex h-full items-center rounded-3 bg-orange-500 p-3.5 text-white dark:bg-slate-700/40">
                             <i class="bi bi-people-fill text-2xl leading-0 text-white dark:text-orange-500"></i>
                         </div>
-                        <h5 class="mb-0 tracking-wide dark:text-white">
+                        <h5 class="mb-0 tracking-wide dark:text-slate-300">
                             อาจารย์ที่ปรึกษา
                         </h5>
                     </div>
@@ -179,7 +179,7 @@
                                         <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
                                              class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                     </div>
-                                    <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                    <figcaption class="text-lg font-bold tracking-wide dark:text-slate-300">
                                         {{ $data->project->user_project->where('role', 'teacher1')->first()->user->displayname ?? '' }}
                                     </figcaption>
                                     <span
@@ -194,7 +194,7 @@
                                             <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
                                                  class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                         </div>
-                                        <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                        <figcaption class="text-lg font-bold tracking-wide dark:text-slate-300">
                                             {{ $data->project->user_project->where('role', 'teacher2')->first()->user->displayname ?? '' }}
                                         </figcaption>
                                         <span
@@ -217,7 +217,7 @@
                             class="flex h-full items-center rounded-3 bg-orange-500 p-3.5 text-white dark:bg-slate-700/40">
                             <i class="bi bi-person-workspace text-2xl leading-0 text-white dark:text-orange-500"></i>
                         </div>
-                        <h5 class="mb-0 tracking-wide dark:text-white">
+                        <h5 class="mb-0 tracking-wide dark:text-slate-300">
                             ประธานสอบ
                         </h5>
                     </div>
@@ -230,7 +230,7 @@
                                         <img src="{{ asset('assets/img/user.png') }}" alt="avatar"
                                              class="h-32 w-32 rounded-4 object-cover object-center shadow-dark-blur"/>
                                     </div>
-                                    <figcaption class="text-lg font-bold tracking-wide dark:text-white">
+                                    <figcaption class="text-lg font-bold tracking-wide dark:text-slate-300">
                                         {{ $data->project->user_project->where('role', 'teacher3')->first()->user->displayname ?? '' }}
                                     </figcaption>
                                 </figure>
@@ -252,7 +252,7 @@
             <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="submit">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-cloud-arrow-up leading-0"></i> แนบเอกสาร
                     </h3>
                     <button type="button"
@@ -270,7 +270,7 @@
                 <!-- Modal body -->
                 <div class="space-y-4 p-6">
                     <div>
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             แนบเอกสาร
                             <span class="text-rose-600">*</span>
                         </label>

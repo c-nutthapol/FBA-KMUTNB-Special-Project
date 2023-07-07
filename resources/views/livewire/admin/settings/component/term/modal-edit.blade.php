@@ -6,7 +6,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-pencil-square leading-0"></i> แก้ไขภาคเรียน
                 </h3>
                 <button type="button"
@@ -36,7 +36,7 @@
                 </div>
                 <div id="modal-term-edit" class="grid grid-cols-2 gap-4">
                     <div class="col-span-2">
-                        <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ภาคเรียน
                         </label>
                         <div class="flex flex-row gap-4">
@@ -44,7 +44,7 @@
                                 <input id="term-1" type="radio" value="1" name="term"
                                     class="w-4 h-4 input-radio" wire:model.defer="term">
                                 <label for="term-1"
-                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                     1
                                 </label>
                             </div>
@@ -52,7 +52,7 @@
                                 <input id="term-2" type="radio" value="2" name="term"
                                     class="w-4 h-4 input-radio" wire:model.defer="term">
                                 <label for="term-2"
-                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                    class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                     2
                                 </label>
                             </div>
@@ -63,7 +63,7 @@
 
                     </div>
                     <div class="col-span-2">
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             ปีการศึกษา
                         </label>
                         <input type="number" class="input" placeholder="กรุณากรอกปีการศึกษา"
@@ -73,7 +73,7 @@
                         @enderror
                     </div>
                     <div>
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             วันที่เริ่มภาคเรียน
                         </label>
                         <input type="date" class="input" wire:model.defer="start_date" />
@@ -82,7 +82,7 @@
                         @enderror
                     </div>
                     <div>
-                        <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                        <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             วันที่จบภาคเรียน
                         </label>
                         <input type="date" class="input" wire:model.defer="end_date" />

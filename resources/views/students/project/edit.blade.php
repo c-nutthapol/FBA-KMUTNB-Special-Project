@@ -25,7 +25,7 @@
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
                         <i class="bi bi-journal-plus text-2xl leading-0 text-white dark:text-blue-500"></i>
                     </div>
-                    <h5 class="mb-0 tracking-wide dark:text-white">
+                    <h5 class="mb-0 tracking-wide dark:text-slate-300">
                         สอบหัวข้อ
                     </h5>
                 </div>
@@ -34,7 +34,7 @@
                     <form wire:submit.prevent="submit">
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">ชื่อโครงงาน
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">ชื่อโครงงาน
                                     (ภาษาไทย) <span class="text-rose-600">*</span></label>
                                 <input wire:model.defer="form.name_th" type="text" class="input"
                                        placeholder="กรุณากรอกชื่อโครงงานภาษาไทย"/>
@@ -45,7 +45,7 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ชื่อโครงงาน (ภาษาอังกฤษ)
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -58,12 +58,12 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">
                             ผู้จัดทำโครงงาน
                         </h6>
                         <div class="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                             {{-- <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     สาขาวิชา
                                 </label>
                                 <select class="select">
@@ -79,7 +79,7 @@
                             </div> --}}
 
                             {{-- <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ห้อง ตัวอย่างเช่น RA RB
                                 </label>
                                 <select class="select">
@@ -96,7 +96,7 @@
                         </div>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ชื่อนักศึกษาคนที่ 1
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -109,7 +109,7 @@
                             </div>
 
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ชื่อนักศึกษาคนที่ 2
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -130,10 +130,10 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">อาจารย์ที่ปรึกษาโครงงาน</h6>
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">อาจารย์ที่ปรึกษาโครงงาน</h6>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ที่ปรึกษาหลัก
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -154,7 +154,7 @@
                             </div>
 
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ที่ปรึกษาร่วม
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -175,10 +175,10 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">ประธานสอบ</h6>
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">ประธานสอบ</h6>
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     ประธานสอบ
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -200,10 +200,10 @@
                             </div>
                         </div>
 
-                        <h6 class="mt-8 mb-4 dark:text-white dark:opacity-80">เอกสารประกอบ</h6>
+                        <h6 class="mt-8 mb-4 dark:text-slate-300 dark:opacity-80">เอกสารประกอบ</h6>
                         <div>
                             <div class="mb-2">
-                                <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                     แนบเอกสาร
                                 </label>
                                 <input class="input h-full p-0" type="file">

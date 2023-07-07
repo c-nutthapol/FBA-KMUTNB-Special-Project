@@ -13,7 +13,7 @@
                         <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
                             <i class="text-2xl text-white bi bi-calendar-week-fill leading-0 dark:text-blue-500"></i>
                         </div>
-                        <h5 class="mb-0 tracking-wide dark:text-white">
+                        <h5 class="mb-0 tracking-wide dark:text-slate-300">
                             ภาคเรียน
                         </h5>
                     </div>
@@ -135,7 +135,7 @@
                                 </li>
                                 <li>
                                     <a href="#" aria-current="page"
-                                        class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                                        class="z-10 flex items-center justify-center w-8 h-8 text-sm leading-tight text-white bg-blue-500 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-slate-300">
                                         1
                                     </a>
                                 </li>
@@ -175,7 +175,7 @@
             <form class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-plus-lg leading-0"></i> เพิ่มภาคเรียน
                     </h3>
                     <button type="button"
@@ -194,7 +194,7 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ภาคเรียน
                             </label>
                             <div class="flex flex-row gap-4">
@@ -202,7 +202,7 @@
                                     <input id="term-1" type="radio" value="" name="term"
                                         class="w-4 h-4 input-radio" checked required>
                                     <label for="term-1"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         1
                                     </label>
                                 </div>
@@ -210,7 +210,7 @@
                                     <input id="term-2" type="radio" value="" name="term"
                                         class="w-4 h-4 input-radio" required>
                                     <label for="term-2"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         2
                                     </label>
                                 </div>
@@ -218,21 +218,21 @@
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกภาคเรียน</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ปีการศึกษา
                             </label>
                             <input type="number" class="input" placeholder="กรุณากรอกปีการศึกษา" />
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกปีการศึกษา</span> --}}
                         </div>
                         <div>
-                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 วันที่เริ่มภาคเรียน
                             </label>
                             <input type="text" id="startDatePicker" class="input" />
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกวันที่เริ่มภาคเรียน</span> --}}
                         </div>
                         <div>
-                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 วันที่จบภาคเรียน
                             </label>
                             <input type="text" id="endDatePicker" class="input" />
@@ -277,7 +277,7 @@
             <form class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                         <i class="bi bi-pencil-square leading-0"></i> แก้ไขข้อเสนอแนะ
                     </h3>
                     <button type="button"
@@ -296,7 +296,7 @@
                 <div class="p-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ภาคเรียน
                             </label>
                             <div class="flex flex-row gap-4">
@@ -304,7 +304,7 @@
                                     <input id="term-1" type="radio" value="" name="term"
                                         class="w-4 h-4 input-radio" checked required>
                                     <label for="term-1"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         1
                                     </label>
                                 </div>
@@ -312,7 +312,7 @@
                                     <input id="term-2" type="radio" value="" name="term"
                                         class="w-4 h-4 input-radio" required>
                                     <label for="term-2"
-                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-white dark:opacity-800">
+                                        class="ml-2 text-sm tracking-wide cursor-pointer dark:text-slate-300 dark:opacity-800">
                                         2
                                     </label>
                                 </div>
@@ -320,21 +320,21 @@
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกภาคเรียน</span> --}}
                         </div>
                         <div class="col-span-2">
-                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 ปีการศึกษา
                             </label>
                             <input type="number" class="input" placeholder="กรุณากรอกปีการศึกษา" />
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณากรอกปีการศึกษา</span> --}}
                         </div>
                         <div>
-                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 วันที่เริ่มภาคเรียน
                             </label>
                             <input type="date" class="input" />
                             {{-- <span class="block mt-1 ml-2 text-sm tracking-wide text-rose-600">กรุณาเลือกวันที่เริ่มภาคเรียน</span> --}}
                         </div>
                         <div>
-                            <label class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                            <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                                 วันที่จบภาคเรียน
                             </label>
                             <input type="date" class="input" />

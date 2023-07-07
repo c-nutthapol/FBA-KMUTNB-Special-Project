@@ -1,14 +1,14 @@
 <div
     class="relative flex flex-col flex-wrap min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
     <div class="p-6 pb-0 mb-0">
-        <h4 class="text-3xl font-bold dark:text-white/80">ลงชื่อเข้าใช้</h4>
-        <p class="mb-0 text-lg dark:text-white/70">ระบบโครงงานพิเศษ</p>
+        <h4 class="text-3xl font-bold dark:text-slate-300/80">ลงชื่อเข้าใช้</h4>
+        <p class="mb-0 text-lg dark:text-slate-300/70">ระบบโครงงานพิเศษ</p>
     </div>
     <div class="flex-auto p-6">
         {{-- If there is an error, enter the Error class. = label class='... error', input class="... error"  --}}
         <form role="form" wire:submit.prevent="submit">
             <div class="mb-4">
-                <label for="username" class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label for="username" class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     ชื่อผู้ใช้งาน
                 </label>
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
@@ -25,7 +25,7 @@
 
             </div>
             <div>
-                <label for="password" class="mb-1 text-sm tracking-wide dark:text-white dark:opacity-80">
+                <label for="password" class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                     รหัสผ่าน
                 </label>
                 <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
@@ -41,7 +41,7 @@
                 @enderror
             </div>
             <div class="mt-2 text-right">
-                <a href="https://account.kmutnb.ac.th/web/#forget-password-section" class="text-sm tracking-wide underline hover:text-blue-500 dark:text-white">
+                <a href="https://account.kmutnb.ac.th/web/#forget-password-section" class="text-sm tracking-wide underline hover:text-blue-500 dark:text-slate-300">
                     ลืมรหัสผ่าน?
                 </a>
             </div>
@@ -67,13 +67,13 @@
 
     </div>
     {{-- <div class="rounded-b-2xl border-t-0 border-solid border-black/12.5 p-6 px-1 pt-0 text-center sm:px-6">
-        <p class="mx-auto mb-2.5 text-sm leading-normal tracking-wide dark:text-white/80">ดาวน์โหลดเอกสาร
+        <p class="mx-auto mb-2.5 text-sm leading-normal tracking-wide dark:text-slate-300/80">ดาวน์โหลดเอกสาร
             <a href="#"
                 class="font-semibold text-transparent bg-gradient-to-tl from-blue-500 to-violet-500 bg-clip-text">
                 คลิก
             </a>
         </p>
-        <p class="mx-auto text-sm leading-normal tracking-wide dark:text-white/80">ตารางดำเนินการ
+        <p class="mx-auto text-sm leading-normal tracking-wide dark:text-slate-300/80">ตารางดำเนินการ
             <a href="#"
                 class="font-semibold text-transparent bg-gradient-to-tl from-blue-500 to-violet-500 bg-clip-text">
                 คลิก

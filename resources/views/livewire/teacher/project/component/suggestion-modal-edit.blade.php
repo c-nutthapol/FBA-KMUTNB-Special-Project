@@ -7,7 +7,7 @@
         <form class="relative bg-white rounded-lg shadow dark:bg-gray-700" wire:submit.prevent="submit">
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
+                <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
                     <i class="bi bi-pencil-square leading-0"></i> แก้ไขข้อเสนอแนะ
                 </h3>
                 <button type="button"
@@ -42,7 +42,7 @@
                     @enderror
                 </div>
                 <div class="mt-3">
-                    <label class="mb-2 text-sm tracking-wide dark:text-white dark:opacity-80">
+                    <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                         ข้อเสนอแนะอื่น ๆ
                     </label>
                     <textarea class="h-auto input" placeholder="ข้อเสนอแนะอื่น ๆ" wire:model.defer="editNote" rows="3"></textarea>

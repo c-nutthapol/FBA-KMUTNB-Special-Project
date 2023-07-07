@@ -1,29 +1,29 @@
-<div class="flex flex-wrap -mx-3">
-    <div class="flex-none w-full max-w-full px-3">
+<div class="-mx-3 flex flex-wrap">
+    <div class="w-full max-w-full flex-none px-3">
         <div
-            class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+            class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
             <div
-                class="flex items-center p-6 mb-0 space-x-4 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <div class="flex items-center h-full p-3.5 rounded-3 bg-blue-500 dark:bg-slate-700/40 text-white">
-                    <i class="text-2xl text-white bi bi-person-fill-gear leading-0 dark:text-blue-500"></i>
+                class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
+                <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
+                    <i class="bi bi-person-fill-gear text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
-                <h5 class="mb-0 tracking-wide dark:text-white">
+                <h5 class="mb-0 tracking-wide dark:text-slate-300">
                     กำหนดสิทธิ์ผู้ใช้งาน
                 </h5>
             </div>
 
-            <div class="flex flex-col justify-start gap-3 px-6 sm:items-center sm:justify-between sm:flex-row">
+            <div class="flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
 
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
                     <div class="flex-1">
-                        <select class="select" wire:model="role">
-                            <option value="">
+                        <select class="select dark:text-slate-300" wire:model="role">
+                            <option value="" class="text-black">
                                 สิทธิ์ผู้ใช้งานทั้งหมด
                             </option>
                             @foreach ($roles as $role)
-                                <option value="{{ $role->id }}">
+                                <option value="{{ $role->id }}" class="text-black">
                                     {{ $role->name }}
                                 </option>
                             @endforeach
@@ -31,17 +31,17 @@
                         </select>
                     </div>
                     <div class="flex-1">
-                        <select class="select" wire:model="status">
-                            <option value="">
+                        <select class="select dark:text-slate-300" wire:model="status">
+                            <option value="" class="text-black">
                                 สถานะทั้งหมด
                             </option>
-                            <option value="active">
+                            <option value="active" class="text-black">
                                 ใช้งานปกติ
                             </option>
-                            <option value="inactive">
+                            <option value="inactive" class="text-black">
                                 ระงับการใช้งาน
                             </option>
-                            <option value="wait">
+                            <option value="wait" class="text-black">
                                 รอดำเนินการ
                             </option>
                         </select>
@@ -49,44 +49,44 @@
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <i class="text-lg text-gray-500 bi bi-search dark:text-gray-400 leading-0"></i>
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="bi bi-search text-lg leading-0 text-gray-500 dark:text-gray-400"></i>
                             </div>
-                            <input type="text" id="search" class="pl-10 input" wire:model="search"
+                            <input type="text" id="search" class="input pl-10" wire:model="search"
                                 placeholder="ค้นหา">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flex-wrap flex-auto p-6">
-                <div class="p-0 overflow-x-auto">
+            <div class="flex-auto flex-wrap p-6">
+                <div class="overflow-x-auto p-0">
                     <table
-                        class="items-center w-full mb-0 tracking-wide align-top border-gray-200 dark:border-slate-600 text-slate-500">
+                        class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
-                            <tr>
+                            <tr class="text-black dark:text-slate-300">
                                 <th
-                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อ-นามสกุล
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     วันที่เริ่มใช้งาน
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     สิทธิ์ผู้ใช้งาน
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     สถานะ
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     คำขออนุมัติใช้สิทธิ์แอดมิน
                                 </th>
                                 <th
-                                    class="px-6 py-3 font-bold text-right uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap text-black opacity-70">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     รายละเอียด
                                 </th>
                             </tr>
@@ -95,30 +95,30 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td
-                                        class="px-6 py-3 align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row items-center gap-2">
-                                            <h6 class="mb-0 text-sm leading-normal dark:text-black">
+                                            <h6 class="mb-0 leading-normal dark:text-slate-300">
                                                 {{ $user->fullname_th }}
                                             </h6>
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         @if ($user->log)
                                             <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                                class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
                                                 {{ $user->log->created_at->thaidate() }}
                                             </span>
                                         @else
                                             <span
-                                                class="inline-block text-xs font-semibold leading-tight text-black dark:text-black">
+                                                class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 ไม่พบข้อมูล
                                             </span>
                                         @endif
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="inline-block">
                                             <select class="select confirm-alert" data-id="{{ $user->id }}"
                                                 data-type="สิทธิ์ผู้ใช้งาน">
@@ -132,19 +132,19 @@
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="inline-block">
-                                            <select class="select confirm-alert" data-type="สถานะ"
+                                            <select class="select confirm-alert dark:text-slate-300" data-type="สถานะ"
                                                 data-id="{{ $user->id }}">
-                                                <option value="active"
+                                                <option value="active" class="text-black"
                                                     @if ($user->status == 'active') selected @endif>
                                                     ใช้งานปกติ
                                                 </option>
-                                                <option value="inactive"
+                                                <option value="inactive" class="text-black"
                                                     @if ($user->status == 'inactive') selected @endif>
                                                     ระงับการใช้งาน
                                                 </option>
-                                                <option value="wait"
+                                                <option value="wait" class="text-black"
                                                     @if ($user->status == 'wait') selected @endif>
                                                     รอดำเนินการ
                                                 </option>
@@ -152,20 +152,20 @@
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="inline-block">
                                             @if ($user->roleChangeAdmin && $user->roleChangeAdmin->status == 'wait')
-                                                <select class="select confirm-alert"
+                                                <select class="select confirm-alert dark:text-slate-300"
                                                     data-type="คำขออนุมัติใช้สิทธิ์แอดมิน"
                                                     data-id="{{ $user->id }}">
-                                                    <option value="">
+                                                    <option value="" class="text-black">
                                                         กรุณาเลือก
                                                     </option>
-                                                    <option value="active"
+                                                    <option value="active" class="text-black"
                                                         @if ($user->roleChangeAdmin->status == 'active') selected @endif>
                                                         อนุมัติ
                                                     </option>
-                                                    <option value="inactive"
+                                                    <option value="inactive" class="text-black"
                                                         @if ($user->roleChangeAdmin->status == 'inactive') selected @endif>
                                                         ไม่อนุมัติ
                                                     </option>
@@ -175,10 +175,10 @@
                                         </div>
                                     </td>
                                     <td
-                                        class="px-6 py-3 text-right align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
                                         <button type="button" data-modal-target="ModalUserView"
                                             data-modal-toggle="ModalUserView"
-                                            class="inline-block text-sm font-bold leading-normal text-center text-blue-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-blue-700"
+                                            class="inline-block cursor-pointer rounded-lg text-center align-middle text-sm font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700"
                                             onclick="@this.emit('getUserView',{{ $user->id }})">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-eye leading-0"></i>
@@ -189,7 +189,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5"> ไม่พบข้อมูล </td>
+                                    <td colspan="5" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -255,3 +255,4 @@
         });
     </script>
 @endpush
+
