@@ -124,8 +124,8 @@
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                             <span
-                                                class="leading-tight text-black dark:text-slate-300">{{ $item->created_at->thaidate() }}
-                                                {{ date('H:i น.', strtotime($item->created_at)) }}</span>
+                                                class="leading-tight text-black dark:text-slate-300">{{ $item->created_at->thaidate() ?? '' }}
+                                                {{ date('H:i น.', strtotime($item->created_at)) ?? '' }}</span>
                                         </td>
                                         <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">

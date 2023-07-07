@@ -28,6 +28,10 @@
                                         วันที่
                                     </th>
                                     <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    สถานะ
+                                    </th>
+                                    <th
                                         class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                         ข้อเสนอแนะ
                                     </th>
@@ -48,12 +52,23 @@
                                                 {{ dateThai($r_comment->create_at) }}</span>
                                         </td>
                                         <td
+                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                            <span class="font-semibold leading-tight text-black dark:text-slate-300">
+                                                @if ($r_comment->isread == 0)
+                                                    ยังไม่อ่าน
+                                                @else
+                                                    อ่าน
+                                                @endif
+                                            </span>
+                                        </td>
+                                        <td
                                             class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
                                             <button type="button" data-modal-target="viewModal"
                                                 data-modal-toggle="viewModal"
                                                 class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-800">
                                                 <div class="flex flex-row items-center gap-2"
-                                                    wire:click="$set('idProject',{{ $r_comment->id }})">
+                                                    wire:click="openView({{ $r_comment->id }})" >
+                                                    {{--> --}}
                                                     <i class="bi bi-eye leading-0"></i>
                                                     <span class="block">ดูข้อเสนอแนะ</span>
                                                 </div>
@@ -99,22 +114,37 @@
                 <div class="space-y-6 p-6">
                     <div
                         class="mb-4 flex flex-col rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-gray-800 dark:text-red-400">
+
+
+
+                        @forelse ($this->new_array as $key => $item)
                         <div class="flex flex-row space-x-1">
+                            <span
+                                class="block font-bold tracking-wide">{{$key+1}}. {{$item ?? ''}}</span>
+                        </div>
+                        @empty
+                        <div class="flex flex-row space-x-1">
+                            <span
+                                class="block font-bold tracking-wide">-</span>
+                        </div>
+                        @endforelse
+
+                        {{-- <div class="flex flex-row space-x-1">
                             <i class="bi bi-badge-ad-fill"></i>
                             <span
                                 class="block font-bold tracking-wide">{{ $this->comments->where('id', $idProject)->first()?->masterSuggesstion->name }}</span>
-                        </div>
+                        </div> --}}
                     </div>
-                    @if ($this->comments->where('id', $idProject)->first()?->detail)
-                        <div class="mt-3">
-                            <label class="mb-2 text-sm font-bold tracking-wide dark:text-slate-300 dark:opacity-80">
-                                ข้อเสนอแนะอื่น ๆ
-                            </label>
-                            <p class="mb-0 text-sm leading-relaxed tracking-wide dark:text-gray-300">
-                                {{ $this->comments->where('id', $idProject)->first()?->detail }}
-                            </p>
-                        </div>
-                    @endif
+
+                    <div class="mt-3">
+                        <label class="mb-2 text-sm font-bold tracking-wide dark:text-slate-300 dark:opacity-80">
+                            ข้อเสนอแนะอื่น ๆ
+                        </label>
+                        <p class="mb-0 text-sm leading-relaxed tracking-wide dark:text-gray-300">
+                            {{ $this->message ?? '-' }}
+                        </p>
+                    </div>
+
                 </div>
                 <!-- Modal footer -->
                 <div
