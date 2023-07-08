@@ -86,7 +86,8 @@ class ModalEdit extends Component
                 $arr['phase_' . $i . '_end_date'] = ['nullable', 'date', 'after_or_equal:phase_' . $i . '_start_date', new CheckDate($this->edu_term_id)];
                 $arr['phase_' . $i . '_status'] = ['boolean'];
             } else {
-                $arr['phase_' . $i . '_start_date'] = ['nullable', 'date', 'after:phase_' . $i - 1 . '_end_date', new CheckDate($this->edu_term_id)];
+                // $arr['phase_' . $i . '_start_date'] = ['nullable', 'date', 'after:phase_' . $i - 1 . '_end_date', new CheckDate($this->edu_term_id)];
+                $arr['phase_' . $i . '_start_date'] = ['nullable', 'date', new CheckDate($this->edu_term_id)];
                 $arr['phase_' . $i . '_end_date'] = ['nullable', 'date', 'after_or_equal:phase_' . $i . '_start_date', new CheckDate($this->edu_term_id)];
                 $arr['phase_' . $i . '_status'] = ['boolean'];
             }
