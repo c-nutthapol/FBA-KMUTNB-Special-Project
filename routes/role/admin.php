@@ -77,5 +77,8 @@ Route::middleware("auth", "role:admin")->group(function () {
 
 
             Route::get("logs/{role}", App\Http\Livewire\Admin\Logs::class)->name("logs");
+
+             // โครงงานทั้งหมด
+            Route::view("/allproject", "students.allproject")->name("allproject");
         });
 });

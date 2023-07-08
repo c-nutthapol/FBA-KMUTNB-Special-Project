@@ -9,6 +9,9 @@ Route::middleware("auth", "role:teacher")->group(function () {
             // อนุมัติคำร้องทั่วไป
             Route::view("/petition", "teacher.petition.index")->name("petition");
 
+             // โครงงานทั้งหมด
+            Route::view("/allproject", "students.allproject")->name("allproject");
+
             Route::prefix("project")
                 ->name("project.")
                 ->group(function () {

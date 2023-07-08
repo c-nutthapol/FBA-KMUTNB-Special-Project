@@ -31,5 +31,7 @@ Route::middleware("auth", "role:student")->group(function () {
         Route::view("/history", "students.history")->name("history");
         // ดาวน์โหลดแบบฟอร์ม
         Route::view("/document", "students.document")->name("document");
+        // โครงงานทั้งหมด
+        Route::view("/allproject", "students.allproject")->name("allproject");
     });
 });
