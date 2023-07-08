@@ -94,12 +94,12 @@
                                         <span
                                             class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-calendar2-week-fill"></i>
-                                            {{ $log->created_at->thaidate() ?? '-' }}
+                                            {{ $log->updated_at->thaidate() ?? '-' }}
                                         </span>
                                         <span
                                             class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                             <i class="bi bi-clock-fill"></i>
-                                            {{ $log->created_at->thaidate('H:i:s น.') ?? '-' }}
+                                            {{ $log->updated_at->thaidate('H:i:s น.') ?? '-' }}
                                         </span>
                                     </td>
 

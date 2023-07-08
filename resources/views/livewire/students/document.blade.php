@@ -33,12 +33,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @forelse ($this->Request as $file)
+                                @forelse ($data as $files)
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600 text-center">
                                         <h6 class="mb-0  leading-normal dark:text-slate-300">
-                                            {{ $file->title }}
+                                            {{ $files->name }}
+                                            @if ($files->pin == 'active')
+                                            <i class="bi bi-pin-fill text-orange-500"></i>
+                                            @endif
                                         </h6>
                                     </td>
                                     <td
@@ -46,17 +49,17 @@
                                             <span
                                                 class="inline-block leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
-                                                {{ dateThai($file->create_at) }}
+                                                {{ dateThai($files->create_at) }}
                                             </span>
                                         <span
                                             class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
-                                                <i class="bi bi-clock-fill"></i> {{ date('H:m', $file->create_at) }}
+                                                <i class="bi bi-clock-fill"></i> {{ date('H:m', $files->create_at) }}
                                                 น.
                                             </span>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <a href="/storage/{{$file->path}}"
+                                        <a href="{{ asset('storage') }}/{{ $files->file }}"
                                            download
                                            class="btn from-blue-500 to-violet-500 text-white">
                                             <div class="flex flex-row items-center gap-2">
@@ -67,7 +70,7 @@
                                     </td>
                                 </tr>
                             @empty
-                            @endforelse --}}
+                            @endforelse
 
                             </tbody>
                         </table>

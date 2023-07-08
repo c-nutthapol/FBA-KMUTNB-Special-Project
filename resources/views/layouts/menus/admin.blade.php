@@ -225,10 +225,7 @@
                         <span class="ease pointer-events-none ml-1 opacity-100 duration-300">
                             ข้อเสนอแนะ
                         </span>
-                        <div class="flex-1 text-end">
-                            <span
-                                class="py-1 px-1.5 text-white rounded-full bg-red-500 text-xs  dark:bg-red-900 dark:text-red-300">10</span>
-                        </div>
+
                     </a>
                 </li>
 

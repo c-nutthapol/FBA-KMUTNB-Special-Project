@@ -34,11 +34,11 @@ trait ProjectTrait
                     $result->redirect = route("student.petition");
                     $result->btn = "สร้างคำร้อง";
                 }
+            } elseif ($this->term->project_step->where("phase_1_start_date", ">=", Carbon::now())->first()
+            ) {
+                $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน";
             } else {
                 $result->name = "เลยระยะเวลาที่กำหนด";
-                $result->redirect = route("student.petition");
-                $result->btn = "สร้างคำร้อง";
-
             }
         } elseif ($this->project?->id && $isCreate) {
             $result->name = "ท่านมีโครงงานอยู่แล้ว";

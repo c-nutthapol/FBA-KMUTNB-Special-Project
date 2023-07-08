@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Teacher\Project\Component;
 use Livewire\Component;
 use App\Models\Master_suggestion;
 use App\Models\Comment;
+use Carbon\Carbon;
 
 class SuggestionModalCreate extends Component
 {
@@ -37,11 +38,12 @@ class SuggestionModalCreate extends Component
         // $validatedData = $this->validate($this->rules(), __('validation'), $this->attributes);
         try {
             $this->validate();
-            $insert = Comment::insert([
+            Comment::insert([
                 'title' => join(",",$this->suggestionId),
                 'detail' => $this->note,
                 'project_id' => $this->projectId,
                 'created_by' => auth()->user()->id,
+                'created_at' => Carbon::now(),
             ]);
             $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);
             $this->emit('closeModalCreate');
