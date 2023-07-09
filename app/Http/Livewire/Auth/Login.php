@@ -13,8 +13,8 @@ class Login extends Component
         return view("livewire.auth.login");
     }
 
-    public $username = "yuttachais",
-        $password = "stamp1992";
+    public $username = "",
+        $password = "";
 
     protected $rules = [
         "username" => "required|string|max:14",

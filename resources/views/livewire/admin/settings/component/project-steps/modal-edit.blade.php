@@ -187,6 +187,32 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-span-2">
+                        <h4 class="mb-0 text-base tracking-wide dark:text-slate-300 dark:opacity-80">
+                            อื่นๆ
+                        </h4>
+                    </div>
+                    <div class="col-span-2 rounded-lg bg-gray-100 p-3 dark:bg-gray-800">
+                        <div class="mb-2 flex items-center">
+                            <label for="book-approval"
+                                class="ml-2 text-base tracking-wide dark:text-slate-300 dark:opacity-80">อนุมัติเล่ม</label>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="mb-1 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
+                                    วันที่สิ้นสุด
+                                </label>
+                                <input type="date" id="edit_phase_4_end_date" class="input"
+                                    wire:model.defer="book_approval_end" />
+                                @error('book_approval_end')
+                                    <span
+                                        class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Modal footer -->
@@ -219,4 +245,3 @@
         </form>
     </div>
 </div>
-

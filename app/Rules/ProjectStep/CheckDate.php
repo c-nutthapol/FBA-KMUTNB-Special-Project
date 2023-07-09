@@ -24,6 +24,7 @@ class CheckDate implements ValidationRule
         'phase_2_end_date' => 'วันที่สิ้นสุด ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_end_date' => 'วันที่สิ้นสุด ยื่นขอสอบความก้าวหน้า',
         'phase_4_end_date' => 'วันที่สิ้นสุด ยื่นขอสอบป้องกัน',
+        'book_approval_end' => 'วันที่สิ้นสุด อนุมัติเล่ม'
     ];
 
     public function __construct($id)

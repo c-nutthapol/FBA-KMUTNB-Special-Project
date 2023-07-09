@@ -23,7 +23,8 @@ class ProjectStepConfig extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'start_date' => 'date',
-        'end_date' => 'date'
+        'end_date' => 'date',
+        'book_approval_end' => 'date',
     ];
 
     public function edu_term()

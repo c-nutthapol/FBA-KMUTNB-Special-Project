@@ -16,6 +16,7 @@ class ModalEdit extends Component
     public $phase_2_start_date, $phase_2_end_date, $phase_2_status = false;
     public $phase_3_start_date, $phase_3_end_date, $phase_3_status = false;
     public $phase_4_start_date, $phase_4_end_date, $phase_4_status = false;
+    public $book_approval_end;
     protected $listeners = ['getProjectStepEdit'];
     protected $attributes = [
         'edu_term_id' => 'ภาคเรียน/ปีการศึกษา',
@@ -31,6 +32,7 @@ class ModalEdit extends Component
         'phase_2_status' => 'สถานะ ลงทะเบียนเพื่อขอสอบหัวข้อ',
         'phase_3_status' => 'สถานะ ยื่นขอสอบความก้าวหน้า',
         'phase_4_status' => 'สถานะ ยื่นขอสอบป้องกัน',
+        'book_approval_end' => 'วันที่สิ้นสุด อนุมัติเล่ม'
     ];
 
     public function render()
@@ -58,6 +60,7 @@ class ModalEdit extends Component
             $this->phase_2_status = $record->phase_2_status;
             $this->phase_3_status = $record->phase_3_status;
             $this->phase_4_status = $record->phase_4_status;
+            $this->book_approval_end =  $record->book_approval_end ? $record->book_approval_end->toDateString() : null;
         }
     }
 
@@ -80,6 +83,7 @@ class ModalEdit extends Component
     {
         $arr = [];
         $arr['edu_term_id'] = ['required', 'unique:project_step_configs,id,' . $this->edu_term_id];
+        $arr['book_approval_end'] = ['required', 'date', new CheckDate($this->edu_term_id)];
         for ($i = 1; $i < 5; $i++) {
             if ($i == 1) {
                 $arr['phase_' . $i . '_start_date'] = ['nullable', 'date', new CheckDate($this->edu_term_id)];

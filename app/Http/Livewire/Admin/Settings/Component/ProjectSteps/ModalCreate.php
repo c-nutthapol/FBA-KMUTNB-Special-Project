@@ -14,6 +14,7 @@ class ModalCreate extends Component
     public $phase_2_start_date, $phase_2_end_date, $phase_2_status = false;
     public $phase_3_start_date, $phase_3_end_date, $phase_3_status = false;
     public $phase_4_start_date, $phase_4_end_date, $phase_4_status = false;
+    public $book_approval_end;
     protected $listeners = ['getProjectStepCreate'];
     protected $attributes = [
         'edu_term_id' => 'ภาคเรียน/ปีการศึกษา',
@@ -29,6 +30,7 @@ class ModalCreate extends Component
         'phase_2_status' => 'สถานะ ยื่นขอสอบความก้าวหน้า',
         'phase_3_status' => 'สถานะ ยื่นขอสอบป้องกัน',
         'phase_4_status' => 'สถานะ ส่งเล่ม',
+        'book_approval_end' => 'วันที่สิ้นสุด อนุมัติเล่ม'
     ];
 
     public function render()
@@ -65,6 +67,7 @@ class ModalCreate extends Component
     {
         $arr = [];
         $arr['edu_term_id'] = ['required', 'unique:project_step_configs,id'];
+        $arr['book_approval_end'] = ['required', 'date', new CheckDate($this->edu_term_id)];
         for ($i = 1; $i < 5; $i++) {
             if ($i == 1) {
                 $arr['phase_' . $i . '_start_date'] = ['nullable', 'date', new CheckDate($this->edu_term_id)];
