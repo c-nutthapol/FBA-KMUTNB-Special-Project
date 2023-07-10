@@ -8,7 +8,7 @@
                     <i class="bi bi-5-circle-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-slate-300">
-                    ยื่นขอสอบป้องกัน
+                    ยื่นขอสอบป้องกัน <span class="text-orange-600">(วันที่ {{dateThai($this->term->project_step->phase_2_start_date ?? '-')}} ถึงวันที่ {{dateThai($this->term->project_step->phase_2_end_date ?? '-')}})</span>
                 </h5>
             </div>
 

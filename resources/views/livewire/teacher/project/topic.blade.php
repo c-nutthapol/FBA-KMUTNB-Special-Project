@@ -8,7 +8,7 @@
                     <i class="bi bi-2-circle-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-slate-300">
-                    ลงทะเบียนเพื่อขอสอบหัวข้อ
+                    ผลการสอบหัวข้อ
                 </h5>
             </div>
 

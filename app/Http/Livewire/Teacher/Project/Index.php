@@ -10,11 +10,13 @@ use Livewire\WithPagination;
 use Mail;
 use App\Mail\ProjectMail;
 use App\Exports\ProjectExport;
+use App\Traits\ProjectTrait;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Index extends Component
 {
     use WithPagination;
+    use ProjectTrait;
 
     protected $paginationTheme = 'default';
     public $search;
