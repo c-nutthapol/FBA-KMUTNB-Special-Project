@@ -12,6 +12,9 @@ Route::middleware("auth", "role:teacher")->group(function () {
              // โครงงานทั้งหมด
             Route::view("/allproject", "students.allproject")->name("allproject");
 
+            // ดาวน์โหลดแบบฟอร์ม
+            Route::view("/document", "students.document")->name("document");
+
             Route::prefix("project")
                 ->name("project.")
                 ->group(function () {
@@ -33,6 +36,7 @@ Route::middleware("auth", "role:teacher")->group(function () {
                     Route::view("/details/{id?}", "teacher.project.details")->name("details");
                     // เสนอแนะ
                     Route::view("/suggestion/{id?}", "teacher.project.suggestion")->name("suggestion");
+
                 });
         });
 });

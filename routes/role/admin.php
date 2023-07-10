@@ -52,6 +52,8 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/project-steps", "admin.settings.project-steps")->name("project-steps");
                     // แบนเนอร์
                     Route::view("/banners", "admin.settings.banners")->name("banners");
+                    // หน้าปก
+                    Route::view("/cover", "admin.settings.cover")->name("cover");
                     // ประเภทข่าว
                     Route::view("/newtype", "admin.settings.newtype")->name("newtype");
                     // สาขา

@@ -138,3 +138,19 @@
                                 </a>
                             </li>
 
+                            <li class="mt-4 w-full">
+                                <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
+                                    ดาวน์โหลดแบบฟอร์ม
+                                </h6>
+                            </li>
+
+                            <li class="mt-0.5 w-full">
+                                <a class="ease-nav-brand {{ Route::currentRouteName() == 'teacher.document' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
+                                    href="{{ route('teacher.document') }}">
+                                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                        <i
+                                            class="bi {{ Route::currentRouteName() == 'teacher.document' ? 'bi-cloud-arrow-down-fill' : 'bi-cloud-arrow-down' }} relative top-0 text-sm leading-normal text-teal-500"></i>
+                                    </div>
+                                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">เอกสารต่าง ๆ</span>
+                                </a>
+                            </li>

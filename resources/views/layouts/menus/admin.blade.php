@@ -261,6 +261,21 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.cover' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
+                        href="{{ route('admin.settings.cover') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.settings.cover' ? 'bi-image-fill ' : 'bi-image' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ease pointer-events-none ml-1 opacity-100 duration-300">
+                            รูปหน้าปก
+                        </span>
+
+                    </a>
+                </li>
+
+                <li class="mt-0.5 w-full">
                     <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.department' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
                         href="{{ route('admin.settings.department') }}">
                         <div
