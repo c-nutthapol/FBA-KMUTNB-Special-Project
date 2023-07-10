@@ -8,7 +8,7 @@
                     <i class="bi bi-7-circle-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-slate-300">
-                    ส่งเล่ม
+                    ส่งเล่ม <span class="text-orange-600">(หมดเขตการอนุมัติวันที่ {{dateThai($this->term->project_step->book_approval_end ?? '-')}})</span>
                 </h5>
             </div>
 
@@ -190,28 +190,35 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="inline-block">
-                                            <select id="UpdateStatusProject" class="select dark:text-slate-300"
-                                                data-id="{{ $project->id }}">
-                                                <option value="" disabled selected class="text-black">
-                                                    {{ $project->master_status->status }}
-                                                </option>
-                                                @if (Auth::user()->role_id === 2)
-                                                    @forelse ($project->SelectOption as $item)
-                                                        <option value="{{ $item->id }}" class="text-black">
-                                                            {{ $item->status }}
-                                                        </option>
-                                                    @empty
-                                                    @endforelse
-                                                @else
-                                                    @forelse ($project->SelectOption as $item)
-                                                        <option value="{{ $item->id }}" class="text-black"
-                                                            disabled>
-                                                            {{ $item->status }}
-                                                        </option>
-                                                    @empty
-                                                    @endforelse
-                                                @endif
-                                            </select>
+                                            {{-- ตรวจสอบว่าเลยวันที่กำหนดรึป่าว --}}
+                                            @if ($this->checkDate)
+                                                <span class="text-black text-orange-600">เลยวันที่กำหนดอนุมัติ</span>
+                                            @else
+                                                <select id="UpdateStatusProject" class="select dark:text-slate-300"
+                                                    data-id="{{ $project->id }}">
+                                                    <option value="" disabled selected class="text-black">
+                                                        {{ $project->master_status->status }}
+                                                    </option>
+
+                                                    @if (Auth::user()->role_id === 2)
+                                                        @forelse ($project->SelectOption as $item)
+                                                            <option value="{{ $item->id }}" class="text-black">
+                                                                {{ $item->status }}
+                                                            </option>
+                                                        @empty
+                                                        @endforelse
+                                                    @else
+                                                        @forelse ($project->SelectOption as $item)
+                                                            <option value="{{ $item->id }}" class="text-black"
+                                                                disabled>
+                                                                {{ $item->status }}
+                                                            </option>
+                                                        @empty
+                                                        @endforelse
+                                                    @endif
+                                                </select>
+                                            @endif
+
                                         </div>
                                     </td>
                                     <td

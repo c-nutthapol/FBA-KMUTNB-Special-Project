@@ -2,7 +2,7 @@
     class="relative flex flex-col flex-wrap min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
     <div class="p-6 pb-0 mb-0">
         <h4 class="text-3xl font-bold dark:text-slate-300/80">ลงชื่อเข้าใช้</h4>
-        <p class="mb-0 text-lg dark:text-slate-300/70">ระบบโครงงานพิเศษ</p>
+        <p class="mb-0 text-lg dark:text-slate-300/70">ระบบโครงงานพิเศษ <br><span class="mb-0 text text-teal-500">(เข้าใช้งานระบบด้วย ICIT Account)</span></p>
     </div>
     <div class="flex-auto p-6">
         {{-- If there is an error, enter the Error class. = label class='... error', input class="... error"  --}}
@@ -63,6 +63,7 @@
                     เข้าสู่ระบบ
                 </button>
             </div>
+
         </form>
 
     </div>

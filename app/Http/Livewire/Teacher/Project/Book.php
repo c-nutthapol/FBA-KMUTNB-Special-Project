@@ -10,15 +10,19 @@ use Livewire\WithPagination;
 use Mail;
 use App\Mail\ProjectMail;
 use App\Exports\ProjectExport;
+use App\Traits\ProjectTrait;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Book extends Component
 {
     use WithPagination;
+    use ProjectTrait;
 
     protected $paginationTheme = 'default';
     public $search;
     public $year;
+    public $checkDate = false;
     public $dataProjects = [];
 
     public function render()
@@ -70,6 +74,18 @@ class Book extends Component
         });
         $this->dataProjects = $res->get();
         $projects = $res->paginate(10);
+
+        if($this->term->project_step->book_approval_end){
+            $otherDate = $this->term->project_step->book_approval_end;
+        }else{
+            $otherDate = Carbon::now()->addMinutes(10);
+        }
+
+        $nowDate = Carbon::now();
+        $this->checkDate = $nowDate->gt($otherDate);
+
+        // dd($this->checkDate);
+
         return view('livewire.teacher.project.book', compact('projects','termFilter','statusFilter'));
     }
 
