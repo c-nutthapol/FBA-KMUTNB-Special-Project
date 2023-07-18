@@ -167,7 +167,7 @@
                                             @if ($item_teacher->role == "teacher1" || $item_teacher->role == "teacher2")
                                                 ที่ปรึกษาหลัก
                                             @else
-                                                ที่ปรึกษารอง
+                                                ที่ปรึกษาร่วม/กรรมการสอบ
                                             @endif
                                         </span>
                                     </figure>

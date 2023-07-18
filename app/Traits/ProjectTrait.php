@@ -45,7 +45,7 @@ trait ProjectTrait
             $result->redirect = route("student.project.home");
             $result->btn = "หน้าหลัก";
         } elseif (!$this->project?->id && !$isCreate) {
-            $result->name = "ท่านยังไม่มีโครงงาน กรุณาสร้างโครงงานก่อน";
+            $result->name = "ท่านยังไม่มีโครงงาน";
             $result->redirect = route("student.project.create");
             $result->btn = "สร้างโครงงาน";
         }

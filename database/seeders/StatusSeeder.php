@@ -243,8 +243,8 @@ class StatusSeeder extends Seeder
             [
                 'role_id' => '1',
                 'step' => '4',
-                'name' => 'ส่งเลม',
-                'status' => 'รออนุมัติการส่งเลม',
+                'name' => 'ส่งเล่ม',
+                'status' => 'รออนุมัติการส่งเล่ม',
                 'status_filter' => 'Y',
                 'status_update' => 'Y',
                 'created_by' => 2,
@@ -256,8 +256,8 @@ class StatusSeeder extends Seeder
             [
                 'role_id' => '2',
                 'step' => '4',
-                'name' => 'ส่งเลม',
-                'status' => 'ผ่านการส่งเลม',
+                'name' => 'ส่งเล่ม',
+                'status' => 'ผ่านการส่งเล่ม',
                 'status_filter' => 'N',
                 'status_update' => 'Y',
                 'created_by' => 2,
@@ -268,8 +268,8 @@ class StatusSeeder extends Seeder
             [
                 'role_id' => '2',
                 'step' => '4',
-                'name' => 'ส่งเลม',
-                'status' => 'ไม่ผ่านการส่งเลม',
+                'name' => 'ส่งเล่ม',
+                'status' => 'ไม่ผ่านการส่งเล่ม',
                 'status_filter' => 'Y',
                 'status_update' => 'Y',
                 'created_by' => 2,

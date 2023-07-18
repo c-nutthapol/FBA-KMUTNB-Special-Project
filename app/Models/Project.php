@@ -77,7 +77,7 @@ class Project extends Model
         if ($this->status == 1) {
             $status = [2, 3];
         } else if ($this->status == 2) {
-            $status = [4, 5];
+            $status = [4, 5, 6];
         } else if ($this->status == 3) {
             $status = [2];
         } else if ($this->status == 6) {

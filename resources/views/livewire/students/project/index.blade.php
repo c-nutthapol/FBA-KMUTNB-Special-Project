@@ -199,7 +199,7 @@
                                         </figcaption>
                                         <span
                                             class="absolute top-0 right-0 rounded-bl-4 bg-blue-500 px-3 py-1 text-sm font-black tracking-wider text-white shadow-primary-outline dark:bg-slate-900/40 dark:text-gray-100 dark:shadow-dark-xl">
-                                        ที่ปรึกษารอง
+                                        ที่ปรึกษาร่วม/กรรมการสอบ
                                     </span>
                                     </figure>
                                 @endif

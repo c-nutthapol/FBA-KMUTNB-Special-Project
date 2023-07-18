@@ -126,7 +126,7 @@
                         {{ $Data->whereIn('status', $success)->count() }}
                     </span>
                     <h4 class="mb-0 ml-1 inline p-4 text-xl tracking-wide dark:text-slate-300 dark:opacity-90">
-                        ส่งเลม
+                        ส่งเล่ม
                     </h4>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                             ],
                         },
                         {
-                            label: 'ส่งเลม',
+                            label: 'ส่งเล่ม',
                             data: [
                                 {{ $Data->whereIn('status', $success)->count() }},
                             ],
