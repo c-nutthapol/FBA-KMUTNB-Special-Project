@@ -20,7 +20,8 @@
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <div>
                                 <label
-                                    class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="name_th">ชื่อโครงงาน
+                                    class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
+                                    for="name_th">ชื่อโครงงาน
                                     (ภาษาไทย) <span class="text-rose-600">*</span></label>
                                 <input wire:model.defer="form.name_th" id="name_th" type="text" class="input"
                                        placeholder="กรุณากรอกชื่อโครงงานภาษาไทย"/>
@@ -31,7 +32,8 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="name_en">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
+                                       for="name_en">
                                     ชื่อโครงงาน (ภาษาอังกฤษ)
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -65,7 +67,8 @@
 
                             </div>
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="depart1">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
+                                       for="depart1">
                                     สาขาวิชา
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -86,7 +89,8 @@
                             </div>
 
                             <div>
-                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80" for="room1">
+                                <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80"
+                                       for="room1">
                                     ห้อง
                                     <span class="text-rose-600">*</span>
                                 </label>
@@ -114,7 +118,7 @@
                                         สาขาวิชา
                                         <span class="text-rose-600">*</span>
                                     </label>
-                                    <select class="select" wire:model.defer="form.student_2.department" id="depart1">
+                                    <select class="select" wire:model.defer="form.student_2.department" id="depart2">
                                         <option value="" selected disabled>
                                             กรุณาเลือกสาขาวิชา
                                         </option>
