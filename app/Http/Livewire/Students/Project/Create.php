@@ -169,7 +169,7 @@ class Create extends Component
                 $file->storeAs($upload_locate, $file->getFilename(), "public");
 
                 File::create([
-                    "title" => "สอบหัวข้อครั้งที่ " . File::query()->whereJsonContains("title", "สอบหัวข้อ")->count() + 1 . " ไฟล์ที่ " . $i + 1,
+                    "title" => "สอบหัวข้อครั้งที่ " . File::query()->where('title', 'like', 'สอบหัวข้อ' . '%')->count() + 1 . " ไฟล์ที่ " . $i + 1,
                     "project_id" => $project->id,
                     "is_link" => 0,
                     "path" => "/file/project/" . $file->getFilename(),
