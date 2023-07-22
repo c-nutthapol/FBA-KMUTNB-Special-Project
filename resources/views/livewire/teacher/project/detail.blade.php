@@ -120,11 +120,13 @@
                                         <div class="text-lg font-bold tracking-wide dark:text-slate-300">
                                             {{$item_student->user->displayname ?? $item_student->user->name}}
                                         </div>
+
+                                        {{-- {{ $data->project->user_project->where('role', 'student1')->first()->user->masterDepartment->name ?? '' }} --}}
                                         <div class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
-                                            <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">5402041520035</span>
+                                            <span class="inline-block">รหัสนักศึกษา</span>:<span class="inline-block">{{$item_student->user->username ?? ''}}</span>
                                         </div>
                                         <div class="space-x-2 text-base font-normal tracking-wide text-slate-600 dark:text-gray-100">
-                                            <span class="inline-block">สาขาวิชา</span>:<span class="inline-block">คอมพิวเตอร์ธุรกิจ</span>
+                                            <span class="inline-block">สาขาวิชา</span>:<span class="inline-block">  {{$item_student->user->masterDepartment->name ?? ''}}</span>
                                         </div>
                                     </figcaption>
                                 </figure>
@@ -165,7 +167,7 @@
                                         <span
                                             class="absolute top-0 right-0 px-3 py-1 text-sm font-black tracking-wider text-white bg-teal-500 dark:bg-slate-900/40 rounded-bl-4 shadow-primary-outline dark:shadow-dark-xl dark:text-gray-100">
                                             @if ($item_teacher->role == "teacher1" || $item_teacher->role == "teacher2")
-                                                ที่ปรึกษาหลัก
+                                                ที่ปรึกษา
                                             @else
                                                 ที่ปรึกษาร่วม/กรรมการสอบ
                                             @endif
