@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Settings;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
