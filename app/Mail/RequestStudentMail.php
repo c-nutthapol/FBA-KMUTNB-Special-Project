@@ -33,7 +33,7 @@ class RequestStudentMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'ระบบโครงงานพิเศษ',
+            subject: 'ระบบโครงงานพิเศษ (คำร้องทั่วไป)',
         );
     }
 
