@@ -10,14 +10,19 @@ use Livewire\WithPagination;
 use Mail;
 use App\Mail\ProjectMail;
 use App\Exports\ProjectExport;
+use App\Traits\ProjectTrait;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Progressresult extends Component
 {
     use WithPagination;
+    use ProjectTrait;
 
     protected $paginationTheme = 'default';
     public $search;
+    public $search_name;
+    public $search_id;
+    public $status;
     public $year;
     public $dataProjects = [];
 
@@ -26,7 +31,10 @@ class Progressresult extends Component
         // dd($this->step(1,"string"));
         // search
         $search = $this->search;
+        $search_name = $this->search_name;
+        $search_id = $this->search_id;
         $year = $this->year;
+        $status = $this->status;
         $step = 2;
         $step_teacher = [8,12];
         $step_admin = [10, 11, 12];
@@ -37,8 +45,7 @@ class Progressresult extends Component
         // filter
         $termFilter = EduTerm::all();
         $statusFilter = Master_status::where("step", $step)
-        ->where("status_filter","Y")
-        ->where("role_id",$roleId)
+        ->whereIn('id', [10,11,12])
         ->get();
 
         // Select Option
@@ -67,6 +74,19 @@ class Progressresult extends Component
         })
         ->when($year, function($when) use($year){
             $when->where("edu_term_id",$year);
+        })
+        ->when($status, function($when) use($status){
+            $when->where("status",$status);
+        })
+        ->when($search_name, function($when) use($search_name){
+            $when->whereHas('user_project.user', function ($q) use ($search_name) {
+                $q->where("displayname","LIKE","%".$search_name."%");
+            });
+        })
+        ->when($search_id, function($when) use($search_id){
+            $when->whereHas('user_project.user', function ($q) use ($search_id) {
+                $q->where("username","LIKE","%".$search_id."%");
+            });
         });
         $this->dataProjects = $res->get();
         $projects = $res->paginate(10);
