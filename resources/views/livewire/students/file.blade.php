@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 <div>
     <div class="-mx-3 flex flex-wrap">
         <div class="w-full max-w-full flex-none px-3">
@@ -17,56 +18,70 @@
                         <table
                             class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                             <thead class="align-bottom">
-                                <tr class="text-black dark:text-slate-300">
-                                    <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                        ขั้นตอน
-                                    </th>
-                                    <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                        วันที่แนบไฟล์
-                                    </th>
-                                    <th
-                                        class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                        ดาวน์โหลด
-                                    </th>
-                                </tr>
+                            <tr class="text-black dark:text-slate-300">
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    ขั้นตอน
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    วันที่แนบไฟล์
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    แก้ไข
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    ดาวน์โหลด
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @forelse ($this->Request as $file)
-                                    <tr>
-                                        <td
-                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                            <h6 class="mb-0 leading-normal dark:text-slate-300">
-                                                {{ $file->title }}
-                                            </h6>
-                                        </td>
-                                        <td
-                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                            @forelse ($this->Request as $file)
+                                <tr>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <h6 class="mb-0 leading-normal dark:text-slate-300">
+                                            {{ $file->title }}
+                                        </h6>
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                             <span
                                                 class="inline-block font-semibold leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
-                                                {{ dateThai($file->create_at) }}
+                                                {{ dateThai($file->created_at) }}
                                             </span>
-                                            <span
-                                                class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
-                                                <i class="bi bi-clock-fill"></i> {{ date('H:m', $file->create_at) }}
+                                        <span
+                                            class="ml-2 inline-block font-semibold leading-tight text-black dark:text-slate-300">
+                                                <i class="bi bi-clock-fill"></i> {{  Carbon::parse($file->created_at)->format('H:i') }}
                                                 น.
                                             </span>
-                                        </td>
-                                        <td
-                                            class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                            <a href="/storage/{{ $file->path }}" download
-                                                class="btn from-blue-500 to-violet-500  text-white">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-download leading-0"></i>
-                                                    <span class="block">โหลดเอกสาร</span>
-                                                </div>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @empty
-                                @endforelse
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <span>
+                                            <label wire:click="$set('fId','{{$file->id}}')">
+                                               <input
+                                                   class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                                   id="file_input" wire:model="file" type="file">
+                                            </label>
+                                         </span>
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <a href="/storage/{{ $file->path }}" download
+                                           class="btn from-blue-500 to-violet-500  text-white">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-download leading-0"></i>
+                                                <span class="block">โหลดเอกสาร</span>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
 
                             </tbody>
                         </table>
@@ -76,5 +91,76 @@
 
         </div>
     </div>
+    <!-- View Modal -->
+    {{--    <div id="viewModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"--}}
+    {{--         class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full"--}}
+    {{--         wire:ignore.self>--}}
+    {{--        <div class="relative h-full w-full max-w-6xl md:h-auto">--}}
+    {{--            <!-- Modal content -->--}}
+    {{--            <form class="relative rounded-lg bg-white shadow dark:bg-gray-700">--}}
+    {{--                <!-- Modal header -->--}}
+    {{--                <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">--}}
+    {{--                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">--}}
+    {{--                        <i class="bi bi-eye leading-0"></i> ดูข้อเสนอแนะ--}}
+    {{--                    </h3>--}}
+    {{--                    <button type="button"--}}
+    {{--                            class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"--}}
+    {{--                            data-modal-hide="viewModal">--}}
+    {{--                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"--}}
+    {{--                             xmlns="http://www.w3.org/2000/svg">--}}
+    {{--                            <path fill-rule="evenodd"--}}
+    {{--                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"--}}
+    {{--                                  clip-rule="evenodd"></path>--}}
+    {{--                        </svg>--}}
+    {{--                        <span class="sr-only">ปิด</span>--}}
+    {{--                    </button>--}}
+    {{--                </div>--}}
+    {{--                <!-- Modal body -->--}}
+    {{--                <div class="space-y-6 p-6">--}}
+    {{--                    <div--}}
+    {{--                        class="mb-4 flex flex-col rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-gray-800 dark:text-red-400">--}}
+
+
+    {{--                        @forelse ($this->new_array as $key => $item)--}}
+    {{--                            <div class="flex flex-row space-x-1">--}}
+    {{--                            <span--}}
+    {{--                                class="block font-bold tracking-wide">{{$key+1}}. {{$item ?? ''}}</span>--}}
+    {{--                            </div>--}}
+    {{--                        @empty--}}
+    {{--                            <div class="flex flex-row space-x-1">--}}
+    {{--                            <span--}}
+    {{--                                class="block font-bold tracking-wide">-</span>--}}
+    {{--                            </div>--}}
+    {{--                        @endforelse--}}
+
+    {{--                        --}}{{-- <div class="flex flex-row space-x-1">--}}
+    {{--                            <i class="bi bi-badge-ad-fill"></i>--}}
+    {{--                            <span--}}
+    {{--                                class="block font-bold tracking-wide">{{ $this->comments->where('id', $idProject)->first()?->masterSuggesstion->name }}</span>--}}
+    {{--                        </div> --}}
+    {{--                    </div>--}}
+
+    {{--                    <div class="mt-3">--}}
+    {{--                        <label class="mb-2 text-sm font-bold tracking-wide dark:text-slate-300 dark:opacity-80">--}}
+    {{--                            ข้อเสนอแนะอื่น ๆ--}}
+    {{--                        </label>--}}
+    {{--                        <p class="mb-0 text-sm leading-relaxed tracking-wide dark:text-gray-300">--}}
+    {{--                            {{ $this->message ?? '-' }}--}}
+    {{--                        </p>--}}
+    {{--                    </div>--}}
+
+    {{--                </div>--}}
+    {{--                <!-- Modal footer -->--}}
+    {{--                <div--}}
+    {{--                    class="flex items-center justify-end space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">--}}
+    {{--                    <button data-modal-hide="viewModal" type="button"--}}
+    {{--                            class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">--}}
+    {{--                        ปิด--}}
+    {{--                    </button>--}}
+    {{--                </div>--}}
+    {{--            </form>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+
 </div>
 

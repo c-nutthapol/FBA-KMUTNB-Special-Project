@@ -311,7 +311,7 @@
                                 <input accept="application/pdf" id="fileupload"
                                        class="input h-full p-0"
                                        type="file" wire:model.defer="file_project" multiple>
-                                @error('file_project')
+                                @error('file_project.*')
                                 <span
                                     class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                                 @enderror

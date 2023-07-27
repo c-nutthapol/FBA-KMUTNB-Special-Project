@@ -29,12 +29,24 @@ trait ProjectTrait
                     ->where("status", "=", 26)
                     ->where("updated_at", "<=", Carbon::now()->addDays(3))
                     ->first();
-                if (!$request?->title == $this->project->master_status->step) {
+                $startDate = $this->term->project_step->where("phase_" . $this->step . "_start_date", ">=", Carbon::now())->first();
+                if ($startDate) {
+                    if ($this->step == 1) {
+                        $date = $startDate->phase_1_start_date;
+                    } elseif ($this->step == 2) {
+                        $date = $startDate->phase_2_start_date;
+                    } elseif ($this->step == 3) {
+                        $date = $startDate->phase_3_start_date;
+                    } elseif ($this->step == 4) {
+                        $date = $startDate->phase_4_start_date;
+                    }
+                    $result->name = "ยังไม่ถึงช่วงเวลาที่กำหนด " . dateThai($date);
+                } elseif (!$request?->title == $this->project->master_status->step) {
                     $result->name = "เลยระยะเวลาที่กำหนด";
                     $result->redirect = route("student.petition");
                     $result->btn = "สร้างคำร้อง";
                 }
-            } elseif ($this->term->project_step->where("phase_1_start_date", ">=", Carbon::now())->first()
+            } elseif ($this->term->project_step->where("phase_" . $this->step . "_start_date", ">=", Carbon::now())->first()
             ) {
                 $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน";
             } else {

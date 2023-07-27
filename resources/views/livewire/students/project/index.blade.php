@@ -63,6 +63,14 @@
                                 <span class="block">ลบโครงงานแล้ว แล้วเริ่มต้นใหม่</span>
                             </div>
                         </button>
+                    @elseif($data->project->files->count()==0)
+                        <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
+                                data-modal-target="uploadModal" data-modal-toggle="uploadModal">
+                            <div class="flex flex-row items-center gap-3">
+                                <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
+                                <span class="block">แนบเอกสาร</span>
+                            </div>
+                        </button>
                     @endif
                 </div>
             </div>
@@ -276,7 +284,7 @@
                         </label>
                         <input class="input h-full p-0" type="file" accept="application/pdf"
                                wire:model.defer="file" multiple>
-                        @error('file')
+                        @error('file.*')
                         <span class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}</span>
                         @enderror
                     </div>

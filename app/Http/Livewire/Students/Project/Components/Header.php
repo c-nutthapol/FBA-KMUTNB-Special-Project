@@ -24,9 +24,9 @@ class Header extends Component
         ]);
         $data->step_date = collect([
             "1" => "ก่อน " . dateThai($this->term->project_step->phase_1_end_date ?? ''),
-            "2" => "ก่อน " . dateThai($this->term->project_step->phase_3_end_date ?? ''),
-            "3" => "ก่อน " . dateThai($this->term->project_step->phase_4_end_date ?? ''),
-            "4" => "ก่อน " . dateThai($this->term->project_step->phase_5_end_date ?? ''),
+            "2" => "ก่อน " . dateThai($this->term->project_step->phase_2_end_date ?? ''),
+            "3" => "ก่อน " . dateThai($this->term->project_step->phase_3_end_date ?? ''),
+            "4" => "ก่อน " . dateThai($this->term->project_step->phase_4_end_date ?? ''),
         ]);
         return view("livewire.students.project.components.header", compact("data"));
     }

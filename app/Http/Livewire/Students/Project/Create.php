@@ -8,6 +8,7 @@ use App\Models\Master_department;
 use App\Models\Project;
 use App\Models\User;
 use App\Traits\ProjectTrait;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -105,7 +106,6 @@ class Create extends Component
     public function submit(): void
     {
         $s = false;
-        $this->validate();
         // add teacher2 validate
         if ($this->form->get("teacher_2") === "external") {
             $this->validate(
@@ -155,6 +155,7 @@ class Create extends Component
         }
         // begin Transaction
         try {
+
             DB::beginTransaction();
             // image location
             $upload_locate = "/file/project/";
@@ -165,14 +166,15 @@ class Create extends Component
                 "edu_term_id" => $this->term->id,
             ]);
             //project file
+            $times = File::query()->where('title', 'like', 'สอบหัวข้อ' . '%')->where('project_id', '=', $project->id)->count() + 1;
             foreach ($this->file_project as $i => $file) {
-                $file->storeAs($upload_locate, $file->getFilename(), "public");
-
+                $fileName = Carbon::now()->format('YmdHis') . $i + 1 . '.' . explode('.', $file->getFilename())[1];
+                $file->storeAs($upload_locate, $fileName, "public");
                 File::create([
-                    "title" => "สอบหัวข้อครั้งที่ " . File::query()->where('title', 'like', 'สอบหัวข้อ' . '%')->count() + 1 . " ไฟล์ที่ " . $i + 1,
+                    "title" => "สอบหัวข้อครั้งที่ " . $times . " ไฟล์ที่ " . $i + 1,
                     "project_id" => $project->id,
                     "is_link" => 0,
-                    "path" => "/file/project/" . $file->getFilename(),
+                    "path" => "/file/project/" . $fileName,
                 ]);
             }
 
@@ -260,7 +262,10 @@ class Create extends Component
         //end Transaction
         if ($s) {
             $user = $this->project->user_project->where("role", "teacher1")->first()->user;
-            Mail::to($user->email)->send(new ProjectStudentMail($this->project, $user));
+            try {
+                Mail::to($user->email)->send(new ProjectStudentMail($this->project, $user));
+            } catch (Exception) {
+            }
         }
     }
 }
