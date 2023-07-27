@@ -6,4 +6,6 @@
     {{-- @livewire('teacher.project.component.pending-approval') --}}
 
     @livewire('teacher.project.defenseresult')
+    @livewire('teacher.project.component.dropdown-list')
+
 @endsection

@@ -1,4 +1,4 @@
-<div class="-mx-3 flex flex-wrap">
+<div class="-mx-3 flex flex-wrap" id="index">
     <div class="w-full max-w-full flex-none px-3">
         <div
             class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-auto p-6">
+            <div class="flex-auto p-6" id="index">
                 <div class="overflow-x-auto relative p-0">
                     <table
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600 table-auto">
@@ -131,7 +131,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($projects as $project)
+                            @foreach ($projects as $project)
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600 "
@@ -155,33 +155,33 @@
                                     </td>
                                     <td
                                     class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                    <div class="inline-block w-44">
-                                        <select id="UpdateStatusProject" class="select dark:text-slate-300"
-                                            data-id="{{ $project->id }}">
-                                            <option value="" class="text-black" disabled selected>
-                                                {{ $project->master_status->status }}
-                                            </option>
+                                        <div class="inline-block w-44">
+                                            <select id="UpdateStatusProject" class="select dark:text-slate-300" wire:change="$emit('updateStatus')"
+                                                data-id="{{ $project->id }}">
+                                                <option value="" class="text-black" disabled selected>
+                                                    {{ $project->master_status->status }}
+                                                </option>
 
-                                            @if (Auth::user()->role_id === 2)
-                                                @forelse ($project->SelectOption as $item)
-                                                    <option value="{{ $item->id }}" class="text-black">
-                                                        {{ $item->status }}
-                                                    </option>
-                                                @empty
-                                                @endforelse
-                                            @else
-                                                @forelse ($project->SelectOption as $item)
-                                                    <option value="{{ $item->id }}" class="text-black"
-                                                        disabled>
-                                                        {{ $item->status }}
-                                                    </option>
-                                                @empty
-                                                @endforelse
-                                            @endif
+                                                @if (Auth::user()->role_id === 2)
+                                                    @forelse ($project->SelectOption as $item)
+                                                        <option value="{{ $item->id }}" class="text-black">
+                                                            {{ $item->status }}
+                                                        </option>
+                                                    @empty
+                                                    @endforelse
+                                                @else
+                                                    @forelse ($project->SelectOption as $item)
+                                                        <option value="{{ $item->id }}" class="text-black"
+                                                            disabled>
+                                                            {{ $item->status }}
+                                                        </option>
+                                                    @empty
+                                                    @endforelse
+                                                @endif
 
-                                        </select>
-                                    </div>
-                                </td>
+                                            </select>
+                                        </div>
+                                    </td>
 
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
@@ -195,46 +195,15 @@
                                             </figure>
                                         </div>
                                     </td>
-                                    <td
-                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-
-                                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                                    <td class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" wire:click="$emit('eventList',{{$project->id}},event)"
                                             class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700"
                                             type="button">
                                             <div class="flex flex-row items-center gap-2">
                                                 <i class="bi bi-download leading-0"></i>
-                                                <span class="block">โหลดเอกสาร</span>
+                                                <span id="download_doc" class="block">โหลดเอกสาร</span>
                                             </div>
                                         </button>
-                                        <!-- Dropdown menu -->
-                                        <div id="dropdown"
-                                            class="z-10 hidden w-auto divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-slate-850">
-                                            <ul class="py-2 text-gray-700 dark:text-gray-200"
-                                                aria-labelledby="dropdownDefaultButton">
-                                                @forelse ($project->files as $item_file)
-                                                    <li>
-                                                        @if ($item_file->is_link == 0)
-                                                            <a href="/storage/{{ $item_file->path ?? '' }}" download
-                                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
-                                                        @else
-                                                            <a href="{{ $item_file->path ?? '' }}" target="_blank"
-                                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 dark:hover:text-white">{{ $item_file->title }}</a>
-                                                        @endif
-                                                    </li>
-                                                @empty
-                                                    <li>
-                                                        ไม่พบไฟล์
-                                                    </li>
-                                                @endforelse
-                                            </ul>
-                                        </div>
-                                        {{-- <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
-                                            class="inline-block  font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
-                                            <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-download leading-0"></i>
-                                                <span class="block">โหลดเอกสาร</span>
-                                            </div>
-                                        </a> --}}
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
@@ -280,16 +249,40 @@
                                         @endif
                                     </td>
                                 </tr>
-                            @empty
+                            {{-- @empty
                                 <tr>
-                                    <td colspan="6" class="text-black dark:text-slate-300"> ไม่พบข้อมูล </td>
-                                </tr>
-                            @endforelse
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                    </td>
+                                    <td
+                                    class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                    </td>
 
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                    </td>
+                                    <td class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" wire:click="$emit('eventList',{{$project->id ?? ''}})"
+                                            class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700"
+                                            type="button">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-download leading-0"></i>
+                                                <span class="block">โหลดเอกสาร</span>
+                                            </div>
+                                        </button>
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">
+                                        
+                                    </td>
+                                </tr> --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-
                 {{ $projects->links() }}
             </div>
         </div>
@@ -297,28 +290,44 @@
 </div>
 @push('script')
     <script>
-        $(`#UpdateStatusProject`).on(`change`, function() {
-            const label = $(this).find("option:selected")[0].text;
-            const id = $(this).data("id");
-            const status = $(this).val();
+        Livewire.on('updateStatus', () => {
+            const mySelect = document.getElementById('UpdateStatusProject');
+            const status = mySelect.value;
+            const selectedText = mySelect.options[mySelect.selectedIndex].text;
+            
+            const id = mySelect.getAttribute('data-id');
             Swal.fire({
                 icon: 'question',
                 title: 'คุณต้องการเปลี่ยนสถานะ',
-                text: `${label} ใช่หรือไม่`,
+                text: `${selectedText} ใช่หรือไม่`,
                 showCancelButton: true,
                 confirmButtonText: 'ยืนยัน',
                 cancelButtonText: 'ยกเลิก',
             }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     @this.updateStatusProject(id, status);
                 }
             })
         })
 
+        Livewire.on('eventList', (key,event) => {
+            const mySelect2 = document.getElementById('dropdown');
+            mySelect2.classList.toggle("hidden");
+            mySelect2.style.transform = `translate(${event.pageX - 300}px, ${event.pageY + 30}px)`;
+            console.log(event.pageX,event.pageY)
+            Livewire.emit('getDropdownList',key)
+        })
+
         Livewire.on('refreshComponent', e => {
             location.reload();
         })
+
+        window.addEventListener('click', function(e){   
+            if (e.target.id != 'download_doc'){
+                const mySelect2 = document.getElementById('dropdown');
+                if(mySelect2.classList.toggle("hidden") == false) mySelect2.classList.toggle("hidden");
+            }
+        });
     </script>
 @endpush
 
