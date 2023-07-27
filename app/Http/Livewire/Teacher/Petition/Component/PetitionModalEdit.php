@@ -7,6 +7,7 @@ use App\Models\StudentRequest;
 use App\Models\Master_status;
 use Mail;
 use App\Mail\RequestMail;
+use App\Models\User;
 
 class PetitionModalEdit extends Component
 {
@@ -60,9 +61,20 @@ class PetitionModalEdit extends Component
                 $StudentRequest->refresh();
 
                 foreach($StudentRequest->project->user_project as $item){
-                    if($item->user->role_id != 4 && $item->user->email){
+                    if($item->user->role_id == 1 && $item->user->email){
                         Mail::to($item->user->email)->send(new RequestMail($StudentRequest, $item->user));
                     }
+                }
+
+                // ส่งเมลไปหาแอดมิน
+                $admin = User::where('role_id',3)
+                ->whereStatus('active')
+                ->get();
+
+                // dd($admin);
+
+                foreach($admin as $item){
+                    Mail::to($item->email)->send(new RequestMail($StudentRequest, $item));
                 }
 
                 $this->emit('alert', ['status' => 'success', 'title' => 'บันทึกข้อมูลเสร็จสิ้น']);

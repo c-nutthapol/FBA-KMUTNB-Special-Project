@@ -55,8 +55,8 @@
                     </select>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                    {{-- <div class="flex-1">
-                        <select class="select">
+                    <div class="flex-1">
+                        <select class="select" wire:model='status'>
                             <option value="" selected>
                                 สถานะทั้งหมด
                             </option>
@@ -66,7 +66,7 @@
                             </option>
                             @endforeach
                         </select>
-                    </div> --}}
+                    </div>
                     <div class="flex-1">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
@@ -75,6 +75,26 @@
                             </div>
                             <input type="text" id="search" class="input pl-10" wire:model="search"
                                 placeholder="ค้นหา">
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="bi bi-search text-lg leading-0 text-gray-500 dark:text-gray-400"></i>
+                            </div>
+                            <input type="text" id="search_name" class="input pl-10" wire:model="search_name"
+                                placeholder="ค้นหาชื่อนักศึกษา">
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="bi bi-search text-lg leading-0 text-gray-500 dark:text-gray-400"></i>
+                            </div>
+                            <input type="text" id="search_id" class="input pl-10" wire:model="search_id"
+                                placeholder="ค้นหารหัสนักศึกษา">
                         </div>
                     </div>
                 </div>
@@ -86,27 +106,27 @@
                         <thead class="align-bottom">
                             <tr class="text-black dark:text-slate-300">
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-slate-300">
                                     ชื่อโครงงาน
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                    ภาคเรียน/ปีการศึกษา
-                                </th>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                    นักศึกษา
-                                </th>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                    เอกสาร
-                                </th>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-slate-300">
                                     สถานะ
                                 </th>
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-slate-300">
+                                    นักศึกษา
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-slate-300">
+                                    เอกสาร
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-slate-300">
+                                    ปีการศึกษา
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600 dark:text-slate-300">
                                     ตัวเลือก
                                 </th>
                             </tr>
@@ -116,14 +136,16 @@
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                        <div class="flex flex-row items-center gap-2">
+                                        <div class="flex flex-row items-center gap-2 w-44 truncate block">
                                             <div
-                                                class="flex h-full items-center rounded-1.75 bg-teal-400 p-2.5 text-white dark:bg-slate-700/40">
+                                                class="flex h-full items-center rounded-1.75 bg-teal-400 p-2.5 text-white dark:bg-slate-700/40 ">
                                                 <i
                                                     class="bi bi-folder-fill text-xs leading-0 text-white dark:text-teal-500"></i>
                                             </div>
-                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
-                                                {{ $project->name_th }}
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300" >
+                                                 <div class="transititext-primary text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                                                 data-te-toggle="tooltip" title="{{ $project->name_th }}">
+                                                    {{ $project->name_th }}</div>
                                                 <span
                                                     class="block text-xs font-normal text-slate-600 dark:text-slate-300 dark:opacity-60">
                                                     {{ $project->name_en }}
@@ -133,9 +155,32 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <span
-                                            class="text-black dark:text-slate-300">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
+                                        <div class="inline-block w-44">
+                                            <select id="UpdateStatusProject" class="select text-black dark:text-slate-300"
+                                                data-id="{{ $project->id }}">
+                                                <option value="" disabled selected>
+                                                    {{ $project->master_status->status }}
+                                                </option>
+                                                @if (Auth::user()->role_id === 2)
+                                                    @forelse ($project->SelectOption as $item)
+                                                        <option value="{{ $item->id }}" class="text-black">
+                                                            {{ $item->status }}
+                                                        </option>
+                                                    @empty
+                                                    @endforelse
+                                                @else
+                                                    @forelse ($project->SelectOption as $item)
+                                                        <option value="{{ $item->id }}" class="text-black"
+                                                            disabled>
+                                                            {{ $item->status }}
+                                                        </option>
+                                                    @empty
+                                                    @endforelse
+                                                @endif
+                                            </select>
+                                        </div>
                                     </td>
+
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="flex flex-row justify-center space-x-4">
@@ -190,30 +235,8 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <div class="inline-block">
-                                            <select id="UpdateStatusProject" class="select text-black dark:text-slate-300"
-                                                data-id="{{ $project->id }}">
-                                                <option value="" disabled selected>
-                                                    {{ $project->master_status->status }}
-                                                </option>
-                                                @if (Auth::user()->role_id === 2)
-                                                    @forelse ($project->SelectOption as $item)
-                                                        <option value="{{ $item->id }}" class="text-black">
-                                                            {{ $item->status }}
-                                                        </option>
-                                                    @empty
-                                                    @endforelse
-                                                @else
-                                                    @forelse ($project->SelectOption as $item)
-                                                        <option value="{{ $item->id }}" class="text-black"
-                                                            disabled>
-                                                            {{ $item->status }}
-                                                        </option>
-                                                    @empty
-                                                    @endforelse
-                                                @endif
-                                            </select>
-                                        </div>
+                                        <span
+                                            class="text-black dark:text-slate-300">{{ $project->edu_term->term }}/{{ $project->edu_term->year }}</span>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-right align-middle shadow-transparent dark:border-slate-600">

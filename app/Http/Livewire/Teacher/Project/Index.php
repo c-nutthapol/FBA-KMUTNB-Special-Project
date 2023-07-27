@@ -20,6 +20,9 @@ class Index extends Component
 
     protected $paginationTheme = 'default';
     public $search;
+    public $search_name;
+    public $search_id;
+    public $status;
     public $year;
     public $dataProjects = [];
 
@@ -28,7 +31,10 @@ class Index extends Component
         // dd($this->step(1,"string"));
         // search
         $search = $this->search;
+        $search_name = $this->search_name;
+        $search_id = $this->search_id;
         $year = $this->year;
+        $status = $this->status;
         $step = 1;
         $step_teacher = [1,3];
         $step_admin = [1,2,3];
@@ -45,9 +51,9 @@ class Index extends Component
 
         // dd($statusFilter);
         // Select Option
-        // $statusOption = Master_status::where("step", $step)
-        // ->where("role_id",auth()->user()->role_id)
-        // ->get();
+        $statusOption = Master_status::where("step", $step)
+        ->where("role_id",auth()->user()->role_id)
+        ->get();
 
         $res = Project::with("user_project","edu_term","master_status")
         ->whereHas("master_status", function($sub) use($step){
@@ -69,6 +75,19 @@ class Index extends Component
         })
         ->when($year, function($when) use($year){
             $when->where("edu_term_id",$year);
+        })
+        ->when($status, function($when) use($status){
+            $when->where("status",$status);
+        })
+        ->when($search_name, function($when) use($search_name){
+            $when->whereHas('user_project.user', function ($q) use ($search_name) {
+                $q->where("displayname","LIKE","%".$search_name."%");
+            });
+        })
+        ->when($search_id, function($when) use($search_id){
+            $when->whereHas('user_project.user', function ($q) use ($search_id) {
+                $q->where("username","LIKE","%".$search_id."%");
+            });
         });
         $this->dataProjects = $res->get();
         $projects = $res->paginate(10);

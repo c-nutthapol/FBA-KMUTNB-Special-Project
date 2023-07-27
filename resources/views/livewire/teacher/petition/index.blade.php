@@ -53,8 +53,8 @@
                 </div>
             </div>
 
-            <div class="flex-auto flex-wrap p-6">
-                <div class="overflow-x-auto p-0">
+            <div class="flex-auto p-6">
+                <div class="overflow-x-auto relative p-0">
                     <table
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
@@ -98,17 +98,17 @@
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                        <div class="flex flex-row items-center gap-2">
+                                        <div class="flex flex-row items-center gap-2 w-54 truncate block" >
                                             <div
                                                 class="flex h-full items-center rounded-1.75 bg-teal-400 p-2.5 text-white dark:bg-slate-700/40">
                                                 <i
                                                     class="bi bi-folder-fill text-xs leading-0 text-white dark:text-teal-500"></i>
                                             </div>
                                             <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
-                                                {{ $item->project->name_th }}
+                                                {{ $item->project->name_th ?? '' }}
                                                 <span
-                                                    class="block text-xs font-normal text-slate-600 dark:text-slate-300 dark:opacity-60">New
-                                                    {{ $item->project->name_en }}
+                                                    class="block text-xs font-normal text-slate-600 dark:text-slate-300 dark:opacity-60">
+                                                    {{ $item->project->name_en ?? '' }}
                                                 </span>
                                             </h6>
                                         </div>
@@ -188,7 +188,7 @@
                                                 class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-eye leading-0"></i>
-                                                    <span class="block">ดูโครงงาน</span>
+                                                    <span class="block">โครงงาน</span>
                                                 </div>
                                             </a>
                                         @elseif(auth()->user()->role_id == 3)
@@ -197,7 +197,7 @@
                                                 class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-eye leading-0"></i>
-                                                    <span class="block">ดูโครงงาน</span>
+                                                    <span class="block">โครงงาน</span>
                                                 </div>
                                             </a>
                                         @endif
