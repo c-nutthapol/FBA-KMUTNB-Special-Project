@@ -45,7 +45,7 @@ class Topic extends Component
 
 
         $statusFilter = Master_status::where("step", $step)
-        ->whereIn('id', [5,6])
+        ->whereIn('id', [4,5,6])
         ->whereIn('role_id', array(2, 3))
         ->get();
 

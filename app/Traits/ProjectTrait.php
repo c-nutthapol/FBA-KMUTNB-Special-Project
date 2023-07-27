@@ -20,6 +20,10 @@ trait ProjectTrait
         $result->name = null;
         $result->redirect = null;
         $result->btn = null;
+
+        // dd($this->checkdate);
+
+
         if (!$this->term) {
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
         } elseif (!$this->checkDate) {
@@ -69,7 +73,7 @@ trait ProjectTrait
         return (bool)$this->term
             ->project_step()
             ->where("phase_" . $this->step . "_start_date", "<=", Carbon::now())
-            ->where("phase_" . $this->step . "_end_date", ">=", Carbon::now())
+            ->where("phase_" . $this->step . "_end_date", ">", Carbon::now()->subDays(1))
             ->first();
     }
 
