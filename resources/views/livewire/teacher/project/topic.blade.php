@@ -156,7 +156,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <div class="inline-block w-44">
-                                            <select id="UpdateStatusProject" class="select text-black dark:text-slate-300" wire:change="$emit('updateStatus')"
+                                            <select id="UpdateStatusProject" class="select text-black dark:text-slate-300" wire:change="$emit('updateStatus',event)"
                                                 data-id="{{ $project->id }}">
                                                 <option value="" disabled selected>
                                                     {{ $project->master_status->status }}
@@ -263,12 +263,11 @@
 </div>
 @push('script')
     <script>
-        Livewire.on('updateStatus', () => {
-            const mySelect = document.getElementById('UpdateStatusProject');
-            const status = mySelect.value;
-            const selectedText = mySelect.options[mySelect.selectedIndex].text;
+        Livewire.on('updateStatus', event => {
+            const id = event.target.getAttribute('data-id');
+            const status = event.target.value;
+            const selectedText = event.target.options[event.target.selectedIndex].text;
             
-            const id = mySelect.getAttribute('data-id');
             Swal.fire({
                 icon: 'question',
                 title: 'คุณต้องการเปลี่ยนสถานะ',
@@ -287,7 +286,7 @@
             const mySelect2 = document.getElementById('dropdown');
             mySelect2.classList.toggle("hidden");
             mySelect2.style.transform = `translate(${event.pageX - 300}px, ${event.pageY + 30}px)`;
-            console.log(event.pageX,event.pageY)
+            // console.log(event.pageX,event.pageY)
             Livewire.emit('getDropdownList',key)
         })
 
