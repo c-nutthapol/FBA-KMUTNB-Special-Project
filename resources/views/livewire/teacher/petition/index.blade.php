@@ -67,10 +67,7 @@
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     คำร้อง
                                 </th>
-                                <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
-                                    วันที่เขียนคำร้อง
-                                </th>
+
                                 {{-- <th
                                     class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none dark:border-slate-600 text-base border-b-solid tracking-none whitespace-nowrap  opacity-70">
                                     กรุณาอนุมัติก่อนวันที่
@@ -88,8 +85,12 @@
                                     </th>
                                 @endif
                                 <th
-                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-right align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     รายละเอียด
+                                </th>
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    วันที่เขียนคำร้อง
                                 </th>
                             </tr>
                         </thead>
@@ -116,18 +117,9 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         <span class="text-black dark:text-slate-300">{{ $item->NameRequestForTable }}</span>
+                                        {{-- <span class="text-black dark:text-slate-300">{{ $item->description }}</span> --}}
                                     </td>
-                                    <td
-                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <span class="inline-block leading-tight text-black dark:text-slate-300">
-                                            <i class="bi bi-calendar2-week-fill"></i>
-                                            {{ $item->created_at->thaidate() }}
-                                        </span>
-                                        <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
-                                            <i class="bi bi-clock-fill"></i>
-                                            {{ date('H:i น.', strtotime($item->created_at)) }}
-                                        </span>
-                                    </td>
+
                                     {{-- <td
                                     class="px-6 py-3 text-center align-middle bg-transparent border-b dark:border-slate-600 whitespace-nowrap shadow-transparent">
                                     <span
@@ -182,10 +174,20 @@
                                                 <span class="block">จัดการคำร้อง</span>
                                             </div>
                                         </button>
+                                        <button type="button" data-modal-target="editModal"
+                                                data-modal-toggle="editModal"
+                                                wire:click="edit({{ $item->id }}, '{{ $item->description }}', '{{ $item->teacher_remark }}')"
+                                                {{-- wire:click="edit({{ $item->id }}, {{ $item->description }}, {{ $item->teacher_remark }})" --}}
+                                                class="inline-block mr-2 cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-pencil-square leading-0"></i>
+                                                    <span class="block">หมายเหตุ</span>
+                                                </div>
+                                            </button>
                                         @if (auth()->user()->role_id == 2)
                                             <a href="{{ route('teacher.project.details', ['id' => $item->project]) }}"
                                                 target="_blank"
-                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700">
+                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-purple-500 transition-all ease-in hover:text-purple-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-eye leading-0"></i>
                                                     <span class="block">โครงงาน</span>
@@ -194,13 +196,25 @@
                                         @elseif(auth()->user()->role_id == 3)
                                             <a href="{{ route('admin.project.details', ['id' => $item->project]) }}"
                                                 target="_blank"
-                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-blue-500 transition-all ease-in hover:text-blue-700">
+                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-purple-500 transition-all ease-in hover:text-purple-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-eye leading-0"></i>
                                                     <span class="block">โครงงาน</span>
                                                 </div>
                                             </a>
                                         @endif
+
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <span class="inline-block leading-tight text-black dark:text-slate-300">
+                                            <i class="bi bi-calendar2-week-fill"></i>
+                                            {{ $item->created_at->thaidate() }}
+                                        </span>
+                                        <span class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
+                                            <i class="bi bi-clock-fill"></i>
+                                            {{ date('H:i น.', strtotime($item->created_at)) }}
+                                        </span>
                                     </td>
                                 </tr>
                             @endforeach
@@ -248,6 +262,61 @@
 
                 </div> --}}
             </div>
+        </div>
+    </div>
+
+      <!-- Edit Modal -->
+    <div id="editModal" data-modal-backdrop="static" wire:ignore.self tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+        <div class="relative h-full w-full max-w-2xl md:h-auto">
+            <!-- Modal content -->
+            <form class="relative rounded-lg bg-white shadow dark:bg-gray-700" wire:submit.prevent="update">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
+                    <h3 class="mb-0 text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-300">
+                        <i class="bi bi-pencil-square leading-0"></i> หมายเหตุ
+                    </h3>
+                    <button type="button"
+                        class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="editModal">
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">ยกเลิก</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
+                                หมายเหตุ (นักศึกษา)
+                            </label>
+                            <textarea class="input" placeholder="" rows="4" wire:model.defer="student" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-2">
+                        <div class="col-span-2">
+                            <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
+                                หมายเหตุ (ที่ปรึกษา)
+                            </label>
+                            <textarea class="input" placeholder="" rows="4" wire:model.defer="teacher" disabled></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div
+                    class="flex items-center justify-end space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
+                    <button data-modal-hide="editModal" type="button"
+                        class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
+                        ปิด
+                    </button>
+
+                </div>
+            </form>
         </div>
     </div>
 </div>

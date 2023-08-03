@@ -14,6 +14,23 @@ class Index extends Component
     public $sortCreateDate = "desc";
     public $search = "";
 
+    public $t_id, $student = "-", $teacher = "-";
+
+    // public function test($id, $student){
+    //     dd($student);
+    // }
+
+    public function edit($id,$student,$teacher)
+    {
+        // dd($student);
+        $this->student = '-';
+        $this->teacher = '-';
+
+        $this->t_id = $id;
+        $this->student = $student;
+        $this->teacher = $teacher;
+    }
+
     public function render()
     {
         $roleId = auth()->user()->role_id;
