@@ -280,7 +280,7 @@
                     <div>
                         <label class="mb-2 text-sm tracking-wide dark:text-slate-300 dark:opacity-80">
                             แนบเอกสาร
-                            <span class="text-rose-600">*</span>
+                            <span class="text-rose-600">(ชื่อไฟล์ไม่เกิน 50 ตัวอักษร) *</span>
                         </label>
                         <input class="input h-full p-0" type="file" accept="application/pdf"
                                wire:model.defer="file" multiple>
