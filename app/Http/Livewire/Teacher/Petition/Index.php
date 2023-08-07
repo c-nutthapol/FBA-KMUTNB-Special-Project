@@ -40,6 +40,14 @@ class Index extends Component
         ->when($roleId == 2, function($when){
             $when->whereIn("status", [22, 24]);
         })
+        ->when($roleId == 2, function($when) {
+            // dd($step_teacher);
+            $when->whereHas("project.user_project", function($sub){
+                $sub->where("user_id", auth()->user()->id)
+                ->where("role","teacher1");
+            });
+        })
+
         ->when($roleId == 3, function($when){
             $when->whereIn("status", [23, 25, 26,27]);
         })
