@@ -25,6 +25,8 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/defenseresult", "teacher.project.defenseresult")->name("defenseresult");
                     // ยื่นส่งเล่ม
                     Route::view("/book", "teacher.project.book")->name("book");
+                    // ทั้งหมด
+                    Route::view("/allprocess", "teacher.project.allprocess")->name("allprocess");
                     // รายละเอียดโครงงาน
                     Route::view("/details/{id?}", "teacher.project.details")->name("details");
                     // เสนอแนะ
