@@ -225,7 +225,7 @@
                                                    wire:model.defer="file_teacher"
                                                    id="fileteacherupload"
                                                    accept="application/pdf" multiple>
-                                            @error('file_teacher')
+                                            @error('file_teacher.*')
                                             <span
                                                 class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}
                                                 </span>
@@ -290,7 +290,7 @@
                                                    wire:model.defer="file_teacher1"
                                                    id="fileteacher3upload"
                                                    accept="application/pdf" multiple>
-                                            @error('file_teacher')
+                                            @error('file_teacher1.*')
                                             <span
                                                 class="mt-1 ml-2 block text-sm tracking-wide text-rose-600">{{ $message }}
                                                 </span>
