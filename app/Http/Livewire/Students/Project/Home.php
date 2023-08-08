@@ -67,44 +67,49 @@ class Home extends Component
     public function submit(): void
     {
         $this->validate();
-        $s = false;        //begin Transaction
-        try {
-            //store image
-            $upload_locate = "/file/project/";
-            //start Transaction
-            DB::beginTransaction();
-            $this->project->status = $this->nextStatus();
-            $this->project->save();
-            $times = File::query()->where('title', 'like', $this->project->master_status->name . '%')->where('project_id', '=', $this->project->id)->count() + 1;
-            foreach ($this->file as $i => $file) {
-                $fileName = Carbon::now()->format('YmdHis') . $i + 1 . '.' . explode('.', $file->getFilename())[1];
-                $file->storeAs($upload_locate, $fileName, "public");
-                File::create([
-                    "title" => $this->project->master_status->name . "ครั้งที่ " . $times . " ไฟล์ที่ " . $i + 1,
-                    "project_id" => $this->project->id,
-                    "is_link" => 0,
-                    "path" => $upload_locate . $fileName,
-                ]);
-            }
-            DB::commit();
-            $s = true;
-            $this->cleanupOldUploads();
-            foreach ($this->file as $file) {
-                $file->delete();
-            }
-            $this->emit("alert", ["status" => "success", "title" => "อัพโหลดไฟล์แล้ว"]);
-            $this->emit("close_modal", "uploadModal");
-        } catch (Exception $e) {
-            DB::rollBack();
-            $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ", "text" => $e->getMessage()]);
-        }
-        if ($s) {
+        if ($this->file) {
+
+            $s = false;        //begin Transaction
             try {
-                $user = $this->project->user_project->where("role", "teacher1")->first()->user;
-                Mail::to($user->email)->send(new ProjectStudentMail($this->project, $user));
-            } catch (Exception) {
+                //store image
+                $upload_locate = "/file/project/";
+                //start Transaction
+                DB::beginTransaction();
+                $this->project->status = $this->nextStatus();
+                $this->project->save();
+                $times = File::query()->where('title', 'like', $this->project->master_status->name . '%')->where('project_id', '=', $this->project->id)->count() + 1;
+                foreach ($this->file as $i => $file) {
+                    $fileName = Carbon::now()->format('YmdHis') . $i + 1 . '.' . explode('.', $file->getFilename())[1];
+                    $file->storeAs($upload_locate, $fileName, "public");
+                    File::create([
+                        "title" => $this->project->master_status->name . "ครั้งที่ " . $times . " ไฟล์ที่ " . $i + 1,
+                        "project_id" => $this->project->id,
+                        "is_link" => 0,
+                        "path" => $upload_locate . $fileName,
+                    ]);
+                }
+                DB::commit();
+                $s = true;
+                $this->cleanupOldUploads();
+                foreach ($this->file as $file) {
+                    $file->delete();
+                }
+                $this->emit("alert", ["status" => "success", "title" => "อัพโหลดไฟล์แล้ว"]);
+                $this->emit("close_modal", "uploadModal");
+            } catch (Exception $e) {
+                DB::rollBack();
+                $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ", "text" => $e->getMessage()]);
             }
-            redirect()->route("student.project.home");
+            if ($s) {
+                try {
+                    $user = $this->project->user_project->where("role", "teacher1")->first()->user;
+                    Mail::to($user->email)->send(new ProjectStudentMail($this->project, $user));
+                } catch (Exception) {
+                }
+                redirect()->route("student.project.home");
+            }
+        } else {
+            $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ", "text" => "ไม่พบไฟล์"]);
         }
         //end Transaction
     }
