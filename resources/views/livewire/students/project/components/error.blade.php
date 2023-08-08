@@ -4,6 +4,7 @@
         <div class="w-full max-w-full flex-none px-3">
             <div
                 class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
+
                 <div
                     class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
                     <div class="flex h-full items-center rounded-3 bg-blue-500 p-3.5 text-white dark:bg-slate-700/40">
@@ -13,6 +14,7 @@
                         {{ $data->error->name }}
                     </h5>
                 </div>
+
                 @if ($data->project)
                     <div
                         class="border-b-solid mb-0 flex items-center space-x-4 rounded-t-2xl border-b-0 border-b-transparent p-6">
@@ -54,8 +56,15 @@
                                             data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                                         <div class="flex flex-row items-center gap-3">
                                             <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
-                                            <span class="block">แนบเอกสาร</span>
+                                            <span class="block">แนบเอกสาร (ส่งไฟล์แก้ไข)</span>
                                         </div>
+                                    </button>
+                                    <button type="button" class="btn from-red-500 to-red-700 text-xl text-white"
+                                                onclick="confirmDelete()">
+                                            <div class="flex flex-row items-center gap-3">
+                                                <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
+                                                <span class="block">ลบโครงงานแล้ว แล้วเริ่มต้นใหม่</span>
+                                            </div>
                                     </button>
                                 @else
                                     <a href="{{ $data->error->redirect }}">
@@ -138,3 +147,26 @@
     </div>
 
 </div>
+
+
+
+@push('script')
+    <script>
+        function confirmDelete() {
+            Swal.fire({
+                icon: 'question',
+                title: 'คุณต้องการลบโครงงาน',
+                text: `คุณแน่ใจเหรอว่าต้องการลบโครงงาน เนื่องจากขณะนี้เลยระยะเวลาการยื่นขอสอบหัวข้อแล้วหากเริ่มต้นใหม่จะต้องสร้างคำร้องเพื่อขอสอบหัวข้อล่าช้า ใช่หรือไม่`,
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.
+                    deleteProject();
+                }
+            })
+        }
+    </script>
+@endpush
