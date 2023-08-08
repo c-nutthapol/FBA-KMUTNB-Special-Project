@@ -155,6 +155,9 @@ class Create extends Component
         }
         // begin Transaction
         try {
+            if (!$this->file_project) {
+                throw new Exception("ไม่พบไฟล์ กรุณาแนบไฟล์ใหม่");
+            }
 
             DB::beginTransaction();
             // image location
@@ -204,6 +207,9 @@ class Create extends Component
                 ]);
                 $project->users()->attach($user->id, ["role" => "teacher2"]);
                 //teaher file
+                if (!$this->file_teacher) {
+                    throw new Exception("ไม่พบไฟล์ กรุณาแนบไฟล์ใหม่");
+                }
                 foreach ($this->file_teacher as $file) {
                     $file->storeAs($upload_locate, $file->getFilename(), "public");
 
@@ -225,6 +231,9 @@ class Create extends Component
                         $this->form->get("external1")["fname"] . " " . $this->form->get("external1")["lname"],
                     "role_id" => 4,
                 ]);
+                if (!$this->file_teacher1) {
+                    throw new Exception("ไม่พบไฟล์ กรุณาแนบไฟล์ใหม่");
+                }
                 $project->users()->attach($user->id, ["role" => "teacher3"]);
                 foreach ($this->file_teacher1 as $file) {
                     $file->storeAs($upload_locate, $file->getFilename(), "public");
