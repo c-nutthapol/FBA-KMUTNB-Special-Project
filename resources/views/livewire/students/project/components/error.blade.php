@@ -49,7 +49,7 @@
                     <div class="overflow-x-auto p-0">
                         <div class="flex flex-wrap justify-center gap-6 sm:justify-start">
                             @if ($data->error->redirect)
-                                @if(in_array($data->project->status,[3])&&$data->error->name==="เลยระยะเวลาที่กำหนด")
+                                @if(in_array($data->project?->status,[3]) && $data->error?->name==="เลยระยะเวลาที่กำหนด")
                                     <button type="button" class="btn from-teal-400 to-green-400 text-xl text-white"
                                             data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                                         <div class="flex flex-row items-center gap-3">
@@ -63,7 +63,6 @@
                                             class="btn from-teal-400 to-green-400 text-xl text-white">{{ $data->error->btn }}</button>
                                     </a>
                                 @endif
-
                             @endif
                         </div>
                     </div>
