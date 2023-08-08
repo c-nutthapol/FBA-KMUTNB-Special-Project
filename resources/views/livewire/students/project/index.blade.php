@@ -56,14 +56,14 @@
                             </div>
                         </button>
                     @elseif(in_array($data->project->status, [3,6]))
-                        <button type="button" class="btn from-red-400 to-red-700 text-xs text-white"
+                        <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
                                 data-modal-target="uploadModal" data-modal-toggle="uploadModal">
                             <div class="flex flex-row items-center gap-3">
                                 <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
                                 <span class="block">แนบเอกสาร</span>
                             </div>
                         </button>
-                        <button type="button" class="btn from-teal-400 to-green-400 text-xs text-white"
+                        <button type="button" class="btn from-red-400 to-red-700 text-xs text-white"
                                 onclick="confirmDelete()">
                             <div class="flex flex-row items-center gap-3">
                                 <i class="bi bi-cloud-arrow-up text-base leading-0"></i>
