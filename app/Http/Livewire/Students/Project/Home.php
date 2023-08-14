@@ -54,7 +54,8 @@ class Home extends Component
                 }
                 $file->delete();
             }
-            DB::delete("DELETE FROM projects WHERE id = " . "'" . $this->project->id . "'");
+//            DB::delete("DELETE FROM projects WHERE id = " . "'" . $this->project->id . "'");
+            $this->project->delete();
             DB::commit();
             redirect(route("student.project.home"));
         } catch (Exception $e) {
