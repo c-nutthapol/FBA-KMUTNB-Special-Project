@@ -40,7 +40,7 @@ class History extends Component
 
     public function getRequestProperty(): Collection
     {
-        return StudentRequest::where("project_id", $this->project->id)->get() ?? new Collection();
+        return StudentRequest::where("project_id", $this->project?->id)->get() ?? new Collection();
     }
 
     public function getRegisterRequestProperty(): Collection
