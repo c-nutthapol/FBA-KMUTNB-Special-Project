@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\EduTerm;
 use App\Models\Master_status;
 use App\Models\Project;
+use App\Models\Register_Request;
 use App\Models\StudentRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -16,21 +17,30 @@ trait ProjectTrait
 
     public function checkError($isCreate = false): stdClass
     {
+        //for return error
         $result = new stdClass();
         $result->name = null;
         $result->redirect = null;
         $result->btn = null;
-
-        // dd($this->checkdate);
-
-
+        // start check
+        $request2 = Register_Request::where("created_by", "=", Auth::user()->id)
+            ->where("updated_at", "<=", Carbon::now()->addDays(3))
+            ->first();
         if (!$this->term) {
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
         } elseif (!$this->checkDate) {
             if ($this->project) {
+                $rid = 0;
+                if ($this->step == 2) {
+                    $rid = 5;
+                } elseif ($this->step == 3) {
+                    $rid = 6;
+                } elseif ($this->step == 4) {
+                    $rid = 7;
+                }
                 $request = StudentRequest::query()
                     ->where("project_id", "=", $this->project->id)
-                    ->where("status", "=", 26)
+                    ->where("title", "=", $rid)
                     ->where("updated_at", "<=", Carbon::now()->addDays(3))
                     ->first();
                 $startDate = $this->term->project_step->where("phase_" . $this->step . "_start_date", ">=", Carbon::now())->first();
@@ -45,7 +55,11 @@ trait ProjectTrait
                         $date = $startDate->phase_4_start_date;
                     }
                     $result->name = "ยังไม่ถึงช่วงเวลาที่กำหนด " . dateThai($date);
-                } elseif (!$request?->title == $this->project->master_status->step) {
+                } elseif ($request?->status != 26 && $request) {
+                    $result->name = $request->master_requests->name . ": " . $request->master_status->status;
+                    $result->redirect = route("student.history");
+                    $result->btn = "ประวัติคำร้อง";
+                } elseif ($request?->title != $rid) {
                     $result->name = "เลยระยะเวลาที่กำหนด";
                     $result->redirect = route("student.petition");
                     $result->btn = "สร้างคำร้อง";
@@ -53,28 +67,17 @@ trait ProjectTrait
             } elseif ($this->term->project_step->where("phase_" . $this->step . "_start_date", ">=", Carbon::now())->first()
             ) {
                 $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน";
-            } else {
+            } elseif ($request2?->status != 26 && $request2) {
+                $result->name = $request2->title . ": " . $request2->master_status->status;
+                $result->redirect = route("student.history");
+                $result->btn = "ประวัติคำร้อง";
+            } elseif (!$request2) {
                 $result->name = "เลยระยะเวลาที่กำหนด";
+                $result->redirect = route("student.petition");
+                $result->btn = "สร้างคำร้อง";
             }
-        } elseif ($this->project?->id && $isCreate) {
-            $result->name = "ท่านมีโครงงานอยู่แล้ว";
-            $result->redirect = route("student.project.home");
-            $result->btn = "หน้าหลัก";
-        } elseif (!$this->project?->id && !$isCreate) {
-            $result->name = "ท่านยังไม่มีโครงงาน";
-            $result->redirect = route("student.project.create");
-            $result->btn = "สร้างโครงงาน";
         }
         return $result;
-    }
-
-    public function getCheckDateProperty(): bool
-    {
-        return (bool)$this->term
-            ->project_step()
-            ->where("phase_" . $this->step . "_start_date", "<=", Carbon::now())
-            ->where("phase_" . $this->step . "_end_date", ">", Carbon::now()->subDays(1))
-            ->first();
     }
 
     /**
@@ -100,6 +103,15 @@ trait ProjectTrait
             $result = $status->id;
         }
         return $result;
+    }
+
+    public function getCheckDateProperty(): bool
+    {
+        return (bool)$this->term
+            ->project_step()
+            ->where("phase_" . $this->step . "_start_date", "<=", Carbon::now())
+            ->where("phase_" . $this->step . "_end_date", ">", Carbon::now()->subDays(1))
+            ->first();
     }
 
     /**

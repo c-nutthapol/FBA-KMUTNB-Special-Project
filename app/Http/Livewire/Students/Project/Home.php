@@ -35,7 +35,15 @@ class Home extends Component
     {
         $data = new stdClass();
         $data->project = $this->project;
-        $data->error = $this->checkError();
+
+        if (!$this->project?->id) {
+            $data->error = new stdClass();
+            $data->error->name = "ท่านยังไม่มีโครงงาน";
+            $data->error->redirect = route("student.project.create");
+            $data->error->btn = "สร้างโครงงาน";
+        } else {
+            $data->error = $this->checkError();
+        }
         if ($data->error->name) {
             return view("livewire.students.project.components.error", compact("data"));
         } else {
