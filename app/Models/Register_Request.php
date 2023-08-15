@@ -42,4 +42,36 @@ class Register_Request extends Model
     {
         return Master_request::select("name")->where("id", "=", 8)->first()->name;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, "created_by", "id");
+    }
+
+    protected function getStatusRequestForTableAttribute()
+    {
+        $text = "";
+        $color = "";
+        if($this->status == 22){
+            $color = "slate";
+            $text = "รออนุมัติ";
+        }else if($this->status == 23){
+            $color = "violet";
+            $text = "รออนุมัติ";
+        }else if($this->status == 24){
+            $color = "rose";
+            $text = "ไม่อนุมัติ (ที่ปรึกษา)";
+        }else if($this->status == 25){
+            $color = "slate";
+            $text = "รออนุมัติ";
+        }else if($this->status == 26){
+            $color = "violet";
+            $text = "อนุมัติ (แอดมิน)";
+        }else if($this->status == 27){
+            $color = "rose";
+            $text = "ไม่อนุมัติ (แอดมิน)";
+        }
+        $fullText = '<span class="py-1.4 px-2.5 text-xs rounded-1.8 inline-block whitespace-nowrap tracking-wider text-center bg-gradient-to-tl from-pink-500 to-'.$color.'-400 align-baseline font-bold uppercase leading-none text-white">'.$text.'</span>';
+        return $fullText;
+    }
 }

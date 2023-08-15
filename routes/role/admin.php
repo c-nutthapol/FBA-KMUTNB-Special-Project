@@ -36,6 +36,8 @@ Route::middleware("auth", "role:admin")->group(function () {
             // อนุมัติคำร้องทั่วไป
             Route::view("/petition", "admin.petition")->name("petition");
 
+            Route::view("/petition_special", "admin.petition_special")->name("petition_special");
+
             Route::prefix("settings")
                 ->name("settings.")
                 ->group(function () {
