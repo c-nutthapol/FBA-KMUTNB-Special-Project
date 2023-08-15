@@ -75,6 +75,14 @@ trait ProjectTrait
                 $result->name = "เลยระยะเวลาที่กำหนด";
                 $result->redirect = route("student.petition");
                 $result->btn = "สร้างคำร้อง";
+            } elseif ($this->project && $isCreate) {
+                $result->name = "ท่านมีโครงงานอยู่แล้ว";
+                $result->redirect = route("student.project.home");
+                $result->btn = "หน้าหลัก";
+            } elseif (!$this->project && !$isCreate) {
+                $result->name = "ท่านยังไม่มีโครงงาน";
+                $result->redirect = route("student.project.create");
+                $result->btn = "สร้างโครงงาน";
             }
         }
         return $result;

@@ -95,14 +95,7 @@ class Create extends Component
         $data->department = Master_department::where("status", '=', "active")->get();
 
         $data->project = $this->project;
-        if ($this->project?->id) {
-            $data->error = new stdClass();
-            $data->error->name = "ท่านมีโครงงานอยู่แล้ว";
-            $data->error->redirect = route("student.project.home");
-            $data->error->btn = "หน้าหลัก";
-        } else {
-            $data->error = $this->checkError(true);
-        }
+        $data->error = $this->checkError(true);
         if ($data->error->name) {
             $render = "livewire.students.project.components.error";
         } else {

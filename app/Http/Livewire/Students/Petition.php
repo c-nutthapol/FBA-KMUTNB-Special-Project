@@ -47,6 +47,25 @@ class Petition extends Component
         $data = new stdClass();
         $data->petition = Master_request::query()
             ->where("status", "active")
+            ->when(!$this->project, function ($q) {
+                $q->where("id", "=", 8);
+            })
+            ->when($this->project, function ($q) {
+                $a = [];
+                if ($this->step != 1) {
+                    $a[] = 8;
+                }
+                if ($this->step != 2) {
+                    $a[] = 5;
+                }
+                if ($this->step != 3) {
+                    $a[] = 6;
+                }
+                if ($this->step != 4) {
+                    $a[] = 7;
+                }
+                $q->whereNotIn("id", $a);
+            })
             ->get();
         return view("livewire.students.petition", compact("data"));
     }
