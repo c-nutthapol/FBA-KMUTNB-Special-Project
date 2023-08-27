@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Teacher\PetitionSpecial;
+namespace App\Http\Livewire\Teacher\PetitionSpecialall;
 
 use App\Models\Register_Request;
 use Livewire\Component;
@@ -39,12 +39,12 @@ class Index extends Component
 
         $studentRequest = Register_Request::with('master_status')
         ->when($roleId == 3, function($when){
-            $when->whereIn("status", [23, 25]);
+            $when->whereIn("status", [26,27]);
         })
         ->orderByRaw("created_at ".$this->sortCreateDate)
         ->paginate(10);
         // ->get();
         // dd($studentRequest);
-        return view('livewire.teacher.petition-special.index',['studentRequest' => $studentRequest]);
+        return view('livewire.teacher.petition-specialall.index',['studentRequest' => $studentRequest]);
     }
 }

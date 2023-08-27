@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Teacher\Petition;
+namespace App\Http\Livewire\Teacher\PetitionAll;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -49,7 +49,7 @@ class Index extends Component
         })
 
         ->when($roleId == 3, function($when){
-            $when->whereIn("status", [23, 25]);
+            $when->whereIn("status", [26, 27]);
         })
         ->when($search != "", function($when) use($search){
             $when->whereHas('project', function ($sub) use($search){
@@ -63,6 +63,6 @@ class Index extends Component
         ->paginate(10);
         // ->get();
         // dd($studentRequest);
-        return view('livewire.teacher.petition.index',['studentRequest' => $studentRequest]);
+        return view('livewire.teacher.petition-all.index',['studentRequest' => $studentRequest]);
     }
 }
