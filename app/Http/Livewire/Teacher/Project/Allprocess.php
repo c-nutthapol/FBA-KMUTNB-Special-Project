@@ -47,11 +47,14 @@ class Allprocess extends Component
         // filter
         $termFilter = EduTerm::all();
 
+        $statusFilter = Master_status::whereIn('id', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
+        ->get();
+
 
         // Select Option
-        // $statusOption = Master_status::where("step", $step)
-        // ->where("role_id",auth()->user()->role_id)
-        // ->get();
+        $statusOption = Master_status::where("step", $step)
+        ->where("role_id",auth()->user()->role_id)
+        ->get();
 
         $res = Project::with("user_project","edu_term","master_status")
         ->when($search, function($when) use($search){
@@ -90,7 +93,7 @@ class Allprocess extends Component
 
         // dd($termFilter);
 
-        return view('livewire.teacher.project.allprocess', compact('projects','termFilter'));
+        return view('livewire.teacher.project.allprocess', compact('projects','termFilter','statusFilter'));
     }
 
     public function updateStatusProject($id, $status)
