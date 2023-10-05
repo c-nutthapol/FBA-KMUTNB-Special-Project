@@ -208,14 +208,24 @@
                                         </div>
                                     </td>
                                     <td class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" wire:click="$emit('eventList',{{$project->id}},event)"
-                                            class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700"
-                                            type="button">
-                                            <div class="flex flex-row items-center gap-2">
-                                                <i class="bi bi-download leading-0"></i>
-                                                <span id="download_doc" class="block">โหลดเอกสาร</span>
-                                            </div>
-                                        </button>
+                                        @if (Auth::user()->role_id == 3)
+                                            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" wire:click="$emit('eventList',{{$project->id}},event)"
+                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700"
+                                                type="button">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-download leading-0"></i>
+                                                    <span id="download_doc" class="block">โหลดเอกสาร</span>
+                                                </div>
+                                            </button>
+                                        @elseif (Auth::user()->role_id == 2)
+                                            <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
+                                                class="inline-block  font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-download leading-0"></i>
+                                                    <span class="block">โหลดเอกสาร</span>
+                                                </div>
+                                            </a>
+                                        @endif
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
@@ -282,7 +292,7 @@
             const id = event.target.getAttribute('data-id');
             const status = event.target.value;
             const selectedText = event.target.options[event.target.selectedIndex].text;
-            
+
             Swal.fire({
                 icon: 'question',
                 title: 'คุณต้องการเปลี่ยนสถานะ',
@@ -309,7 +319,7 @@
             location.reload();
         })
 
-        window.addEventListener('click', function(e){   
+        window.addEventListener('click', function(e){
             if (e.target.id != 'download_doc'){
                 const mySelect2 = document.getElementById('dropdown');
                 if(mySelect2.classList.toggle("hidden") == false) mySelect2.classList.toggle("hidden");
