@@ -122,6 +122,18 @@ class Allprocess extends Component
         }
     }
 
+    public function delete($id)
+    {
+        // dd($id);
+        try{
+            $model = Project::where('id',$id)->first();
+            $model->delete();
+            $this->emit('alert', ['status' => 'success', 'title' => 'ลบข้อมูลสำเร็จ']);
+        } catch (\Exception $e) {
+            $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
+        }
+    }
+
     public function export()
     {
         return Excel::download(new ProjectExport($this->dataProjects), "project-step-8.xlsx");

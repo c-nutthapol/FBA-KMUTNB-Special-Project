@@ -31,6 +31,7 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/details/{id?}", "teacher.project.details")->name("details");
                     // เสนอแนะ
                     Route::view("/suggestion/{id?}", "teacher.project.suggestion")->name("suggestion");
+
                 });
 
             // อนุมัติคำร้องทั่วไป
@@ -71,6 +72,8 @@ Route::middleware("auth", "role:admin")->group(function () {
                     Route::view("/document", "admin.settings.document")->name("document");
                     // สถานะโครงการ
                     Route::view("/status", "admin.settings.status")->name("status");
+                    // ข้อมูลติดต่อ
+                    Route::view("/location", "admin.settings.location")->name("location");
 
                     Route::prefix("news")
                         ->name("news.")

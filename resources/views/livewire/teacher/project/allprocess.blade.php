@@ -253,6 +253,14 @@
                                                         <span class="block">เสนอแนะ</span>
                                                     </div>
                                                 </a>
+                                                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" wire:click="$emit('delete',{{ $project->id }})"
+                                                    class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-red-500 transition-all ease-in hover:text-green-700"
+                                                    type="button">
+                                                    <div class="flex flex-row items-center gap-2">
+                                                        <i class="bi bi-database-dash leading-0"></i>
+                                                        <span id="download_doc" class="block">ลบโครงการ</span>
+                                                    </div>
+                                                </button>
                                             </div>
                                         @endif
                                     </td>
@@ -272,6 +280,7 @@
         </div>
     </div>
 </div>
+
 @push('script')
     <script>
         Livewire.on('updateStatus', event => {
@@ -312,5 +321,33 @@
             }
         });
     </script>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+            @this.on('delete', (id) => {
+                Swal.fire({
+                    title: 'คุณต้องการลบข้อมูลนี้หรือไม่?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'ใช่',
+                    cancelButtonText: 'ไม่',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        @this.call('delete', id)
+                    } else if (
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        Swal.fire(
+                            'Cancelled',
+                            'Your data is safe :)',
+                            'error'
+                        )
+                    }
+                })
+            })
+        })
+    </script>
+
 @endpush
 

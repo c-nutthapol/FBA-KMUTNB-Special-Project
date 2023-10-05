@@ -356,6 +356,20 @@
                     </a>
                 </li>
 
+                <li class="mt-0.5 w-full">
+                    <a class="ease-nav-brand {{ Route::currentRouteName() == 'admin.settings.location' ? 'bg-teal-500/13 font-semibold text-teal-700 rounded-lg' : '' }} my-0 mx-2 flex items-center whitespace-nowrap py-2.7 px-4 text-sm tracking-wide transition-colors dark:text-slate-300 dark:opacity-80"
+                        href="{{ route('admin.settings.location') }}">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i
+                                class="bi {{ Route::currentRouteName() == 'admin.settings.location' ? 'bi-tags-fill ' : 'bi-tags' }} relative top-0 text-sm leading-normal text-gray-700"></i>
+                        </div>
+                        <span class="ease pointer-events-none ml-1 opacity-100 duration-300">
+                            ข้อมูลติดต่อ
+                        </span>
+                    </a>
+                </li>
+
                 <li class="mt-4 w-full">
                     <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-slate-300">
                         log

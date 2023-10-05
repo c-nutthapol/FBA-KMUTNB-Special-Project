@@ -34,11 +34,7 @@
             <div class="flex flex-wrap -mx-3">
                 <div class="w-8/12 max-w-full px-3 mx-auto text-center flex-0">
                     <p class="mb-0 text-black">
-                        Copyright ©
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        - คณะบริหารธุรกิจ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ โทร. 038-627000 ต่อ 5536
+                        @livewire('layouts.partials.footer')
                     </p>
                 </div>
             </div>
