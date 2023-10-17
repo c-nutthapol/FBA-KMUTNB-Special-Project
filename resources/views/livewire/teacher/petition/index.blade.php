@@ -64,6 +64,10 @@
                                     ชื่อโครงงาน
                                 </th>
                                 <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    ชื่อนักศึกษา
+                                </th>
+                                <th
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-center align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     คำร้อง
                                 </th>
@@ -112,6 +116,18 @@
                                                     {{ $item->project->name_en ?? '' }}
                                                 </span>
                                             </h6>
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <div class="flex flex-row justify-center space-x-4">
+                                            <figure class="flex flex-row items-center space-x-2">
+                                                <figcaption class="text-black dark:text-slate-300">
+                                                    @foreach ($item->project->StudentListForTable as $item_student)
+                                                        {{ $item_student }}<br>
+                                                    @endforeach
+                                                </figcaption>
+                                            </figure>
                                         </div>
                                     </td>
                                     <td
