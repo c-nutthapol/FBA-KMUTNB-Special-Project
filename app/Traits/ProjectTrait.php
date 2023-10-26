@@ -25,6 +25,7 @@ trait ProjectTrait
         // start check
         $request2 = Register_Request::where("created_by", "=", Auth::user()->id)
             ->where("updated_at", "<=", Carbon::now()->addDays(3))
+            ->orderByDesc("id")
             ->first();
         if (!$this->term) {
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
@@ -42,6 +43,7 @@ trait ProjectTrait
                     ->where("project_id", "=", $this->project->id)
                     ->where("title", "=", $rid)
                     ->where("updated_at", "<=", Carbon::now()->addDays(3))
+                    ->orderByDesc("id")
                     ->first();
                 $startDate = $this->term->project_step->where("phase_" . $this->step . "_start_date", ">=", Carbon::now())->first();
                 if ($startDate) {
