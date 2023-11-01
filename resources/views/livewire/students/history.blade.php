@@ -62,20 +62,21 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
+                                        {{-- @dd($request->master_status->status) --}}
                                         @if (in_array($request->status, [22, 23, 25]))
                                             <span
                                                 class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-gray-500 to-teal-400 py-1.4 px-2.5 text-center align-baseline font-bold uppercase leading-none tracking-wider text-white">
-                                                    รออนุมัติ
+                                                {{ $request->master_status->status ?? 'รออนุมัติ'}}
                                                 </span>
                                         @elseif($request->status == 26)
                                             <span
                                                 class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-emerald-500 to-teal-400 py-1.4 px-2.5 text-center align-baseline font-bold uppercase leading-none tracking-wider text-white">
-                                                    อนุมัติ
+                                                {{ $request->master_status->status ?? 'อนุมัติ'}}
                                                 </span>
                                         @elseif (in_array($request->status, [24, 27]))
                                             <span
                                                 class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-red-600 to-orange-600 py-1.4 px-2.5 text-center align-baseline font-bold uppercase leading-none tracking-wider text-white">
-                                                    ไม่อนุมัติ
+                                                {{ $request->master_status->status ?? 'ไม่อนุมัติ'}}
                                                 </span>
                                         @endif
 

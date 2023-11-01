@@ -40,6 +40,9 @@ Route::middleware("auth", "role:admin")->group(function () {
             // อนุมัติคำร้องทั่วไป
             Route::view("/petition_all", "admin.petition_all")->name("petition_all");
 
+            // อนุมัติคำร้องทั่วไป
+            Route::view("/petition_teacher", "admin.petition_teacher")->name("petition_teacher");
+
             Route::view("/petition_special", "admin.petition_special")->name("petition_special");
 
             Route::view("/petition_specialall", "admin.petition_specialall")->name("petition_specialall");
