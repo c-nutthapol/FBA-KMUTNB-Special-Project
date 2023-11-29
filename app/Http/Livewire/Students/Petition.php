@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -76,37 +77,50 @@ class Petition extends Component
         $this->validate();
         $id = '';
         //begin Transaction
-        try {
-            //start Transaction
-            DB::beginTransaction();
-            if ($this->form["title"] == 8) {
-                Register_Request::create([
-                    "description" => $this->form["desc"],
-                ]);
-            } else {
-                $id = StudentRequest::create([
-                    "project_id" => $this->project->id,
-                    "title" => $this->form["title"],
-                    "description" => $this->form["desc"],
-                    "status" => 22,
-                ]);
-                $s = true;
+        if ($this->form["title"] == 8) {
+            $exist = Register_Request::query()->where("created_by", "=", Auth::user()->id)
+                ->whereNotIn("status", [26, 27, 24])
+                ->count() > 0;
+        } else {
+            $exist = StudentRequest::query()->where("project_id", "=", $this->project?->id)
+                ->whereNotIn("status", [26, 27, 24])
+                ->where("title", "=", $this->form["title"])
+                ->count() > 0;
+        }
+        if ($exist) {
+            $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ", "text" => "มีคำร้องที่รอดำเนินการอยู่"]);
+        } else {
+            try {
+                //start Transaction
+                DB::beginTransaction();
+                if ($this->form["title"] == 8) {
+                    Register_Request::create([
+                        "description" => $this->form["desc"],
+                    ]);
+                } else {
+                    $id = StudentRequest::create([
+                        "project_id" => $this->project->id,
+                        "title" => $this->form["title"],
+                        "description" => $this->form["desc"],
+                        "status" => 22,
+                    ]);
+                    $s = true;
+                }
+
+                DB::commit();
+                $this->emit("alert", ["status" => "success", "title" => "บันทึกข้อมูลสำเร็จ"]);
+
+                redirect()->route("student.history");
+            } catch (Exception $e) {
+                DB::rollBack();
+                $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ", "text" => $e->getMessage()]);
             }
-
-            DB::commit();
-            $this->emit("alert", ["status" => "success", "title" => "บันทึกข้อมูลสำเร็จ"]);
-
-            redirect()->route("student.history");
-        } catch (Exception $e) {
-            DB::rollBack();
-            $this->emit("alert", ["status" => "error", "title" => "บันทึกข้อมูลไม่สำเร็จ", "text" => $e->getMessage()]);
+            //end Transaction
+            if ($s) {
+                $request = StudentRequest::where('id', '=', $id->id)->first();
+                $user = $this->project->user_project->where("role", "teacher1")->first()->user;
+                Mail::to($user->email)->send(new RequestStudentMail($request, $user, $this->project));
+            }
         }
-        //end Transaction
-        if ($s) {
-            $request = StudentRequest::where('id', '=', $id->id)->first();
-            $user = $this->project->user_project->where("role", "teacher1")->first()->user;
-            Mail::to($user->email)->send(new RequestStudentMail($request, $user, $this->project));
-        }
-
     }
 }

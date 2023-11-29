@@ -80,10 +80,10 @@ class Home extends Component
                 $this->project->save();
                 $times = File::query()->where('title', 'like', $this->project->master_status->name . '%')->where('project_id', '=', $this->project->id)->count() + 1;
                 foreach ($this->file as $i => $file) {
-                    $fileName = Carbon::now()->format('YmdHis') . $i + 1 . '.' . explode('.', $file->getFilename())[1];
+                    $fileName = "FBA" . Carbon::now()->format('YmdHis') . $i + 1 . '.' . explode('.', $file->getFilename())[1];
                     $file->storeAs($upload_locate, $fileName, "public");
                     File::create([
-                        "title" => $this->project->master_status->name . "ครั้งที่ " . $times . " ไฟล์ที่ " . $i + 1,
+                        "title" => $fileName,
                         "project_id" => $this->project->id,
                         "is_link" => 0,
                         "path" => $upload_locate . $fileName,
