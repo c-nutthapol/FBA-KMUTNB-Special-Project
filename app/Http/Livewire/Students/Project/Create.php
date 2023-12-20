@@ -91,17 +91,29 @@ class Create extends Component
 
     public function render(): View|\Illuminate\Foundation\Application|Factory|Application
     {
+
         $data = new stdClass();
         $data->department = Master_department::where("status", '=', "active")->get();
 
+        // dd($this->project);
+
         $data->project = $this->project;
         $data->error = $this->checkError(true);
+
+        // dd($this->checkError());
+
+        // dd($data->error->name);
+
         if ($data->error->name) {
-            $render = "livewire.students.project.components.error";
+
+            if($data->error->name != "ท่านยังไม่มีโครงงาน กรุณาเริ่มดำเนินการ"){
+                $render = "livewire.students.project.components.error";
+            }else{
+                $render = "livewire.students.project.create";
+            }
         } else {
             $render = "livewire.students.project.create";
         }
-
         return view($render, compact("data"));
     }
 

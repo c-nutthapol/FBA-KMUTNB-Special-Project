@@ -22,14 +22,14 @@ trait ProjectTrait
         $result->name = null;
         $result->redirect = null;
         $result->btn = null;
-        // start check
+        // start check ลงทะเบียนล่าช้า
         $request2 = Register_Request::where("created_by", "=", Auth::user()->id)
             ->where("updated_at", "<=", Carbon::now()->addDays(3))
             ->orderByDesc("id")
             ->first();
         if (!$this->term) {
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
-        } elseif (!$this->checkDate) {
+        } elseif ($this->checkDate) {
             if ($this->project) {
                 $rid = 0;
                 if ($this->step == 2) {
@@ -73,7 +73,7 @@ trait ProjectTrait
                 $result->name = $request2->title . ": " . $request2->master_status->status;
                 $result->redirect = route("student.history");
                 $result->btn = "ประวัติคำร้อง";
-            } elseif (!$request2) {
+            } elseif (!$request2 && !$this->checkDate ) {
                 $result->name = "เลยระยะเวลาที่กำหนด";
                 $result->redirect = route("student.petition");
                 $result->btn = "สร้างคำร้อง";
@@ -86,6 +86,16 @@ trait ProjectTrait
                 $result->redirect = route("student.project.create");
                 $result->btn = "สร้างโครงงาน";
             }
+        }
+        elseif(!$this->checkDate && $request2 && !$this->project){
+
+
+                $result->name = "ท่านยังไม่มีโครงงาน กรุณาเริ่มดำเนินการ";
+                $result->redirect = route("student.project.create");
+                $result->btn = "สร้างโครงงาน";
+        }
+        elseif(!$this->checkDate && !$this->project){
+            $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
         }
         return $result;
     }

@@ -112,6 +112,15 @@
                                                     <span class="block">หมายเหตุ</span>
                                                 </div>
                                             </button>
+
+                                            <button type="button"
+                                                wire:click="$emit('delete-button','{{ $item->id }}')"
+                                                class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-rose-500 transition-all ease-in hover:text-rose-800">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <i class="bi bi-trash3 leading-0"></i>
+                                                    <span class="block">ลบ</span>
+                                                </div>
+                                        </button>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
@@ -224,6 +233,23 @@
     <script>
         Livewire.on('refreshComponent', e => {
             location.reload();
+        })
+    </script>
+     <script>
+        Livewire.on('delete-button', key => {
+            Swal.fire({
+                icon: 'info',
+                title: 'ลบข้อมูล',
+                text: 'คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.delete(key);
+                }
+            })
         })
     </script>
 @endpush

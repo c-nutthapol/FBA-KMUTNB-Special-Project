@@ -32,6 +32,19 @@ class Index extends Component
         $this->teacher = $teacher;
     }
 
+    public function delete($id)
+    {
+        try {
+            $record = Register_Request::find($id);
+            if ($record) {
+                $record->delete();
+                $this->emit('alert', ['status' => 'success', 'title' => 'ลบข้อมูลเสร็จสิ้น']);
+            }
+        } catch (\Exception $e) {
+            $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
+        }
+    }
+
     public function render()
     {
         $roleId = auth()->user()->role_id;
