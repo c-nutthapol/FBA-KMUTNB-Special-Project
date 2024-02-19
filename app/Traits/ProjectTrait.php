@@ -27,10 +27,14 @@ trait ProjectTrait
             ->where("updated_at", "<=", Carbon::now()->addDays(3))
             ->orderByDesc("id")
             ->first();
+
+        // dd($this->checkDate);
         if (!$this->term) {
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
         } elseif ($this->checkDate) {
+            // ถ้าอยู่ในช่วงเวลา
             if ($this->project) {
+                // ถ้ามีโปรเจ็ค
                 $rid = 0;
                 if ($this->step == 2) {
                     $rid = 5;
@@ -39,13 +43,20 @@ trait ProjectTrait
                 } elseif ($this->step == 4) {
                     $rid = 7;
                 }
+                // หาคำร้องแบบปกติ
                 $request = StudentRequest::query()
                     ->where("project_id", "=", $this->project->id)
                     ->where("title", "=", $rid)
                     ->where("updated_at", "<=", Carbon::now()->addDays(3))
                     ->orderByDesc("id")
                     ->first();
+
+                // ตรวจสอบว่า ณ วันที่ step นี้เวลามากว่า เวลาปัจจุบันหรือไม่
+
+                //  วันที่เปิดคือ 17 ตอนนี้วันที่ 18
                 $startDate = $this->term->project_step->where("phase_" . $this->step . "_start_date", ">=", Carbon::now())->first();
+                $endDate = $this->term->project_step->where("phase_" . $this->step . "_end_date", ">=", Carbon::now()->subDays(1))->first();
+                // dd($endDate);
                 if ($startDate) {
                     if ($this->step == 1) {
                         $date = $startDate->phase_1_start_date;
@@ -61,7 +72,9 @@ trait ProjectTrait
                     $result->name = $request->master_requests->name . ": " . $request->master_status->status;
                     $result->redirect = route("student.history");
                     $result->btn = "ประวัติคำร้อง";
-                } elseif ($request?->title != $rid) {
+                } elseif ($request?->title != $rid && !$endDate) {
+                    // ตรวจสอบว่า คำร้องตรงกับ rid (คำร้องใน step นั้นหรือไม่)
+
                     $result->name = "เลยระยะเวลาที่กำหนด";
                     $result->redirect = route("student.petition");
                     $result->btn = "สร้างคำร้อง";
@@ -88,15 +101,77 @@ trait ProjectTrait
             }
         }
         elseif(!$this->checkDate && $request2 && !$this->project){
+                // กรณีที่เลยเวลา และส่งคำร้องได้รับการอนุมัติจากแอดมินแล้ว
+                if($request2->status == 26){
+                    $result->name = "ท่านยังไม่มีโครงงาน กรุณาเริ่มดำเนินการ";
+                    $result->redirect = route("student.project.create");
+                    $result->btn = "สร้างโครงงาน";
+                }else{
+                    // กรณีที่ยังไม่ได้รับการอนุมัติจากแอดมิน
+                    $result->name = "กรุณารอผู้ดูแลระบบอนุมัติคำร้องลงทะเบียนล่าช้า";
+                }
 
-
-                $result->name = "ท่านยังไม่มีโครงงาน กรุณาเริ่มดำเนินการ";
-                $result->redirect = route("student.project.create");
-                $result->btn = "สร้างโครงงาน";
         }
-        elseif(!$this->checkDate && !$this->project){
+        elseif(!$this->checkDate && !$this->project && !$request2){
+            // ทำการตรวจสอบว่า ถ้าไม่อยู่ในช่วงเวลา ไม่มีโปรเจ็ค และไม่มีคำร้อง
+            // ถ้าเวลาปัจจุบันมากกว่า ช่วงที่ 1 ให้มีปุ่มคำร้อง
+          if($this->term->project_step->phase_1_start_date <= Carbon::now()){
+            $result->name = "ไม่อยู่ในช่วงเวลาที่กำหนด กรุณาสร้างคำร้อง";
+            if(!$request2){
+                $result->redirect = route("student.petition");
+                $result->btn = "สร้างคำร้อง";
+            }
+           }else{
+            // แต่ถ้าเวลาปัจจุบันยังไม่ถึง ช่วงที่ 1 ไม่ให้มีปุ่มคำร้อง
             $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
+           }
         }
+        elseif(!$this->checkDate && $this->project && $this->step == 2){
+            // dd(55);
+            // ทำการตรวจสอบว่า ถ้าไม่อยู่ในช่วงเวลา ไม่มีโปรเจ็ค และไม่มีคำร้อง
+            // ถ้าเวลาปัจจุบันมากกว่า ช่วงที่ 1 ให้มีปุ่มคำร้อง
+         if($this->term->project_step->phase_2_start_date <= Carbon::now()){
+            $result->name = "ไม่อยู่ในช่วงเวลาที่กำหนด กรุณาสร้างคำร้อง";
+            if(!$request2){
+                $result->redirect = route("student.petition");
+                $result->btn = "สร้างคำร้อง";
+            }
+           }else{
+            // แต่ถ้าเวลาปัจจุบันยังไม่ถึง ช่วงที่ 1 ไม่ให้มีปุ่มคำร้อง
+            $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
+           }
+        }
+        elseif(!$this->checkDate && $this->project && $this->step == 3){
+            // dd(66);
+            // ทำการตรวจสอบว่า ถ้าไม่อยู่ในช่วงเวลา ไม่มีโปรเจ็ค และไม่มีคำร้อง
+            // ถ้าเวลาปัจจุบันมากกว่า ช่วงที่ 1 ให้มีปุ่มคำร้อง
+           if($this->term->project_step->phase_3_start_date <= Carbon::now()){
+            $result->name = "ไม่อยู่ในช่วงเวลาที่กำหนด กรุณาสร้างคำร้อง";
+            if(!$request2){
+                $result->redirect = route("student.petition");
+                $result->btn = "สร้างคำร้อง";
+            }
+           }else{
+            // แต่ถ้าเวลาปัจจุบันยังไม่ถึง ช่วงที่ 1 ไม่ให้มีปุ่มคำร้อง
+            $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
+           }
+        }
+        elseif(!$this->checkDate && $this->project && $this->step == 4){
+            // dd(77);
+            // ทำการตรวจสอบว่า ถ้าไม่อยู่ในช่วงเวลา ไม่มีโปรเจ็ค และไม่มีคำร้อง
+            // ถ้าเวลาปัจจุบันมากกว่า ช่วงที่ 1 ให้มีปุ่มคำร้อง
+            if($this->term->project_step->phase_4_start_date <= Carbon::now()){
+            $result->name = "ไม่อยู่ในช่วงเวลาที่กำหนด กรุณาสร้างคำร้อง";
+            if(!$request2){
+                $result->redirect = route("student.petition");
+                $result->btn = "สร้างคำร้อง";
+            }
+           }else{
+            // แต่ถ้าเวลาปัจจุบันยังไม่ถึง ช่วงที่ 1 ไม่ให้มีปุ่มคำร้อง
+            $result->name = "ยังไม่ถึงช่วงเวลาการลงทะเบียนโครงงาน กรุณารอประกาศในภายหลัง";
+           }
+        }
+
         return $result;
     }
 

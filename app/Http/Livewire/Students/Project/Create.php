@@ -31,6 +31,8 @@ class Create extends Component
     public $file_teacher1 = [];
     public $file_project = [];
 
+    public $checkButton = true;
+
     //validation
     protected array $rules = [
         "form.name_th" => "required",
@@ -119,6 +121,7 @@ class Create extends Component
 
     public function submit(): void
     {
+        $this->checkButton = false;
         $s = false;
         // add teacher2 validate
         if ($this->form->get("teacher_2") === "external") {
@@ -172,7 +175,6 @@ class Create extends Component
             if (!$this->file_project) {
                 throw new Exception("ไม่พบไฟล์ กรุณาแนบไฟล์ใหม่");
             }
-
             DB::beginTransaction();
             // image location
             $upload_locate = "/file/project/";
@@ -279,8 +281,10 @@ class Create extends Component
             redirect()->route("student.project.home");
 
         } catch (Exception $e) {
+
             DB::rollBack();
             $this->emit("alert", ["status" => "error", "title" => $e->getMessage()]);
+            $this->checkButton = true;
         }
         //end Transaction
         if ($s) {

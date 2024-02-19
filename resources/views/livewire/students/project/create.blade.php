@@ -327,7 +327,7 @@
                         </div>
 
                         <div class="mt-10 text-end">
-
+                            @if ($checkButton == true)
                             <button type="submit" id="submit" class="btn from-blue-500 to-violet-500 text-sm text-white"
                                     wire:loading.attr="disabled" wire:target="submit()">
                                 <div class="flex flex-row items-center gap-3">
@@ -335,9 +335,9 @@
                                     <span class="block">บันทึก</span>
                                     {{-- loading --}}
                                     <svg aria-hidden="true" role="status"
-                                         class="inline h-4 w-4 animate-spin text-white" viewBox="0 0 100 101"
-                                         fill="none" xmlns="http://www.w3.org/2000/svg"
-                                         wire:loading="submit()">
+                                        class="inline h-4 w-4 animate-spin text-white" viewBox="0 0 100 101"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg"
+                                        wire:loading="submit()">
                                         <path
                                             d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                                             fill="#E5E7EB"/>
@@ -346,8 +346,9 @@
                                             fill="currentColor"/>
                                     </svg>
                                 </div>
-
                             </button>
+                            @endif
+
                         </div>
                     </form>
                 </div>

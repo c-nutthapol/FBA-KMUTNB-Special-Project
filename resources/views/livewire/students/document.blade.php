@@ -49,12 +49,12 @@
                                             <span
                                                 class="inline-block leading-tight text-black dark:text-slate-300">
                                                 <i class="bi bi-calendar2-week-fill"></i>
-                                                {{ dateThai($files->create_at) }}
+                                                {{ dateThai($files->created_at->format("m/d/Y")) }}
                                             </span>
                                         <span
                                             class="ml-2 inline-block leading-tight text-black dark:text-slate-300">
-                                                <i class="bi bi-clock-fill"></i> {{ date('H:m', $files->create_at) }}
-                                                น.
+                                            <i class="bi bi-clock-fill"></i> {{  $files->created_at->format("H:i") }}
+                                            น.
                                             </span>
                                     </td>
                                     <td
