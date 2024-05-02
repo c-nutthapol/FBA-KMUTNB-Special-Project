@@ -93,13 +93,21 @@ class Book extends Component
         $this->dataProjects = $res->get();
         $projects = $res->paginate(10);
 
-        if($this->term->project_step->book_approval_end){
-            $otherDate = $this->term->project_step->book_approval_end;
+        // dd($this->term);
+
+        if($this->term){
+            if($this->term->project_step->book_approval_end){
+                $otherDate = $this->term->project_step->book_approval_end;
+            }else{
+                $otherDate = Carbon::now()->addMinutes(10);
+            }
         }else{
             $otherDate = Carbon::now()->addMinutes(10);
+
         }
 
         $nowDate = Carbon::now();
+
         $this->checkDate = $nowDate->gt($otherDate);
 
         // dd($this->checkDate);

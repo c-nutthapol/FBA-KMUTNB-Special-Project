@@ -14,7 +14,7 @@ class Index extends Component
     public $sortCreateDate = "desc";
     public $search = "";
 
-    public $t_id, $student = "-", $teacher = "-";
+    public $t_id, $student = "-", $teacher = "-", $checked=[];
 
     // public function test($id, $student){
     //     dd($student);
@@ -29,6 +29,29 @@ class Index extends Component
         $this->t_id = $id;
         $this->student = $student;
         $this->teacher = $teacher;
+    }
+
+    public function deleteall($id){
+        try {
+            $record = StudentRequest::whereKey($this->checked);
+            if ($record) {
+                $record->delete();
+                $this->emit('alert', ['status' => 'success', 'title' => 'ลบข้อมูลเสร็จสิ้น']);
+                $this->checked = [];
+            }
+        } catch (\Exception $e) {
+            $this->emit('alert', ['status' => 'error', 'title' => 'เกิดข้อผิดพลาด', 'text' => $e->getMessage()]);
+        }
+    }
+
+    public function clearselected(){
+        $this->checked = [];
+    }
+
+    public function isChecked($id){
+
+        // dd($id);
+        return in_array($id,$this->checked) ? 'bg-gray-100' : '';
     }
 
     public function render()

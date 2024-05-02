@@ -52,6 +52,18 @@
                     </div>
                 </div>
             </div>
+            <div class="flex flex-col justify-start gap-3 px-6 mt-1 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    @if ($checked)
+                        <button class="btn from-red-500 to-red-500 font-medium text-white"
+                            wire:click="$emit('delete-button','1')">เลือกลบคำร้อง
+                            ({{ count($checked) }})</button>
+
+                        <button class="btn from-green-500 to-green-500 font-medium text-white"
+                            wire:click="clearselected">ยกเลิกทั้งหมด</button>
+                    @endif
+                </div>
+            </div>
 
             <div class="flex-auto p-6">
                 <div class="overflow-x-auto relative p-0">
@@ -59,6 +71,10 @@
                         class="mb-0 w-full items-center border-gray-200 align-top tracking-wide text-slate-500 dark:border-slate-600">
                         <thead class="align-bottom">
                             <tr class="text-black dark:text-slate-300">
+                                <th
+                                    class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
+                                    เลือกลบ
+                                </th>
                                 <th
                                     class="border-b-solid whitespace-nowrap border-b border-gray-200 bg-transparent px-6 py-3 text-left align-middle text-base font-bold uppercase tracking-none opacity-70 shadow-none dark:border-slate-600">
                                     ชื่อโครงงาน
@@ -100,10 +116,15 @@
                         </thead>
                         <tbody>
                             @forelse ($studentRequest as $item)
-                                <tr>
+                                <tr class="{{ $this->isChecked($item->id) }}">
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <input type="checkbox" value="{{ $item->id }}" wire:model="checked">
+                                        {{-- <span class="text-black dark:text-slate-300">{{ $item->description }}</span> --}}
+                                    </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600">
-                                        <div class="flex flex-row items-center gap-2 w-54 truncate block" >
+                                        <div class="flex flex-row items-center gap-2 w-54 truncate block">
                                             <div
                                                 class="flex h-full items-center rounded-1.75 bg-teal-400 p-2.5 text-white dark:bg-slate-700/40">
                                                 <i
@@ -132,7 +153,8 @@
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                        <span class="text-black dark:text-slate-300">{{ $item->NameRequestForTable }}</span>
+                                        <span
+                                            class="text-black dark:text-slate-300">{{ $item->NameRequestForTable }}</span>
                                         {{-- <span class="text-black dark:text-slate-300">{{ $item->description }}</span> --}}
                                     </td>
 
@@ -191,15 +213,15 @@
                                             </div>
                                         </button>
                                         <button type="button" data-modal-target="editModal"
-                                                data-modal-toggle="editModal"
-                                                wire:click="edit({{ $item->id }}, '{{ $item->description }}', '{{ $item->teacher_remark }}')"
-                                                {{-- wire:click="edit({{ $item->id }}, {{ $item->description }}, {{ $item->teacher_remark }})" --}}
-                                                class="inline-block mr-2 cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700">
-                                                <div class="flex flex-row items-center gap-2">
-                                                    <i class="bi bi-pencil-square leading-0"></i>
-                                                    <span class="block">หมายเหตุ</span>
-                                                </div>
-                                            </button>
+                                            data-modal-toggle="editModal"
+                                            wire:click="edit({{ $item->id }}, '{{ $item->description }}', '{{ $item->teacher_remark }}')"
+                                            {{-- wire:click="edit({{ $item->id }}, {{ $item->description }}, {{ $item->teacher_remark }})" --}}
+                                            class="inline-block mr-2 cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700">
+                                            <div class="flex flex-row items-center gap-2">
+                                                <i class="bi bi-pencil-square leading-0"></i>
+                                                <span class="block">หมายเหตุ</span>
+                                            </div>
+                                        </button>
                                         @if (auth()->user()->role_id == 2)
                                             <a href="{{ route('teacher.project.details', ['id' => $item->project]) }}"
                                                 target="_blank"
@@ -281,7 +303,7 @@
         </div>
     </div>
 
-      <!-- Edit Modal -->
+    <!-- Edit Modal -->
     <div id="editModal" data-modal-backdrop="static" wire:ignore.self tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden h-[calc(100%-1rem)] w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
         <div class="relative h-full w-full max-w-2xl md:h-auto">
@@ -342,5 +364,21 @@
             location.reload();
         })
     </script>
+    <script>
+        Livewire.on('delete-button', key => {
+            Swal.fire({
+                icon: 'info',
+                title: 'ลบข้อมูล',
+                text: 'คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    @this.deleteall(key);
+                }
+            })
+        })
+    </script>
 @endpush
-

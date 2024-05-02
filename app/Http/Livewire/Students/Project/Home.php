@@ -35,6 +35,8 @@ class Home extends Component
     {
         $data = new stdClass();
         $data->project = $this->project;
+
+        // dd(55);
         $data->error = $this->checkError();
         if ($data->error->name) {
             return view("livewire.students.project.components.error", compact("data"));

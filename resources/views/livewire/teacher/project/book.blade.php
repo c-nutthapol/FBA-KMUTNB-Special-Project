@@ -1,5 +1,6 @@
 <div class="-mx-3 flex flex-wrap">
     <div class="w-full max-w-full flex-none px-3">
+
         <div
             class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
             <div
@@ -8,7 +9,14 @@
                     <i class="bi bi-7-circle-fill text-2xl leading-0 text-white dark:text-blue-500"></i>
                 </div>
                 <h5 class="mb-0 tracking-wide dark:text-slate-300">
-                    ส่งเล่ม <span class="text-orange-600">(หมดเขตการอนุมัติวันที่ {{dateThai($this->term->project_step->book_approval_end ?? '-')}})</span>                </h5>
+                    ส่งเล่ม <span class="text-orange-600">
+                        @if ($this->term)
+                            (หมดเขตการอนุมัติวันที่
+                            {{ dateThai($this->term->project_step->book_approval_end ?? '-') }}
+                            )
+                        @endif
+                    </span> </h5>
+                {{-- @dd(555) --}}
             </div>
 
             <div class="mb-3 flex flex-col justify-start gap-3 px-6 sm:flex-row sm:items-center sm:justify-between">
@@ -59,9 +67,9 @@
                                 สถานะทั้งหมด
                             </option>
                             @foreach ($statusFilter as $item_status)
-                            <option value="{{$item_status->id}}">
-                                {{$item_status->status}}
-                            </option>
+                                <option value="{{ $item_status->id }}">
+                                    {{ $item_status->status }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -133,17 +141,16 @@
                             @forelse ($projects as $project)
                                 <tr>
                                     <td
-                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600 "
-                                        >
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 align-middle shadow-transparent dark:border-slate-600 ">
                                         <div class="flex flex-row items-center gap-2 w-44 truncate block">
                                             <div
                                                 class="flex h-full items-center rounded-1.75 bg-teal-400 p-2.5 text-white dark:bg-slate-700/40 ">
                                                 <i
                                                     class="bi bi-folder-fill text-xs leading-0 text-white dark:text-teal-500"></i>
                                             </div>
-                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300" >
-                                                 <div class="transititext-primary text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-                                                 data-te-toggle="tooltip" title="{{ $project->name_th }}">
+                                            <h6 class="mb-0 leading-normal text-black dark:text-slate-300">
+                                                <div class="transititext-primary text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                                                    data-te-toggle="tooltip" title="{{ $project->name_th }}">
                                                     {{ $project->name_th }}</div>
                                                 <span
                                                     class="block text-xs font-normal text-slate-600 dark:text-slate-300 dark:opacity-60">
@@ -153,34 +160,35 @@
                                         </div>
                                     </td>
                                     <td
-                                    class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
-                                    <div class="inline-block w-44">
-                                        <select id="UpdateStatusProject" class="select dark:text-slate-300" wire:change="$emit('updateStatus',event)"
-                                            data-id="{{ $project->id }}">
-                                            <option value="" class="text-black" disabled selected>
-                                                {{ $project->master_status->status }}
-                                            </option>
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                        <div class="inline-block w-44">
+                                            <select id="UpdateStatusProject" class="select dark:text-slate-300"
+                                                wire:change="$emit('updateStatus',event)"
+                                                data-id="{{ $project->id }}">
+                                                <option value="" class="text-black" disabled selected>
+                                                    {{ $project->master_status->status }}
+                                                </option>
 
-                                            @if (Auth::user()->role_id === 2)
-                                                @forelse ($project->SelectOption as $item)
-                                                    <option value="{{ $item->id }}" class="text-black">
-                                                        {{ $item->status }}
-                                                    </option>
-                                                @empty
-                                                @endforelse
-                                            @else
-                                                @forelse ($project->SelectOption as $item)
-                                                    <option value="{{ $item->id }}" class="text-black"
-                                                        disabled>
-                                                        {{ $item->status }}
-                                                    </option>
-                                                @empty
-                                                @endforelse
-                                            @endif
+                                                @if (Auth::user()->role_id === 2 || Auth::user()->role_id === 3)
+                                                    @forelse ($project->SelectOption as $item)
+                                                        <option value="{{ $item->id }}" class="text-black">
+                                                            {{ $item->status }}
+                                                        </option>
+                                                    @empty
+                                                    @endforelse
+                                                @else
+                                                    @forelse ($project->SelectOption as $item)
+                                                        <option value="{{ $item->id }}" class="text-black"
+                                                            disabled>
+                                                            {{ $item->status }}
+                                                        </option>
+                                                    @empty
+                                                    @endforelse
+                                                @endif
 
-                                        </select>
-                                    </div>
-                                </td>
+                                            </select>
+                                        </div>
+                                    </td>
 
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
@@ -194,9 +202,11 @@
                                             </figure>
                                         </div>
                                     </td>
-                                    <td class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
+                                    <td
+                                        class="whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle shadow-transparent dark:border-slate-600">
                                         @if (Auth::user()->role_id == 3)
-                                            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" wire:click="$emit('eventList',{{$project->id}},event)"
+                                            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                                                wire:click="$emit('eventList',{{ $project->id }},event)"
                                                 class="inline-block cursor-pointer rounded-lg text-center align-middle font-bold uppercase leading-normal text-green-500 transition-all ease-in hover:text-green-700"
                                                 type="button">
                                                 <div class="flex flex-row items-center gap-2">
@@ -205,7 +215,8 @@
                                                 </div>
                                             </button>
                                         @elseif (Auth::user()->role_id == 2)
-                                            <a href="/storage/{{$project->files->sortByDesc('created_at')->first()->path ?? ''}}" download
+                                            <a href="/storage/{{ $project->files->sortByDesc('created_at')->first()->path ?? '' }}"
+                                                download
                                                 class="inline-block  font-bold leading-normal text-center text-green-500 uppercase align-middle transition-all ease-in rounded-lg cursor-pointer hover:text-green-700">
                                                 <div class="flex flex-row items-center gap-2">
                                                     <i class="bi bi-download leading-0"></i>
@@ -294,24 +305,23 @@
             })
         })
 
-        Livewire.on('eventList', (key,event) => {
+        Livewire.on('eventList', (key, event) => {
             const mySelect2 = document.getElementById('dropdown');
             mySelect2.classList.toggle("hidden");
             mySelect2.style.transform = `translate(${event.pageX - 300}px, ${event.pageY + 30}px)`;
-            console.log(event.pageX,event.pageY)
-            Livewire.emit('getDropdownList',key)
+            console.log(event.pageX, event.pageY)
+            Livewire.emit('getDropdownList', key)
         })
 
         Livewire.on('refreshComponent', e => {
             location.reload();
         })
 
-        window.addEventListener('click', function(e){
-            if (e.target.id != 'download_doc'){
+        window.addEventListener('click', function(e) {
+            if (e.target.id != 'download_doc') {
                 const mySelect2 = document.getElementById('dropdown');
-                if(mySelect2.classList.toggle("hidden") == false) mySelect2.classList.toggle("hidden");
+                if (mySelect2.classList.toggle("hidden") == false) mySelect2.classList.toggle("hidden");
             }
         });
     </script>
 @endpush
-
