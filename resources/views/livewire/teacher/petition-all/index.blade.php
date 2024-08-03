@@ -144,9 +144,11 @@
                                         <div class="flex flex-row justify-center space-x-4">
                                             <figure class="flex flex-row items-center space-x-2">
                                                 <figcaption class="text-black dark:text-slate-300">
-                                                    @foreach ($item->project->StudentListForTable as $item_student)
-                                                        {{ $item_student }}<br>
-                                                    @endforeach
+                                                    @if ($item->project)
+                                                        @foreach ($item->project->StudentListForTable as $item_student)
+                                                            {{ $item_student }}<br>
+                                                        @endforeach
+                                                    @endif
                                                 </figcaption>
                                             </figure>
                                         </div>
