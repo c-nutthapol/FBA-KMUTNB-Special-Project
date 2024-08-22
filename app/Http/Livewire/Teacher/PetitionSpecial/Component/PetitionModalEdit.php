@@ -23,7 +23,7 @@ class PetitionModalEdit extends Component
     {
 
         $this->petitionId = $id;
-        $studentRequest = StudentRequest::find($this->petitionId);
+        $studentRequest = Register_Request::find($this->petitionId);
         $this->status = $studentRequest->status;
         if(auth()->user()->role_id == 3){
             $this->note = $studentRequest->admin_remark;
