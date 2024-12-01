@@ -59,6 +59,7 @@ class Index extends Component
                 $sub->where('name','LIKE',"%$search%");
             });
         })
+        ->has('project')
         ->orderByRaw("created_at ".$this->sortCreateDate)
         ->paginate(10);
         // ->get();

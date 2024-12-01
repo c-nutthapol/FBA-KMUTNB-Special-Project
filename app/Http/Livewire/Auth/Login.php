@@ -44,7 +44,7 @@ class Login extends Component
             ->post("https://api.account.kmutnb.ac.th/api/account-api/user-authen", [
                 "username" => $username,
                 "password" => $password,
-                "scopes" => "personel,student,templecturer,alumni",
+                "scopes" => "personel,student,templecturer,alumni,retirement",
                 "personnel_info" => true,
             ]);
         $api_status_code = $response["api_status_code"];

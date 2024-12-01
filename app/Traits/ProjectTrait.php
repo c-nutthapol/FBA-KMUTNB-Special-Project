@@ -28,13 +28,18 @@ trait ProjectTrait
         } elseif ($this->step == 4) {
             $rid = 7;
         }
+        // dd($this->project);
         // หาคำร้องแบบปกติ
-        $this->request = StudentRequest::query()
+
+        if($this->project){
+            $this->request = StudentRequest::query()
             ->where("project_id", "=", $this->project->id)
             ->where("title", "=", $rid)
             ->where("updated_at", "<=", Carbon::now()->addDays(3))
             ->orderByDesc("id")
             ->first();
+        }
+
         //for return error
         $result = new stdClass();
         $result->name = null;

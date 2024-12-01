@@ -47,7 +47,6 @@ class Index extends Component
                 ->where("role","teacher1");
             });
         })
-
         ->when($roleId == 3, function($when){
             $when->whereIn("status", [23, 25]);
         })
@@ -59,6 +58,7 @@ class Index extends Component
                 $sub->where('name','LIKE',"%$search%");
             });
         })
+        ->has('project')
         ->orderByRaw("created_at ".$this->sortCreateDate)
         ->paginate(10);
         // ->get();
